@@ -18,26 +18,45 @@ Press the "*Deploy to Azure*" button below, to provision the Azure Services requ
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fmaster%2Fmonth2%2Fscripts%2Flab2_data_deployment.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
-## Step 2: Validation of services
+## Step 2: Deploy Azure Data Factory
+
+Follow these steps to manually deploy Azure Data Factory.
+
+1. In the Azure Portal, search for "Data Factories"
+2. Click on the "Add" button
+3. Fill out the form:
+- Name: Choose a unique name for your Data Factory
+- Version: V2
+- Subscription: Choose your subscription
+- Resource Group: Use the same Resource Group you used for the automated deployment in Step 1.
+- Location: East US
+- Uncheck the "Enable GIT" checkbox
+4. Click the **Create** button
+
+
+## Step 3: Validation of services
 
 ## Validate Correct provisioning of services
 
 Estimated Time: 15 minutes
  
-1. From the Azure Portal, expand the resource group you deployed the template to and review that the following services are provisioned:
+1. Once the automated deployment is complete, expand the resource group you used previosly and review that the following services are provisioned:
 
 - Azure Synapse Analytics (SQL Data Warehouse)
 - Azure Storage Accounts
-- Azure Data Factory
+- Azure Data Facotry
 
-1. Click on the storage account and browse to Containers
-1. Capture the name of your storage acccount (Data Lake Storage)
-1. Expand the resource group
-1. CLick on the SQL Data Warehouse
+2. Click on the storage account, browse to Containers and confirm that *****
+3. Capture the name of your storage acccount (Data Lake Storage)
+
+## DO I WANT TO ADD THIS????
+4. CLick on the SQL Data Warehouse
 1. In the SQL Data Warehouse Window, click Pause to pause the service
-1. Click on the Azure Data Factory repo and validate Azure Data Factory was deployed succesfully
 
-## Step 3: Populate the Azure Storage container Azure CloudShell
+## CHECK TEXT ABOVE
+
+
+## Step 4: Populate the Azure Storage container Azure CloudShell
 
 1. In the Azure Portal, open an Azure Cloudshell window.
    Complete the configuration process as needed

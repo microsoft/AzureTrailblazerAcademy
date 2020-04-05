@@ -49,12 +49,6 @@
             "type": "String",
 					"metadata": {
       "description": "Provide the region for the Azure Datalake storage account, ideally this gets provisioned in the same region and resource group as the other services"}
-        },
-	  "AzureDataFactoryName": {
-            "defaultValue": "adfmdw-xxxxxxx",
-            "type": "String",
-					"metadata": {
-      "description": "Provide a unique name for Azure Data Factory"}
         }
     },
     "variables": {},
