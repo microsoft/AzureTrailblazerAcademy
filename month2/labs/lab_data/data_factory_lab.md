@@ -66,13 +66,13 @@ Estimated Time: 15 minutes
    This will copy the deployment script that will populate the Azure Data Lake Storage Containers with sample files
 
 ```
-curl -OL https://raw.githubusercontent.com/microsoft/AzureTrailblazerAcademy/master/month2/labs/lab_data/scripts/lab2_data_deployment.json
+curl -OL https://raw.githubusercontent.com/microsoft/AzureTrailblazerAcademy/master/month2/labs/lab_data/scripts/data_script.sh
 ```
 1. Type the following to upload the sample files:
 
 ```
-bash data_deployment <storageaccountname>
+bash data_script.sh <storageaccountname>
 ```
-Example: bash data10-storage.azcli mdwdemostoredl
+Example: bash data_script.sh mdwdemostoredl
 
 **NOTE:** You have now succesfully validated the demo setup and can go back to the demo script
