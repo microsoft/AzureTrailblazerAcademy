@@ -1,4 +1,4 @@
-# DATA10 pre-demo setup
+# Azure Data Services Lab
 
 ## Prerequisites
 
@@ -6,25 +6,17 @@
 - SQL Management Studio (install on your local machine prior to DATA30) 
   [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) 
 
-### Azure Subscription
 
-Having an Azure subscription is mandatory to be able to do the *DATA10: dEMOS​*. If you don't own an Azure subscription already, you can create your **free** account today. It comes with 200$ credit, so you can experience almost everything without spending a dime.
+# Lab Setup
 
-[Create a Free Azure Account here](https://azure.microsoft.com/en-us/free?)
-
-
-# Deployments
-
-
-
-## DATA10 Demo Automated Deployment
+## Automated Deployment
 
 
 ## Step 1: Automated Deployment
 
-Simply by pressing the blue "*Deploy to Azure*" button below, will provision the Azure Services required required for DATA10 demos.
+Press the "*Deploy to Azure*" button below, to provision the Azure Services required required for this lab.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2Fignite-learning-paths-training-data%2Fmaster%2Fdeployment%2Fscripts%2FData10-deployment.json%0D%0A" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https://raw.githubusercontent.com/microsoft/AzureTrailblazerAcademy/master/month2/scripts/lab2_data_deployment.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 ## Step 2: Validation of services
 
