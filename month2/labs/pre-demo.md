@@ -6,12 +6,6 @@
 - SQL Management Studio (install on your local machine prior to DATA30) 
   [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) 
 
-### Azure Subscription
-
-Having an Azure subscription is mandatory to be able to do the *DATA10: dEMOS​*. If you don't own an Azure subscription already, you can create your **free** account today. It comes with 200$ credit, so you can experience almost everything without spending a dime.
-
-[Create a Free Azure Account here](https://azure.microsoft.com/en-us/free?)
-
 
 # Deployments
 
