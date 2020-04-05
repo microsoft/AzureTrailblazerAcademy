@@ -25,11 +25,11 @@ Follow these steps to manually deploy Azure Data Factory.
 1. In the Azure Portal, search for "Data Factories"
 2. Click on the "Add" button
 3. Fill out the form:
-- Name: Choose a unique name for your Data Factory
-- Version: V2
-- Subscription: Choose your subscription
-- Resource Group: Use the same Resource Group you used for the automated deployment in Step 1.
-- Location: East US
+- **Name:** Choose a unique name for your Data Factory
+- **Version:** V2
+- **Subscription:** Choose your subscription
+- **Resource Group:** Use the same Resource Group you used for the automated deployment in Step 1.
+- **Location:** East US
 - Uncheck the "Enable GIT" checkbox
 4. Click the **Create** button
 
@@ -66,12 +66,12 @@ Estimated Time: 15 minutes
    This will copy the deployment script that will populate the Azure Data Lake Storage Containers with sample files
 
 ```
-curl -OL https://raw.githubusercontent.com/microsoft/ignite-learning-paths-training-data/master/deployment/scripts/data10-storage.azcli
+curl -OL https://raw.githubusercontent.com/microsoft/AzureTrailblazerAcademy/master/month2/labs/lab_data/scripts/lab2_data_deployment.json
 ```
 1. Type the following to upload the sample files:
 
 ```
-bash data10-storage.azcli <storageaccountname>
+bash data_deployment <storageaccountname>
 ```
 Example: bash data10-storage.azcli mdwdemostoredl
 
