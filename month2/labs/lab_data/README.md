@@ -108,15 +108,15 @@ Estimated Time: 15 minutes
 
 1. In the Source tab of the Copy activity settings, click **+ New**
 
-1. In the data store list, select the **HTTP** tile and click continue
+2. In the data store list, select the **HTTP** tile and click continue
 
-1. In the file format list, select the **DelimitedText** format tile and click continue
+3. In the file format list, select the **DelimitedText** format tile and click continue
 
-1. In Set Properties blade, give your dataset an understandable name such as **HTTPSource** and click on the **Linked Service** dropdown. If you have not created your HTTP Linked Service, select **New**.
+4. In Set Properties blade, give your dataset an understandable name such as **HTTPSource** and click on the **Linked Service** dropdown. If you have not created your HTTP Linked Service, select **New**.
 
-1. In the New Linked Service (HTTP) screen, specify the url of the moviesDB csv file. You can access the data with no authentication required using the following endpoint:
+5. In the New Linked Service (HTTP) screen, specify the url of the moviesDB csv file. You can access the data with no authentication required using the following endpoint:
 
-    https://raw.githubusercontent.com/microsoft/ignite-learning-paths-training-data/master/data20/demos/moviesDB.csv
+    https://raw.githubusercontent.com/microsoft/AzureTrailblazerAcademy/master/month2/labs/lab_data/data/moviesDB.csv
 
 1. Place this in the **Base URL** text box. 
 
@@ -171,8 +171,6 @@ At this point, you have fully configured your copy activity. To test it out, cli
 
 1. To verify the copy worked as expected, open up your ADLS gen2 storage account and check to see your file was written as expected
 1. **Important:** In order to proceed with the next demo - click **Publish All** to deploy the pipeline to the factory
-
-💡 NOTE - At the end of this demo, if you are NOT going through any other demos - delete the resource group to reduce and mimize Azure spend.
 
 ## Step 6: Preparing Data Factory Environment
 
