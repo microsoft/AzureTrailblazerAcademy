@@ -17,17 +17,17 @@ Press the "*Deploy to Azure*" button below, to provision the Azure Services requ
 
 ## Step 2: Deploy Azure Data Factory
 
-Follow these steps to manually deploy Azure Data Factory.
+While those other resources are being deployed, follow these steps to manually deploy Azure Data Factory.
 
-1. In the Azure Portal, search for "Data Factories"
-2. Click on the "Add" button
+1. In the Azure Portal, search for **Data Factories**
+2. Click on the **Add** button
 3. Fill out the form:
 - **Name:** Choose a unique name for your Data Factory
 - **Version:** V2
 - **Subscription:** Choose your subscription
 - **Resource Group:** Use the same Resource Group you used for the automated deployment in Step 1.
 - **Location:** East US
-- Uncheck the "Enable GIT" checkbox
+- Uncheck the **Enable GIT** checkbox
 4. Click the **Create** button
 
 
@@ -41,26 +41,16 @@ Estimated Time: 15 minutes
 
 - Azure Synapse Analytics (SQL Data Warehouse)
 - Azure Storage Accounts
-- Azure Data Facotry
+- Azure Data Factory
 
-2. Click on the storage account and browse to **Containers**:
-    - Validate that 2 containers **data** and **logs** are existing
-    - Click on the **logs** container and validate that these 3 files exist:
-        - preferences.json
-        - weblogsQ1.log
-        - weblogsQ2.log
-    - Repeat the validation for the **data** container as well, validate that these 2 files exist in the container:
-       - preferences.json
-       - DimDate2.txt
-
-3. Capture the name of your storage acccount (Data Lake Storage)
-4. CLick on the SQL Data Warehouse
-5. Click on **Firewalls and virtual networks** and select **Add Client IP**. Then click on **Save**.
+2. Capture the name of your storage acccount (Data Lake Storage)
+3. CLick on the SQL Data Warehouse
+4. Click on **Firewalls and virtual networks** and select **Add Client IP**. Then click on **Save**.
 
 ![Adding Client IP to SQL Server Firewall](images/Firewall.png)
 
-6. Click on **Query Editor** and login using the user name and password you entered earlier.
-7. Execute the following query:
+5. Click on **Query Editor** and login using the user name and password you entered earlier.
+6. Execute the following query:
 
 ```
 CREATE MASTER KEY;
@@ -71,7 +61,7 @@ CREATE MASTER KEY;
 1. In the Azure Portal, open an Azure Cloudshell window.
    Complete the configuration process as needed
 
-1. Type the following command to copy the deployment script to Azure Cloud Shell
+2. Type the following command to copy the deployment script to Azure Cloud Shell
 
    This will copy the deployment script that will populate the Azure Data Lake Storage Containers with sample files
 
@@ -85,7 +75,15 @@ bash data_script.sh <storageaccountname>
 ```
 Example: bash data_script.sh mdwdemostoredl
 
-**NOTE:** You have now succesfully validated the demo setup and can go back to the demo script
+3. Click on the storage account and browse to **Containers**:
+    - Validate that 2 containers **data** and **logs** are existing
+    - Click on the **logs** container and validate that these 3 files exist:
+        - preferences.json
+        - weblogsQ1.log
+        - weblogsQ2.log
+    - Repeat the validation for the **data** container as well, validate that these 2 files exist in the container:
+       - preferences.json
+       - DimDate2.txt
 
 
 ## Step 5: Preparing Data Factory Environment
