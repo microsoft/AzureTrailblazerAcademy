@@ -3,9 +3,6 @@
 ## Prerequisites
 
 - Microsoft Azure subscription
-- SQL Management Studio (install on your local machine prior to DATA30) 
-  [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) 
-
 
 # Lab Setup
 
@@ -46,14 +43,23 @@ Estimated Time: 15 minutes
 - Azure Storage Accounts
 - Azure Data Facotry
 
-2. Click on the storage account, browse to Containers and confirm that *****
+2. Click on the storage account and browse to **Containers**:
+    - Validate that 2 containers **data** and **logs** are existing
+    - Click on the **logs** container and validate that these 3 files exist:
+        - preferences.json
+        - weblogsQ1.log
+        - weblogsQ2.log
+    - Repeat the validation for the **data** container as well, validate that these 2 files exist in the container:
+       - preferences.json
+       - DimDate2.txt
+
 3. Capture the name of your storage acccount (Data Lake Storage)
 4. CLick on the SQL Data Warehouse
-5. Click on "Firewalls and virtual networks" and select "Add Client IP". Then click on "Save".
+5. Click on **Firewalls and virtual networks** and select **Add Client IP**. Then click on **Save**.
 
 ![Adding Client IP to SQL Server Firewall](images/Firewall.png)
 
-6. Click on "Query Editor" and login using the user name and password you entered earlier.
+6. Click on **Query Editor** and login using the user name and password you entered earlier.
 7. Execute the following query:
 
 ```
