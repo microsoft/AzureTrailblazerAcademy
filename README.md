@@ -18,7 +18,7 @@ In this repository you will find the content and labs you will need to complete 
 
 Learn the basics of Azure, the difference between Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) and build a web application from scratch using Azure native services.
 
-### [**Month 2**: Azure DevOps and Azure Data Services](./month2)
+### [**Month 2**: Azure DevOps and Azure Data Services](./month2/labs)
 
 Automate your code deployments and releases using Azure DevOps. Learn how to use Azure Data Factory and CosmosDB to transform and store data for modern applications.
 
