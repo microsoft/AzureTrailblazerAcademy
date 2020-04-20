@@ -315,12 +315,14 @@ At this point, You have finished building your 8 transformation Mapping Data Flo
 
 5. To verify that, go back to the Azure Portal and expand the data warehouse blade in your resource group. Click on **Query Editor (preview)** from the SQL data warehouse blade and write the following query:
 
-```
-select count(*) from dbo.Ratings
-```
+    ```
+    select count(*) from dbo.Ratings
+    ```
 
 6. Finally, to see the data that was loaded in the Data Warehouse, enter the following query:
 
-```
-select * from dbo.Ratings
-```
+    ```
+    select * from dbo.Ratings
+    ```
+
+7. If you are happy with the results, you can go back to Data Factory and click on the **Publish All** button at the top to save all changes to your pipeline.
