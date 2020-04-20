@@ -268,10 +268,9 @@ At this point, you have fully configured your copy activity. To test it out, cli
 12. Go to **Data Preview** tab and click on **Refresh** to see how the aggregate transformation changes your data.
    
 
-13. Since we are writing to a tabular sink, we can specify insert, delete, update and upsert policies on rows using the [Alter Row transformation](https://docs.microsoft.com/azure/data-factory/data-flow-alter-row). Click on the **+ icon** next to your Aggregate transformation and click **Alter Row** under the **Row modifier** section. Since we are always inserting and updating, you can specify that all rows will always be upserted.
+13. Since we are writing to a tabular sink, we can specify insert, delete, update and upsert policies on rows using the [Alter Row transformation](https://docs.microsoft.com/azure/data-factory/data-flow-alter-row). Click on the **+ icon** next to your Aggregate transformation and click **Alter Row** under the **Row modifier** section. Since we are always inserting and updating, you can specify that all rows will always be upserted by entering **true()** in the expression field.
 
     ![Using the Alter Row Transformation to a Mapping Data Flow in Azure Data Factory](images/M07-E03-T03-img12.png)
-
     
 
 ### Task 3: Writing to a Data Sink
@@ -285,6 +284,7 @@ Now that you have finished all your transformation logic, you are ready to write
 3. Select **Azure Synapse Analytics** from the tile list and click **Continue**.
 
 4. Open the *Linked service** dropdown and click on **+ New** to configure a Azure Synapse Analytics connection to connect to the Data Warehouse that we created earlier. Select the datawarehouse from the dropdown, select **SQL authentication** as the **Authentication type** and the **user name** and **password** you used when you created the Datawarehouse.
+
     ![Creating an Azure Synapse Analytics connection in Azure Data Factory](images/M07-E03-T04-img01.png)
 
 5. Click **Create**.
