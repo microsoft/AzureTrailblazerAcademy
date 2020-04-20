@@ -250,7 +250,7 @@ At this point, you have fully configured your copy activity. To test it out, cli
 
     ![Configuring the Aggregate Transformation to a Mapping Data Flow in Azure Data Factory](images/M07-E03-T03-img11.png)
 
-    These are the 4 expressions shown in the previous screenshot. YOu can use those to copy and paste in the **Aggregates** section above:
+    These are the 4 expressions shown in the previous screenshot. You can use those to copy and paste in the **Aggregates** section above:
 
     ```
     avg(toInteger({Rotten Tomato}))
