@@ -290,9 +290,11 @@ Now that you have finished all your transformation logic, you are ready to write
 5. Click **Create**.
 
 6. In the dataset configuration, select **Create new table** and enter in **Dbo** in the Schema field and **Ratings** in table name field. Click **OK** once completed.
+
     ![Creating an Azure Synapse Analytics table in Azure Data Factory](images/M07-E03-T04-img02.png)
 
 7. Since an upsert condition was specified, you need to go to the Settings tab and select 'Allow upsert' based on key columns PrimaryGenre and year.
+
     ![Configuring Sink settings in Azure Data Factory](images/M07-E03-T04-img03.png)
 
 At this point, You have finished building your 8 transformation Mapping Data Flow. It's time to run the pipeline and see the results!
