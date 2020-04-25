@@ -33,8 +33,6 @@ While those other resources are being deployed, follow these steps to manually d
 
 ## Step 3: Validation of services
 
-## Validate Correct provisioning of services
-
 Estimated Time: 15 minutes
  
 1. Once the automated deployment is complete, expand the resource group you used previosly and review that the following services are provisioned:

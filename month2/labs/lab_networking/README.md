@@ -3,35 +3,105 @@
 ## Prerequisites
 
 - Microsoft Azure subscription
-
-# Lab Setup
-
-## Automated Deployment
+- Resource Group to deploy Azure services
+- Permissions to create VMs with public IP addresses
 
 
-## Step 1: Automated Deployment
 
-Press the "*Deploy to Azure*" button below, to provision the Azure Services required required for this lab.
+## Step 1: Deploy first Virtual Network
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fmaster%2Fmonth2%2Flabs%2Flab_data%2Fscripts%2Flab2_data_deployment.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+Before following the steps below, make sure you have created a resource group where you will be deploying all the resources for this lab. The first resource we'll be depoying is ata-vnet1.
 
-## Step 2: Deploy Azure Data Factory
-
-While those other resources are being deployed, follow these steps to manually deploy Azure Data Factory.
-
-1. In the Azure Portal, search for **Data Factories**
+1. In the Azure Portal, search for **Virtual Networks**
 2. Click on the **Add** button
-3. Fill out the form:
-- **Name:** Choose a unique name for your Data Factory
-- **Version:** V2
+3. Fill out the **Basics** tab as follows:
 - **Subscription:** Choose your subscription
-- **Resource Group:** Use the same Resource Group you used for the automated deployment in Step 1.
-- **Location:** East US
-- Uncheck the **Enable GIT** checkbox
-4. Click the **Create** button
+- **Resource Group:** Select the Resource Group you created for this lab.
+- **Name:** Choose a unique name. Ex: ata-vnet1
+- **Region:** East US
+
+![Vnet Basics Tab](images/vnet_basics.png)
 
 
-## Step 3: Validation of services
+4. Click the **Next: IP Addresses** button
+5. Inside the **IP Addresses** tab fill out as follows:
+- **IPv4 address space:** Choose a private IP address space to use for this network. Ex: 10.0.0.0/16
+- Leave everything else as default
+
+![Vnet IP Addresses Tab](images/vnet_IP_addresses.png)
+
+6. 4. Click the **Next: Security** button
+7. Leave everything as default in the **Security** tab and click the **Next: Tags** button
+8. Enter any custom tags (optional) and click the **Next:Review + Create** button
+9. Click **Create** and wait a couple of minutes for this virtual network to be created.
+
+## Step 2: Deploy second Virtual Network
+
+Go through the same steps you just followed earlier and deploy ata-vnet2. Use the following parameters instead:
+
+- **Name:** Enter a different name for this Vnet. Ex: ata-vnet2
+- **IPv4 address space**: Choose a private IP address space different than what was used for ata-vnet1. Ex: 10.1.0.0/16
+
+**IMPORTANT**: Make sure the two address spaces for ata-vnet1 and ata-vnet 2 DO NOT overlap. You will not be able to complete this lab if they do. Use the recommended address spaces listed above.
+
+## Step 3: Deploy first VM
+
+In the Azure Portal, search for **Virtual Machines**
+2. Click on the **Add** button
+3. Fill out the **Basics** tab as follows:
+- **Subscription:** Choose your subscription
+- **Resource Group:** Select the Resource Group you created for this lab.
+- **Virtual Machine Name:** Choose a unique name for the VM. Ex: ata-vm1
+- **Region:** East US
+- **Availability Options:** No infrastructure redundancy required
+- **Image:** Ubuntu Server 18.04 LTS
+- **Azure Spot Instance:** No
+- **Size:** Standard D2s v3
+- **Authentication Type:** Password
+- **Username:** Enter your user name. Ex: ata-user
+- **Password:** Enter your password
+- **Select inbound ports:** SSH(22)
+
+![VM Basics Tab](images/vm_basics.png)
+
+4. Click the **Next: Disks** button
+5. Leave everything as default and click the **Next: Networking** button
+6. Fill out **Networking** tab as follows:
+
+- **Virtual Network:** Select the first virtual network you created earlier. Ex: ata-vnet1
+- **Public IP:** None
+- Leave everything else as default
+
+![VM Basics Tab](images/vm_networking.png)
+
+7. Click the **Next: Management** button
+8. Inside the **Management** tab:
+- Turn off **Boot diagnostics**
+- Leave everything else as default
+
+9. Click the **Next: Advanced** button
+10. Leave everything as default and click on the **Next: Tags** button
+11. Enter any custom tags (optional) and click the **Next: Review + Create** button
+12. Click the **Create** button
+
+## Step 4: Deploy second VM
+
+While the first VM is being deployed, you can follow the same steps you just completed to deploy the second VM. Use the following parameters for the second VM:
+
+1. Inside the **Basics** tab:
+- **Name:** Enter a different name for this VM. Ex: ata-vm2
+- **Image:** Windows Server 2019 Datacenter
+
+![VM2 Basics Tab](images/vm2_basics.png)
+
+2. Inside the **Networking** tab:
+- **Virtual Network:** Select the second VNet you deploy. Ex: ata-vnet2
+- **Public IP**: Leave default to create a new public IP
+
+
+- **Name:** Enter a different name for this Vnet. Ex: ata-vnet2
+- **IPv4 address space**: Choose a private IP address space different than what was used for ata-vnet1. Ex: 10.1.0.0/16
+
 
 ## Validate Correct provisioning of services
 
