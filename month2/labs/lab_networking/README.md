@@ -200,4 +200,7 @@ Once the two VMs are deployed, follow these steps to review their configuration 
  to be enabled for the selected VNet/Subnet
  6. Once the Service Endpoint has been enabled, click on **Add**
  7. Click on the **Save** button
+
+![Storage Account Firewall Configuration](images/storage_firewall.png)
+ 
  8. Attempt to open the image again from your local computer and from VM2. It should fail from your local computer but succeed from VM2 because the Storage Account is only allowing connections from ata-vnet2/default subnet where ata-vm2 is deployed.
