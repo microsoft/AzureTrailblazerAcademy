@@ -8,7 +8,7 @@
 
 
 
-## Step 1: Deploy first Virtual Network
+## Step 1: Deploy the first Virtual Network
 
 Before following the steps below, make sure you have created a resource group where you will be deploying all the resources for this lab. The first resource we'll be depoying is ata-vnet1.
 
@@ -35,7 +35,7 @@ Before following the steps below, make sure you have created a resource group wh
 8. Enter any custom tags (optional) and click the **Next:Review + Create** button
 9. Click **Create** and wait a couple of minutes for this virtual network to be created.
 
-## Step 2: Deploy second Virtual Network
+## Step 2: Deploy the second Virtual Network
 
 Go through the same steps you just followed earlier and deploy ata-vnet2. Use the following parameters instead:
 
@@ -44,9 +44,9 @@ Go through the same steps you just followed earlier and deploy ata-vnet2. Use th
 
 **IMPORTANT**: Make sure the two address spaces for ata-vnet1 and ata-vnet 2 DO NOT overlap. You will not be able to complete this lab if they do. Use the recommended address spaces listed above.
 
-## Step 3: Deploy first VM
+## Step 3: Deploy the first VM
 
-In the Azure Portal, search for **Virtual Machines**
+1. In the Azure Portal, search for **Virtual Machines**
 2. Click on the **Add** button
 3. Fill out the **Basics** tab as follows:
 - **Subscription:** Choose your subscription
@@ -76,7 +76,7 @@ In the Azure Portal, search for **Virtual Machines**
 
 7. Click the **Next: Management** button
 8. Inside the **Management** tab:
-- Turn off **Boot diagnostics**
+- Turn off **Boot diagnostics** and **Auto-Shutdown**
 - Leave everything else as default
 
 9. Click the **Next: Advanced** button
@@ -84,7 +84,7 @@ In the Azure Portal, search for **Virtual Machines**
 11. Enter any custom tags (optional) and click the **Next: Review + Create** button
 12. Click the **Create** button
 
-## Step 4: Deploy second VM
+## Step 4: Deploy the second VM
 
 While the first VM is being deployed, you can follow the same steps you just completed to deploy the second VM. Use the following parameters for the second VM:
 
@@ -98,9 +98,66 @@ While the first VM is being deployed, you can follow the same steps you just com
 - **Virtual Network:** Select the second VNet you deploy. Ex: ata-vnet2
 - **Public IP**: Leave default to create a new public IP
 
+![VM2 Networking Tab](images/vm2_networking.png)
 
-- **Name:** Enter a different name for this Vnet. Ex: ata-vnet2
-- **IPv4 address space**: Choose a private IP address space different than what was used for ata-vnet1. Ex: 10.1.0.0/16
+## Step 5: Review VM configuration and test connectivity
+
+Once the two VMs are deployed, follow these steps to review their configuration and test connectivity between the two VMs:
+
+1. Go to your resource group and open the first VM (ata-vm1)
+2. On the top right of the **Overview** page and take note of **Private IP address** assigned to the VM. You will notice that the IP comes from the address range that was defined for ata-vnet1. The **Public IP Address** field should be empty - therefore this VM cannot be accessed from the internet.
+3. On the left blade, click on **Networking**. Here you will see other network configuration for the VM including the ports that are allowed. For this VM you should see Port 22 allowed.
+
+![VM1 IP Address](images/vm1_ipaddress.png)
+
+4. Open your second VM (ata-vm2)
+5. On top right of the **Overview** page, and take note of the two IP addresses that were assigned to this VM - a **Private IP address** and a **Public IP address**. Since this VM has a public IP, it is accessible from the internet.
+6. On the left blade, click on **Networking** and confirm that port 3389 is open for this VM.
+
+![VM2 IP Address](images/vm1_ipaddress.png)
+
+## Step 6: Connect to VM2
+
+1. Copy the public IP address you found in the **Overview** page
+2. Open Remote Desktop Connection application, paste the IP address and click on **Connect**
+3. Once you are inside VM2, open a Command Prompt window and execute the following commands:
+
+    ```
+    ping <VM1_IP_Address>
+    ```
+    ```
+    ssh ata-user@<VM1_IP_Address>
+    ```
+
+4. Both of those commands should fail since these two VMs are in two different networks and there is no connectivity between those networks.
+
+![VM2 Ping/SSH Failed](images/vm2_pingfail.png)
+
+
+## Step 7: Create a Virtual Network Peering between Vnet1 and Vnet2
+
+1. Go back to your resource group and open the first Vnet you created (ata-vnet1)
+2. On the left blade select **Peerings** and click **+ Add**
+3. Fill out the form with the following information:
+
+- **Name of the peering:** Enter a unique name for this peering(Ex: vnet1-to-vnet2-peering)
+- **Virtual Network deployment model:** Resource Manager
+- **Subscription:** Select your subscription
+- **Virtual Network**: Select your second Virtual Network (ata-vnet2)
+- **Name of the peering:** Enter a name for this peering(Ex: vnet2-to-vnet1-peering)
+- Leave everything else as default and click **OK**
+
+![VNet Peering](images/vnet_peering.png)
+
+4. After this is completed, the two VNets should be peered and VMs on one VNet should be able to reach VMs on the other VNet.
+5. Repeat **Step 7** and confirm that the ata-vm-2 is now able to ping and SSH into ata-vm-1
+
+## Step 8: Create Storage Account and test connectivity
+
+
+
+## Step 9: Create Service Endpoint
+
 
 
 ## Validate Correct provisioning of services
