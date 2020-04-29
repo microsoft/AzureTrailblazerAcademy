@@ -9,6 +9,5 @@ Automate your code deployments and releases using Azure DevOps. Learn how to use
 
 | Labs          | Links                            |
 |-------------------|----------------------------------|
-| Azure DevOps        | - [Azure DevOps Lab](lab_devops/)|
 | Data Factory     | - [Data Factory Lab](lab_data/) |
-| Networking       | - [Networking Lab](lab_networking/)
+| Networking       | - [Networking Lab](lab_networking/) |
