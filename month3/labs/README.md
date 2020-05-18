@@ -1,8 +1,8 @@
-# Month 2: Azure DevOps and Data Services
+# Month 3: Azure Monitoring
 
 ## Session Abstract
 
-Automate your code deployments and releases using Azure DevOps. Learn how to use Azure Data Factory and CosmosDB to transform and store data for modern applications.
+Monitor your Azure Infrastructure and learn how to configure/query logs in Log Analytics Workspace, intall Microsoft Monitoring Agent Extension and setup alerting to be notified under different conditions.
 
 
 ## Table of Content

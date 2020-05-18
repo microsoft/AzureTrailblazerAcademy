@@ -1,13 +1,46 @@
-# Azure Data Services Lab
+# Azure Monitoring Lab
 
 ## Prerequisites
 
 - Microsoft Azure subscription
+- Resource Group to deploy Azure services
+- Permissions to create VMs with public IP addresses
 
 # Lab Setup
 
-## Automated Deployment
+## Step 1: Deploy a Log Analytics Workspace
 
+## Step 1: Deploy a Virtual Machine
+
+1. In the Azure Portal, search for **Log Analytics Workspaces**
+2. Click on the **Add** button
+3. Fill out the **Basics** tab as follows:
+- **Subscription:** Choose your subscription
+- **Resource Group:** Select the Resource Group you created for this lab.
+- **Name:** Choose a unique name for Log Analytics Workspace. Ex: ata-la-workspace
+- **Region:** East US
+
+![VM Basics Tab](images/la_basics.png)
+
+4. Click the **Next: Disks** button
+5. Leave everything as default and click the **Next: Networking** button
+6. Fill out **Networking** tab as follows:
+
+- **Virtual Network:** Select the first virtual network you created earlier. Ex: ata-vnet1
+- **Public IP:** None
+- Leave everything else as default
+
+![VM Basics Tab](images/vm_networking.png)
+
+7. Click the **Next: Management** button
+8. Inside the **Management** tab:
+- Turn off **Boot diagnostics** and **Auto-Shutdown**
+- Leave everything else as default
+
+9. Click the **Next: Advanced** button
+10. Leave everything as default and click on the **Next: Tags** button
+11. Enter any custom tags (optional) and click the **Next: Review + Create** button
+12. Click the **Create** button
 
 ## Step 1: Automated Deployment
 
