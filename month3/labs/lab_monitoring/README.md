@@ -10,8 +10,6 @@
 
 ## Step 1: Deploy a Log Analytics Workspace
 
-## Step 1: Deploy a Virtual Machine
-
 1. In the Azure Portal, search for **Log Analytics Workspaces**
 2. Click on the **Add** button
 3. Fill out the **Basics** tab as follows:
@@ -22,15 +20,39 @@
 
 ![VM Basics Tab](images/la_basics.png)
 
+4. Click the **Review + Create** button
+5. Click the **Create** button
+
+
+## Step 2: Deploy a Virtual Machine
+
+1. In the Azure Portal, search for **Virtual Machines**
+2. Click on the **Add** button
+3. Fill out the **Basics** tab as follows:
+- **Subscription:** Choose your subscription
+- **Resource Group:** Select the Resource Group you created for this lab.
+- **Virtual Machine Name:** Choose a unique name for the VM. Ex: ata-vm1
+- **Region:** East US
+- **Availability Options:** No infrastructure redundancy required
+- **Image:** Windows Server 2019 Datacenter
+- **Azure Spot Instance:** No
+- **Size:** Standard D2s v3
+- **Authentication Type:** Password
+- **Username:** Enter your user name. Ex: ata-user
+- **Password:** Enter your password
+- **Select inbound ports:** RDP(3389)
+
+![VM Basics Tab](images/vm_basics.png)
+
 4. Click the **Next: Disks** button
 5. Leave everything as default and click the **Next: Networking** button
 6. Fill out **Networking** tab as follows:
-
-- **Virtual Network:** Select the first virtual network you created earlier. Ex: ata-vnet1
-- **Public IP:** None
+- **Virtual Network:** Leave as default. If no other VNets exist in the RG, it should create a new VNet for the VM.
+- **Subnet:** Leave as default
+- **Public IP:** Leave as default to create a new public IP
 - Leave everything else as default
 
-![VM Basics Tab](images/vm_networking.png)
+![VM Networking Tab](images/vm_networking.png)
 
 7. Click the **Next: Management** button
 8. Inside the **Management** tab:
@@ -42,7 +64,74 @@
 11. Enter any custom tags (optional) and click the **Next: Review + Create** button
 12. Click the **Create** button
 
-## Step 1: Automated Deployment
+## Step 3: Enable VM Insights
+
+Follow these steps to enable VM Insights for the VM. Since it takes a couple of minutes for VM Insights to be enabled, you can complete steps below and then move to the next section of the lab. You don't need to wait for that to finish to complete the next section **Metrics Monitoring**.
+
+1. Open the VM resource once it is provisioned
+2. On the left blade, select **Insights**
+3. Click on the **Enable** button
+4. Select your subscription and the Log Analytics Workspace that you deployed in Step 1.
+5. Click the **Enable** button
+6. It will take a couple of minutes for VM Insights to be enabled. As part of this process, two agents will be installed in the VM: the Microsoft Monitoring Agent and the Dependency Agent. The VM will also be configured to send logs and other performance data to the Log Analytics workspace you selected.
+
+![Enable VM Insights](images/vm_insights_enable.png)
+
+
+## Step4: Metrics Monitoring
+
+1. On the left blade click on **Metrics**
+2. On the top filter select the following:
+- **Scope:** Leave as default. The VM name should be there.
+- **Metric Namespace:** Virtual Machine Host
+- **Metric:** Disk Read Operations/Sec
+- **Aggregation:** Avg
+
+![Metrics Filter](images/vm_metrics_filter.png)
+
+3. On the **Time Range** (top right of the screen) and select the following:
+- **Time Range:** Last 30 minutes
+- **Time Granularity:** 1 minute
+4. Click **Apply**. The chart should have been updated now to show the CPU percentage for the last 30 minutes.
+
+![Metrics Filter](images/vm_metrics_timerange.png)
+
+5. You can add multiple metrics to the same chart so let's add a second one.
+6. Click on **Add metric**
+7. On the new filter that was created, select the following:
+- **Scope:** Leave as default. The VM name should be there.
+- **Metric Namespace:** Virtual Machine Host
+- **Metric:** Disk Write Operations/Sec
+- **Aggregation:** Avg
+8. Click anywhere on the screen and you should now see two lines charts inside the same chart
+9. Customiza the apperance of the chart by click on the **Line Chart** button (at the top) and changing it to an **Area Chart**
+
+![Metrics Filter](images/vm_metrics_chart.png)
+
+10. Click on the **Pin to dashboard** button and select **Pin to current dashboard**
+11. In the left-side menu of the Azure Portal, click on **Dashboard** and to see the chart you just pinned there 
+
+
+
+## Step 5: Log Monitoring and Advanced Guest OS Monitoring
+
+If you need to analyse logs from Guest OS or monitor some Guest OS performance metrics (such as Memory available) you need to use Log Analytics. When you turned on **VM Insights** the VM was configured to send this logs/data to the Log Analytics workspace where we can query it and analyize it.
+
+
+## Step 6: Connect other Azure Services
+
+
+## Step 7: Create an alert
+
+
+
+
+
+## Step 3: Enable VM Insights and Create Metrics Charts
+
+Follow the following steps to enable VM Insights in the VM. It will take a couple of minutes. Enabling VM Insights will deploy two agents inside the VM: The Microsoft Monitoring Agent and the Dependency Agent.
+
+1. 
 
 Press the "*Deploy to Azure*" button below, to provision the Azure Services required required for this lab.
 
