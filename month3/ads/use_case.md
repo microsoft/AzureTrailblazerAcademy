@@ -2,7 +2,7 @@
 
 
 1. As a table team, review the following customer case study.
-2. Research Azure services and put together an architecture that meets customer needs (feel free to use Azure services that have not been discussed in class))
+2. Research Azure services and put together an architecture that meets customer needs (feel free to use Azure services that have not been discussed in class)
 3. Provide a cost estimate of the proposed solution
 4. Implement part of the solution (be as creative as possible)
 5. As a team, present the architecture and cost to the rest of the class and do a small demo of your implementation
