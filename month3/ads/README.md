@@ -1,5 +1,6 @@
 ## Architectural Design Session - MoonPass Case Study
 
+## Team Activity
 
 1. As a table team, review the following customer case study.
 2. Research Azure services and put together an architecture that meets customer needs (feel free to use Azure services that have not been discussed in class)
