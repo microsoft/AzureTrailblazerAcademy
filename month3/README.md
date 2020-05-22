@@ -9,5 +9,5 @@ Monitor your Azure Infrastructure and learn how to configure/query logs in Log A
 
 | Labs          | Links                            |
 |-------------------|----------------------------------|
-| Azure Monitoring     | - [Azure Monitoring Lab](lab_monitoring/) |
+| Azure Monitoring     | - [Azure Monitoring Lab](labs/lab_monitoring/) |
 | Architectural Design Session - MoonPase Case Study    | - [Architectural Design Session](ads/) |
