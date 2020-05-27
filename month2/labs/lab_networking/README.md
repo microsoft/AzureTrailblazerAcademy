@@ -114,7 +114,7 @@ Once the two VMs are deployed, follow these steps to review their configuration 
 5. On top right of the **Overview** page, and take note of the two IP addresses that were assigned to this VM - a **Private IP address** and a **Public IP address**. Since this VM has a public IP, it is accessible from the internet.
 6. On the left blade, click on **Networking** and confirm that port 3389 is open for this VM.
 
-![VM2 IP Address](images/vm1_ipaddress.png)
+![VM2 IP Address](images/vm2_ipaddress.png)
 
 ## Step 6: Connect to VM2
 
