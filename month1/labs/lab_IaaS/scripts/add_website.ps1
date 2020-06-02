@@ -7,7 +7,7 @@
 $dscConfig = @{
   "wmfVersion" = "latest";
   "configuration" = @{
-    "url" = "https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip";
+    "url" = "https://raw.githubusercontent.com/microsoft/AzureTrailblazerAcademy/master/month1/labs/lab_IaaS/scripts/dsc.zip";
     "script" = "configure-http.ps1";
     "function" = "WebsiteTest";
   };
