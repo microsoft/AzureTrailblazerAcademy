@@ -11,10 +11,10 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Login to Azure Portal (https://portal.azure.com) 
     Select "create a resource" and select "Storage accounts" service. 
 Hit 'create' button.
-(./images/Create-storage-account.PNG "Create Storage Account")
+![Create Storage Account](./images/Create-storage-account.PNG "Create Storage Account")
 - Create a new resource group
     Select 'Create new' under 'Resource group' section. Enter "ata-storage-lab-<Name>-rg"
-(./images/Create-resource-group.PNG)
+![Create Resource Group](./images/Create-resource-group.PNG)
 - Enter Storage account name
     Enter 'atastorageblob<yourname>' 
 - Select the location
@@ -22,7 +22,7 @@ Hit 'create' button.
 - Leave defaults for the rest
 - Select 'Review + create' button
     Make sure you have completed all the entries high lighted in the diagram. It completes the validation checks.
-    (./images/Storage-Review-Create.PNG)
+    ![Review & Create](./images/Storage-Review-Create.PNG)
 - Select 'Create' button 
     Make sure you have the green check mark next to 'Validation Passed'. You are good to create the blob storage! Hit the 
     'Create' button. 
@@ -33,18 +33,18 @@ Hit 'create' button.
 ### Step-2 Create container
 - Select container
     locate the container from the available storage options and select the link.
-    (./images/CreateBlobContainer.PNG)
+    ![Select Blob Container](./images/CreateBlobContainer.PNG)
 - Create a new container
     Select the 'plus' sign next to container to add a new container
     'New container' window popsup and enter the name 'atablob<yourname>'
-    (./images/Complete-create-blob-container.PNG)
+    ![Create Blob Container] (./images/Complete-create-blob-container.PNG)
 ### Step-3 Upload image to Blob container
 - Access Storage Explorer
     Select the 'Storage Explorer(preview)' from the left blade
     Select the created blob container 
     Select upload button 
     Browse the local data and upload an imapge
-    (./images/blob-upload-image.PNG)  
+    ![Upload blob](./images/blob-upload-image.PNG)  
 
 
 # How to load data into Data Lake Storage? (Step-by-Step Lab)
