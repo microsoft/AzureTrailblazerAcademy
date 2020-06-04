@@ -41,10 +41,12 @@ Hit 'create' button.
 
 - Select container
     Select the 'containers' link from the available storage options in the middle of the page.
+
     <img src="./images/CreateBlobContainer.PNG" alt="Storage Review" width="400">
 - Create a new container
     Select the 'plus' sign next to container to add a new container
     'New container' window popsup and enter the name 'atablob<yourname>'
+
     <img src="./images/Complete-create-blob-container.PNG" alt="Storage Review" width="400">
 
 ### Step-3 Upload image to Blob container
@@ -80,6 +82,7 @@ Hit 'create' button.
     Leave the defaults and select the 'Advanced' button 
 - Advanced
     Enable the 'hierarchical' option under ADLSGen2 option and select 'Review + Create' button
+
     <img src="./images/ADLSGen2HierarchichalOption.PNG" alt="ADLSGen2 Hierarchichal Option" width="600">
 
 - Select 'Create' button 
@@ -88,7 +91,7 @@ Hit 'create' button.
 - Go to 'Datalake storage' from the deployment status screen
     Wait till you see 'Your deployment is complete'.
     Select 'go to resource' button when you see it.
-    
+
     <img src="./images/ADLS-Deploy-Complete.PNG" alt="ADLSGen2 Hierarchichal Option" width="400">
 
 ### Step-2 Create container
@@ -112,6 +115,7 @@ Hit 'create' button.
 - Install Storage Explorer
     Install the Storage Explorer on your system
     Access the Datalake Storage you just created
+    
 <img src="./images/StorageExplorer_UploadFolder.PNG" alt="blob-upload-image" width="400">
 
 - Upload the data files
