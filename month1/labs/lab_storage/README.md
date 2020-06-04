@@ -34,6 +34,7 @@ Hit 'create' button.
 - Go to 'blob storage' from the deployment status screen
     Wait till you see 'Your deployment is complete'.
     Select 'go to resource' button when you see it.
+
     <img src="./images/Deploy-complete-blob-storage.PNG" alt="blob storage Deploy complete" width="400">
 
 ### Step-2 Create container
@@ -56,6 +57,7 @@ Hit 'create' button.
     <img src="./images/blob-upload-image.PNG" alt="blob-upload-image" width="200"> 
 
 ## How to load data into Data Lake Storage? (Step-by-Step Lab)
+
 ### Step-1:Create Azure Data Lake Storage Gen2
 - Login to Azure Portal (https://portal.azure.com) 
     Select "create a resource" and select "Storage accounts" service. 
@@ -86,6 +88,7 @@ Hit 'create' button.
 - Go to 'Datalake storage' from the deployment status screen
     Wait till you see 'Your deployment is complete'.
     Select 'go to resource' button when you see it.
+    
     <img src="./images/ADLS-Deploy-Complete.PNG" alt="ADLSGen2 Hierarchichal Option" width="400">
 
 ### Step-2 Create container
