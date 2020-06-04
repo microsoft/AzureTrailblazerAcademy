@@ -12,7 +12,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
     Select "create a resource" and select "Storage accounts" service. 
 Hit 'create' button.
 
-<img src="./images/Create-storage-account.PNG" alt="Create Storage Account" width="300">
+<img src="./images/Create-storage-account.PNG" alt="Create Storage Account" width="400">
 - Create a new resource group
     Select 'Create new' under 'Resource group' section. Enter "ata-storage-lab-<Name>-rg"
     
@@ -37,7 +37,7 @@ Hit 'create' button.
 - Select container
     locate the container from the available storage options and select the link.
 
-    <img src="./images/CreateBlobContainer.PNG" alt="Storage Review" width="400">
+    <img src="./images/CreateBlobContainer.PNG" alt="Storage Review" width="500">
 - Create a new container
     Select the 'plus' sign next to container to add a new container
     'New container' window popsup and enter the name 'atablob<yourname>'
@@ -49,7 +49,7 @@ Hit 'create' button.
     Select upload button 
     Browse the local data and upload an imapge
 
-    <img src="./images/blob-upload-image.PNG" alt="blob-upload-image" width="300"> 
+    <img src="./images/blob-upload-image.PNG" alt="blob-upload-image" width="200"> 
 
 
 # How to load data into Data Lake Storage? (Step-by-Step Lab)
