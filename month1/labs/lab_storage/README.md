@@ -13,8 +13,10 @@ Share structured and unstructured data from multiple Azure data stores with othe
 Hit 'create' button.
 
 <img src="./images/Create-storage-account.PNG" alt="Create Storage Account" width="400">
+
 - Create a new resource group
-    Select 'Create new' under 'Resource group' section. Enter "ata-storage-lab-<Name>-rg"
+    Select 'Create new' under 'Resource group' section. 
+    Enter "ata-storage-lab-<Name>-rg"
     
     <img src="./images/CreateResourceGroup.PNG" alt="Create Resource Group" width="600">
 - Enter Storage account name
