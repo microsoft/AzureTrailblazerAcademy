@@ -109,11 +109,11 @@ Hit 'create' button.
 - Install Storage Explorer
     Install the Storage Explorer on your system
     Access the Datalake Storage you just created
-<img src="./images/StorageExplorer_UploadFolder.PNG" alt="blob-upload-image" width="200">
+<img src="./images/StorageExplorer_UploadFolder.PNG" alt="blob-upload-image" width="400">
 
 - Upload the data files
     Browse the local folder and upload all the files
 
-    <img src="./images/ADLSGen2UploadComplete.PNG" alt="blob-upload-image" width="200">
+    <img src="./images/ADLSGen2UploadComplete.PNG" alt="blob-upload-image" width="400">
 
 ## How to share Data between the organizations? (Step-by-Step Lab)
