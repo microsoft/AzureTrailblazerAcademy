@@ -37,13 +37,14 @@ Hit 'create' button.
 
 ### Step-2 Create container
 - Select container
-    locate the container from the available storage options and select the link.
+    Select the 'containers' link from the available storage options in the middle of the page.
 
-    <img src="./images/CreateBlobContainer.PNG" alt="Storage Review" width="500">
+    <img src="./images/CreateBlobContainer.PNG" alt="Storage Review" width="400">
 - Create a new container
     Select the 'plus' sign next to container to add a new container
     'New container' window popsup and enter the name 'atablob<yourname>'
-    ![Create Blob Container] (./images/Complete-create-blob-container.PNG)
+    <img src="./images/Complete-create-blob-container.PNG" alt="Storage Review" width="600">
+
 ### Step-3 Upload image to Blob container
 - Access Storage Explorer
     Select the 'Storage Explorer(preview)' from the left blade
