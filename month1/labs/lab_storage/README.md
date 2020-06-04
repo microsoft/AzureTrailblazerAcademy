@@ -34,17 +34,16 @@ Hit 'create' button.
 - Go to 'blob storage' from the deployment status screen
     Wait till you see 'Your deployment is complete'.
     Select 'go to resource' button when you see it.
-    <img src="./images/Deploy-complete-blob-storage" alt="blob storage Deploy complete" width="600">
+    <img src="./images/Deploy-complete-blob-storage.PNG" alt="blob storage Deploy complete" width="600">
 
 ### Step-2 Create container
+
 - Select container
     Select the 'containers' link from the available storage options in the middle of the page.
-
     <img src="./images/CreateBlobContainer.PNG" alt="Storage Review" width="400">
 - Create a new container
     Select the 'plus' sign next to container to add a new container
     'New container' window popsup and enter the name 'atablob<yourname>'
-
     <img src="./images/Complete-create-blob-container.PNG" alt="Storage Review" width="400">
 
 ### Step-3 Upload image to Blob container
@@ -110,11 +109,11 @@ Hit 'create' button.
 - Install Storage Explorer
     Install the Storage Explorer on your system
     Access the Datalake Storage you just created
-<img src="./images/StorageExplorer_UploadFolder.PNG.PNG" alt="blob-upload-image" width="200">
+<img src="./images/StorageExplorer_UploadFolder.PNG" alt="blob-upload-image" width="200">
 
 - Upload the data files
     Browse the local folder and upload all the files
 
-    <img src="./images/ADLSGen2UploadComplete.PNG.PNG" alt="blob-upload-image" width="200">
+    <img src="./images/ADLSGen2UploadComplete.PNG" alt="blob-upload-image" width="200">
 
 ## How to share Data between the organizations? (Step-by-Step Lab)
