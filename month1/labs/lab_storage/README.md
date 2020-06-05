@@ -3,13 +3,13 @@
 ## Store Data in Azure
 Blob storage is optimized for storing massive amounts of unstructured data. Unstructured data is data that doesn't adhere to a particular data model or definition, such as text or binary data. Azure Data Lake Storage Gen2 (ADLSGen2) offers a hierarchical file system as well as the advantages of Blob storage for Big Data Hadoop needs.
 ### Labs:
-- [Lab-1: How to load media files into Blob Storage?](#lab-1-how-to-load-media-files-into-blob-storage?)
-- [Lab-2: How to load data into Data Lake Storage?](#lab-2-how-to-load-data-into-data-lake-Storage?)
+- [Lab-1: How to load media files into Blob Storage?](#lab-1-how-to-load-media-files-into-blob-storage)
+- [Lab-2: How to load data into Data Lake Storage?](#lab-2-how-to-load-data-into-data-lake-Storage)
 
 ## Sharing data between the organizations
 Share structured and unstructured data from multiple Azure data stores with other organizations in just a few clicks. There’s no infrastructure to set up or manage, no SAS keys are required, and sharing is all code-free. You control data access and set terms of use aligned with your enterprise policies. Use snapshot-based sharing to copy data from the data provider, or use in-place sharing to refer to data in the provider’s account.
 ### Labs:
-- [Lab-3: How to share Data between the organizations?](#lab-3-how-to-share-data-between-the-organizations?)
+- [Lab-3: How to share Data between the organizations?](#lab-3-how-to-share-data-between-the-organizations)
 
 ## Lab-1: How to load media files into Blob Storage? 
 ### Step-1:Create Storage account
