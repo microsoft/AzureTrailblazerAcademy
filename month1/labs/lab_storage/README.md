@@ -229,7 +229,7 @@ Hit 'create' button.
 
 - Creates sent share 
 
-<img src="./images/DataShare-SentShare-Complete.PNG" alt="Create Sent Sharecomplete" Width="300">
+<img src="./images/DataShare-SentShare-Complete.PNG" alt="Create Sent Sharecomplete" Width="200">
 
 - Your Azure Data Share has now been created and the recipient of your Data Share is now ready to accept your invitation.
 
