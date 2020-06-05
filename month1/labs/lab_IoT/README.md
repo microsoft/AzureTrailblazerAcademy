@@ -141,12 +141,12 @@ Below is the architecture of the IoT Lab.
 - **Storage account**: The name of the storage account created for this lab
 - **Storage account key**: The secret key associated with the storage account
 - **Container**: Select Create new and give it a unique name
-- **Path pattern**: {date}/{time} |
+- **Path pattern**: {date}/{time}
 - **Date format**: YYYY/MM/DD
 - **Time format**: HH
 - **Event serialization format**: Parquet
-- **Encoding**: UTF-8 |
-- **Minimum  rows**: 2000 |
+- **Encoding**: UTF-8
+- **Minimum  rows**: 2000
 - **Maximum time**: 0 Hours 1 Minutes
 - **Authentication mode**: Connection string
 
