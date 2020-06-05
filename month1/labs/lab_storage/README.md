@@ -220,16 +220,16 @@ Hit 'create' button.
 - Enter your personal email address
 - Click on Continue
 
-<img src="./images/DataShare-SentShares-add-Recipient.PNG"> alt="add recipient" Width="400">
+<img src="./images/DataShare-SentShares-add-Recipient.PNG"> alt="add recipient" Width="200">
 
 - Ignore Snapshot schedule and click on "Continue"
 - Click on Create 
 
-<img src="./images/DataShare-review-Sent-Share.PNG" alt="Review and create sent shares" Width="300">
+<img src="./images/DataShare-review-Sent-Share.PNG" alt="Review and create sent shares" Width="400">
 
 - Creates sent share 
 
-<img src="./images/DataShare-SentShare-Complete.PNG" alt="Create Sent Sharecomplete" Width="200">
+<img src="./images/DataShare-SentShare-Complete.PNG" alt="Create Sent Sharecomplete" Width="300">
 
 - Your Azure Data Share has now been created and the recipient of your Data Share is now ready to accept your invitation.
 
