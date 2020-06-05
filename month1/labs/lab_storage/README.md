@@ -165,37 +165,51 @@ Hit 'create' button.
 - Select Create role.
     Select "Access Control (IAM)" from the left blade.
     Click on "Create role" button. It will pop up Add role window.
+
 <img src="./images/Storage-Access-Mgmt.PNG" alt="Access Control" height="400">
+
 - Add Owner role to the data share. 
     Select "Owner" role from the dropdown. Select the data share by typing "ata-data-share-<name>".
     Click on "Save" button.
+
 <img src="./images/DataShare-Storage-Owner-save.PNG" alt="Create Owner Role" height="300">
+
 - Add Contributor role to the data share.
     Select "Contributor" role from the dropdown. Select data sahre by typing "ata-data-share-<name>".
     Click on "Save" button.
 ### Step-3: Add Data Sets to the data share
 - access the data share service
 - Select 'Start Sharing your data' from the left blade
+
 <img src="./images/Data-Share-Start_Sharing.PNG", alt="Start Sharing Data", Width="300">
+
 - Select + sign next to 'Create' 
+
 <img src="./images/Data-Share-Create-SentShare.PNG" alt="Create Sent Shares" Width="300">
+
 - Enter Sent Share Details:
 - Share name:"ata-sent-shipping-scans-<name>"
 - Shape type: Snapshot (default)
 - Description: "Sharing Shipping Scan images with partners"
 - Terms of use" "Update hourly"
 - Click on Continue
+
 <img src="./images/DataShare-create-sent-shares-details.PNG" alt="create sent share details" Width="400">
+
 - Datasets Tab:
 - Click on "Add Datasets" button
 - Select blob storage as the data type
 - Click on "next"
+
 <img src="./images/DataShare-Add-Blob-DataSet.PNG" alt="select blob data set" Width="300">
+
 - Select the resource group
 - Select the blob storage account
 - Select the container
 - Click on "next"
+
 <img src="./images/DataShare-Select-Blob-Image_folder.PNG" alt="select blob container" Width="400">
+
 - Enter Dataset Name as "ata-shipping-image-share"
 - Click on "Add Dataset".
   Displays the created data set.
@@ -205,11 +219,17 @@ Hit 'create' button.
 - Click on "Add Recipient" 
 - Enter your personal email address
 - Click on Continue
+
 <img src="./images/DataShare-SentShares-add-Recipient.PNG"> alt="add recipient" Width="400">
+
 - Ignore Snapshot schedule and click on "Continue"
 - Click on Create 
+
 <img src="./images/DataShare-review-Sent-Share.PNG" alt="Review and create sent shares" Width="400">
+
 - Creates sent share 
+
 <img src="./images/DataShare-SentShare-Complete.PNG" alt="Create Sent Sharecomplete" Width="400">
+
 - Your Azure Data Share has now been created and the recipient of your Data Share is now ready to accept your invitation.
 
