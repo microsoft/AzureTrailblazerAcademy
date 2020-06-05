@@ -136,7 +136,7 @@ Hit 'create' button.
 - Storage Account
 - Permission to write to storage account for the Shared Service (Contributor Role)
 - Permission to add role assignment to storage account for the Shared Service (Owner Role) 
-## Part-1: Set up Share Data to consume by partners
+## Part-1: Set up Data Share to consume by partners
 ### Step-1: Create data share service
 - Login to Azure Portal (https://portal.azure.com). 
     Select "create a resource" and select "Data Share" service.
@@ -264,7 +264,8 @@ Hit 'create' button.
 - Search for Data Share Invitations
 <img src="./images/DataShare-Consumer-Invitation.PNG" alt="Data Share Invitation" Width="300">
 - Select the invitation
-<img src="./images/DataShare-Consumer-InvitationList.PNG" alt="Data Share Invitation" Width="300">
+<img src="./images/DataShare-Consumer-InvitationList.PNG" alt="Data Share Invitation" Width="300"> 
+
 ### Step-4: Create Data Share Account
 - Check mark to Agree Terms
 - Select the resource group
@@ -272,6 +273,7 @@ Hit 'create' button.
 <img src="./images/DataShare-Consumer-Create.PNG", alt="Create Data Share" Width="200">
 - Click on 'Accept & Configure'
 <img src="./images/DataShare-Consumer-Accept.PNG" alt-"Accept and Agree" Width-"300">
+
 ### Step-5 Add Contributor Role to Blob Storage
 - Select the storage account
 - Select 'Access control (IAM)' from the left blade
@@ -301,14 +303,16 @@ Hit 'create' button.
 <img src="./images/DataShare-Consumer-Blob-MapToTarget.PNG" alt="blob map to target" Width="300">
 - Completes the mapping process
 <img src="./images/DataShare-Mapping-complete.PNG" alt="Mapping Complete" Width="300">
-### Step-5: Enable Snapshot Schedule
+
+### Step-7: Enable Snapshot Schedule
 - Select Received Shares
 - Select 'Snapshot Schedule' tab
 - Check the box to select the schedule
 - Click on Enable 
 <img src="./images/DataShare-Consumer-Enable-Snapshot.PNG" alt="Enable 
 snapshots" Width="300">
-### Step-6: Trigger Snapshot
+
+### Step-8: Trigger Snapshot
 - Select Details tab
 - Select 'Full Copy' from the 'Trigger snapshot' dropdown
 <img src="./images/DataShare-Consumer-Trigger-Snapshot.PNG" alt="Trigger full copy" Width="300">
