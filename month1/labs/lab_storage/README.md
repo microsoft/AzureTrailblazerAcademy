@@ -208,7 +208,7 @@ Hit 'create' button.
 - Select the container
 - Click on "next"
 
-<img src="./images/DataShare-Select-Blob-Image_folder.PNG" alt="select blob container" Width="400">
+<img src="./images/DataShare-Select-Blob-Image_folder.PNG" alt="select blob container" Width="300">
 
 - Enter Dataset Name as "ata-shipping-image-share"
 - Click on "Add Dataset".
@@ -220,7 +220,7 @@ Hit 'create' button.
 - Enter your personal email address
 - Click on Continue
 
-<img src="./images/DataShare-SentShares-add-Recipient.PNG"> alt="add recipient" Width="200">
+<img src="./images/DataShare-SentShares-add-Recipient.PNG" alt="add recipient" Width="200">
 
 - Ignore Snapshot schedule and click on "Continue"
 - Click on Create 
@@ -229,7 +229,7 @@ Hit 'create' button.
 
 - Creates sent share 
 
-<img src="./images/DataShare-SentShare-Complete.PNG" alt="Create Sent Sharecomplete" Width="300">
+<img src="./images/DataShare-SentShare-Complete.PNG" alt="Create Sent Sharecomplete" Width="400">
 
 - Your Azure Data Share has now been created and the recipient of your Data Share is now ready to accept your invitation.
 
