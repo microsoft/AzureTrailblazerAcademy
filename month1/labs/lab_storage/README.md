@@ -233,3 +233,4 @@ Hit 'create' button.
 
 - Your Azure Data Share has now been created and the recipient of your Data Share is now ready to accept your invitation.
 
+## Add Consumer Data Share
