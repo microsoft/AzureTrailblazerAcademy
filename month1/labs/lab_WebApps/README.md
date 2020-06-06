@@ -1,4 +1,4 @@
-# Azure WebApp Lab  (UNDER CONSTRUCTION. DO NOT WORK HERE --ROBIN GHOSH-- )
+# Azure WebApps Lab  (UNDER CONSTRUCTION. DO NOT WORK HERE --ROBIN GHOSH--)
 
 ## Prerequisites
 
@@ -41,6 +41,8 @@
 
 5. Click the **Create** button
 
+6. You now ended up creating a App Service Plan. One App Service Plan can hold many App Services/Web Services and Apps.
+
 
 ## Step 3: Add a Web App using your App Service Plan
 1. In the Azure Portal, search for **App Services**
@@ -80,9 +82,69 @@ This screen will transition to deployed
 
 ![Web Service Basic Tab](images/webapp-goto.JPG)
 
+4. Find the  URL of your web application on the right. Click on it.
+
+
 ![Web Service Basic Tab](images/webapp-happy.JPG)
-   Make sure you see a Happy Page by clicking on the **url link of the web app**
+  
+   
+  5. Make sure you see a Happy Page by clicking on the **url link of the web app**
 
 
 
-  YEAH
+  YEAH  YOU SHOULD BE PROUD YOU CREATED A SAMPLE WEB SITE
+  
+  
+## Step 5: What we have now is a sample web application that got deployed by Microsoft. We need to deploy our application
+          
+           
+1. In the Azure Portal, search for **App Services**
+2. From the list of App Services select your find your webapp and then click select **your new web app**
+ 
+3. You should be on the new web app:
+
+4. Select **Deployment** on the left blade and then click on  **Deployment Center**
+
+![Web Service Basic Tab](images/app-service-deployment-center.JPG)
+
+5. Select the **Github** thumbnail
+6. Click on **Continue** 
+
+![Web Service Basic Tab](images/app-service-deployment-center-continue.JPG)
+
+7. Select **Kudu** option thumbnail
+8. Click on **Continue**
+
+![Web Service Basic Tab](images/app-service-deployment-center-continue-kudu.JPG)
+
+8. Select **Repo Name** , **Branch**
+9. Click on **Continue**
+![Web Service Basic Tab](images/app-service-deployment-pick-your-project.JPG)
+
+9. Click the **Finish** button
+![Web Service Basic Tab](images/app-service-deployment-finish.JPG)
+
+10. Click the **xxx** button
+![Web Service Basic Tab](images/app-service-check-deployment-logs.JPG)
+Make sure your logs show signs for a good deployment
+
+
+## Step 6: Our application got deployed. Let's proceed to set the configurations variables so that it can connect to either SQL Server , BLOB storage or SalesForce resource
+
+1. Go back and again Select our web application  
+3. You should be back on your new web app:
+
+4. Go down on your left to the  **Settings** section, then  click on  **Configuration**
+
+![Config Tab](images/app-service-deployment-configuration.JPG)
+
+5. You should see options to for different web settings
+
+6. Select and Click on **Application Settings**
+
+![Web Service Basic Tab](images/app-service-add-app-settings.JPG)
+
+
+DONE 
+
+
