@@ -1,4 +1,4 @@
-# Azure WebApp Lab  (UNDER CONSTRUCTION. DO NOT WORK HERE (ROBIN GHOSH)
+# Azure WebApp Lab  (UNDER CONSTRUCTION. DO NOT WORK HERE --ROBIN GHOSH-- )
 
 ## Prerequisites
 
@@ -33,11 +33,11 @@
 - **App Servie Name:** Choose a unique name for the App Service
 - **Pricing tier:** Premium V2
 
-![App Service Basic Tab](images/app-service-create.jpg)
+![App Service Basic Tab](images/app-service-create.JPG)
 
 4. Click the **Review + create** button
 
-![App Service Basic Tab](images/app-service-create-final.jpg)
+![App Service Basic Tab](images/app-service-create-final.JPG)
 
 5. Click the **Create** button
 
@@ -56,33 +56,33 @@
 - **Operating System:** East US
 - **App Service Plan:** Select the App Service Plan created earlier
 
-![Web Service Basic Tab](images/webapp-create.jpg)
+![Web Service Basic Tab](images/webapp-create.JPG)
 
 4. Click the **Review + create** button
 
-![Web Service Basic Tab](images/webapp-create-final.jpg)
+![Web Service Basic Tab](images/webapp-create-final.JPG)
 
 5. Click the **Create** button
 
 You should see a progress bar and underway screen
 
-![Web Service Basic Tab](images/webapp-underway.jpg)
+![Web Service Basic Tab](images/webapp-underway.JPG)
 
+This screen will transition to deployed 
 
 ## Step 4: Go to your newly created Web App
 1. In the Azure Portal, search for **App Services**
-2. From the left menu, click on **App Services** under **Explorers**, find your webapp and then click **on the new**
+2. From the left menu, click on **App Services** under **Explorers**, find your webapp and then click ** on your new web app**
    OR
-   You have an option to go throught the Notifications and select the Deployment Succeeded message and click on **Go to resource**
-6. Go to the new web app:
+   You have an option to go through the top Notifications and select **Deployment Succeeded** message and click on **Go to resource**
+   
+3. You should be on the new web app:
 
-![Web Service Basic Tab](images/webapp-goto.jpg)
+![Web Service Basic Tab](images/webapp-goto.JPG)
 
-![Web Service Basic Tab](images/webapp-underway.jpg)
+![Web Service Basic Tab](images/webapp-happy.JPG)
    Make sure you see a Happy Page by clicking on the **url link of the web app**
 
 
-![Web Service Basic Tab](images/webapp-happy.jpg)
-  You should see the Happy page for the web app
 
   YEAH
