@@ -1,84 +1,88 @@
-Tutorial: Build a Node.js and MongoDB app in Azure
-05/04/2017
-15 minutes to read
-     +3
- Note
+# Azure WebApp Lab  (UNDER CONSTRUCTION. DO NOT WORK HERE (ROBIN GHOSH)
 
-This article deploys an app to App Service on Windows. To deploy to App Service on Linux, see Build a Node.js and MongoDB app in Azure App Service on Linux.
+## Prerequisites
 
-Azure App Service provides a highly scalable, self-patching web hosting service. This tutorial shows how to create a Node.js app in App Service and connect it to a MongoDB database. When you're done, you'll have a MEAN application (MongoDB, Express, AngularJS, and Node.js) running in Azure App Service. For simplicity, the sample application uses the MEAN.js web framework.
+- Microsoft Azure subscription
+- 
+- Resource Group to deploy Azure services
+- Permissions to create the following resource  
+    - App Service Plan
+    - Blob Storage
 
-MEAN.js app running in Azure App Service
 
-What you'll learn:
+## Step 1: Create a Resource Group
+1. In the Azure Portal, search for **Resource Groups**
+2. Click on the **Add** button
+3. Fill out the **Basics** tab as follows:
+- **Subscription:** Choose your subscription
+- **Resource group:** Provide a unique name like **<initial>-ata-rg
+- **Region:** EastUS
 
-Create a MongoDB database in Azure
-Connect a Node.js app to MongoDB
-Deploy the app to Azure
-Update the data model and redeploy the app
-Stream diagnostic logs from Azure
-Manage the app in the Azure portal
-If you don't have an Azure subscription, create a free account before you begin.
+![RG Basic Tab](images/rg-basics.jpg)  
 
-Prerequisites
-To complete this tutorial:
+4. Click the **Next: Review + Create** button
+5. Click the **Create** button
 
-Install Git
-Install Node.js and NPM
-Install Bower (required by MEAN.js)
-Install Gulp.js (required by MEAN.js)
-Install and run MongoDB Community Edition
-Test local MongoDB
-Open the terminal window and cd to the bin directory of your MongoDB installation. You can use this terminal window to run all the commands in this tutorial.
+## Step 2: Create a App Service Plan
+1. In the Azure Portal, search for **App Service Plan**
+2. Click on the **Create** button
+3. Fill out the **Basics** tab as follows:
+- **Subscription:** Choose your subscription
+- **Resource group:** Select the Resource Group you created for this lab
+- **Region:** East US
+- **App Servie Name:** Choose a unique name for the App Service
+- **Pricing tier:** Premium V2
 
-Run mongo in the terminal to connect to your local MongoDB server.
+![App Service Basic Tab](images/app-service-create.jpg)
 
-Bash
+4. Click the **Review + create** button
 
-Copy
-mongo
-If your connection is successful, then your MongoDB database is already running. If not, make sure that your local MongoDB database is started by following the steps at Install MongoDB Community Edition. Often, MongoDB is installed, but you still need to start it by running mongod.
+![App Service Basic Tab](images/app-service-create-final.jpg)
 
-When you're done testing your MongoDB database, type Ctrl+C in the terminal.
+5. Click the **Create** button
 
-Create local Node.js app
-In this step, you set up the local Node.js project.
 
-Clone the sample application
-In the terminal window, cd to a working directory.
+## Step 3: Add a Web App using your App Service Plan
+1. In the Azure Portal, search for **App Services**
+2. From the left menu, click on **App Services** under **Explorers**, then click **+ Add**
 
-Run the following command to clone the sample repository.
+3. Fill out the **Basics** tab as follows:
+- **Subscription:** Choose your subscription
+- **Resource group:** Select the Resource Group you created for this lab
+- **Region:** East US
+- **Name:** Choose a unique name for the Web App
+- **Publish** Code
+- **Runtime Stack:** Select the Resource Group you created for this lab
+- **Operating System:** East US
+- **App Service Plan:** Select the App Service Plan created earlier
 
-Bash
+![Web Service Basic Tab](images/webapp-create.jpg)
 
-Copy
-git clone https://github.com/Azure-Samples/meanjs.git
-This sample repository contains a copy of the MEAN.js repository. It is modified to run on App Service (for more information, see the MEAN.js repository README file).
+4. Click the **Review + create** button
 
-Run the application
-Run the following commands to install the required packages and start the application.
+![Web Service Basic Tab](images/webapp-create-final.jpg)
 
-Bash
+5. Click the **Create** button
 
-Copy
-cd meanjs
-npm install
-npm start
-When the app is fully loaded, you see something similar to the following message:
+You should see a progress bar and underway screen
 
---
-MEAN.JS - Development Environment
+![Web Service Basic Tab](images/webapp-underway.jpg)
 
-Environment:     development
-Server:          http://0.0.0.0:3000
-Database:        mongodb://localhost/mean-dev
-App version:     0.5.0
-MEAN.JS version: 0.5.0
---
-Navigate to http://localhost:3000 in a browser. Click Sign Up in the top menu and create a test user.
 
-The MEAN.js sample application stores user data in the database. If you are successful at creating a user and signing in, then your app is writing data to the local MongoDB database.
+## Step 4: Go to your newly created Web App
+1. In the Azure Portal, search for **App Services**
+2. From the left menu, click on **App Services** under **Explorers**, find your webapp and then click **on the new**
+   OR
+   You have an option to go throught the Notifications and select the Deployment Succeeded message and click on **Go to resource**
+6. Go to the new web app:
 
-MEAN.js connects successfully to MongoDB
+![Web Service Basic Tab](images/webapp-goto.jpg)
 
-Select Admin > Manage Articles to add some articles.
+![Web Service Basic Tab](images/webapp-underway.jpg)
+   Make sure you see a Happy Page by clicking on the **url link of the web app**
+
+
+![Web Service Basic Tab](images/webapp-happy.jpg)
+  You should see the Happy page for the web app
+
+  YEAH
