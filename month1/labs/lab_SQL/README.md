@@ -2,23 +2,23 @@
 ##Objective
 In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL database. You will also apply data security for business critical applications.
 ### Task-1: Create Virutal Machine with 2012 SQL database
-- 1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
+-1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
 
-<img src="./images/azure-services-resource-groups.png " alt="Resource groups is highlighted in the Azure services list" Width="300">
+<img src="./images/azure-services-resource-groups.png " alt="Resource groups is highlighted in the Azure services list" Width="400">
 
-- 2. Create Resource group by selecting 'add'
+-2. Create Resource group by selecting 'add'
 - Enter 'ata-sql-lab-<name>' as the Resource group
 - Select 'East US' as the Region
 - Click on 'Review + Create' button
 - Make sure the validation is passed before clicking on 'Create' button.
 
-<img src="./images/resource-group-create.PNG" alt="Resource Group Create" Width="300">
+<img src="./images/resource-group-create.PNG" alt="Resource Group Create" Width="400">
 
 -3. Create Virutal Machine 
 - Select 'goto resource' to go resource group
 - Select 'add' and search for 'SQL Server 2012 SP4'
 - Click on 'Create'
-<img src="./images/sql-server-vm-create.PNG" alt="Create SQL server VM" Width="300">
+<img src="./images/sql-server-vm-create.PNG" alt="Create SQL server VM" Width="400">
 -4. Enter configuration
 - Make sure you have the correct resource group selected
 - Virtual machine name:'ata-sql-2012-<two letter initial>
