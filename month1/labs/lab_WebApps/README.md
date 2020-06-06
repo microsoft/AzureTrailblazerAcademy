@@ -129,22 +129,31 @@ This screen will transition to deployed
 Make sure your logs show signs for a good deployment
 
 
-## Step 6: Our application got deployed. Let's proceed to set the configurations variables so that it can connect to either SQL Server , BLOB storage or SalesForce resource
+## Step 6: Our application got deployed. Let's proceed to set the configurations variables so that it can connect to either SQL Server, BLOB storage or SalesForce resource
 
 1. Go back and again Select our web application  
-3. You should be back on your new web app:
+3. You should be back on your new web app
 
 4. Go down on your left to the  **Settings** section, then  click on  **Configuration**
 
 ![Config Tab](images/app-service-deployment-configuration.JPG)
 
-5. You should see options to for different web settings
+5. You should see options to different web settings
 
 6. Select and Click on **Application Settings**
 
 ![Web Service Basic Tab](images/app-service-add-app-settings.JPG)
 
 
-DONE 
+7. Add all the config parameters as specified in the LABS
+8. When done use the SAVE button 
+
+9. App will restart
+10. Go back to the app url
+11. Make sure your app shows
+
+![Web Service Basic Tab](images/app-service-add-app-settings.JPG)
+
+12. Click on **New App Settings**
 
 
