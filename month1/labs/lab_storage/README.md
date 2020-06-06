@@ -1,12 +1,17 @@
 # Azure Trailblazer Academy Azure Storage Lab
 ## Overview
-### Store Data in Azure
+## Store Data in Azure
 Blob storage is optimized for storing massive amounts of unstructured data. Unstructured data is data that doesn't adhere to a particular data model or definition, such as text or binary data. Azure Data Lake Storage Gen2 (ADLSGen2) offers a hierarchical file system as well as the advantages of Blob storage for Big Data Hadoop needs.
+### Labs:
+- [Lab-1: How to load media files into Blob Storage?](#lab-1-how-to-load-media-files-into-blob-storage)
+- [Lab-2: How to load data into Data Lake Storage?](#lab-2-how-to-load-data-into-data-lake-Storage)
 
-### Sharing data between the organizations
+## Sharing data between the organizations
 Share structured and unstructured data from multiple Azure data stores with other organizations in just a few clicks. There’s no infrastructure to set up or manage, no SAS keys are required, and sharing is all code-free. You control data access and set terms of use aligned with your enterprise policies. Use snapshot-based sharing to copy data from the data provider, or use in-place sharing to refer to data in the provider’s account.
+### Labs:
+- [Lab-3: How to share Data between the organizations?](#lab-3-how-to-share-data-between-the-organizations)
 
-## How to load media files into Blob Storage? (Step-by-Step Lab)
+## Lab-1: How to load media files into Blob Storage? 
 ### Step-1:Create Storage account
 - Login to Azure Portal (https://portal.azure.com) 
     Select "create a resource".
@@ -61,7 +66,7 @@ Hit 'create' button.
 
     <img src="./images/blob-upload-image.PNG" alt="blob-upload-image" width="200"> 
 
-## How to load data into Data Lake Storage? (Step-by-Step Lab)
+## Lab-2: How to load data into Data Lake Storage?
 
 ### Step-1:Create Azure Data Lake Storage Gen2
 - Login to Azure Portal (https://portal.azure.com). 
@@ -125,7 +130,7 @@ Hit 'create' button.
 
     <img src="./images/ADLSGen2UploadComplete.PNG" alt="blob-upload-image" width="400">
 
-## How to share Data between the organizations? (Step-by-Step Lab)
+## Lab-3: How to share Data between the organizations?
 
 ### Architecture
 <img src="./images/Data-Share-Lab-Architecture.PNG" alt="datashare lab architecture" Width="400">
@@ -136,7 +141,7 @@ Hit 'create' button.
 - Storage Account
 - Permission to write to storage account for the Shared Service (Contributor Role)
 - Permission to add role assignment to storage account for the Shared Service (Owner Role) 
-
+## Part-1: Set up Data Share to consume by partners
 ### Step-1: Create data share service
 - Login to Azure Portal (https://portal.azure.com). 
     Select "create a resource" and select "Data Share" service.
@@ -197,6 +202,9 @@ Hit 'create' button.
 <img src="./images/DataShare-create-sent-shares-details.PNG" alt="create sent share details" Width="400">
 
 - Datasets Tab:
+- Set the snapshot schedule
+- Activate the snapshots
+<imp src="./images/DataShare-Source-set-snapshots.PNG" alt="set snapshot" Width="300">
 - Click on "Add Datasets" button
 - Select blob storage as the data type
 - Click on "next"
@@ -208,7 +216,7 @@ Hit 'create' button.
 - Select the container
 - Click on "next"
 
-<img src="./images/DataShare-Select-Blob-Image_folder.PNG" alt="select blob container" Width="300">
+<img src="./images/DataShare-Select-Blob-Image_folder.PNG" alt="select blob container" Width="200">
 
 - Enter Dataset Name as "ata-shipping-image-share"
 - Click on "Add Dataset".
@@ -220,7 +228,7 @@ Hit 'create' button.
 - Enter your personal email address
 - Click on Continue
 
-<img src="./images/DataShare-SentShares-add-Recipient.PNG" alt="add recipient" Width="200">
+<img src="./images/DataShare-SentShares-add-Recipient.PNG" alt="add recipient" Width="300">
 
 - Ignore Snapshot schedule and click on "Continue"
 - Click on Create 
@@ -233,4 +241,86 @@ Hit 'create' button.
 
 - Your Azure Data Share has now been created and the recipient of your Data Share is now ready to accept your invitation.
 
-## Add Consumer Data Share
+## Part-2: Consume Data Share as a Partner
+
+### Step-1: Login and create a resource group
+- Login with your personal email address
+- Create a resource group
+- Select Resource Groups from the top left menu
+- Add a resource group by selecting + sign next to 'Add'
+- Enter 'ata-datashare-consumer-<name>'
+- Select 'East US' as the Region
+- Click on 'Review + create' button
+- Click 'Create' 
+<img src="./images/DataShare-Consumer-RG.PNG" alt="Resource Group create" Width="400">
+
+### Step-2: Create Storage Destination
+- Type 'Storage accounts' in the search bar
+- Add storage account by selecting + sign next to 'Add'
+- Resource group: 'ata-datashare-consumer-<name>'
+- Storage account Name: atadconsumberblob<name>
+- Location: East US
+- Default Option for Rest
+- Click on 'Review + create'
+<img src="./images/ata-datashare-consumer-blob-create.PNG" alt="Consumer blob create" Width="400">
+- Click on 'Create' When you a green check mark
+
+### Step-3: Accept Data Share invitation
+- Search for Data Share Invitations
+<img src="./images/DataShare-Consumer-Invitation.PNG" alt="Data Share Invitation" Width="300">
+- Select the invitation
+<img src="./images/DataShare-Consumer-InvitationList.PNG" alt="Data Share Invitation" Width="300"> 
+
+### Step-4: Create Data Share Account
+- Check mark to Agree Terms
+- Select the resource group
+- Create a new Data Share
+<img src="./images/DataShare-Consumer-Create.PNG", alt="Create Data Share" Width="200">
+- Click on 'Accept & Configure'
+<img src="./images/DataShare-Consumer-Accept.PNG" alt-"Accept and Agree" Width-"300">
+
+### Step-5 Add Contributor Role to Blob Storage
+- Select the storage account
+- Select 'Access control (IAM)' from the left blade
+- Select 'Add' to add a role
+- Brings up 'Add role Assignment' window
+- Select 'contributor' role from the dropdown
+- Select the data share by typing its name
+- Click on 'Save'
+<img src="./images/DataShare-Consumer-Blob-Contributor.PNG" alt="add contributor role" Width="300">
+
+### Step-6 Map Data Share to blob storage target
+- Access the Data Share by typing ' Data Share' in the Search bar
+- Select the data share
+- Select 'Received Shares' from the left blade
+- select Share
+- Select 'Details' tab
+- Check the box to select the share to map 
+- Select 'Map to Target' 
+<img src="./images/DataShare-Consumer-MapToTarget.PNG" alt="Map to Target" Width="300">
+- Brings up 'Map datasets to target' screen
+- Target data type: Azure Blob Storage
+- Subscriptions: Select Yours
+- Resource groups: Select Yours
+- Storage accounts: Select Blob Storage
+- Container Name:'shipimages'
+- Click on 'Map to Target'
+<img src="./images/DataShare-Consumer-Blob-MapToTarget.PNG" alt="blob map to target" Width="300">
+- Completes the mapping process
+<img src="./images/DataShare-Mapping-complete.PNG" alt="Mapping Complete" Width="300">
+
+### Step-7: Enable Snapshot Schedule
+- Select Received Shares
+- Select 'Snapshot Schedule' tab
+- Check the box to select the schedule
+- Click on Enable 
+<img src="./images/DataShare-Consumer-Enable-Snapshot.PNG" alt="Enable 
+snapshots" Width="300">
+
+### Step-8: Trigger Snapshot
+- Select Details tab
+- Select 'Full Copy' from the 'Trigger snapshot' dropdown
+<img src="./images/DataShare-Consumer-Trigger-Snapshot.PNG" alt="Trigger full copy" Width="300">
+- You should see 'Queued' as the 'last run status'
+
+
