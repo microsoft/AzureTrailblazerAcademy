@@ -44,13 +44,14 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - Make sure you have green check for the **validation passed** and Click on **Create** button
 - Wait till your deployment is complete and see 'Go To Resource' button
 
-### Task-2: Restore AdventureWorks, a sample database from a backup
+### Task-2: Restore a sample database, AdventureWorks from a backup
 1. Access the Virtual Machine (VM) from your environment.
 - Select 'Go to resource' to access Virtual Machine server config
 - Select 'Connect' and 'RDP' 
 - Click on 'Download RDP File'
 - Click on 'Connect'
-<img src="./images/SQL-VM-RDP-Connect.PNG" alt="Remote Desktop connect" Width="400">
+
+<img src="./images/SQL-VM-RDP-Connect.PNG" alt="Remote Desktop connect" Width="600">
 
 - 'Enter your credentials popup'
 - Select 'Use a different account'
@@ -61,19 +62,22 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - Select 'Local Server' 
 - Find 'IE Enhanced Security Configuration' and Turn 'Off' 
 - It is not recommended but to avoid internet issues. Please turn On after the download.
-<img src="./images/SQL-VM-turn-off-IE.PNG" alt="Turn off IE browser Security" Width="600">
+<img src="./images/SQL-VM-turn-off-IE.PNG" alt="Turn off IE browser Security" Width="800">
+
 3. Download the AdventureWorks, a sample database for SQL 2012.
 - Open Internet Explorer browser and access [SQL 2012 Backup](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks)
 - Select 'AdventureWorks2012.bak' under "AdventureWorks (OLTP) full database backups" section 
 
-<img src="./images/SQL-2012-Backup-download.PNG" alt="SQL 2012 Database backup" Width="300">
-- Save the backup file to local "c:\Data" folder (Create a new folder)
+<img src="./images/SQL-2012-Backup-download.PNG" alt="SQL 2012 Database backup" Width="600">
+
+- Save the backup file to local 'c:\Data' folder (Create a new folder)
+
 4. Open SQL Server Management Studio and restore the database.
 - Search for 'SQL Server Management Studio' on the desktop
 - Connect to SQL Server with 'sqladmin' login
 - Select 'database' folder and right click to select 'Restore database' option
 <img src="./images/SQL-VM-SQL-Select-Restore.PNG" alt="select Restore database option" Width="300">
-- Select 'Device', '...', 'File', 'C:\data Folder' and 'AdventureWorks2012.bak' file'
+- Select 'Device', '...', 'File', 'C:\data Folder' and 'AdventureWorks2012.bak' file.
 <img src="./images/SQL-DB-Restore-Backup.PNG" alt="select backup file" Width=500">
 - Click 'OK' three times to start the backup process
 <img src="./images/SQL-DB-Restore-backup-Done.PNG" alt="backup restore done" Width="400">
@@ -247,6 +251,3 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 <img src="./images/Azure-SQL-DB-Data-Migrate-Verify.PNG" alt="Azure SQL DB Data verification" Width="600">
 9. You successfully migrated the SQL 2012 database to Azure SQL PaaS Database. Pat yourself on your back!! Great Job!!
 10. You can migrate 1000's of databases using powershell scripts. Please reach us if you need help on this. 
-
-
-
