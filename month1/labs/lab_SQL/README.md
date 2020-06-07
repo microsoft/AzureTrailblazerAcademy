@@ -85,15 +85,15 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 
 - Select 'Device', '...', 'File', 'C:\data Folder' and 'AdventureWorks2012.bak' file.
 
-<img src="./images/SQL-DB-Restore-Backup.PNG" alt="select backup file" Width=500">
+<img src="./images/SQL-DB-Restore-Backup.PNG" alt="select backup file" Width=700">
 
 - Click 'OK' three times to start the backup process
 
-<img src="./images/SQL-DB-Restore-backup-Done.PNG" alt="backup restore done" Width="400">
+<img src="./images/SQL-DB-Restore-backup-Done.PNG" alt="backup restore done" Width="600">
 
 - Expand 'Database'|'AdventureWorks2012'|'Tables'|'HumanResources.employee' table |'Select Top 1000 Rows'
 
-<img src="./images/SQL-DB-Select-table-rows.PNG" alt="Select 1000 rows from Employee table" Width="400">
+<img src="./images/SQL-DB-Select-table-rows.PNG" alt="Select 1000 rows from Employee table" Width="600">
 
 - Execute the query
 - You have restored the database successfully!
@@ -114,11 +114,11 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - Click on 'Review + create' button
 - Click on 'Create' button
 
-<img src="./images/Azure-SQL-DB-Server=Create.PNG" alt="create Azure SQL DB Server" Width="500">
+<img src="./images/Azure-SQL-DB-Server=Create.PNG" alt="create Azure SQL DB Server" Width="950">
 
 - You will see 'Deployment underway screen'
 
-<img src="./images/AzureSQL-DB-Deployment.PNG" alt="SQL DB deployment underway" Width="400"> 
+<img src="./images/AzureSQL-DB-Deployment.PNG" alt="SQL DB deployment underway" Width="800"> 
 
 - You will see 'Deployment complete' after few minutes
 - You are successfully created Azure SQL (PaaS) Database
@@ -164,7 +164,7 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - Select Connect
 6. On the Add sources dialog that appears next, check the box for 'AdventureWorks12' and select Add.
 
-<img src="./images/DMA-Select-Data-Source.PNG" alt="Select Source Database" Height="300">
+<img src="./images/DMA-Select-Data-Source.PNG" alt="Select Source Database" Height="500">
 
 7. Select 'Start Assessment' 
 
@@ -200,7 +200,7 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - Encrypt connection: Uncheck the box
 - Trust server certificate: Uncheck the box
 - Click on 'Connect'
-<img src="./images/DMA-Migrate-schema-source-db.PNG" alt="Migrate SQL DB Schema Source info" Height="300">
+<img src="./images/DMA-Migrate-schema-source-db.PNG" alt="Migrate SQL DB Schema Source info" Height="500">
 
 - Select the 'AdventureWorks2012' database
 - Click on 'Next' button
