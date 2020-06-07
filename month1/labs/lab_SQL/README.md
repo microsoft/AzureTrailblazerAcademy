@@ -1,6 +1,17 @@
 # Hands-on lab to Migrate SQL database to Azure (step-by-step)
-## Objective
-In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL database. You will also apply data security for business critical applications.
+
+## Overview
+It is a common need among all compnaies to move databases to cloud. Azure provide options such as SQL on Azure VM, Azure SQL PaaS DB, Azure SQL Managed Instance. Please refer to this [documentation](https://docs.microsoft.com/en-us/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview) for selecting the appropriate type of Azure SQL database option to migrate your SQL workloads.
+
+## Lab-1: Migrate SQL 2012 Database to Azure SQL PaaS Database
+This hands-on lab will provide an experience to migrate 2012 SQL database to Azure PaaS SQL database using Data Migration Assistant. You can use the same lab to migrate other versions of the Microsoft SQL database also.
+
+- [Task-1: Create Virutal Machine with 2012 SQL database](#task-1-create-virutal-machine-with-2012-sql-database)
+- [Task-2: Restore a sample database, AdventureWorks from a backup](task-2-restore-a-sample-database-adventureWorks-from-a-backup)
+- [Task-3: Create Azure SQL PaaS Database](task-3-create-azure-sql-paaS-database)
+- [Task-4: Install Data Migration Assistant](task-4-install-data-migration-assistant)
+- [Task-5: Migrate SQL 2012 Schema to Azure SQL PaaS Database](task-5-migrate-sql-2012-schema-to-azure-sql-paas-database)
+- [Task-6: Migrate SQL2012 Table Data to Azure SQL DB using DMA](task-6-migrate-sql2012-table-data-to-azure-sql-db-using-dma)
 
 ### Task-1: Create Virutal Machine with 2012 SQL database
 1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
