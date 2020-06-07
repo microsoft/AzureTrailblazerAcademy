@@ -69,9 +69,9 @@ You should see a deployment screen with progress bar and a message **Your deploy
 
 ![Web Service Basic Tab](images/webapp-create-underway.JPG)
 
-This screen will transition to .. **Your deployment was successful..**.  There was no need to wait on this page, you could be doing something else.
+This screen will transition to .. **Your deployment was successful..**.  There was no need to wait on this page, you could be doing something else on our portal and come back at a later time
 
-6. You have successfully create a new 'App Service'. 
+6. If everything was okay, you just successfully created a new 'App Service'. 
 
 ## Step 4: Go to your newly created Web App
 1. In the Azure Portal, search for **App Services**
@@ -89,28 +89,28 @@ This screen will transition to .. **Your deployment was successful..**.  There w
 ![Web Service Basic Tab](images/webapp-happy.JPG)
   
    
-5. Make sure you see a web page and based on the Runtime selected should greet you with **Hello, Node developer...** 
- Had you selected Java it would have **Hello, Java Developer.**
+5. Make sure you see a web page and based on the Runtime selected, it should greet you with **Hello, Node developer.** 
+ </BR>Had you selected Java it would have greeted you wuth **Hello, Java Developer.**
  
 
- 6. YEAH  YOU SHOULD BE PROUD OF YOURSELF BECAUSE YOU CREATED A WEB APPLICATION ON AZURE CLOUD
+ 6. CONGRATULATIONS !! YOU JUST CREATED A WEB APPLICATION ON AZURE CLOUD
   
   
 ## Step 5: What we have now is a sample web application that got deployed by Microsoft. Lets deploy our actual application!
           
            
 1. In the Azure Portal, search for **App Services**
-2. From the list of App Services select your find your webapp and then click select **your new web app**
+2. From the list of App Services select your find your webapp and then click select **your new app service**
  
-3. You should be on the new web app:
+3. You should be on the new app service
 
-4. Select **Deployment** on the left blade and then click on  **Deployment Center**
+4. Find the **Deployment** section on the left blade and then Click on  **Deployment Center**
 
 ![Web Service Basic Tab](images/app-service-deployment-center.JPG)
 
 5. Select the **Github** thumbnail
 6. Click on **Continue** 
-A. We are going to actual deploy code from this repo https://github.com/RobinGhosh64/Test3in1.git
+ <BR>We are going to actual deploy code from this repo https://github.com/RobinGhosh64/Test3in1.git
 
 ![Web Service Basic Tab](images/app-service-deployment-center-continue.JPG)
 
@@ -171,7 +171,7 @@ Make sure your logs show signs for a good deployment
 
 **Blob Storage: Success**
 
-   YEAH. Great job!
+  CONGRATULATIONS. Great job you have finished the LAB successfully!
 
 
 
