@@ -25,11 +25,11 @@ Hit 'create' button.
 
 - Create a new resource group.
     Select 'Create new' under 'Resource group' section. 
-    Enter "ata-storage-lab-<Name>-rg"
+    Enter "ata-storage-lab-(YourName)-rg"
     
     <img src="./images/CreateResourceGroup.PNG" alt="Create Resource Group" width="600">
 - Enter Storage account name.
-    Enter 'atastorageblob<yourname>' 
+    Enter 'atastorageblob(YourName)' 
 - Specify the location.
     Select 'East US' as the region
 - Leave defaults for the rest
@@ -53,7 +53,7 @@ Hit 'create' button.
     <img src="./images/CreateBlobContainer.PNG" alt="Storage Review" width="400">
 - Create a new container.
     Select the 'plus' sign next to container to add a new container
-    'New container' window pops up and enter the name 'atablob<yourname>'
+    'New container' window pops up and enter the name 'atablob-yourname'
 
     <img src="./images/Complete-create-blob-container.PNG" alt="Storage Review" width="400">
 
@@ -76,9 +76,9 @@ Hit 'create' button.
 <img src="./images/Create-storage-account.PNG" alt="Create Storage Account" width="400">
 
 - Select the resource group.
-    Select the existing resource group "ata-storage-lab-<Name>-rg" from the dropdown menu. 
+    Select the existing resource group "ata-storage-lab-Name-rg" from the dropdown menu. 
 - Enter Storage account name.
-    Use 'atastorageADLSGen2<yourname>' format.
+    Use 'atastorageADLSGen2-yourname' format.
 - Specify the location.
     Select 'East US' as the region.
 - Leave defaults for the rest.
@@ -109,7 +109,7 @@ Hit 'create' button.
     <img src="./images/CreateBlobContainer.PNG" alt="Storage Review" width="400">
 - Create a new container.
     Select the 'plus' sign next to container to add a new container.
-    'New container' window popsup and enter the name 'adlsgen2filesystem<yourname>'.
+    'New container' window popsup and enter the name 'adlsgen2filesystem(YourName)'.
 
     <img src="./images/ADLSGen2-Container-Complete.PNG" alt="Storage Review" width="400">
 
@@ -148,13 +148,15 @@ Hit 'create' button.
     Hit 'create' button.
 
 <img src="./images/Create-Data_Share.PNG" alt="Create Data Share" Width="300">
+
 - Create Data Share options:
-- Resource Group: Select 'ata-storage-lab-<name>-rg" from the dropdown
+- Resource Group: Select 'ata-storage-lab-(YourName)-rg" from the dropdown
 - Location: Select "US East" region
-- Name: ata-data-share-<name>
+- Name: ata-data-share-(YourName)
 - Click on "Review+Create" button
 
 <img src="./images/Review_Create_Data_Share.PNG" alt="Review And Create button" Width="400">
+
 - Initiate Create Data Share process.
     Make sure you get a green check mark next to "Validation Passed". Click on "Create" button to initiate the creation process.
 - Verify Deployment completion.
@@ -164,8 +166,9 @@ Hit 'create' button.
 
 <img src="./images/DataShare-Create-Deployment-complete.PNG" alt="Data Share Deployment complete" Width="300">
 
-### Step-2: Add Storage Owner and Contributor roles to the Data Share
-- Select the blob storage account (atastorageblob<yourname>).
+### Step-2: Add Owner and Contributor roles to the Data Share for the blob storage account
+ 
+- Select the blob storage account (atastorageblobYourName).
     Select the storage accounts from the top left menu. Select your blob storage account.
 - Select Create role.
     Select "Access Control (IAM)" from the left blade.
@@ -174,13 +177,13 @@ Hit 'create' button.
 <img src="./images/Storage-Access-Mgmt.PNG" alt="Access Control" height="400">
 
 - Add Owner role to the data share. 
-    Select "Owner" role from the dropdown. Select the data share by typing "ata-data-share-<name>".
+    Select "Owner" role from the dropdown. Select the data share by typing "ata-data-share-(YourName)".
     Click on "Save" button.
 
 <img src="./images/DataShare-Storage-Owner-save.PNG" alt="Create Owner Role" height="300">
 
 - Add Contributor role to the data share.
-    Select "Contributor" role from the dropdown. Select data sahre by typing "ata-data-share-<name>".
+    Select "Contributor" role from the dropdown. Select data sahre by typing "ata-data-share-(YourName)".
     Click on "Save" button.
 ### Step-3: Add Data Sets to the data share
 - access the data share service
@@ -193,7 +196,7 @@ Hit 'create' button.
 <img src="./images/Data-Share-Create-SentShare.PNG" alt="Create Sent Shares" Width="300">
 
 - Enter Sent Share Details:
-- Share name:"ata-sent-shipping-scans-<name>"
+- Share name:"ata-sent-shipping-scans-(YourName)"
 - Shape type: Snapshot (default)
 - Description: "Sharing Shipping Scan images with partners"
 - Terms of use" "Update hourly"
@@ -248,7 +251,7 @@ Hit 'create' button.
 - Create a resource group
 - Select Resource Groups from the top left menu
 - Add a resource group by selecting + sign next to 'Add'
-- Enter 'ata-datashare-consumer-<name>'
+- Enter 'ata-datashare-consumer-(YourName)'
 - Select 'East US' as the Region
 - Click on 'Review + create' button
 - Click 'Create' 
@@ -257,8 +260,8 @@ Hit 'create' button.
 ### Step-2: Create Storage Destination
 - Type 'Storage accounts' in the search bar
 - Add storage account by selecting + sign next to 'Add'
-- Resource group: 'ata-datashare-consumer-<name>'
-- Storage account Name: atadconsumberblob<name>
+- Resource group: 'ata-datashare-consumer-(YourName)'
+- Storage account Name: atadconsumberblob(YourName)
 - Location: East US
 - Default Option for Rest
 - Click on 'Review + create'
