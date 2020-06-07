@@ -73,7 +73,7 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 <img src="./images/SQL-DB-Select-table-rows.PNG" alt="Select 1000 rows from Employee table" Width="400">
 - Execute the query
 - You have restored the database successfully!
-### Task-4: Create Azure SQL PaaS Database
+### Task-3: Create Azure SQL PaaS Database
 - Select Database service from the search bar
 - Select 'Add' to create a new database
 - Select Resource Group
@@ -94,7 +94,7 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - You will see 'Deployment complete' after few minutes
 - You are successfully created Azure SQL (PaaS) Database
 
-### Task-3: Install Data Migration Assistant
+### Task-4: Install Data Migration Assistant
 - Now Let us evaluate the SQL 2012 database to migrate to Azure SQL.
 - Data Migration Assistant is available to assess the migration 
 - This tool will provide a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
@@ -131,10 +131,10 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 <img src="./images/DMA-Migration-Start-Assessment.PNG" alt="Start Migration Assessment" Width="300">
 8. Analyze the feature parity issues with the possible migration
 <img src="./images/DMA-SQL-Migrate-feature-parity.PNG" alt="SQL Migrate feature parity isues" Width="400">
-8. Analyze the compatibility issues with the possible migration.
+9. Analyze the compatibility issues with the possible migration.
 <img src="./images/DMA-SQL-Migrate-Compatibility.PNG" alt="SQL Migrate Compatibility issues" Width="400">
-9. Store the assessment to share with Development and Azure Teams.
-### Task-4: Migrate SQL 2012 Schema to Azure SQL PaaS Database
+10. Store the assessment to share with Development and Azure Teams.
+### Task-5: Migrate SQL 2012 Schema to Azure SQL PaaS Database
 1. Select new to create a migration project
 2. Enter the following:
 - **Project type**: Select **Migration**
@@ -203,7 +203,7 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - Run a query to see if you have any data
 <img src="./images/DMA-Migration-Schema-Complete.PNG" alt="Verify Schema Migration" Width="500">
 9. You are successfully migrated the SQL 2012 DB schema to Azure SQL DB.
-### Task-5: Migrate SQL2012 Table Data to Azure SQL DB using DMA
+### Task-6: Migrate SQL2012 Table Data to Azure SQL DB using DMA
 
 1. Create a new migration for migrating the data to Azure SQL DB.
 2. Enter the following info:
@@ -214,8 +214,20 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - Migration scope: **Data only**
 - Click on **Create**
 <img src="./images/DMA-Migrate-Data-Project.PNG" alt="DMA Migrate Data Project" Width="200">
-3. Provide the source and the target database info. Same info used in the Schema migrate task
-4. 
+3. Provide the source and the target database info. Same info used in the Schema migrate task.
+4. Select **Next** to reach 'Select Tables' section
+5. Make sure all the tables were selected and click on **Start data migration**
+<img src="./images/DMA-Data-Migrate-Select-All-Tables.PNG" alt="DMA Data Migration Select all Tables" Width="500">
+6. Watch the data migration progress and monitor the warnings and errors list.
+7. Make sure it successfully migrated the data to all tables.
+<img src="./images/DMA-Data-Migration-Complete.PNG" alt="DMA Data Migration complete" Width="600">
+8. Verify the data in Azure SQL DB
+- Search for 'SQL Databases' and Access you Azure SQL DB.
+- Select the 'Query Editor' and enter the username and password
+- Select HumanResources.Employee table and select top 1000 row option. You will see all the data in the table. Verify few other tables.
+<img src="./images/Azure-SQL-DB-Data-Migrate-Verify.PNG" alt="Azure SQL DB Data verification" Width="600">
+9. You successfully migrated the SQL 2012 database to Azure SQL PaaS Database. Pat yourself on your back!! Great Job!!
+10. You can migrate 1000's of databases using powershell scripts. Please reach us if you need help on this. 
 
 
 
