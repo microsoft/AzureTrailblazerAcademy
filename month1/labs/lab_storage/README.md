@@ -136,11 +136,12 @@ Hit 'create' button.
 <img src="./images/Data-Share-Lab-Architecture.PNG" alt="datashare lab architecture" Width="400">
 
 ### Prerequisites
-- Azure Subscription
+- Two Azure Subscriptions with Company and Personal emails.
 - Recipient's Azure login e-mail address
 - Storage Account
 - Permission to write to storage account for the Shared Service (Contributor Role)
 - Permission to add role assignment to storage account for the Shared Service (Owner Role) 
+
 ## Part-1: Set up Data Share to consume by partners
 ### Step-1: Create data share service
 - Login to Azure Portal (https://portal.azure.com). 
@@ -167,7 +168,7 @@ Hit 'create' button.
 <img src="./images/DataShare-Create-Deployment-complete.PNG" alt="Data Share Deployment complete" Width="300">
 
 ### Step-2: Add Owner and Contributor roles to the Data Share for the blob storage account
- 
+
 - Select the blob storage account (atastorageblobYourName).
     Select the storage accounts from the top left menu. Select your blob storage account.
 - Select Create role.
@@ -185,6 +186,7 @@ Hit 'create' button.
 - Add Contributor role to the data share.
     Select "Contributor" role from the dropdown. Select data sahre by typing "ata-data-share-(YourName)".
     Click on "Save" button.
+
 ### Step-3: Add Data Sets to the data share
 - access the data share service
 - Select 'Start Sharing your data' from the left blade
@@ -225,6 +227,7 @@ Hit 'create' button.
 - Click on "Add Dataset".
   Displays the created data set.
 - Click on "Continue"
+
 ### Step-4: Add Recipient to the data share
 - Recipients Tab:
 - Click on "Add Recipient" 
