@@ -305,7 +305,7 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - Select the 'Query Editor' and enter the username and password
 - Select HumanResources.Employee table and select top 1000 row option. You will see all the data in the table. Verify few other tables.
 
-<img src="./images/Azure-SQL-DB-Data-Migrate-Verify.PNG" alt="Azure SQL DB Data verification" Width="800">
+<img src="./images/Azure-SQL-DB-Data-Migrate-Verify.PNG" alt="Azure SQL DB Data verification" Width="950">
 
 9. You successfully migrated the SQL 2012 database to Azure SQL PaaS Database. Pat yourself on your back!! Great Job!!
 
