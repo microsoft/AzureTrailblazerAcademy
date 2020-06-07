@@ -6,12 +6,12 @@ It is a common need among all compnaies to move databases to cloud. Azure provid
 ## Lab-1: Migrate SQL 2012 Database to Azure SQL PaaS Database
 This hands-on lab will provide an experience to migrate 2012 SQL database to Azure PaaS SQL database using Data Migration Assistant. You can use the same lab to migrate other versions of the Microsoft SQL database also.
 
-- [Task-1: Create Virutal Machine with 2012 SQL database] (#task-1-create-virutal-machine-with-2012-sql-database)
-- [Task-2: Restore a sample database AdventureWorks from a backup] (task-2-restore-a-sample-database-adventureworks-from-a-backup)
-- [Task-3: Create Azure SQL PaaS Database] (task-3-create-azure-sql-paas-database)
-- [Task-4: Install Data Migration Assistant] (task-4-install-data-migration-assistant)
-- [Task-5: Migrate SQL 2012 Schema to Azure SQL PaaS Database] (task-5-migrate-sql-2012-schema-to-azure-sql-paas-database)
-- [Task-6: Migrate SQL2012 Table Data to Azure SQL DB using DMA] (task-6-migrate-sql2012-table-data-to-azure-sql-db-using-dma)
+- [Task-1: Create Virutal Machine with 2012 SQL database](#task-1-create-virutal-machine-with-2012-sql-database)
+- [Task-2: Restore a sample database AdventureWorks from a backup](task-2-restore-a-sample-database-adventureworks-from-a-backup)
+- [Task-3: Create Azure SQL PaaS Database](task-3-create-azure-sql-paas-database)
+- [Task-4: Install Data Migration Assistant] task-4-install-data-migration-assistant)
+- [Task-5: Migrate SQL 2012 Schema to Azure SQL PaaS Database](task-5-migrate-sql-2012-schema-to-azure-sql-paas-database)
+- [Task-6: Migrate SQL2012 Table Data to Azure SQL DB using DMA](task-6-migrate-sql2012-table-data-to-azure-sql-db-using-dma)
 
 ### Task-1: Create Virutal Machine with 2012 SQL database
 1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
@@ -59,6 +59,7 @@ This hands-on lab will provide an experience to migrate 2012 SQL database to Azu
 - Wait till your deployment is complete and see 'Go To Resource' button
 
 ### Task-2: Restore a sample database AdventureWorks from a backup
+
 1. Access the Virtual Machine (VM) from your environment.
 - Select 'Go to resource' to access Virtual Machine server config
 - Select 'Connect' and 'RDP' 
@@ -110,6 +111,7 @@ This hands-on lab will provide an experience to migrate 2012 SQL database to Azu
 - You have restored the database successfully!
 
 ### Task-3: Create Azure SQL PaaS Database
+
 1. Open Portal to create SQL PaaS Database.
 
 - Select Database service from the search bar
@@ -192,6 +194,7 @@ This hands-on lab will provide an experience to migrate 2012 SQL database to Azu
 10. Store the assessment to share with Development and Azure Teams.
 
 ### Task-5: Migrate SQL 2012 Schema to Azure SQL PaaS Database
+
 1. Select new to create a migration project
 2. Enter the following:
 - **Project type**: Select **Migration**
