@@ -1,41 +1,42 @@
 # Hands-on lab to Migrate SQL database to Azure (step-by-step)
 
 ## Overview
-It is a common need among all compnaies to move the databases to the cloud. Azure provide options such as SQL on Azure VM, Azure SQL PaaS DB, Azure SQL Managed Instance. Please refer to this [documentation](https://docs.microsoft.com/en-us/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview) for selecting the appropriate type of Azure SQL database option to migrate your SQL workloads.
+It is a common need among all compnaies to move databases to the cloud. Azure provide options such as SQL on Azure VM, Azure SQL PaaS DB, Azure SQL Managed Instance. Please refer to this [documentation](https://docs.microsoft.com/en-us/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview) for selecting the appropriate type of Azure SQL database option to migrate your SQL workloads.
 
 ## Labs:
-- [Lab-1: Restore On-premises SQL Database to Azure VM](#lab-1-estore-on-premises-sql-atabase-to-azure-vm) 
+- [Lab-1: Restore On-premises SQL Database to an Azure VM](#lab-1-estore-on-premises-sql-atabase-to-an-azure-vm) 
 
 - [Lab-2: Migrate SQL 2012 Database to Azure SQL PaaS Database](#lab-2-migrate-sql-2012-database-to-azure-sql-paas-database) 
 
 
-## Lab-1: Restore On-premises SQL Database to Azure VM
+## Lab-1: Restore On-premises SQL Database to an Azure VM
 This hands-on lab will provide an experience to restore an on-premises database to Azure VM.
 ### Tasks:
-- [Task-1: Create Virutal Machine with 2012 SQL database](#task-1-create-virutal-machine-with-2012-sql-database) 
+- [Task-1: Create a Virutal Machine with 2012 SQL database](#task-1-create-a-virutal-machine-with-2012-sql-database) 
 - [Task-2: Restore a sample database AdventureWorks from a backup](#task-2-restore-a-sample-database-adventureworks-from-a-backup) 
 
-### Task-1: Create Virutal Machine with 2012 SQL database
+### Task-1: Create a Virutal Machine with 2012 SQL database
 1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
 
 <img src="./images/azure-services-resource-groups.png" alt="Resource groups is highlighted in the Azure services list" Width="700">
 
-2. Create **Resource group** by selecting 'add'
-- Enter 'ata-sql-lab-<name>' as the Resource group
-- Select 'East US' as the Region
-- Click on 'Review + Create' button
+2. Create a **Resource group** by selecting 'add'.
+- Enter 'ata-sql-lab-<name>' as the Resource group.
+- Select 'East US' as the Region.
+- Click on 'Review + Create' button.
 - Make sure the validation is passed before clicking on 'Create' button.
 
 <img src="./images/resource-group-create.PNG" alt="Resource Group Create" Width="500">
 
-3. Create Virutal Machine 
-- Select 'goto resource' to go resource group
-- Select 'add' and search for 'SQL Server 2012 SP4'
+- Select 'goto resource' to access the resource group you just created.
+
+3. Create a Virutal Machine. 
+- Select 'add' from the resource group and search for 'SQL Server 2012 SP4'
 - Click on 'Create'
 
 <img src="./images/sql-server-vm-create.PNG" alt="Create SQL server VM" Width="400">
 
-4. Enter configuration
+4. Enter the following configuration info:
 - Make sure you have selected the correct resource group
 - Virtual machine name:'ata-sql-2012-your-initials'
 - Region: 'East US'
@@ -44,21 +45,21 @@ This hands-on lab will provide an experience to restore an on-premises database 
 - Password: Atasql2012user (Use this to avoid password issues)
 - Select inbound ports: RDP(3389) (We need this to access this VM remotely)
 
-5. Enter SQL Server User Configuration
-- Click on 'SQL Server settings' tab
-- Enable SQL Authentication 
-- Enter SQL Login name:'sqladmin'
-- Enter password:'Atasql2012admin'
+5. Enter the SQL Server User Configuration.
+- Click on 'SQL Server settings' tab.
+- Select SQL Authentication. 
+- Enter SQL Login name:'sqladmin'.
+- Enter password:'Atasql2012admin'.
 
 <img src="./images/SQL-VM-Admin-User.PNG" alt="SQL Server Admin Login" Width="500">
 
-- Rest are default options
-- Click on 'Review + create' button
+- Rest are default options.
+- Click on 'Review + create' button.
 
 <img src="./images/SQL-VM-Configuration-full.PNG" alt="SQL VM configuration setup" Width="600">
 
-- Make sure you have green check for the **validation passed** and Click on **Create** button
-- Wait till your deployment is complete and see 'Go To Resource' button
+- Make sure you have green check for the **validation passed** and Click on **Create** button.
+- Wait till your deployment is complete and see 'Go To Resource' button.
 
 ### Task-2: Restore a sample database AdventureWorks from a backup
 
