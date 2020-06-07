@@ -144,9 +144,10 @@ Make sure your logs show signs for a good deployment
 
 ![App_Settings Tab](images/app-service-add-app-settings.JPG)
 
-7. Click on **New App Settings**
-87. Add all the config parameters as specified in the LABS.
-   Make sure you are adding the BLOB variable called AZURE_STORAGE_CONNECTION_STRING
+7. Click on **New application Setting**
+
+8. Add all the configuration parameters needed by your application. Make sure as your adding the list get's updated.
+   Make sure you are adding the BLOB config. variable called AZURE_STORAGE_CONNECTION_STRING. This is a mandatory for our LAB.
     
 ![RG Basic Tab](images/app-service-add-app-settings-1.JPG)
 
@@ -160,17 +161,13 @@ Make sure your logs show signs for a good deployment
 
 1. Go back to you App Service by selecting the **Overview** on the left blade
 
-
 ![RG Basic Tab](images/app-service-overview.JPG)
-12. Make sure your app shows
 
+2. Click on **URL**
 
+13. Make sure you web applicationsee renders and shows the connected message in your Web App.
 
-12. Click on **URL**
-
-13. Make sure you see the connected message in your Web App.
-
-Blob Storage: Success
+**Blob Storage: Success**
 
    YEAH. Great job!
 
