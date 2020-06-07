@@ -133,13 +133,16 @@ This screen will transition to .. **Your deployment was successful..**.  There i
 
 11. Click the **Finish** button
 ![Web Service Basic Tab](images/app-service-deployment-onway.JPG)
-12. Click the **log** button
+
+12. You should see a screen that will show the deployment steps. There is a single table record, that will show the progress of the deployment. It should finally settle and show 'Success Active' which is the correct status for the deployment
 
 ![Web Service Basic Tab](images/app-service-check-deployment-logs.JPG)
-Make sure your logs show signs for a good deployment
+
+13. Click on the **phone like icon** to see the details of the deployment.
 
 ![Web Service Basic Tab](images/app-service-deployment-successful.JPG)
 
+14. Make sure everything was good, in which case you can close the window using the top right **X** button
 
 
 ## Step 6: Our application got deployed. Let's proceed to set the configuration variables so that it can connect to LOB storage, SalesForce and SQL Server DB resource
