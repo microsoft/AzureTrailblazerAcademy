@@ -3,7 +3,6 @@
 ## Prerequisites
 
 - Microsoft Azure subscription
-- 
 - Resource Group to deploy Azure services
 - Permissions to create the following resource  
     - App Service Plan
@@ -76,25 +75,25 @@ This screen will transition to .. **Your deployment was successful..**.  There w
 
 ## Step 4: Go to your newly created Web App
 1. In the Azure Portal, search for **App Services**
-2. From the left menu, click on **App Services** under **Explorers**, find your webapp and then click ** on your new web app**
+2. From the left menu, click on **App Services** under **Explorers**, find your app service and then click **on your new app service**
    OR
-   You have an option to go through the top Notifications and select **Deployment Succeeded** message and click on **Go to resource**
+   You also have another option to go through the top **Notifications** button and select **Deployment Succeeded** message and click on **Go to resource**
    
-3. You should be on the new web app:
+3. You should be on the new app service
 
 ![Web Service Basic Tab](images/webapp-goto.JPG)
 
-4. Find the  URL of your web application on the right. Click on it.
-
+4. Now locate the **URL** section on the top right section and then Click on the **url link of the web site/web app** 
+   This is your website, a sample starter one from Microsoft
 
 ![Web Service Basic Tab](images/webapp-happy.JPG)
   
    
-  5. Make sure you see a Happy Page by clicking on the **url link of the web app**
+5. Make sure you see a web page and based on the Runtime selected should greet you with **Hello, Node developer...** 
+ Had you selected Java it would have **Hello, Java Developer.**
+ 
 
-
-
-  YEAH  YOU SHOULD BE PROUD YOU CREATED A SAMPLE WEB SITE
+ 6. YEAH  YOU SHOULD BE PROUD OF YOURSELF BECAUSE YOU CREATED A WEB APPLICATION ON AZURE CLOUD
   
   
 ## Step 5: What we have now is a sample web application that got deployed by Microsoft. Lets deploy our actual application!
