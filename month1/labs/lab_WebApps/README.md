@@ -127,9 +127,11 @@ This screen will transition to .. **Your deployment was successful..**.  There w
 ![Web Service Basic Tab](images/app-service-deployment-pick-your-project.JPG)
 
 9. Select **Repo Name** , **Branch**
-11. Click the **Finish** button
+10. Click the **Continue** button
 
 ![Web Service Basic Tab](images/app-service-deployment-finish.JPG)
+
+11. Click the **Finish** button
 
 12. Click the **log** button
 ![Web Service Basic Tab](images/app-service-check-deployment-logs.JPG)
