@@ -108,27 +108,32 @@ This screen will transition to .. **Your deployment was successful..**.  There w
 
 ![Web Service Basic Tab](images/app-service-deployment-center.JPG)
 
-5. Select the **Github** thumbnail
-6. Click on **Continue** 
- <BR>We are going to actual deploy code from this repo https://github.com/RobinGhosh64/Test3in1.git
+5. We are in the CI/CD section of the your code deployment. <BR>
+   Our plan is to deploy from https://github.com/RobinGhosh64/Test3in1.git sample repository provided in your lab.
+   Select the **Github** thumbnail
+    
+6. Then Click on **Continue** 
 
 ![Web Service Basic Tab](images/app-service-deployment-center-continue.JPG)
 
-7. Select **Kudu** option thumbnail
+7. Select Kudu **K App Service** option thumbnail
 8. Click on **Continue**
 
 ![Web Service Basic Tab](images/app-service-deployment-center-continue-kudu.JPG)
 
 9. Select **Repo Name** , **Branch**
 10. Click on **Continue**
+
 ![Web Service Basic Tab](images/app-service-deployment-pick-your-project.JPG)
 
 11. Click the **Finish** button
 ![Web Service Basic Tab](images/app-service-deployment-finish.JPG)
 
-12. Click the **xxx** button
+12. Click the **log** button
 ![Web Service Basic Tab](images/app-service-check-deployment-logs.JPG)
 Make sure your logs show signs for a good deployment
+
+![Web Service Basic Tab](images/app-service-check-deployment-onway.JPG)
 
 
 ## Step 6: Our application got deployed. Let's proceed to set the configurations variables so that it can connect to either SQL Server, BLOB storage or SalesForce resource
@@ -167,7 +172,9 @@ Make sure your logs show signs for a good deployment
 
 2. Click on **URL**
 
-13. Make sure you web applications renders and shows the connected message in your Web App.
+![RG Basic Tab](images/app-service-happy.JPG)
+
+3. Make sure you web applications renders and shows the connected message in your Web App.
 
 **Blob Storage: Success**
 
