@@ -264,7 +264,7 @@ You should have a copy of the database backup to complete this exercise. Please 
 <img src="./images/Azure-Migrate-Target-db-Info.PNG" alt="DMA Migrate Target DB" Width="800">
 
 5. Select Objects for migration
-- Check the all the boxes for migration
+- Check all the boxes for migration
 - Click on **Generate SQL Script**
 
 <img src="./images/Azure-Migrate-Schema-Select-Objects.PNG" alt="Azure Migrate select objects" Width="800">
