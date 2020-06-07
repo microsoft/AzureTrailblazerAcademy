@@ -1,4 +1,4 @@
-# Azure WebApps Lab  (UNDER CONSTRUCTION. DO NOT WORK HERE --ROBIN GHOSH--)
+# Azure WebApps Lab  (Robin Ghosh)
 
 ## Prerequisites
 
@@ -142,18 +142,37 @@ Make sure your logs show signs for a good deployment
 
 6. Select and Click on **Application Settings**
 
-![Web Service Basic Tab](images/app-service-add-app-settings.JPG)
+![App_Settings Tab](images/app-service-add-app-settings.JPG)
+
+7. Click on **New App Settings**
+87. Add all the config parameters as specified in the LABS.
+   Make sure you are adding the BLOB variable called AZURE_STORAGE_CONNECTION_STRING
+    
+![RG Basic Tab](images/app-service-add-app-settings-1.JPG)
+
+9. When finished with all, click on the **SAVE** button on the top panel
+
+![RG Basic Tab](images/app-service-add-app-settings-end.JPG)
+
+10. You should see a message stating 'Updating the Web app'
+
+## Step 7: Our App Service has restarted. Hopefully, taken the settings update. Let's go to our Web App
+
+1. Go back to you App Service by selecting the **Overview** on the left blade
 
 
-7. Add all the config parameters as specified in the LABS
-8. When done use the SAVE button 
+![RG Basic Tab](images/app-service-overview.JPG)
+12. Make sure your app shows
 
-9. App will restart
-10. Go back to the app url
-11. Make sure your app shows
 
-![Web Service Basic Tab](images/app-service-add-app-settings.JPG)
 
-12. Click on **New App Settings**
+12. Click on **URL**
+
+13. Make sure you see the connected message in your Web App.
+
+Blob Storage: Success
+
+   YEAH. Great job!
+
 
 
