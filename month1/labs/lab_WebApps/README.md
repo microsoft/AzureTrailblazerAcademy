@@ -66,11 +66,12 @@
 
 5. Click the **Create** button
 
-You should see a progress bar and underway screen
+You should see a progress bar and a message **Your deployment is underway..**
 
-![Web Service Basic Tab](images/webapp-underway.JPG)
+![Web Service Basic Tab](images/webapp-create-underway.JPG)
 
-This screen will transition to deployed 
+This screen will transition to .. **Your web app is deployed..'
+
 
 ## Step 4: Go to your newly created Web App
 1. In the Azure Portal, search for **App Services**
