@@ -168,24 +168,24 @@ Hit 'create' button.
 <img src="./images/DataShare-Create-Deployment-complete.PNG" alt="Data Share Deployment complete" Width="500">
 
 ### Step-2: Add Owner and Contributor roles to the Data Share for the blob storage account
-
-- Select the blob storage account (atastorageblobYourName).
-    Select the storage accounts from the top left menu. Select your blob storage account.
-- Select Create role.
-    Select "Access Control (IAM)" from the left blade.
-    Click on "Create role" button. It will pop up Add role window.
+- Access the Storage Account Service  
+- Select the blob storage account (atastorageblob/<YourName/>.
+- Select "Access Control (IAM)" from the left blade.
+- Click on "Create role" button. It will pop up Add role window.
 
 <img src="./images/Storage-Access-Mgmt.PNG" alt="Access Control" height="400">
 
 - Add Owner role to the data share. 
-    Select "Owner" role from the dropdown. Select the data share by typing "ata-data-share-(YourName)".
-    Click on "Save" button.
+- Select "Owner" role from the dropdown. 
+- Select the data share by typing "ata-data-share-/<YourName/>".
+- Click on "Save" button.
 
 <img src="./images/DataShare-Storage-Owner-save.PNG" alt="Create Owner Role" height="500">
 
 - Add Contributor role to the data share.
-    Select "Contributor" role from the dropdown. Select data sahre by typing "ata-data-share-(YourName)".
-    Click on "Save" button.
+- Select "Contributor" role from the dropdown. 
+- Select data sahre by typing "ata-data-share-/<YourName/>".
+- Click on "Save" button.
 
 ### Step-3: Add Data Sets to the data share
 - access the data share service
@@ -221,7 +221,7 @@ Hit 'create' button.
 - Select the container
 - Click on "next"
 
-<img src="./images/DataShare-Select-Blob-Image_folder.PNG" alt="select blob container" Height="300">
+<img src="./images/DataShare-Select-Blob-Image_folder.PNG" alt="select blob container" Height="500">
 
 - Enter Dataset Name as "ata-shipping-image-share"
 - Click on "Add Dataset".
