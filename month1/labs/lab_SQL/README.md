@@ -3,13 +3,13 @@
 ## Overview
 It is a common need among all compnaies to move the databases to the cloud. Azure provide options such as SQL on Azure VM, Azure SQL PaaS DB, Azure SQL Managed Instance. Please refer to this [documentation](https://docs.microsoft.com/en-us/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview) for selecting the appropriate type of Azure SQL database option to migrate your SQL workloads.
 ## Labs:
-- [Lab-1: Restore On-premises SQL Database to Azure VM](#lab-1-estore-on-premises-sql-atabase-to-azure-vm)
-This hands-on lab will provide an experience to restore an on-premises database to Azure VM.
+- [Lab-1: Restore On-premises SQL Database to Azure VM](#lab-1-estore-on-premises-sql-atabase-to-azure-vm) 
+- This hands-on lab will provide an experience to restore an on-premises database to Azure VM.
 - [Task-1: Create Virutal Machine with 2012 SQL database](#task-1-create-virutal-machine-with-2012-sql-database) 
 - [Task-2: Restore a sample database AdventureWorks from a backup](#task-2-restore-a-sample-database-adventureworks-from-a-backup) 
 
-- [Lab-2: Migrate SQL 2012 Database to Azure SQL PaaS Database](#lab-2-migrate-sql-2012-database-to-azure-sql-paas-database)
-This hands-on lab will provide an experience migrate 2012 SQL database to Azure PaaS SQL database using Data Migration Assistant. You can use the same lab to migrate other versions of the Microsoft SQL database also.
+- [Lab-2: Migrate SQL 2012 Database to Azure SQL PaaS Database](#lab-2-migrate-sql-2012-database-to-azure-sql-paas-database) 
+- This hands-on lab will provide an experience migrate 2012 SQL database to Azure PaaS SQL database using Data Migration Assistant. You can use the same lab to migrate other versions of the Microsoft SQL database also.
 - [Task-3: Create Azure SQL PaaS Database](#task-3-create-azure-sql-paas-database) 
 - [Task-4: Install Data Migration Assistant](#task-4-install-data-migration-assistant) 
 - [Task-5: Migrate SQL 2012 Schema to Azure SQL PaaS Database](#task-5-migrate-sql-2012-schema-to-azure-sql-paas-database) 
