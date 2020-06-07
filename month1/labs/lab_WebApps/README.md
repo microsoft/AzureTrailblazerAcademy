@@ -53,9 +53,9 @@
 - **Resource group:** Select the Resource Group you created for this lab
 - **Region:** East US
 - **Name:** Choose a unique name for the Web App
-- **Publish** Code
-- **Runtime Stack:** Select the Resource Group you created for this lab
-- **Operating System:** East US
+- **Publish:** Code
+- **Runtime Stack:** Choose NodeJS 10 LTS
+- **Operating System:** Choose Linux
 - **App Service Plan:** Select the App Service Plan created earlier
 
 ![Web Service Basic Tab](images/webapp-create.JPG)
@@ -66,12 +66,13 @@
 
 5. Click the **Create** button
 
-You should see a progress bar and a message **Your deployment is underway..**
+You should see a deployment screen with progress bar and a message **Your deployment is underway..**
 
 ![Web Service Basic Tab](images/webapp-create-underway.JPG)
 
-This screen will transition to .. **Your web app is deployed..'
+This screen will transition to .. **Your deployment was successful..**.  There was no need to wait on this page, you could be doing something else.
 
+6. You have successfully create a new 'App Service'. 
 
 ## Step 4: Go to your newly created Web App
 1. In the Azure Portal, search for **App Services**
