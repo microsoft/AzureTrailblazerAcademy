@@ -156,7 +156,7 @@ Hit 'create' button.
 - Name: ata-data-share-(YourName)
 - Click on "Review+Create" button
 
-<img src="./images/Review_Create_Data_Share.PNG" alt="Review And Create button" Width="400">
+<img src="./images/Review_Create_Data_Share.PNG" alt="Review And Create button" Width="600">
 
 - Initiate Create Data Share process.
     Make sure you get a green check mark next to "Validation Passed". Click on "Create" button to initiate the creation process.
@@ -165,7 +165,7 @@ Hit 'create' button.
     You will see "Go to Resource" button when it is done.
     Click to "Go to Resource" to access the Data Share you just created.
 
-<img src="./images/DataShare-Create-Deployment-complete.PNG" alt="Data Share Deployment complete" Width="300">
+<img src="./images/DataShare-Create-Deployment-complete.PNG" alt="Data Share Deployment complete" Width="500">
 
 ### Step-2: Add Owner and Contributor roles to the Data Share for the blob storage account
 
@@ -181,7 +181,7 @@ Hit 'create' button.
     Select "Owner" role from the dropdown. Select the data share by typing "ata-data-share-(YourName)".
     Click on "Save" button.
 
-<img src="./images/DataShare-Storage-Owner-save.PNG" alt="Create Owner Role" height="300">
+<img src="./images/DataShare-Storage-Owner-save.PNG" alt="Create Owner Role" height="500">
 
 - Add Contributor role to the data share.
     Select "Contributor" role from the dropdown. Select data sahre by typing "ata-data-share-(YourName)".
@@ -191,11 +191,11 @@ Hit 'create' button.
 - access the data share service
 - Select 'Start Sharing your data' from the left blade
 
-<img src="./images/Data-Share-Start_Sharing.PNG", alt="Start Sharing Data", Width="300">
+<img src="./images/Data-Share-Start_Sharing.PNG" alt="Start Sharing Data" Height="300">
 
 - Select + sign next to 'Create' 
 
-<img src="./images/Data-Share-Create-SentShare.PNG" alt="Create Sent Shares" Width="300">
+<img src="./images/Data-Share-Create-SentShare.PNG" alt="Create Sent Shares" Height="300">
 
 - Enter Sent Share Details:
 - Share name:"ata-sent-shipping-scans-(YourName)"
@@ -204,7 +204,7 @@ Hit 'create' button.
 - Terms of use" "Update hourly"
 - Click on Continue
 
-<img src="./images/DataShare-create-sent-shares-details.PNG" alt="create sent share details" Width="400">
+<img src="./images/DataShare-create-sent-shares-details.PNG" alt="create sent share details" Width="600">
 
 - Datasets Tab:
 - Set the snapshot schedule
@@ -214,14 +214,14 @@ Hit 'create' button.
 - Select blob storage as the data type
 - Click on "next"
 
-<img src="./images/DataShare-Add-Blob-DataSet.PNG" alt="select blob data set" Width="300">
+<img src="./images/DataShare-Add-Blob-DataSet.PNG" alt="select blob data set" Height="300">
 
 - Select the resource group
 - Select the blob storage account
 - Select the container
 - Click on "next"
 
-<img src="./images/DataShare-Select-Blob-Image_folder.PNG" alt="select blob container" Width="200">
+<img src="./images/DataShare-Select-Blob-Image_folder.PNG" alt="select blob container" Height="300">
 
 - Enter Dataset Name as "ata-shipping-image-share"
 - Click on "Add Dataset".
