@@ -58,8 +58,8 @@ This hands-on lab will provide an experience to restore an on-premises database 
 
 <img src="./images/SQL-VM-Configuration-full.PNG" alt="SQL VM configuration setup" Width="600">
 
-- Make sure you have green check for the **validation passed** and Click on **Create** button.
-- Wait till your deployment is complete and see 'Go To Resource' button.
+- Make sure you have a green check for the **validation passed** and Click on **Create** button.
+- Wait till your deployment is complete and you should see 'Go To Resource' button.
 
 ### Task-2: Restore a sample database AdventureWorks from a backup
 
@@ -75,46 +75,49 @@ This hands-on lab will provide an experience to restore an on-premises database 
 - Select 'Use a different account'
 - Enter user name as 'azureuser'
 - Enter the password ('Atasql2012user')
-2. Modify Internet Security to download the software
-- Open 'Server Manager' if not open
-- Select 'Local Server' 
-- Find 'IE Enhanced Security Configuration' and Turn 'Off' 
-- It is not recommended but to avoid internet issues. Please turn On after the download.
+
+<img src="./images/SQL-VM-RDP-Connect-ok.PNG" alt="Login with different account" Height="300">
+
+2. Modify Internet Security to download software.
+- Open 'Server Manager' if not open.
+- Select 'Local Server'.
+- Find 'IE Enhanced Security Configuration' and Turn 'Off'.
+- It is not recommended but to avoid internet issues in the lab. Please turn 'On' after the download.
 
 <img src="./images/SQL-VM-turn-off-IE.PNG" alt="Turn off IE browser Security" Width="800">
 
 3. Download the AdventureWorks, a sample database for SQL 2012.
-- Open Internet Explorer browser and access [SQL 2012 Backup](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks)
-- Select 'AdventureWorks2012.bak' under "AdventureWorks (OLTP) full database backups" section 
+- Open Internet Explorer browser and access the [SQL 2012 Backup](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) location.
+- Select 'AdventureWorks2012.bak' under "AdventureWorks (OLTP) full database backups" section.
 
 <img src="./images/SQL-2012-Backup-download.PNG" alt="SQL 2012 Database backup" Width="600">
 
-- Save the backup file to local 'c:\Data' folder (Create a new folder)
+- Save the backup file to local 'c:\Data' folder (Create a new folder).
 
 4. Open SQL Server Management Studio and restore the database.
-- Search for 'SQL Server Management Studio' on the desktop
-- Connect to SQL Server with 'sqladmin' login
-- Select 'database' folder and right click to select 'Restore database' option
+- Search for 'SQL Server Management Studio' on the desktop.
+- Connect to SQL Server with 'sqladmin' login.
+- Select 'database' folder and right click to select 'Restore database' option.
 
 <img src="./images/SQL-VM-SQL-Select-Restore.PNG" alt="select Restore database option" Width="300">
 
 - Select 'Device', '...', 'File', 'C:\data Folder' and 'AdventureWorks2012.bak' file.
 
-<img src="./images/SQL-DB-Restore-Backup.PNG" alt="select backup file" Width=700">
+<img src="./images/SQL-DB-Restore-Backup.PNG" alt="select backup file" Width="700">
 
-- Click 'OK' three times to start the backup process
+- Click 'OK' three times to start the backup process.
 
 <img src="./images/SQL-DB-Restore-backup-Done.PNG" alt="backup restore done" Width="600">
 
-- Expand 'Database'|'AdventureWorks2012'|'Tables'|'HumanResources.employee' table |'Select Top 1000 Rows'
+- Expand 'Database'|'AdventureWorks2012'|'Tables'|'HumanResources.employee' table |'Select Top 1000 Rows'.
 
 <img src="./images/SQL-DB-Select-table-rows.PNG" alt="Select 1000 rows from Employee table" Width="600">
 
-- Execute the query
+- Execute the query.
 - You have restored the database successfully!
 
 ## Lab-2: Migrate SQL 2012 Database to Azure SQL PaaS Database
-This hands-on lab will provide an experience migrate 2012 SQL database to Azure PaaS SQL database using Data Migration Assistant. You can use the same lab to migrate other versions of the Microsoft SQL database also.
+This hands-on lab will provide an experience to migrate 2012 SQL database to Azure PaaS SQL database using Data Migration Assistant. You can use the same lab to migrate other versions of the Microsoft SQL database also.
 
 You should have a copy of the database backup to complete this exercise. Please follow lab-1 if you don't have one.
 ### Tasks:
@@ -127,8 +130,8 @@ You should have a copy of the database backup to complete this exercise. Please 
 
 1. Open Portal to create SQL PaaS Database.
 
-- Select Database service from the search bar
-- Select 'Add' to create a new database
+- Type 'SQL Databases' on the search bar to select the service.
+- Select 'Add' to create a new database.
 - Select Resource Group
 - Enter Database name: 'ata-sql-2012-migrate-<name>'
 - Server: Click on 'Create new'
@@ -151,10 +154,10 @@ You should have a copy of the database backup to complete this exercise. Please 
 
 ### Task-4: Install Data Migration Assistant
 
-- Now let us evaluate the SQL 2012 database to migrate to Azure SQL.
-- Data Migration Assistant is available to assess the migration 
-- This tool will provide a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
-1. Access SQL 2012 VM and Download [Microsoft Data Migration Assistant](https://www.microsoft.com/en-us/download/details.aspx?id=53595)
+- We need to evaluate if we can migrate SQL 2012 database to Azure SQL.
+- Data Migration Assistant is available to assess the migration.This tool will provide a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
+
+1. Open up your SQL 2012 VM and Open a browser to download 'Microsoft Data Migration Assistant' using [this link](https://www.microsoft.com/en-us/download/details.aspx?id=53595).
 - Run the install with the default options.
 
 <img src="./images/SQL-VM-DMA-Install.PNG" alt="Download DMA install" Width="700">
@@ -185,10 +188,10 @@ You should have a copy of the database backup to complete this exercise. Please 
 - **Encrypt connection**: Uncheck this box.
 - **Trust server certificate**: Uncheck this box.
 
-<img src="./images/DMA-SQL-source-Info.PNG", alt="Source database access info" Width="300">
+<img src="./images/DMA-SQL-source-Info.PNG" alt="Source database access info" Width="300">
 
 - Select Connect
-6. On the Add sources dialog that appears next, check the box for 'AdventureWorks12' and select Add.
+6. Next you will see 'Add sources' dialog screen, check the box for 'AdventureWorks12' and select Add.
 
 <img src="./images/DMA-Select-Data-Source.PNG" alt="Select Source Database" Height="500">
 
@@ -204,17 +207,17 @@ You should have a copy of the database backup to complete this exercise. Please 
 
 <img src="./images/DMA-SQL-Migrate-Compatibility.PNG" alt="SQL Migrate Compatibility issues" Width="800">
 
-10. Store the assessment to share with Development and Azure Teams.
+10. Store the assessment to share with your internal teams and Azure Teams.
 
 ### Task-5: Migrate SQL 2012 Schema to Azure SQL PaaS Database
 
 1. Select new to create a migration project
 2. Enter the following:
-- **Project type**: Select **Migration**
-- **Project name**: Enter 'Migrate-schema-sql2012-AzureSQL'
-- **Source server type**:Select **SQL Server**
-- **Target server type**:Select **Azure SQL Database**
-- **Migration scope**:Select **Schema only**
+- Project type: Select **Migration**
+- Project name: Enter 'Migrate-schema-sql2012-AzureSQL'
+- Source server type: Select **SQL Server**
+- Target server type: Select **Azure SQL Database**
+- Migration scope: Select **Schema only**
 - Click on **Create**
 
 <img src="./images/DMA-Migreate-schema-select.PNG" alt="Migrate Schema project" Height="300">
@@ -234,16 +237,16 @@ You should have a copy of the database backup to complete this exercise. Please 
 4. Provide the target datbase info
 - Get the Azure SQL DB Server name from the Azure Portal 
 
-<img src="./images/AzureSQLDB-Server-name.PNG" alt="Azure SQL DB Server name" Width="800">
+<img src="./images/AzureSQLDB-Server-name.PNG" alt="Azure SQL DB Server name" Width="950">
 
-- Allow client access to the Azure SQL Database
-- Select Azure SQL DB server
-- Select **Show firewall settings**
-- Create a firewall rule to allow the 2012 SQL server client IP
+- Allow SQL 2012 VM access to Azure SQL Database
 - Get the SQL 2012 VM IP address from the portal
 
 <img src="./images/Azure-SQL2012-VM-PublicIP.PNG" alt="SQL 2012 VM Public IP address" Width="900">
 
+- Select Azure SQL DB server
+- Select **Show firewall settings**
+- Create a firewall rule to allow the 2012 SQL server client IP
 - Enter the SQL 2012 VM IP address as the Start and End IP Range. You are giving access to only one server.
 
 <img src="./images/Azure-SQL-DB-Server-Firewall-ClientAccess.PNG" alt="Firewall rule to provide to access SQL 2012 DB client" Width="800">
@@ -261,10 +264,7 @@ You should have a copy of the database backup to complete this exercise. Please 
 <img src="./images/Azure-Migrate-Target-db-Info.PNG" alt="DMA Migrate Target DB" Width="800">
 
 5. Select Objects for migration
-- Check the following boxes for migration
-- **Schemas**
-- **Stored Procedures**
-- **Tables**
+- Check the all the boxes for migration
 - Click on **Generate SQL Script**
 
 <img src="./images/Azure-Migrate-Schema-Select-Objects.PNG" alt="Azure Migrate select objects" Width="800">
