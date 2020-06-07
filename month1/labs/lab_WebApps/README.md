@@ -95,7 +95,7 @@ This screen will transition to deployed
   YEAH  YOU SHOULD BE PROUD YOU CREATED A SAMPLE WEB SITE
   
   
-## Step 5: What we have now is a sample web application that got deployed by Microsoft. We need to deploy our application
+## Step 5: What we have now is a sample web application that got deployed by Microsoft. Lets deploy our actual application!
           
            
 1. In the Azure Portal, search for **App Services**
@@ -109,6 +109,7 @@ This screen will transition to deployed
 
 5. Select the **Github** thumbnail
 6. Click on **Continue** 
+A. We are going to actual deploy code from this repo https://github.com/RobinGhosh64/Test3in1.git
 
 ![Web Service Basic Tab](images/app-service-deployment-center-continue.JPG)
 
@@ -117,14 +118,14 @@ This screen will transition to deployed
 
 ![Web Service Basic Tab](images/app-service-deployment-center-continue-kudu.JPG)
 
-8. Select **Repo Name** , **Branch**
-9. Click on **Continue**
+9. Select **Repo Name** , **Branch**
+10. Click on **Continue**
 ![Web Service Basic Tab](images/app-service-deployment-pick-your-project.JPG)
 
-9. Click the **Finish** button
+11. Click the **Finish** button
 ![Web Service Basic Tab](images/app-service-deployment-finish.JPG)
 
-10. Click the **xxx** button
+12. Click the **xxx** button
 ![Web Service Basic Tab](images/app-service-check-deployment-logs.JPG)
 Make sure your logs show signs for a good deployment
 
@@ -165,7 +166,7 @@ Make sure your logs show signs for a good deployment
 
 2. Click on **URL**
 
-13. Make sure you web applicationsee renders and shows the connected message in your Web App.
+13. Make sure you web applications renders and shows the connected message in your Web App.
 
 **Blob Storage: Success**
 
