@@ -116,17 +116,19 @@ This screen will transition to .. **Your deployment was successful..**.  There w
 
 ![Web Service Basic Tab](images/app-service-deployment-center-continue.JPG)
 
-7. Select Kudu **K App Service** option thumbnail
-8. Click on **Continue**
+
 
 ![Web Service Basic Tab](images/app-service-deployment-continue-kudu.JPG)
 
-9. Select **Repo Name** , **Branch**
-10. Click on **Continue**
+7. Select Kudu **K App Service** option thumbnail
+8. Click on **Continue**
+
 
 ![Web Service Basic Tab](images/app-service-deployment-pick-your-project.JPG)
 
+9. Select **Repo Name** , **Branch**
 11. Click the **Finish** button
+
 ![Web Service Basic Tab](images/app-service-deployment-finish.JPG)
 
 12. Click the **log** button
