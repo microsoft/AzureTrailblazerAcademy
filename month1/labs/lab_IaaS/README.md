@@ -11,10 +11,12 @@
 
 ## Reference Architecture  
 Below is a big picture of a comon design architecture for a 3 Tier Application deployed in a highly available architecture.  
-![High Available Reference](images/vm-reference-architectures.png) 
+
+<img src="./images/vm-reference-architectures.png" alt="High Availability Reference"  Width="900">
 
 For this lab we are going to deploy something simular to the business tier of this application. Our focus is to deploy a VM Scale Set behind an Azure Load Balancer.  
-![VM Scale Set Reference](images/lb-vm-reference-architectures.png)  
+
+<img src="./images/lb-vm-reference-architectures.png" alt="VM Scale Set Reference"  Width="200">  
 
 ** Notes: We will not focus on networking in this lab. Networking will be covered later in the course work.
 
@@ -26,7 +28,7 @@ For this lab we are going to deploy something simular to the business tier of th
 - **Resource Group:** Provide a unique name like **<initial>-ata-rg
 - **Region:** EastUS
 
-![RG Basic Tab](images/rg-basics.PNG)  
+<img src="./images/rg-basics.PNG" alt="RG Basic Tab"  Width="700">  
 
 4. Click the **Next: Review + Create** button
 5. Click the **Create** button
@@ -49,7 +51,7 @@ For this lab we are going to deploy something simular to the business tier of th
 - **Username:** Enter your user name. Ex: ata-user
 - **Password:** Enter your password
 
-![VM Basics Tab](images/vm-basics.PNG)
+<img src="./images/vm-basics.PNG" alt="VM Basic Tab"  Width="700"> 
 
 4. Click the **Next: Disks** button
 5. Leave everything as default and click the **Next: Networking** button
@@ -59,7 +61,8 @@ For this lab we are going to deploy something simular to the business tier of th
 - **Network interface:** Leave this as the default
 - **Use a load balancer:** Change this option to Yes to create a new load balancer
 - Leave the default options to create a Azure Load Balancer
-![VM Networking Tab](images/vm-networking.PNG)
+
+<img src="./images/vm-networking.PNG" alt="VM Networking Tab"  Width="700">
 
 7. CLick the **Next: Scaling** button
 8. Fill out **Scaling** tab as follows:  
@@ -68,7 +71,7 @@ For this lab we are going to deploy something simular to the business tier of th
 - **Scaling policy:** Manual
 - **Scal-in policy:** Default
 
-![VM Scaling Tab](images/vm-scaling.PNG)
+<img src="./images/vm-scaling.PNG" alt="VM Scaling Tab"  Width="700">
 
 7. Click the **Next: Management** button
 8. Inside the **Management** tab:
@@ -78,7 +81,7 @@ For this lab we are going to deploy something simular to the business tier of th
 - **Automatic OS upgrades:** On
 - Leave everything else as default
 
-![VM Management Tab](images/vm-management.PNG)
+<img src="./images/vm-management.PNG" alt="VM Management Tab"  Width="700">
 
 9. Click the **Next: Health** button
 10. Fillout the **Health** tab as follows:  
@@ -86,7 +89,7 @@ For this lab we are going to deploy something simular to the business tier of th
 - **Monitor applicaton health:** Enabled
 - Leave everything else as default
 
-![VM Health Tab](images/vm-health.PNG)  
+<img src="./images/vm-health.PNG" alt="VM Health Tab"  Width="700">
 
 11. Click on the **Next: Advanced** button
 11. Leave everything as default and click on the **Next: Tags** button
@@ -99,7 +102,7 @@ We will utilize the PowerShell DSC extension to deploy a simple website to our s
 
 1. In the portal click on the **Cloud Shell** icon and make sure your in PowerShell mode
 
-![Cloud Shell](images/powershell-portal.PNG)
+<img src="./images/powershell-portal.PNG" alt="Cloud Shell"  Width="900">
 
 2. Inside the cloud shell run the following command to download the needed script:
 
@@ -107,7 +110,7 @@ We will utilize the PowerShell DSC extension to deploy a simple website to our s
 
 3. After that download run the following command to install the PowerShell DSC extension:
 
-**./add_website.ps1 -RGNAME <ResourceGroupName> -ScaleSetName <NameofScaleSet>**
+**./add_website.ps1 -RGNAME \<ResourceGroupName\> -ScaleSetName \<NameofScaleSet\>**
 
 4. Once the command completes close out of the Cloud Shell and go back to the Portal
 
@@ -115,11 +118,11 @@ We will utilize the PowerShell DSC extension to deploy a simple website to our s
 
 6. Click on the Virtual machine scale set you create previously and click on the "Extension" tab. Verify that the DSC extention has been deployed.
 
-![VM Extention](images/ss-extension.PNG)
+<img src="./images/ss-extension.PNG" alt="VM Extension"  Width="600">
 
 7. Clcik on the **Intances** tab. Once the DSC script finished the health will go to healthy. If it doesn't show healthy wait 5 minutes and refresh the view.
 
-![VM Instances](images/vm-instances.PNG)
+<img src="./images/vm-instances.PNG" alt="VM Instances"  Width="600">
 
 ## Step 4: Allow External Port 80
 
@@ -134,7 +137,7 @@ We are currently allowing the Load Balancer to other VNets in Azure to connect t
 - **Name:** Allow 80
 - Leave the rest of the option as default and click on **Add**
 
-![VM Networking](images/NSG_Rule.PNG)
+<img src="./images/NSG_Rule.PNG" alt="NSG Rule"  Width="500">
 
 **Note:** It will take up to 5 minutes for the NSG rule to take affect. 
 
