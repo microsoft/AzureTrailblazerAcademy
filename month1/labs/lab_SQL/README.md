@@ -118,14 +118,14 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 
 - You will see 'Deployment underway screen'
 
-<img src="./images/AzureSQL-DB-Deployment.PNG", alt="SQL DB deployment underway" Width="400"> 
+<img src="./images/AzureSQL-DB-Deployment.PNG" alt="SQL DB deployment underway" Width="400"> 
 
 - You will see 'Deployment complete' after few minutes
 - You are successfully created Azure SQL (PaaS) Database
 
 ### Task-4: Install Data Migration Assistant
 
-- Now Let us evaluate the SQL 2012 database to migrate to Azure SQL.
+- Now let us evaluate the SQL 2012 database to migrate to Azure SQL.
 - Data Migration Assistant is available to assess the migration 
 - This tool will provide a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 1. Access SQL 2012 VM and Download [Microsoft Data Migration Assistant](https://www.microsoft.com/en-us/download/details.aspx?id=53595)
@@ -145,11 +145,11 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - **Source server type**: Select **SQL Server**.
 - **Target server type**: Select **Azure SQL Database**.
 
-<img src="./images/DMA-SQL-Migrate-Project.PNG" alt="SQL Migrate Project info" Width="300">
+<img src="./images/DMA-SQL-Migrate-Project.PNG" alt="SQL Migrate Project info" Width="400">
 
 4. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are both checked, and then select **Next**.
 
-<img src="./images/DMA-Migration-project-options.PNG" alt="Project Migration Options" Width="500">
+<img src="./images/DMA-Migration-project-options.PNG" alt="Project Migration Options" Width="700">
 
 5. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
 - **Server name**: Select **SQLSERVER2008**.
@@ -164,19 +164,19 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - Select Connect
 6. On the Add sources dialog that appears next, check the box for 'AdventureWorks12' and select Add.
 
-<img src="./images/DMA-Select-Data-Source.PNG" alt="Select Source Database" Width="300">
+<img src="./images/DMA-Select-Data-Source.PNG" alt="Select Source Database" Height="300">
 
 7. Select 'Start Assessment' 
 
-<img src="./images/DMA-Migration-Start-Assessment.PNG" alt="Start Migration Assessment" Width="300">
+<img src="./images/DMA-Migration-Start-Assessment.PNG" alt="Start Migration Assessment" Width="600">
 
 8. Analyze the feature parity issues with the possible migration
 
-<img src="./images/DMA-SQL-Migrate-feature-parity.PNG" alt="SQL Migrate feature parity isues" Width="400">
+<img src="./images/DMA-SQL-Migrate-feature-parity.PNG" alt="SQL Migrate feature parity isues" Width="800">
 
 9. Analyze the compatibility issues with the possible migration.
 
-<img src="./images/DMA-SQL-Migrate-Compatibility.PNG" alt="SQL Migrate Compatibility issues" Width="400">
+<img src="./images/DMA-SQL-Migrate-Compatibility.PNG" alt="SQL Migrate Compatibility issues" Width="800">
 
 10. Store the assessment to share with Development and Azure Teams.
 
@@ -189,7 +189,8 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - **Target server type**:Select **Azure SQL Database**
 - **Migration scope**:Select **Schema only**
 - Click on **Create**
-<img src="./images/DMA-Migreate-schema-select.PNG" alt="Migrate Schema project" alt="100">
+
+<img src="./images/DMA-Migreate-schema-select.PNG" alt="Migrate Schema project" Height="300">
 
 3. Enter the source database info
 - Server name: Enter Your Server Name
@@ -199,21 +200,27 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - Encrypt connection: Uncheck the box
 - Trust server certificate: Uncheck the box
 - Click on 'Connect'
-<img src="./images/DMA-Migrate-schema-source-db.PNG" alt="Migrate SQL DB Schema Source info" alt="100">
+<img src="./images/DMA-Migrate-schema-source-db.PNG" alt="Migrate SQL DB Schema Source info" Height="300">
 
 - Select the 'AdventureWorks2012' database
 - Click on 'Next' button
 4. Provide the target datbase info
 - Get the Azure SQL DB Server name from the Azure Portal 
-<img src="./images/AzureSQLDB-Server-name.PNG" alt="Azure SQL DB Server name" Width="500">
+
+<img src="./images/AzureSQLDB-Server-name.PNG" alt="Azure SQL DB Server name" Width="800">
+
 - Allow client access to the Azure SQL Database
 - Select Azure SQL DB server
 - Select **Show firewall settings**
 - Create a firewall rule to allow the 2012 SQL server client IP
 - Get the SQL 2012 VM IP address from the portal
-<img src="./images/Azure-SQL2012-VM-PublicIP.PNG" alt="SQL 2012 VM Public IP address" Width="600">
+
+<img src="./images/Azure-SQL2012-VM-PublicIP.PNG" alt="SQL 2012 VM Public IP address" Width="800">
+
 - Enter the SQL 2012 VM IP address as the Start and End IP Range. You are giving access to only one server.
-<img src="./images/Azure-SQL-DB-Server-Firewall-ClientAccess.PNG" alt="Firewall rule to provide to access SQL 2012 DB client" Width="400">
+
+<img src="./images/Azure-SQL-DB-Server-Firewall-ClientAccess.PNG" alt="Firewall rule to provide to access SQL 2012 DB client" Width="600">
+
 - Enter the Azure SQL DB database info
 - Server Name: Paste the name from the portal
 - Authentication type: Select **SQL Server Authentication**
@@ -223,7 +230,8 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - Trust server certificate: uncheck the box
 - Click on 'Connect'
 - Select the database and click on **Next**
-<img src="./images/Azure-Migrate-Target-db-Info.PNG" alt="DMA Migrate Target DB" Width="600">
+
+<img src="./images/Azure-Migrate-Target-db-Info.PNG" alt="DMA Migrate Target DB" Width="800">
 
 5. Select Objects for migration
 - Check the following boxes for migration
@@ -231,28 +239,38 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - **Stored Procedures**
 - **Tables**
 - Click on **Generate SQL Script**
+
 <img src="./images/Azure-Migrate-Schema-Select-Objects.PNG" alt="Azure Migrate select objects" Width="600">
 
 6. Verify the tables and schema in Azure SQL DB.
 - Search for SQL Databases and select the database.
 - Select **Query editor**.
-<img src="./images/Azure-SQL-DB-QueryEditor-Select.PNG" alt="Azure SQL DB Query Editor" Width="100">
+
+<img src="./images/Azure-SQL-DB-QueryEditor-Select.PNG" alt="Azure SQL DB Query Editor" Height="300">
+
 - Enter the password
 - Expand Tables & Schema and verify everything is empty
-<img src="./images/Azure-SQL-DB-Tables-Empty.PNG" alt="Azure SQL DB Empty tables" Width="400">
 
-6. Deploy Schema 
+<img src="./images/Azure-SQL-DB-Tables-Empty.PNG" alt="Azure SQL DB Empty tables" Width="800">
+
+7. Deploy Schema 
 - Save the SQL script for reference
 - Click on **Deploy schma**
-<img src="./images/Azure-Migrate-Schema-Deploy-Schema.PNG" alt="DMA Migrate schema deploy" Width="600">
-7. Wait till it complete its run. Verify errors.
-<img src="./images/DMA-Schema-Migrate-Deploy-Complete.PNG" alt="DMA Schema migrate deploy complete" Width="600">
-8. Verify the table creation in Azure SQL DB.
+
+<img src="./images/Azure-Migrate-Schema-Deploy-Schema.PNG" alt="DMA Migrate schema deploy" Width="800">
+
+8. Wait till it complete its run. Verify errors.
+
+<img src="./images/DMA-Schema-Migrate-Deploy-Complete.PNG" alt="DMA Schema migrate deploy complete" Width="800">
+
+9. Verify the table creation in Azure SQL DB.
 - Access the Azure SQL DB 
 - Select the **Query editor**
 - Expand the **Tables**
 - Run a query to see if you have any data
-<img src="./images/DMA-Migration-Schema-Complete.PNG" alt="Verify Schema Migration" Width="500">
+
+<img src="./images/DMA-Migration-Schema-Complete.PNG" alt="Verify Schema Migration" Width="800">
+
 9. You are successfully migrated the SQL 2012 DB schema to Azure SQL DB.
 
 ### Task-6: Migrate SQL2012 Table Data to Azure SQL DB using DMA
@@ -265,18 +283,30 @@ In this hands-on lab, you will migrate 2012 SQL database to Azure PaaS SQL datab
 - Targent server type: **Azure SQL Database**
 - Migration scope: **Data only**
 - Click on **Create**
+
 <img src="./images/DMA-Migrate-Data-Project.PNG" alt="DMA Migrate Data Project" Width="200">
+
 3. Provide the source and the target database info. Same info used in the Schema migrate task.
+
 4. Select **Next** to reach 'Select Tables' section
+
 5. Make sure all the tables were selected and click on **Start data migration**
+
 <img src="./images/DMA-Data-Migrate-Select-All-Tables.PNG" alt="DMA Data Migration Select all Tables" Width="500">
+
 6. Watch the data migration progress and monitor the warnings and errors list.
+
 7. Make sure it successfully migrated the data to all tables.
+
 <img src="./images/DMA-Data-Migration-Complete.PNG" alt="DMA Data Migration complete" Width="600">
+
 8. Verify the data in Azure SQL DB
 - Search for 'SQL Databases' and Access you Azure SQL DB.
 - Select the 'Query Editor' and enter the username and password
 - Select HumanResources.Employee table and select top 1000 row option. You will see all the data in the table. Verify few other tables.
+
 <img src="./images/Azure-SQL-DB-Data-Migrate-Verify.PNG" alt="Azure SQL DB Data verification" Width="600">
+
 9. You successfully migrated the SQL 2012 database to Azure SQL PaaS Database. Pat yourself on your back!! Great Job!!
+
 10. You can migrate 1000's of databases using powershell scripts. Please reach us if you need help on this. 
