@@ -69,7 +69,7 @@ You should see a deployment screen with progress bar and a message **Your deploy
 
 ![Web Service Basic Tab](images/webapp-create-underway.JPG)
 
-This screen will transition to .. **Your deployment was successful..**.  There was no need to wait on this page, you could be doing something else on our portal and come back at a later time
+This screen will transition to .. **Your deployment was successful..**.  There is no need to wait on this page, you could be doing something else on our portal and come back at a later time.
 
 6. If everything was okay, you just successfully created a new 'App Service'. 
 
@@ -96,7 +96,7 @@ This screen will transition to .. **Your deployment was successful..**.  There w
  6. CONGRATULATIONS !! YOU JUST CREATED A WEB APPLICATION ON AZURE CLOUD
   
   
-## Step 5: What we have now is a sample web application that got deployed by Microsoft. Lets deploy our actual application!
+## Step 5: Now that our default web application that got deployed by Microsoft, lets deploy our actual application!
           
            
 1. In the Azure Portal, search for **App Services**
@@ -126,7 +126,7 @@ This screen will transition to .. **Your deployment was successful..**.  There w
 
 ![Web Service Basic Tab](images/app-service-deployment-pick-your-project.JPG)
 
-9. Select **Repo Name** , **Branch**
+9. Select **Repository Name** , **Branch**
 10. Click the **Continue** button
 
 ![Web Service Basic Tab](images/app-service-deployment-finish.JPG)
@@ -134,13 +134,15 @@ This screen will transition to .. **Your deployment was successful..**.  There w
 11. Click the **Finish** button
 ![Web Service Basic Tab](images/app-service-deployment-onway.JPG)
 12. Click the **log** button
+
 ![Web Service Basic Tab](images/app-service-check-deployment-logs.JPG)
 Make sure your logs show signs for a good deployment
 
-![Web Service Basic Tab](images/app-service-check-deployment-logs.JPG)
+![Web Service Basic Tab](images/app-service-deployment-successful.JPG)
 
 
-## Step 6: Our application got deployed. Let's proceed to set the configurations variables so that it can connect to either SQL Server, BLOB storage or SalesForce resource
+
+## Step 6: Our application got deployed. Let's proceed to set the configuration variables so that it can connect to LOB storage, SalesForce and SQL Server DB resource
 
 1. Go back and again Select our web application  
 3. You should be back on your new web app
