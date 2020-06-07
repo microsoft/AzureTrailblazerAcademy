@@ -132,12 +132,12 @@ This screen will transition to .. **Your deployment was successful..**.  There w
 ![Web Service Basic Tab](images/app-service-deployment-finish.JPG)
 
 11. Click the **Finish** button
-
+![Web Service Basic Tab](images/app-service-deployment-onway.JPG)
 12. Click the **log** button
 ![Web Service Basic Tab](images/app-service-check-deployment-logs.JPG)
 Make sure your logs show signs for a good deployment
 
-![Web Service Basic Tab](images/app-service-check-deployment-onway.JPG)
+![Web Service Basic Tab](images/app-service-check-deployment-logs.JPG)
 
 
 ## Step 6: Our application got deployed. Let's proceed to set the configurations variables so that it can connect to either SQL Server, BLOB storage or SalesForce resource
@@ -176,7 +176,7 @@ Make sure your logs show signs for a good deployment
 
 2. Click on **URL**
 
-![RG Basic Tab](images/app-service-happy.JPG)
+![RG Basic Tab](images/app-service-deployment-happy.JPG)
 
 3. Make sure you web applications renders and shows the connected message in your Web App.
 
