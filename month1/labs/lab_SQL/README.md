@@ -8,7 +8,7 @@ This hands-on lab will provide an experience to migrate 2012 SQL database to Azu
 
 - [Task-1: Create Virutal Machine with 2012 SQL database](#task-1-create-virutal-machine-with-2012-sql-database)
 
-- [Task-2: Restore a sample database, AdventureWorks from a backup](task-2-restore-a-sample-database-adventureworks-from-a-backup)
+- [Task-2: Restore a sample database AdventureWorks from a backup](task-2-restore-a-sample-database-adventureworks-from-a-backup)
 
 - [Task-3: Create Azure SQL PaaS Database](task-3-create-azure-sql-paas-database)
 
@@ -63,7 +63,7 @@ This hands-on lab will provide an experience to migrate 2012 SQL database to Azu
 - Make sure you have green check for the **validation passed** and Click on **Create** button
 - Wait till your deployment is complete and see 'Go To Resource' button
 
-### Task-2: Restore a sample database, AdventureWorks from a backup
+### Task-2: Restore a sample database AdventureWorks from a backup
 1. Access the Virtual Machine (VM) from your environment.
 - Select 'Go to resource' to access Virtual Machine server config
 - Select 'Connect' and 'RDP' 
