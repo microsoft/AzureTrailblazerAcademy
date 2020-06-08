@@ -399,4 +399,45 @@ You should have a copy of the database backup to complete this exercise. Please 
     ```
 <img src="./images/SQL-DDM-MaskedCreditCardNumbers.PNG" alt="Masked Credit card numbers from the query" width="600">
 
-    > The `CardNumber` is now displayed using the mask applied to it, so only the last four digits of the card number are visible. Dynamic Data Masking is a powerful feature that enables you to prevent unauthorized users from viewing sensitive or restricted information. It's a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields, while the data in the database is not changed.
+- The `CardNumber` is now displayed using the mask applied to it, so only the last four digits of the card number are visible. Dynamic Data Masking is a powerful feature that enables you to prevent unauthorized users from viewing sensitive or restricted information. It's a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields, while the data in the database is not changed.
+
+### Task 2: Apply DDM to email addresses
+In this task, you use one of the built-in functions for making email addresses using DDM to help protect this information.
+
+1. For this, you target the `LoginEmail` field in the `[Person].[EmailAddress]` table. Open a new query window and execute the following script:
+
+    ```sql
+
+    SELECT TOP (1000) * FROM [Person].[EmailAddress]
+    ```
+<img src="./images/SQL-DDM-EmailAddress-PNG" alt="results showing email adresses" Width="800">
+
+2. Now, as you did above, grant the `DDMUser` `SELECT` rights on the [Person].[EmailAddress]. In a new query window and enter the following script, and then select **Run**:
+
+   ```sql
+ 
+   GRANT SELECT ON [Person].[EmailAddress] to DDMUser;
+   ```
+
+3. Next, apply DDM on the `EmailAddress` field to prevent it from being viewed in full in query results. Select **New Query** from the QueryEditor toolbar and paste the following query into the query window to apply a mask to the `EmailAddress` field, and then select **Run**.
+
+   ```sql
+
+   ALTER TABLE [Person].[EmailAddress]
+   ALTER COLUMN [EmailAddress] NVARCHAR(250) MASKED WITH (FUNCTION = 'Email()');
+   ```
+
+   > **Note**: Observe the use of the built-in `Email()` masking function above. This is one of several pre-defined masks available in SQL Server databases.
+<img src="./images/SQL-DDM-Mask-Email-Address.PNG" alt="Execute Query to mask EmailAddress" Width="800">
+
+4. Run the `SELECT` query below, and observe the results. Specifically, inspect the output in the `EmailAddress` field. For reference, the query is below.
+
+    ```sql
+    
+    EXECUTE AS USER = 'DDMUser';
+    SELECT TOP (1000) * FROM [Person].[EmailAddress];
+    REVERT;
+    ```
+<img src="./images/SQL-DDM-Masked-Email-Addresses.PNG" alt="displaying query results with maksed email addresses" Width="800" >
+
+5. Congratulations! You are successfully masked the PII (Personally Identifiable Information) data!!
