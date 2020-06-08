@@ -14,15 +14,15 @@ The Azure NetApp Files service is an enterprise-class, high-performance, file st
 
 ### Step-2: Create ANF Storage account
 - In the Azure portal’s search box, enter Azure NetApp Files and then select Azure NetApp Files from the list that appears.
-<img src="./images/Storage-Account.PNG" alt="Create Storage Account" width="400">
+<img src="./images/Storage-Account.png" width="400">
 
 ### Step-3: Click **+ Add** to create a new NetApp account
-<img src="./images/Add-Account.PNG" alt="Create New Storage Account" width="400">
+<img src="./images/Add-Account.png" width="400">
 
 ### Step-4: Enter the Info Below
 In the New NetApp Account window, provide the following information:
 
-<img src="./images/Account-Info.PNG" alt="Enter Account Info" width="400">
+<img src="./images/Account-Info.png" alt="Enter Account Info" width="400">
 
 Enter **myaccount1** for the account name.
 
@@ -31,7 +31,7 @@ Select your subscription.
 
 Select Create new to create new resource group. 
 
-<img src="./images/Resource-Group.PNG" alt="Create RG" width="400">
+<img src="./images/Resource-Group.png" alt="Create RG" width="400">
 
 Enter **Ata-labname-username-RG** for the resource group name. Click OK.
 
@@ -48,13 +48,13 @@ Hit **Create** button.
 ### Step-1: Provision a Capacity Pool to Contain Your Volumes
 
 From the Azure NetApp Files management blade, select your NetApp account (**myaccount1**)
-<img src="./images/Myaccount1.PNG" alt="Select Account" width="400">
+<img src="./images/Myaccount1.png" alt="Select Account" width="400">
 
 From the Azure NetApp Files management blade of your NetApp account, click **Capacity pools**
-<img src="./images/Select-Capacity-Pool.PNG" alt="Select Capacity Pool" width="400">
+<img src="./images/Select-Capacity-Pool.png" alt="Select Capacity Pool" width="400">
 
 Click **+ Add pools**
-<img src="./images/Create-Capacity-Pool.PNG" alt="Create Capacity Pool" width="400">
+<img src="./images/Create-Capacity-Pool.png" alt="Create Capacity Pool" width="400">
 
 Provide information for the capacity pool:
 
@@ -69,10 +69,10 @@ Click **OK**
 ###Step-2: Create a NFS Volume to Conatin Your Data
 
 From the Azure NetApp Files management blade of your NetApp account, click **Volumes**
-<img src="./images/Select-Volume.PNG" alt="Select Volume" width="400">
+<img src="./images/Select-Volume.png" alt="Select Volume" width="400">
 
 Click **+ Add volume**
-<img src="./images/Add-Volume.PNG" alt="Add Volume" width="400">
+<img src="./images/Add-Volume.png" alt="Add Volume" width="400">
 
 
 In the Create a Volume window, provide information for the volume:
@@ -87,7 +87,7 @@ Use the **default value** for quota.
 
 Under **virtual network**, click **Create new** to create a new Azure virtual network (Vnet). 
 
-<img src="./images/Create-VNet.PNG" alt="Create VNet" width="400">
+<img src="./images/Create-VNet.png" alt="Create VNet" width="400">
 
 
 Then fill in the following information:
@@ -106,7 +106,7 @@ Click **OK** to create the Vnet.
 
 
 Click **Protocol**, from the Top Selection 
-<img src="./images/Protocol.PNG" alt="Protocol" width="400">
+<img src="./images/Protocol.png" alt="Protocol" width="400">
 
 Select **NFS** as the protocol type for the volume
 
@@ -116,10 +116,10 @@ Select the NFS version **NFSv3**
 
 
 Click the **Review + Create Buttom** at the bottom
-<img src="./images/Review-Create.PNG" alt="Review+Create" width="400">
+<img src="./images/Review-Create.png" alt="Review+Create" width="400">
 
 
 Finally Click the **Create Button**
-<img src="./images/Create-Volume.PNG" alt="Create Volume" width="400">
+<img src="./images/Create-Volume.png" alt="Create Volume" width="400">
 
 
