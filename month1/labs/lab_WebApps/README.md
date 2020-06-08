@@ -152,7 +152,7 @@ This screen will transition to .. **Your deployment was successful..**.  There i
 
 4. Go down on your left to the  **Settings** section, then  click on  **Configuration**
 
-![Config Tab](images/app-service-deployment-configuration.JPG)
+![Config Tab](images/app-service-goto-settings.JPG)
 
 5. You should see options to different web settings
 
