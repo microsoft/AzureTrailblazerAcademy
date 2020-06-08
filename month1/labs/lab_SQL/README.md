@@ -343,7 +343,11 @@ You should have a copy of the database backup to complete this exercise. Please 
 ## Lab-3: Adding Data Security to your databases
 - In this exercise, you enable [Dynamic Data Masking (DDM)](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) on credit card numbers in the Azure SQL database. DDM limits sensitive data exposure by masking it to non-privileged users. This feature helps prevent unauthorized access to sensitive data by enabling customers to designate how much of the sensitive data to reveal with minimal impact on the application layer. It is a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields, while the data in the database is not changed.
 
-### Task 1: Enable DDM on credit card numbers
+### Tasks:
+- [Task-1: Enable DDM on credit card numbers](task-1-enable-ddm-on-credit-card-numbers)
+- [Task-2: Apply DDM to email addresses](task-2-apply-ddm-to-email-addresses)
+
+### Task-1: Enable DDM on credit card numbers
  In this task, you will protect the Create Card information by enabling DDM on the `CardNumber` field in the `CreditCard` table. DDM prevents queries against that table from returning the full credit card number.
 
 1. Access your Azure SQL database in the Azure Portal.
@@ -401,7 +405,7 @@ You should have a copy of the database backup to complete this exercise. Please 
 
 - The `CardNumber` is now displayed using the mask applied to it, so only the last four digits of the card number are visible. Dynamic Data Masking is a powerful feature that enables you to prevent unauthorized users from viewing sensitive or restricted information. It's a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields, while the data in the database is not changed.
 
-### Task 2: Apply DDM to email addresses
+### Task-2: Apply DDM to email addresses
 In this task, you use one of the built-in functions for making email addresses using DDM to help protect this information.
 
 1. For this, you target the `LoginEmail` field in the `[Person].[EmailAddress]` table. Open a new query window and execute the following script:
@@ -410,7 +414,7 @@ In this task, you use one of the built-in functions for making email addresses u
 
     SELECT TOP (1000) * FROM [Person].[EmailAddress]
     ```
-<img src="./images/SQL-DDM-EmailAddress-PNG" alt="results showing email adresses" Width="800">
+<img src="./images/SQL-DDM-EmailAddress.PNG" alt="results showing email adresses" Width="800">
 
 2. Now, as you did above, grant the `DDMUser` `SELECT` rights on the [Person].[EmailAddress]. In a new query window and enter the following script, and then select **Run**:
 
