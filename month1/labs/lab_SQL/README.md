@@ -8,6 +8,8 @@ It is a common need among all compnaies to move databases to the cloud. Azure pr
 
 - [Lab-2: Migrate SQL 2012 Database to Azure SQL PaaS Database](#lab-2-migrate-sql-2012-database-to-azure-sql-paas-database) 
 
+- [Lab-3: Adding Data Security to your databases](#lab-3-adding data-security-to-your-databases)
+
 
 ## Lab-1: Restore On-premises SQL Database to an Azure VM
 This hands-on lab will provide an experience to restore an on-premises database to Azure VM.
@@ -334,6 +336,67 @@ You should have a copy of the database backup to complete this exercise. Please 
 
 <img src="./images/Azure-SQL-DB-Data-Migrate-Verify.PNG" alt="Azure SQL DB Data verification" Width="950">
 
-9. You successfully migrated the SQL 2012 database to Azure SQL PaaS Database. Pat yourself on your back!! Great Job!!
+9. Congratulations!! You successfully migrated the SQL 2012 database to Azure SQL PaaS Database. Pat yourself on your back!! Great Job!!
 
 10. You can migrate 1000's of databases using powershell scripts. Please reach us if you need help on this. 
+
+## Lab-3: Adding Data Security to your databases
+- In this exercise, you enable [Dynamic Data Masking (DDM)](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) on credit card numbers in the Azure SQL database. DDM limits sensitive data exposure by masking it to non-privileged users. This feature helps prevent unauthorized access to sensitive data by enabling customers to designate how much of the sensitive data to reveal with minimal impact on the application layer. It is a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields, while the data in the database is not changed.
+
+### Task 1: Enable DDM on credit card numbers
+ In this task, you will protect the Create Card information by enabling DDM on the `CardNumber` field in the `CreditCard` table. DDM prevents queries against that table from returning the full credit card number.
+
+1. Access your Azure SQL database in the Azure Portal.
+- Select Query Editor from the laft pane. 
+
+2. Expand **Tables** and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
+
+<img src="./images/SQL-DDM-CreditCard-Top1000Rows.PNG" alt="The Select Top 1000 Rows item is highlighted in the context menu for the Sales.CreditCard table." Width="800">
+
+3. Execute the query, review the Results, including the `CardNumber` field. Notice it is displayed in plain text, making the data available to anyone with access to query the database.
+<img src="./images/SQL-DDM-ExecuteCardQuery.PNG" alt="Plain text credit card numbers are highlighted in the query results." Width="800">
+
+4. To be able to test the mask being applied to the `CardNumber` field, you first create a user in the database to use for testing the masked field. In the Query Editor, select **New Query** and paste the following SQL script into the new query window:
+
+   ```sql
+   CREATE USER DDMUser WITHOUT LOGIN;
+   GRANT SELECT ON [Sales].[CreditCard] TO DDMUser;
+   ```
+
+   > The SQL script above creates a new user in the database named `DDMUser`, and grants that user `SELECT` rights on the `Sales.CreditCard` table.
+
+<img src"./images/SQL-DDM-Create-User.PNG" alt="Create DDM user to view CreditCard table" Width="800">
+
+5. Select **Run** from the Query Editor toolbar to execute the query. You will get a message that the commands completed successfully in the Messages pane.
+
+6. With the new user created, run a quick query to observe the results. Select **New Query** again, and paste the following into the new query window.
+
+   ```sql
+   EXECUTE AS USER = 'DDMUser';
+   SELECT * FROM [Sales].[CreditCard];
+   REVERT;
+   ```
+
+7. Select **Run** from the toolbar and examine the Results pane. Notice the credit card number, as above, is visible in plain text.
+
+<img src="./images/SQL-DDM-CreditCard-plainText.PNG" alt="Query showing unmasked credit card numbers" Width="600">
+
+8. You now apply DDM on the `CardNumber` field to prevent it from being viewed in query results. Select **New Query** from the QueryEditor toolbar and paste the following query into the query window to apply a mask to the `CardNumber` field, and select **Run**.
+
+   ```sql
+
+   ALTER TABLE [Sales].[CreditCard]
+   ALTER COLUMN [CardNumber] NVARCHAR(25) MASKED WITH (FUNCTION = 'partial(0,"xxx-xxx-xxx-",4)')
+   ```
+
+9. Run the `SELECT` query you opened in step 6 above again, and observe the results. Specifically, inspect the output in the `CardNumber` field. For reference, the query is below.
+
+    ```sql
+
+    EXECUTE AS USER = 'DDMUser';
+    SELECT * FROM [Sales].[CreditCard];
+    REVERT;
+    ```
+<img src="./images/SQL-DDM-MaskedCreditCardNumbers.PNG" alt="Masked Credit card numbers from the query" width="600">
+
+    > The `CardNumber` is now displayed using the mask applied to it, so only the last four digits of the card number are visible. Dynamic Data Masking is a powerful feature that enables you to prevent unauthorized users from viewing sensitive or restricted information. It's a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields, while the data in the database is not changed.
