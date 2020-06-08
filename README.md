@@ -14,7 +14,7 @@ In this repository you will find the content and labs you will need to complete 
 
 ## Sessions
 
-### [**Month 1**: Azure Fundamentals, IaaS and WebApps](./README.md)
+### [**Month 1**: Azure Fundamentals, IaaS and WebApps](./month1/labs)
 
 Learn the basics of Azure, the difference between Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) and build a web application from scratch using Azure native services.
 

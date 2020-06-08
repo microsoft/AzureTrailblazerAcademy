@@ -7,7 +7,7 @@
 $dscConfig = @{
   "wmfVersion" = "latest";
   "configuration" = @{
-    "url" = "https://raw.githubusercontent.com/microsoft/AzureTrailblazerAcademy/master/month1/labs/lab_IaaS/scripts/dsc.zip";
+    "url" = "https://github.com/microsoft/AzureTrailblazerAcademy/blob/master/month1/labs/lab_IaaS/scripts/DSC.zip?raw=true";
     "script" = "configure-http.ps1";
     "function" = "WebsiteTest";
   };
@@ -31,7 +31,6 @@ $vmss = Add-AzVmssExtension `
 Update-AzVmss `
     -ResourceGroupName "$RGName" `
     -Name "$ScaleSetName"  `
-$vmss = Add-AzVmssExtension `
     -VirtualMachineScaleSet $vmss
 
 Update-AzVmssInstance -ResourceGroupName $RGName -VMScaleSetName $ScaleSetName -InstanceId *

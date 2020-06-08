@@ -14,7 +14,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;​Cores: 4  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Disks: 250GB
 
-![IaaS Diagram](images/IaaS.PNG)
+<img src="./images/IaaS.PNG" alt="IaaS Diagram"  Width="600">
 
 # Architecture PaaS Scenario II
 
@@ -33,7 +33,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;​Cores: 4  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Disks: 250GB
 
-![PaaS Diagram](images/PaaS.PNG)
+<img src="./images/PaaS.PNG" alt="PaaS Diagram"  Width="600">
 
 # Cost Management Scenerio  
 Export a report meeting the following requirements:
