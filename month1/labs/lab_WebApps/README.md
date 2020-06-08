@@ -14,10 +14,10 @@
 2. Click on the **Add** button
 3. Fill out the **Basics** tab as follows:
 - **Subscription:** Choose your subscription
-- **Resource group:** Provide a unique name like **<initial>-ata-rg
+- **Resource group:** Provide a unique name like **ata-webapp-username-rg**
 - **Region:** EastUS
 
-![RG Basic Tab](images/rg-basics.jpg)  
+![RG Basic Tab](images/app-service-create-resource-group.JPG)  
 
 4. Click the **Next: Review + Create** button
 5. Click the **Create** button
