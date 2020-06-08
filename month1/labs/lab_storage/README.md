@@ -167,27 +167,7 @@ Hit 'create' button.
 
 <img src="./images/DataShare-Create-Deployment-complete.PNG" alt="Data Share Deployment complete" Width="500">
 
-### Step-2: Add Owner and Contributor roles to the Data Share for the blob storage account
-- Access the Storage Account Service  
-- Select the blob storage account (atastorageblob\<YourName\>).
-- Select "Access Control (IAM)" from the left blade.
-- Click on "Create role" button. It will pop up Add role window.
-
-<img src="./images/Storage-Access-Mgmt.PNG" alt="Access Control" height="400">
-
-- Add Owner role to the data share. 
-- Select "Owner" role from the dropdown. 
-- Select the data share by typing "ata-data-share-\<YourName\>".
-- Click on "Save" button.
-
-<img src="./images/DataShare-Storage-Owner-save.PNG" alt="Create Owner Role" height="500">
-
-- Add Contributor role to the data share.
-- Select "Contributor" role from the dropdown. 
-- Select data sahre by typing "ata-data-share-\<YourName\>".
-- Click on "Save" button.
-
-### Step-3: Add Data Sets to the data share
+### Step-2: Add Data Sets to the data share
 - access the data share service
 - Select 'Start Sharing your data' from the left blade
 
@@ -228,7 +208,7 @@ Hit 'create' button.
   Displays the created data set.
 - Click on "Continue"
 
-### Step-4: Add Recipient to the data share
+### Step-3: Add Recipient to the data share
 - Recipients Tab:
 - Click on "Add Recipient" 
 - Enter your personal email address
@@ -323,10 +303,42 @@ Hit 'create' button.
 <img src="./images/DataShare-Consumer-Enable-Snapshot.PNG" alt="Enable 
 snapshots" Width="300">
 
-### Step-8: Trigger Snapshot
+### Step-8: Trigger Full Copy Snapshot
 - Select Details tab
 - Select 'Full Copy' from the 'Trigger snapshot' dropdown
 <img src="./images/DataShare-Consumer-Trigger-Snapshot.PNG" alt="Trigger full copy" Width="300">
 - You should see 'Queued' as the 'last run status'
+- Wait till you see 'Succeeded' with a green check mark as the 'Last run status'.
+
+### Step-9 Access the shared data
+- Select Datasets tab
+- Scroll to the right most to see 'PATH' for the dataset.
+- click on the dataset path (link) to access the storage.
+- <img src="./images/Data-Share-Consumer-get-DataSet.PNG" alt="Access Detaset Path link" Width="800">
+- It takes you to the blob storage account.
+- You can verify the shared data under blob container.
+<img src="./images/Data-Share-Consumer-Blob-Storage-File.PNG" alt="Verify the shared data" Width="800">
+
+### Step-10 Upload additional data to the source storage
+- Acess the Source Data Share 
+- Select 'Sent Shares' and 'DataSets' tab
+- Click on the blob storage path
+- Select the Storage Explorer and access the container 
+- Upload another image to the source blob container
+<img src="./images/Data-Share-Source-Add-image.PNG" alt-"Source add image" Width="800">
+
+### Step-10 Trigger Incremental Copy Snapshot
+- Select Details Tab
+- Select 'Incremental Copy' from the 'Trigger snapshot' dropdown
+- You should see 'Queued' as the 'last run status'
+- Wait till you see 'Succeeded' with a green check mark as the 'last run status'
+- Select Datasets tab
+- Click on the dataset path to access the storage.
+- Access the blob container and verify the incremental load
+<img src="./images/Data-Share-Consumer-Receive-Incremental.PNG" alt="Receive incremental data" Width="800">
+
+- You have successfully consumed the full and incremental shared data from your partner! Congratulations!
+- You can use this data to build business analytics, PowerBI reports, Machine Learning Models etc.
+
 
 
