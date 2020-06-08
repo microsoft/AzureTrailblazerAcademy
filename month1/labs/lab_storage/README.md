@@ -21,7 +21,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - select "Storage accounts" service. 
 Hit 'create' button.
 
-<img src="./images/Create-storage-account.PNG" alt="Create Storage Account" width="400">
+<img src="./images/Create-storage-account.PNG" alt="Create Storage Account" width="600">
 
 - Create a new resource group.
     Select 'Create new' under 'Resource group' section. 
@@ -44,18 +44,18 @@ Hit 'create' button.
     Wait till you see 'Your deployment is complete'.
     Select 'go to resource' button when you see it.
 
-    <img src="./images/Deploy-complete-blob-storage.PNG" alt="blob storage Deploy complete" width="400">
+    <img src="./images/Deploy-complete-blob-storage.PNG" alt="blob storage Deploy complete" width="600">
 
 ### Step-2 Create container
 
 - Select the 'containers' link from the available storage options in the middle of the page.
 
-    <img src="./images/CreateBlobContainer.PNG" alt="Storage Review" width="400">
+    <img src="./images/CreateBlobContainer.PNG" alt="Storage Review" width="600">
 - Create a new container.
     Select the 'plus' sign next to container to add a new container
     'New container' window pops up and enter the name 'atablob-yourname'
 
-    <img src="./images/Complete-create-blob-container.PNG" alt="Storage Review" width="400">
+    <img src="./images/Complete-create-blob-container.PNG" alt="Storage Review" width="600">
 
 ### Step-3 Upload image to Blob container
 - Access Storage Explorer.
@@ -64,7 +64,7 @@ Hit 'create' button.
     Select upload button.
     Browse the local data and upload an image.
 
-    <img src="./images/blob-upload-image.PNG" alt="blob-upload-image" width="200"> 
+    <img src="./images/blob-upload-image.PNG" alt="blob-upload-image" width="400"> 
 
 ## Lab-2: How to load log files into Data Lake Storage?
 
@@ -73,7 +73,7 @@ Hit 'create' button.
     Select "create a resource" and select "Storage accounts" service. 
 Hit 'create' button.
 
-<img src="./images/Create-storage-account.PNG" alt="Create Storage Account" width="400">
+<img src="./images/Create-storage-account.PNG" alt="Create Storage Account" width="600">
 
 - Select the resource group.
     Select the existing resource group "ata-storage-lab-Name-rg" from the dropdown menu. 
@@ -85,13 +85,13 @@ Hit 'create' button.
 - Select the 'Networking' button.
     Make sure you have completed all the entries high lighted in the diagram. All the above steps are similar to the blob storage creation but you need select 'Networking' to turn on the hierarchical feature.
     
-    <img src="./images/ADLSGen2_Networking.PNG" alt="Storage Review" width="600">
+    <img src="./images/ADLSGen2_Networking.PNG" alt="Storage Review" width="800">
 - Networking Options: 
     Leave the defaults and select the 'Advanced' button 
 - Advanced Options:
     Enable the 'hierarchical' option under ADLSGen2 option and select 'Review + Create' button.
     
-    <img src="./images/ADLSGen2HierarchichalOption.PNG" alt="ADLSGen2 Hierarchichal Option" width="600">
+    <img src="./images/ADLSGen2HierarchichalOption.PNG" alt="ADLSGen2 Hierarchichal Option" width="800">
 
 - Select 'Create' button. 
     Make sure you have the green check mark next to 'Validation Passed'. You are good to create the Data Lake Storage! Hit the 'Create' button. 
@@ -100,18 +100,18 @@ Hit 'create' button.
     Wait till you see 'Your deployment is complete'.
     Select 'go to resource' button when you see it.
 
-    <img src="./images/ADLS-Deploy-Complete.PNG" alt="ADLSGen2 Hierarchichal Option" width="400">
+    <img src="./images/ADLS-Deploy-Complete.PNG" alt="ADLSGen2 Hierarchichal Option" width="800">
 
 ### Step-2 Create container
 - Select container
     Select the 'containers' link from the available storage options in the middle of the page.
 
-    <img src="./images/CreateBlobContainer.PNG" alt="Storage Review" width="400">
+    <img src="./images/CreateBlobContainer.PNG" alt="Storage Review" width="800">
 - Create a new container.
     Select the 'plus' sign next to container to add a new container.
     'New container' window popsup and enter the name 'adlsgen2filesystem(YourName)'.
 
-    <img src="./images/ADLSGen2-Container-Complete.PNG" alt="Storage Review" width="400">
+    <img src="./images/ADLSGen2-Container-Complete.PNG" alt="Storage Review" width="800">
 
 ### Step-3 Upload a folder to the Datalake
 - Access Storage Explorer.
@@ -123,17 +123,17 @@ Hit 'create' button.
 - Install Storage Explorer.
     Install the Storage Explorer on your system.
     Access the Datalake Storage you just created.
-<img src="./images/StorageExplorer_UploadFolder.PNG" alt="blob-upload-image" width="400">
+<img src="./images/StorageExplorer_UploadFolder.PNG" alt="blob-upload-image" width="800">
 
 - Upload the data files.
     Browse the local folder and upload all the files.
 
-    <img src="./images/ADLSGen2UploadComplete.PNG" alt="blob-upload-image" width="400">
+    <img src="./images/ADLSGen2UploadComplete.PNG" alt="blob-upload-image" width="800">
 
 ## Lab-3: How to share Files between the organizations?
 
 ### Architecture
-<img src="./images/Data-Share-Lab-Architecture.PNG" alt="datashare lab architecture" Width="400">
+<img src="./images/Data-Share-Lab-Architecture.PNG" alt="datashare lab architecture" Width="800">
 
 ### Prerequisites
 - Two Azure Subscriptions with Company and Personal emails.
@@ -148,7 +148,7 @@ Hit 'create' button.
     Select "create a resource" and select "Data Share" service.
     Hit 'create' button.
 
-<img src="./images/Create-Data_Share.PNG" alt="Create Data Share" Width="300">
+<img src="./images/Create-Data_Share.PNG" alt="Create Data Share" Width="600">
 
 - Create Data Share options:
 - Resource Group: Select 'ata-storage-lab-(YourName)-rg" from the dropdown
@@ -165,7 +165,7 @@ Hit 'create' button.
     You will see "Go to Resource" button when it is done.
     Click to "Go to Resource" to access the Data Share you just created.
 
-<img src="./images/DataShare-Create-Deployment-complete.PNG" alt="Data Share Deployment complete" Width="500">
+<img src="./images/DataShare-Create-Deployment-complete.PNG" alt="Data Share Deployment complete" Width="600">
 
 ### Step-2: Add Data Sets to the data share
 - access the data share service
@@ -189,7 +189,7 @@ Hit 'create' button.
 - Datasets Tab:
 - Set the snapshot schedule
 - Activate the snapshots
-<imp src="./images/DataShare-Source-set-snapshots.PNG" alt="set snapshot" Width="300">
+<imp src="./images/DataShare-Source-set-snapshots.PNG" alt="set snapshot" Height="300">
 - Click on "Add Datasets" button
 - Select blob storage as the data type
 - Click on "next"
@@ -214,16 +214,16 @@ Hit 'create' button.
 - Enter your personal email address
 - Click on Continue
 
-<img src="./images/DataShare-SentShares-add-Recipient.PNG" alt="add recipient" Width="300">
+<img src="./images/DataShare-SentShares-add-Recipient.PNG" alt="add recipient" Width="600">
 
 - Ignore Snapshot schedule and click on "Continue"
 - Click on Create 
 
-<img src="./images/DataShare-review-Sent-Share.PNG" alt="Review and create sent shares" Width="400">
+<img src="./images/DataShare-review-Sent-Share.PNG" alt="Review and create sent shares" Width="800">
 
 - Creates sent share 
 
-<img src="./images/DataShare-SentShare-Complete.PNG" alt="Create Sent Sharecomplete" Width="400">
+<img src="./images/DataShare-SentShare-Complete.PNG" alt="Create Sent Sharecomplete" Width="800">
 
 - Your Azure Data Share has now been created and the recipient of your Data Share is now ready to accept your invitation.
 
@@ -238,7 +238,7 @@ Hit 'create' button.
 - Select 'East US' as the Region
 - Click on 'Review + create' button
 - Click 'Create' 
-<img src="./images/DataShare-Consumer-RG.PNG" alt="Resource Group create" Width="400">
+<img src="./images/DataShare-Consumer-RG.PNG" alt="Resource Group create" Width="800">
 
 ### Step-2: Create Storage Destination
 - Type 'Storage accounts' in the search bar
@@ -248,22 +248,22 @@ Hit 'create' button.
 - Location: East US
 - Default Option for Rest
 - Click on 'Review + create'
-<img src="./images/ata-datashare-consumer-blob-create.PNG" alt="Consumer blob create" Width="400">
+<img src="./images/ata-datashare-consumer-blob-create.PNG" alt="Consumer blob create" Width="800">
 - Click on 'Create' When you a green check mark
 
 ### Step-3: Accept Data Share invitation
 - Search for Data Share Invitations
-<img src="./images/DataShare-Consumer-Invitation.PNG" alt="Data Share Invitation" Width="300">
+<img src="./images/DataShare-Consumer-Invitation.PNG" alt="Data Share Invitation" Width="600">
 - Select the invitation
-<img src="./images/DataShare-Consumer-InvitationList.PNG" alt="Data Share Invitation" Width="300"> 
+<img src="./images/DataShare-Consumer-InvitationList.PNG" alt="Data Share Invitation" Width="600"> 
 
 ### Step-4: Create Data Share Account
 - Check mark to Agree Terms
 - Select the resource group
 - Create a new Data Share
-<img src="./images/DataShare-Consumer-Create.PNG", alt="Create Data Share" Width="200">
+<img src="./images/DataShare-Consumer-Create.PNG", alt="Create Data Share" Height="300">
 - Click on 'Accept & Configure'
-<img src="./images/DataShare-Consumer-Accept.PNG" alt-"Accept and Agree" Width-"300">
+<img src="./images/DataShare-Consumer-Accept.PNG" alt-"Accept and Agree" Height-"300">
 
 ### Step-5 Add Contributor Role to Blob Storage
 - Select the storage account
@@ -273,7 +273,7 @@ Hit 'create' button.
 - Select 'contributor' role from the dropdown
 - Select the data share by typing its name
 - Click on 'Save'
-<img src="./images/DataShare-Consumer-Blob-Contributor.PNG" alt="add contributor role" Width="300">
+<img src="./images/DataShare-Consumer-Blob-Contributor.PNG" alt="add contributor role" Width="600">
 
 ### Step-6 Map Data Share to blob storage target
 - Access the Data Share by typing ' Data Share' in the Search bar
@@ -283,7 +283,7 @@ Hit 'create' button.
 - Select 'Details' tab
 - Check the box to select the share to map 
 - Select 'Map to Target' 
-<img src="./images/DataShare-Consumer-MapToTarget.PNG" alt="Map to Target" Width="300">
+<img src="./images/DataShare-Consumer-MapToTarget.PNG" alt="Map to Target" Width="600">
 - Brings up 'Map datasets to target' screen
 - Target data type: Azure Blob Storage
 - Subscriptions: Select Yours
@@ -291,9 +291,9 @@ Hit 'create' button.
 - Storage accounts: Select Blob Storage
 - Container Name:'shipimages'
 - Click on 'Map to Target'
-<img src="./images/DataShare-Consumer-Blob-MapToTarget.PNG" alt="blob map to target" Width="300">
+<img src="./images/DataShare-Consumer-Blob-MapToTarget.PNG" alt="blob map to target" Width="600">
 - Completes the mapping process
-<img src="./images/DataShare-Mapping-complete.PNG" alt="Mapping Complete" Width="300">
+<img src="./images/DataShare-Mapping-complete.PNG" alt="Mapping Complete" Width="600">
 
 ### Step-7: Enable Snapshot Schedule
 - Select Received Shares
@@ -301,12 +301,12 @@ Hit 'create' button.
 - Check the box to select the schedule
 - Click on Enable 
 <img src="./images/DataShare-Consumer-Enable-Snapshot.PNG" alt="Enable 
-snapshots" Width="300">
+snapshots" Width="600">
 
 ### Step-8: Trigger Full Copy Snapshot
 - Select Details tab
 - Select 'Full Copy' from the 'Trigger snapshot' dropdown
-<img src="./images/DataShare-Consumer-Trigger-Snapshot.PNG" alt="Trigger full copy" Width="300">
+<img src="./images/DataShare-Consumer-Trigger-Snapshot.PNG" alt="Trigger full copy" Width="800">
 - You should see 'Queued' as the 'last run status'
 - Wait till you see 'Succeeded' with a green check mark as the 'Last run status'.
 
@@ -314,7 +314,9 @@ snapshots" Width="300">
 - Select Datasets tab
 - Scroll to the right most to see 'PATH' for the dataset.
 - click on the dataset path (link) to access the storage.
-- <img src="./images/Data-Share-Consumer-get-DataSet.PNG" alt="Access Detaset Path link" Width="800">
+
+<img src="./images/Data-Share-Consumer-get-DataSet.PNG" alt="Access Detaset Path link" Width="800">
+
 - It takes you to the blob storage account.
 - You can verify the shared data under blob container.
 <img src="./images/Data-Share-Consumer-Blob-Storage-File.PNG" alt="Verify the shared data" Width="800">
