@@ -1,4 +1,4 @@
-# Azure WebApps Lab  (Robin Ghosh)
+# Azure WebApps Lab
 
 ## Prerequisites
 
