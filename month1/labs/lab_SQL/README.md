@@ -8,7 +8,7 @@ It is a common need among all compnaies to move databases to the cloud. Azure pr
 
 - [Lab-2: Migrate SQL 2012 Database to Azure SQL PaaS Database](#lab-2-migrate-sql-2012-database-to-azure-sql-paas-database) 
 
-- [Lab-3: Adding Data Security to your databases](#lab-3-adding data-security-to-your-databases)
+- [Lab-3: Adding Data Security to your databases](#lab-3-adding-data-security-to-your-databases)
 
 
 ## Lab-1: Restore On-premises SQL Database to an Azure VM
