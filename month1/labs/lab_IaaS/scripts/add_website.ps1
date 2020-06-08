@@ -31,7 +31,6 @@ $vmss = Add-AzVmssExtension `
 Update-AzVmss `
     -ResourceGroupName "$RGName" `
     -Name "$ScaleSetName"  `
-$vmss = Add-AzVmssExtension `
     -VirtualMachineScaleSet $vmss
 
 Update-AzVmssInstance -ResourceGroupName $RGName -VMScaleSetName $ScaleSetName -InstanceId *
