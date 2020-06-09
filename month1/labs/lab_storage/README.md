@@ -71,11 +71,11 @@ Share structured and unstructured data from multiple Azure data stores with othe
 
 ## Lab-2: How to load structure and unstructured files into Data Lake Storage?
 - This lab provides an experience to load structured and unstructured data files into the data lake store for big data analysis. This provides advantage over Hadoop systems by seperating the storage from compute while providing a better durability without having to store 3 copies of the same data.   
-- [Step-1: Create Azure Data Lake Storage Gen2](#step-1-create-azure-data-lake-storage-gen2)
-- [Step-2: Create a container](#step-2-create-a-container)
-- [Step-3: Upload a folder to the Datalake](#step-3-pload-a-folder-to-the-datalake)
+- [Task-1: Create Azure Data Lake Storage Gen2](#task-1-create-azure-data-lake-storage-gen2)
+- [Task-2: Create a container](#step-2-create-a-container)
+- [Task-3: Upload a folder to the Datalake](#task-3-upload-a-folder-to-the-datalake)
 
-### Step-1: Create Azure Data Lake Storage Gen2
+### Task-1: Create Azure Data Lake Storage Gen2
 1. Login to Azure Portal (https://portal.azure.com). 
 - Select "create a resource" and select "Storage accounts" service. 
 - Click on 'create' button.
@@ -108,7 +108,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 
 <img src="./images/ADLS-Deploy-Complete.PNG" alt="ADLSGen2 Hierarchichal Option" width="600">
 
-### Step-2: Create a container
+### Task-2: Create a container
 1 Select the 'containers' link from the available storage options in the middle of the page.
 
 <img src="./images/CreateBlobContainer.PNG" alt="Storage Review" Width="600">
@@ -119,7 +119,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 
 <img src="./images/ADLSGen2-Container-Complete.PNG" alt="Storage Review" Width="600">
 
-### Step-3: Upload a folder to the Datalake
+### Task-3: Upload a folder to the Datalake
 1. Access Storage Explorer in the storage service. 
 - Select the 'Storage Explorer(preview)' from the left blade.
 - Select the created blob container.
@@ -162,7 +162,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Enter the following information.
 - Resource Group: Select 'ata-storage-lab-\<YourName\>-rg" from the dropdown
 - Location: Select "US East" region
-- Name: ata-data-share-(YourName)
+- Name: ata-data-share-\<YourName\>
 - Click on "Review+Create" button
 
 <img src="./images/Review_Create_Data_Share.PNG" alt="Review And Create button" Width="400">
@@ -188,7 +188,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 <img src="./images/Data-Share-Create-SentShare.PNG" alt="Create Sent Shares" Height="200">
 
 2. Enter Sent Share Details:
-- Share name:"ata-sent-shipping-scans-(YourName)"
+- Share name:"ata-sent-shipping-scans-\<YourName\>"
 - Shape type: Snapshot (default)
 - Description: "Sharing Shipping Scan images with partners"
 - Terms of use" "Update hourly"
@@ -245,7 +245,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Create a resource group
 - Select Resource Groups from the top left menu
 - Add a resource group by selecting + sign next to 'Add'
-- Enter 'ata-datashare-consumer-(YourName)'
+- Enter 'ata-datashare-consumer-\<YourName\>'
 - Select 'East US' as the Region
 - Click on 'Review + create' button
 - Click 'Create' 
@@ -254,8 +254,8 @@ Share structured and unstructured data from multiple Azure data stores with othe
 ### Task-2: Create Storage Destination
 - Type 'Storage accounts' in the search bar
 - Add storage account by selecting + sign next to 'Add'
-- Resource group: 'ata-datashare-consumer-(YourName)'
-- Storage account Name: atadconsumberblob(YourName)
+- Resource group: 'ata-datashare-consumer-\<YourName\>'
+- Storage account Name: atadconsumberblob\<YourName\>
 - Location: East US
 - Default Option for Rest
 - Click on 'Review + create'
