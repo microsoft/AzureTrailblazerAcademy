@@ -12,21 +12,29 @@ The Azure NetApp Files service is an enterprise-class, high-performance, file st
 ### Step-1: Register the ANF Service
 - Login to Azure Portal (https://portal.azure.com) 
 
+
 - In the serach bar type **Subscription**
 
 <img src="./images/Locate-Subscription.png" width="400">
+
+
 
 - Click on the Subcription you had Whitelisted
 
 <img src="./images/Choose-Subscription.png" width="400">
 
+
+
 - Scroll down on left hand menu until you see **Resource Provider** and Click on it
 
 <img src="./images/Resource-Provider.png" width="400">
 
+
 - Type **Microsoft.NetApp** in the search bar
 
 <img src="./images/Register.png" width="400">
+
+
 
 - Now Click the **Register** Button
 
