@@ -3,7 +3,7 @@
 ## Access Data in Azure  with Azure NetApp Files
 The Azure NetApp Files service is an enterprise-class, high-performance, file storage service. Azure NetApp Files supports any workload type and is highly available by default. You can select service and performance levels and set up snapshots through the service.
 ### Labs:
-- [Lab-1: Register ANF Service](#lab-1-Register-ANF-service)
+- [Lab-1: Setup the Azure NetApp Files Service](#lab-1-Register-ANF-service)
 - [Lab-2: Provision a Pool and Volume to Contain Your Data](#lab-2-Provision-Capacity)
 
 
@@ -11,6 +11,39 @@ The Azure NetApp Files service is an enterprise-class, high-performance, file st
 ## Lab-1: Setup the Azure NetApp Files Service 
 ### Step-1: Register the ANF Service
 - Login to Azure Portal (https://portal.azure.com) 
+
+
+- In the serach bar type **Subscription** and **Click on Subscription**
+
+<img src="./images/Locate-Subscription.png" width="400">
+
+
+
+
+
+- **Click on the Subcription**, which was whitelisted for Azure NetApp Files
+
+<img src="./images/Choose-Subscription.png" width="400">
+
+
+
+- Scroll down on left hand menu until you see **Resource Provider** and Click on it
+
+<img src="./images/Resource-Provider.png" width="400">
+
+
+- Type **Microsoft.NetApp** in the search bar
+
+<img src="./images/Register.png" width="400">
+
+
+
+- Now Click the **Register** Button
+
+<img src="./images/Registered.png" width="400">
+
+After a few minutes the Provider will show a Registered Status, you can click **Refresh** periodically to update status
+
 
 ### Step-2: Create ANF Storage account
 - In the Azure portal’s search box, enter Azure NetApp Files and then select Azure NetApp Files from the list that appears.
@@ -66,7 +99,7 @@ Specify **4** (TiB) as the pool size
 
 Click **OK**
 
-###Step-2: Create a NFS Volume to Conatin Your Data
+### Step-2: Create a NFS Volume to Conatin Your Data
 
 From the Azure NetApp Files management blade of your NetApp account, click **Volumes**
 <img src="./images/Select-Volume.png" alt="Select Volume" width="400">
