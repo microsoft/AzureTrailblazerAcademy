@@ -29,8 +29,8 @@
 - **Subscription:** Choose your subscription
 - **Resource group:** Select the Resource Group you created for this lab
 - **Region:** East US
-- **App Servie Name:** Choose a unique name for the App Service
-- **Pricing tier:** Premium V2
+- **App Service Name:** Choose a unique name for the App Service
+- **Pricing tier:** Standard
 
 ![App Service Basic Tab](images/app-service-create.JPG)
 
@@ -53,8 +53,8 @@
 - **Region:** East US
 - **Name:** Choose a unique name for the Web App
 - **Publish:** Code
-- **Runtime Stack:** Choose NodeJS 10 LTS
-- **Operating System:** Choose Linux
+- **Runtime Stack:** Choose NodeJS 12 LTS
+- **Operating System:** Choose Windows
 - **App Service Plan:** Select the App Service Plan created earlier
 
 ![Web Service Basic Tab](images/webapp-create.JPG)
@@ -110,7 +110,7 @@ This screen will transition to .. **Your deployment was successful..**.  There i
 
 5. We are in the CI/CD section of the your code deployment. <BR>
    Our plan is to deploy from https://github.com/RobinGhosh64/Test3in1.git sample repository provided in your lab.
-   Select the **Github** thumbnail
+   Select the **External** thumbnail
     
 6. Then Click on **Continue** 
 
@@ -126,8 +126,9 @@ This screen will transition to .. **Your deployment was successful..**.  There i
 
 ![Web Service Basic Tab](images/app-service-deployment-pick-your-project.JPG)
 
-9. Select **Repository Name** , **Branch**
-10. Click the **Continue** button
+9. Enter **Repository Name** to https://github.com/RobinGhosh64/Test3in1  and **Branch** to master
+10. Select **Repository **to Git, **Private Repository** to YES
+11. Click the **Continue** button
 
 ![Web Service Basic Tab](images/app-service-deployment-finish.JPG)
 
