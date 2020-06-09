@@ -1,4 +1,4 @@
-# Month 2: Azure DevOps and Data Services
+# Month 1: Azure Fundamentals
 
 ## Session Abstract
 
@@ -15,4 +15,5 @@ Learn the basics of Azure, the difference between Infrastructure as a Service (I
 | Storage       | - [Storage Lab](lab_storage/) |
 | IoT       | - [IoT Lab](lab_IoT/) |
 | Networking       | - [Networking Lab](lab_Networking/) |
+| NetApp       | - [NetApp_Lab](lab_ANF/) |
 | Cost       | - [Cost Lab](lab_Cost/) |
