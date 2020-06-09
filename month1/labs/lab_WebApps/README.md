@@ -127,7 +127,7 @@ This screen will transition to .. **Your deployment was successful..**.  There i
 ![Web Service Basic Tab](images/app-service-deployment-pick-your-project.JPG)
 
 9. Enter **Repository Name** to https://github.com/RobinGhosh64/Test3in1  and **Branch** to master
-10. Select **Repository **to Git, **Private Repository** to YES
+10. Select **Repository** to Git, **Private Repository** to YES
 11. Click the **Continue** button
 
 ![Web Service Basic Tab](images/app-service-deployment-finish.JPG)
