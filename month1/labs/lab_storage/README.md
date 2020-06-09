@@ -72,7 +72,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 ## Lab-2: How to load structure and unstructured files into Data Lake Storage?
 - This lab provides an experience to load structured and unstructured data files into the data lake store for big data analysis. This provides advantage over Hadoop systems by seperating the storage from compute while providing a better durability without having to store 3 copies of the same data.   
 - [Step-1: Create Azure Data Lake Storage Gen2](#step-1-create-azure-data-lake-storage-gen2)
-- [Step-2: Create a container](#step-2:-create-a-container)
+- [Step-2: Create a container](#step-2-create-a-container)
 - [Step-3: Upload a folder to the Datalake](#step-3-pload-a-folder-to-the-datalake)
 
 ### Step-1: Create Azure Data Lake Storage Gen2
@@ -140,7 +140,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 ## Lab-3: How to share Files between the organizations?
 
 ### Architecture
-<img src="./images/Data-Share-Lab-Architecture.PNG" alt="datashare lab architecture" Width="800">
+<img src="./images/Data-Share-Lab-Architecture.PNG" alt="datashare lab architecture" Width="600">
 
 ### Prerequisites
 - Two Azure Subscriptions (Company and Personal).
