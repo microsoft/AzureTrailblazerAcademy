@@ -13,13 +13,15 @@ The Azure NetApp Files service is an enterprise-class, high-performance, file st
 - Login to Azure Portal (https://portal.azure.com) 
 
 
-- In the serach bar type **Subscription**
+- In the serach bar type **Subscription** and **Click on Subscription**
 
 <img src="./images/Locate-Subscription.png" width="400">
 
 
 
-- Click on the Subcription you had Whitelisted
+
+
+- **Click on the Subcription**, which was whitelisted for Azure NetApp Files
 
 <img src="./images/Choose-Subscription.png" width="400">
 
