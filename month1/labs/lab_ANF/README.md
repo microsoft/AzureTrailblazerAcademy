@@ -139,7 +139,8 @@ Select **Microsoft.NetApp/volumes** for subnet delegation
 Click **OK** to create the Vnet.
 
 
-Click **Protocol**, from the Top Selection 
+Click **Protocol**, from the Top Selection
+
 <img src="./images/Protocol.png" alt="Protocol" width="400">
 
 Select **NFS** as the protocol type for the volume
@@ -150,10 +151,12 @@ Select the NFS version **NFSv3**
 
 
 Click the **Review + Create Buttom** at the bottom
+
 <img src="./images/Review-Create.png" alt="Review+Create" width="400">
 
 
 Finally Click the **Create Button**
+
 <img src="./images/Create-Volume.png" alt="Create Volume" width="400">
 
 
