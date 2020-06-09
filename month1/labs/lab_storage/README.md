@@ -80,7 +80,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Select "create a resource" and select "Storage accounts" service. 
 - Click on 'create' button.
 
-<img src="./images/Create-storage-account.PNG" alt="Create Storage Account" width="600">
+<img src="./images/Create-storage-account.PNG" alt="Create Storage Account" width="400">
 
 2. Enter the following Information to create the Data Lake Storage
 - Resouce group: Select "ata-storage-lab-Name-rg". 
@@ -97,7 +97,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Advanced Options:
 - Enable the 'hierarchical' option under ADLSGen2 option and select 'Review + Create' button.
     
-    <img src="./images/ADLSGen2HierarchichalOption.PNG" alt="ADLSGen2 Hierarchichal Option" width="800">
+    <img src="./images/ADLSGen2HierarchichalOption.PNG" alt="ADLSGen2 Hierarchichal Option" width="600">
 
 4. Select 'Create' button. 
 - Make sure you have the green check mark next to 'Validation Passed'. You are good to create the Data Lake Storage! 
@@ -106,17 +106,18 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Wait till you see 'Your deployment is complete'.
 - Select 'go to resource' button when you see it.
 
-    <img src="./images/ADLS-Deploy-Complete.PNG" alt="ADLSGen2 Hierarchichal Option" width="800">
+<img src="./images/ADLS-Deploy-Complete.PNG" alt="ADLSGen2 Hierarchichal Option" width="600">
 
 ### Step-2: Create a container
 1 Select the 'containers' link from the available storage options in the middle of the page.
 
-    <img src="./images/CreateBlobContainer.PNG" alt="Storage Review" width="800">
+<img src="./images/CreateBlobContainer.PNG" alt="Storage Review" Width="600">
+
 2. Create a new container.
 - Select the 'plus' sign next to container to add a new container.
 - 'New container' window popsup and enter the name 'adlsgen2filesystem\<YourName\>'.
 
-    <img src="./images/ADLSGen2-Container-Complete.PNG" alt="Storage Review" width="800">
+<img src="./images/ADLSGen2-Container-Complete.PNG" alt="Storage Review" Width="600">
 
 ### Step-3: Upload a folder to the Datalake
 1. Access Storage Explorer in the storage service. 
@@ -129,18 +130,18 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Install the Storage Explorer on your system.
 - Access the Datalake Storage you just created.
 
-<img src="./images/StorageExplorer_UploadFolder.PNG" alt="blob-upload-image" width="800">
+<img src="./images/StorageExplorer_UploadFolder.PNG" alt="blob-upload-image" width="600">
 
 3. Upload the data files.
 - Browse the local folder and upload all the files.
 
-    <img src="./images/ADLSGen2UploadComplete.PNG" alt="blob-upload-image" width="800">
+    <img src="./images/ADLSGen2UploadComplete.PNG" alt="blob-upload-image" width="600">
 4. You have successfully uploaded the structured and unstructured data files into the Azure data lake for big data analysis!
 
 ## Lab-3: How to share Files between the organizations?
 
 ### Architecture
-<img src="./images/Data-Share-Lab-Architecture.PNG" alt="datashare lab architecture" Width="600">
+<img src="./images/Data-Share-Lab-Architecture.PNG" alt="datashare lab architecture" Width="400">
 
 ### Prerequisites
 - Two Azure Subscriptions (Company and Personal).
@@ -155,7 +156,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Select "create a resource" and select "Data Share" service.
 - Click on 'create' button.
 
-<img src="./images/Create-Data_Share.PNG" alt="Create Data Share" Height="300">
+<img src="./images/Create-Data_Share.PNG" alt="Create Data Share" Height="200">
 
 2. Create Data Share.
 - Enter the following information.
@@ -164,7 +165,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Name: ata-data-share-(YourName)
 - Click on "Review+Create" button
 
-<img src="./images/Review_Create_Data_Share.PNG" alt="Review And Create button" Width="600">
+<img src="./images/Review_Create_Data_Share.PNG" alt="Review And Create button" Width="400">
 
 3. Initiate Create Data Share process.
 - Make sure you get a green check mark next to "Validation Passed". 
@@ -180,11 +181,11 @@ Share structured and unstructured data from multiple Azure data stores with othe
 1. access the data share service
 - Select 'Start Sharing your data' from the left blade
 
-<img src="./images/Data-Share-Start_Sharing.PNG" alt="Start Sharing Data" Height="300">
+<img src="./images/Data-Share-Start_Sharing.PNG" alt="Start Sharing Data" Height="200">
 
 - Select + sign next to 'Create' 
 
-<img src="./images/Data-Share-Create-SentShare.PNG" alt="Create Sent Shares" Height="300">
+<img src="./images/Data-Share-Create-SentShare.PNG" alt="Create Sent Shares" Height="200">
 
 2. Enter Sent Share Details:
 - Share name:"ata-sent-shipping-scans-(YourName)"
@@ -233,7 +234,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 
 - Creates sent share 
 
-<img src="./images/DataShare-SentShare-Complete.PNG" alt="Create Sent Sharecomplete" Width="800">
+<img src="./images/DataShare-SentShare-Complete.PNG" alt="Create Sent Sharecomplete" Width="600">
 
 - Your Azure Data Share has now been created and the recipient of your Data Share is now ready to accept your invitation.
 
