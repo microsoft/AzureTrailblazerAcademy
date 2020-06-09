@@ -83,8 +83,8 @@ Share structured and unstructured data from multiple Azure data stores with othe
 <img src="./images/Create-storage-account.PNG" alt="Create Storage Account" width="400">
 
 2. Enter the following Information to create the Data Lake Storage
-- Resouce group: Select "ata-storage-lab-Name-rg". 
-- Storage account name: Enter 'atastorageADLSGen2\<yourname\>' format.
+- Resouce group: Select "ata-storage-lab-\<YourName\>-rg". 
+- Storage account name: Enter 'atastorageADLSGen2\<YourName\>' format.
 - Location: Select 'East US' as the region.
 - Leave defaults for the rest.
 - Select the 'Networking' button.
@@ -298,7 +298,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Check the box to select the share to map 
 - Select 'Map to Target' 
 
-<img src="./images/DataShare-Consumer-MapToTarget.PNG" alt="Map to Target" Width="600">
+<img src="./images/DataShare-Consumer-MapToTarget.PNG" alt="Map to Target" Width="800">
 
 - Brings up 'Map datasets to target' screen
 - Target data type: Azure Blob Storage
@@ -308,10 +308,10 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Container Name:'shipimages'
 - Click on 'Map to Target'
 
-<img src="./images/DataShare-Consumer-Blob-MapToTarget.PNG" alt="blob map to target" Width="300">
+<img src="./images/DataShare-Consumer-Blob-MapToTarget.PNG" alt="blob map to target" Width="600">
 
 - Completes the mapping process
-<img src="./images/DataShare-Mapping-complete.PNG" alt="Mapping Complete" Width="300">
+<img src="./images/DataShare-Mapping-complete.PNG" alt="Mapping Complete" Width="600">
 
 ### Task-7: Enable Snapshot Schedule
 - Select Received Shares
@@ -338,7 +338,7 @@ snapshots" Width="600">
 
 - It takes you to the blob storage account.
 - You can verify the shared data under blob container.
-<img src="./images/Data-Share-Consumer-Blob-Storage-File.PNG" alt="Verify the shared data" Width="800">
+<img src="./images/Data-Share-Consumer-Blob-Storage-File.PNG" alt="Verify the shared data" Width="600">
 
 ### Task-10 Upload additional data to the source storage
 - Acess the Source Data Share 
@@ -347,7 +347,7 @@ snapshots" Width="600">
 - Select the Storage Explorer and access the container 
 - Upload another image to the source blob container
 
-<img src="./images/Data-Share-Source-Add-image.PNG" alt="Source add image" Width="800">
+<img src="./images/Data-Share-Source-Add-image.PNG" alt="Source add image" Width="600">
 
 ### Task-11 Trigger Incremental Copy Snapshot
 - Select Details Tab
