@@ -165,20 +165,24 @@ Finally Click the **Create Button**
 
 - Start a **Cloud Shell**, by selecting the icon shown below
 
-<img src="./images/Run-Command.png" alt="Create Volume" width="400">
+<img src="./images/Cloud-Shell.png" alt="Create Volume" width="400">
 
 -  When prompted select **Bash** and if necessary answer **create** to a cloud shell storage account (it will be very tiny)
 
 - Create VM1 
-        At the command prompt, paste in this text
+        At the command prompt, paste in this text below
+        
             az vm create --resource-group Ata-labname-username-RG --name VM1 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --public-ip-address “”
             
 -Create VM2
-        At the command prompt, paste in this text
+        At the command prompt, paste in this text below
+        
         az vm create --resource-group Ata-labname-username-RG --name VM2 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --public-ip-address “”
         
 
 ### Step-2: Mount Volumes to VM and Create a File (On Each VM)
+
+Select  **Run Command Window** from the VM2Page and then click on **Run Shell Script**
 
 <img src="./images/Run-Command.png" alt="Create Volume" width="400">
 
@@ -196,7 +200,7 @@ ls -ls /mnt/myvol1
 
 
 
-Select  **Run Command Window** from the VM1 Page and then click on **Run Shell Script**
+Select  **Run Command Window** from the VM2 Page and then click on **Run Shell Script**
 
 <img src="./images/Run-Command.png" alt="Create Volume" width="400">
 
