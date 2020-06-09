@@ -308,10 +308,10 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Container Name:'shipimages'
 - Click on 'Map to Target'
 
-<img src="./images/DataShare-Consumer-Blob-MapToTarget.PNG" alt="blob map to target" Width="600">
+<img src="./images/DataShare-Consumer-Blob-MapToTarget.PNG" alt="blob map to target" Width="400">
 
 - Completes the mapping process
-<img src="./images/DataShare-Mapping-complete.PNG" alt="Mapping Complete" Width="600">
+<img src="./images/DataShare-Mapping-complete.PNG" alt="Mapping Complete" Width="800">
 
 ### Task-7: Enable Snapshot Schedule
 - Select Received Shares
