@@ -177,13 +177,16 @@ Finally Click the **Create Button**
         
             az vm create --resource-group Ata-labname-username-RG --name VM1 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --public-ip-address “”
             
--Create VM2
+- Create VM2
         At the command prompt, paste in this text below
         
         az vm create --resource-group Ata-labname-username-RG --name VM2 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --public-ip-address “”
         
 
+
 ### Step-2: Mount Volumes to VM and Create a File (On Each VM)
+
+
 
 Select  **Run Command Window** from the VM2Page and then click on **Run Shell Script**
 
