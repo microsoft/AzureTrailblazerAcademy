@@ -155,7 +155,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Select "create a resource" and select "Data Share" service.
 - Click on 'create' button.
 
-<img src="./images/Create-Data_Share.PNG" alt="Create Data Share" Width="600">
+<img src="./images/Create-Data_Share.PNG" alt="Create Data Share" Height="300">
 
 2. Create Data Share.
 - Enter the following information.
@@ -193,7 +193,8 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Terms of use" "Update hourly"
 - Click on Continue
 
-<img src="./images/DataShare-create-sent-shares-details.PNG" alt="create sent share details" Width="600">
+<img src="./images/DataShare-create-sent-shares-details.PNG" alt="create sent share details" Height="400">
+
 3. Provide Dataset Details
 - Select Datasets Tab:
 - Set the snapshot schedule
@@ -210,7 +211,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Select the container
 - Click on "next"
 
-<img src="./images/DataShare-Select-Blob-Image_folder.PNG" alt="select blob container" Height="500">
+<img src="./images/DataShare-Select-Blob-Image_folder.PNG" alt="select blob container" Height="400">
 
 - Enter Dataset Name as "ata-shipping-image-share"
 - Click on "Add Dataset".
@@ -223,12 +224,12 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Enter your personal email address
 - Click on Continue
 
-<img src="./images/DataShare-SentShares-add-Recipient.PNG" alt="add recipient" Width="600">
+<img src="./images/DataShare-SentShares-add-Recipient.PNG" alt="add recipient" Width="300">
 
 - Ignore Snapshot schedule and click on "Continue"
 - Click on Create 
 
-<img src="./images/DataShare-review-Sent-Share.PNG" alt="Review and create sent shares" Width="800">
+<img src="./images/DataShare-review-Sent-Share.PNG" alt="Review and create sent shares" Width="400">
 
 - Creates sent share 
 
@@ -247,7 +248,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Select 'East US' as the Region
 - Click on 'Review + create' button
 - Click 'Create' 
-<img src="./images/DataShare-Consumer-RG.PNG" alt="Resource Group create" Width="800">
+<img src="./images/DataShare-Consumer-RG.PNG" alt="Resource Group create" Width="400">
 
 ### Task-2: Create Storage Destination
 - Type 'Storage accounts' in the search bar
@@ -257,14 +258,17 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Location: East US
 - Default Option for Rest
 - Click on 'Review + create'
-<img src="./images/ata-datashare-consumer-blob-create.PNG" alt="Consumer blob create" Width="800">
+<img src="./images/ata-datashare-consumer-blob-create.PNG" alt="Consumer blob create" Width="400">
 - Click on 'Create' When you a green check mark
 
 ### Task-3: Accept Data Share invitation
 - Search for Data Share Invitations
-<img src="./images/DataShare-Consumer-Invitation.PNG" alt="Data Share Invitation" Width="600">
+
+<img src="./images/DataShare-Consumer-Invitation.PNG" alt="Data Share Invitation" Width="800">
+
 - Select the invitation
-<img src="./images/DataShare-Consumer-InvitationList.PNG" alt="Data Share Invitation" Width="600"> 
+
+<img src="./images/DataShare-Consumer-InvitationList.PNG" alt="Data Share Invitation" Width="800"> 
 
 ### Task-4: Create Data Share Account
 - Check mark to Agree Terms
@@ -292,7 +296,9 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Select 'Details' tab
 - Check the box to select the share to map 
 - Select 'Map to Target' 
+
 <img src="./images/DataShare-Consumer-MapToTarget.PNG" alt="Map to Target" Width="600">
+
 - Brings up 'Map datasets to target' screen
 - Target data type: Azure Blob Storage
 - Subscriptions: Select Yours
@@ -300,9 +306,11 @@ Share structured and unstructured data from multiple Azure data stores with othe
 - Storage accounts: Select Blob Storage
 - Container Name:'shipimages'
 - Click on 'Map to Target'
-<img src="./images/DataShare-Consumer-Blob-MapToTarget.PNG" alt="blob map to target" Width="600">
+
+<img src="./images/DataShare-Consumer-Blob-MapToTarget.PNG" alt="blob map to target" Width="300">
+
 - Completes the mapping process
-<img src="./images/DataShare-Mapping-complete.PNG" alt="Mapping Complete" Width="600">
+<img src="./images/DataShare-Mapping-complete.PNG" alt="Mapping Complete" Width="300">
 
 ### Task-7: Enable Snapshot Schedule
 - Select Received Shares
@@ -315,7 +323,8 @@ snapshots" Width="600">
 ### Task-8: Trigger Full Copy Snapshot
 - Select Details tab
 - Select 'Full Copy' from the 'Trigger snapshot' dropdown
-<img src="./images/DataShare-Consumer-Trigger-Snapshot.PNG" alt="Trigger full copy" Width="800">
+<img src="./images/DataShare-Consumer-Trigger-Snapshot.PNG" alt="Trigger full copy" Width="600">
+
 - You should see 'Queued' as the 'last run status'
 - Wait till you see 'Succeeded' with a green check mark as the 'Last run status'.
 
@@ -324,7 +333,7 @@ snapshots" Width="600">
 - Scroll to the right most to see 'PATH' for the dataset.
 - click on the dataset path (link) to access the storage.
 
-<img src="./images/Data-Share-Consumer-get-DataSet.PNG" alt="Access Detaset Path link" Width="800">
+<img src="./images/Data-Share-Consumer-get-DataSet.PNG" alt="Access Detaset Path link" Width="600">
 
 - It takes you to the blob storage account.
 - You can verify the shared data under blob container.
@@ -336,7 +345,8 @@ snapshots" Width="600">
 - Click on the blob storage path
 - Select the Storage Explorer and access the container 
 - Upload another image to the source blob container
-<img src="./images/Data-Share-Source-Add-image.PNG" alt-"Source add image" Width="800">
+
+<img src="./images/Data-Share-Source-Add-image.PNG" alt="Source add image" Width="800">
 
 ### Task-11 Trigger Incremental Copy Snapshot
 - Select Details Tab
@@ -346,6 +356,7 @@ snapshots" Width="600">
 - Select Datasets tab
 - Click on the dataset path to access the storage.
 - Access the blob container and verify the incremental load
+
 <img src="./images/Data-Share-Consumer-Receive-Incremental.PNG" alt="Receive incremental data" Width="800">
 
 - You have successfully consumed the full and incremental shared data from your partner! Congratulations!
