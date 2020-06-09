@@ -5,6 +5,7 @@ The Azure NetApp Files service is an enterprise-class, high-performance, file st
 ### Labs:
 - [Lab-1: Setup the Azure NetApp Files Service](#lab-1-Register-ANF-service)
 - [Lab-2: Provision a Pool and Volume to Contain Your Data](#lab-2-Provision-Capacity)
+- [Lab-3: Create VM and Mount Volume](#lab-2-Provision-Capacity)
 
 
 
@@ -155,4 +156,61 @@ Click the **Review + Create Buttom** at the bottom
 Finally Click the **Create Button**
 <img src="./images/Create-Volume.png" alt="Create Volume" width="400">
 
+
+
+## Lab-3: Create VM and Mount Volume
+
+
+### Step-1: Provision Two VM's
+
+- Start a **Cloud Shell**, by selecting the icon shown below
+
+<img src="./images/Run-Command.png" alt="Create Volume" width="400">
+
+-  When prompted select **Bash** and if necessary answer **create** to a cloud shell storage account (it will be very tiny)
+
+- Create VM1 
+        At the command prompt, paste in this text
+            az vm create --resource-group Ata-labname-username-RG --name VM1 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --public-ip-address “”
+            
+-Create VM2
+        At the command prompt, paste in this text
+        az vm create --resource-group Ata-labname-username-RG --name VM2 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --public-ip-address “”
+        
+
+### Step-2: Mount Volumes to VM and Create a File (On Each VM)
+
+<img src="./images/Run-Command.png" alt="Create Volume" width="400">
+
+<img src="./images/Run Shell.png" alt="Create Volume" width="400">
+
+
+
+-  For VM1
+sudo apt-get install nfs-common
+sudo mkdir /mnt/myvol1
+sudo chown 777 /mnt/myvol1
+sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.10.1.244:/myvol1 /mnt/myvol1
+touch /mnt/myvol1/file1
+ls -ls /mnt/myvol1
+
+
+
+Select  **Run Command Window** from the VM1 Page and then click on **Run Shell Script**
+
+<img src="./images/Run-Command.png" alt="Create Volume" width="400">
+
+<img src="./images/Run Shell.png" alt="Create Volume" width="400">
+
+
+- For VM2
+sudo apt-get install nfs-common
+sudo mkdir /mnt/myvol1
+sudo chown 777 /mnt/myvol1
+sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.10.1.244:/myvol1 /mnt/myvol1
+touch /mnt/myvol1/file2
+ls -ls /mnt/myvol1
+
+
+-  You should see in the ouput from the second VM, you should see the both files that were created from VM1 and VM2 because its a shared volume
 
