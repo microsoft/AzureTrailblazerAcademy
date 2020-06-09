@@ -100,7 +100,7 @@ Specify **4** (TiB) as the pool size
 
 Click **OK**
 
-### Step-2: Create a NFS Volume to Conatin Your Data
+### Step-2: Create a NFS Volume to Contain Your Data
 
 From the Azure NetApp Files management blade of your NetApp account, click **Volumes**
 <img src="./images/Select-Volume.png" alt="Select Volume" width="400">
@@ -128,11 +128,11 @@ Then fill in the following information:
 
 Enter **myvnet1** as the Vnet name
 
-Specify an address space for your setting, for example, **10.7.0.0/16**
+**Accept the default address range**, for example, 10.7.0.0/16
 
 Enter **myANFsubnet** as the subnet name
 
-Specify the subnet address range, for example, **10.7.0.0/24**
+**Accept the default address range, for example**, 10.7.0.0/24
 
 Select **Microsoft.NetApp/volumes** for subnet delegation
 
