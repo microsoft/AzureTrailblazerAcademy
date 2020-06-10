@@ -5,6 +5,7 @@ The Azure NetApp Files service is an enterprise-class, high-performance, file st
 ### Labs:
 - [Lab-1: Setup the Azure NetApp Files Service](#lab-1-Register-ANF-service)
 - [Lab-2: Provision a Pool and Volume to Contain Your Data](#lab-2-Provision-Capacity)
+- [Lab-3: Create VM and Mount Volume](#lab-2-Provision-Capacity)
 
 
 
@@ -99,7 +100,7 @@ Specify **4** (TiB) as the pool size
 
 Click **OK**
 
-### Step-2: Create a NFS Volume to Conatin Your Data
+### Step-2: Create a NFS Volume to Contain Your Data
 
 From the Azure NetApp Files management blade of your NetApp account, click **Volumes**
 <img src="./images/Select-Volume.png" alt="Select Volume" width="400">
@@ -127,18 +128,19 @@ Then fill in the following information:
 
 Enter **myvnet1** as the Vnet name
 
-Specify an address space for your setting, for example, **10.7.0.0/16**
+**Accept the default address range**, for example, 10.7.0.0/16
 
 Enter **myANFsubnet** as the subnet name
 
-Specify the subnet address range, for example, **10.7.0.0/24**
+**Accept the default address range, for example**, 10.7.0.0/24
 
 Select **Microsoft.NetApp/volumes** for subnet delegation
 
 Click **OK** to create the Vnet.
 
 
-Click **Protocol**, from the Top Selection 
+Click **Protocol**, from the Top Selection
+
 <img src="./images/Protocol.png" alt="Protocol" width="400">
 
 Select **NFS** as the protocol type for the volume
@@ -149,10 +151,76 @@ Select the NFS version **NFSv3**
 
 
 Click the **Review + Create Buttom** at the bottom
+
 <img src="./images/Review-Create.png" alt="Review+Create" width="400">
 
 
 Finally Click the **Create Button**
+
 <img src="./images/Create-Volume.png" alt="Create Volume" width="400">
 
+
+
+## Lab-3: Create VM and Mount Volume
+
+
+### Step-1: Provision Two VM's
+
+- Start a **Cloud Shell**, by selecting the icon shown below
+
+<img src="./images/Cloud-Shell.png" alt="Create Volume" width="400">
+
+-  When prompted select **Bash** and if necessary answer **create** to a cloud shell storage account (it will be very tiny)
+
+- Create VM1 
+        At the command prompt, paste in this text below
+        
+            az vm create --resource-group Ata-labname-username-RG --name VM1 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --public-ip-address “”
+            
+- Create VM2
+        At the command prompt, paste in this text below
+        
+        az vm create --resource-group Ata-labname-username-RG --name VM2 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --public-ip-address “”
+        
+
+
+### Step-2: Mount Volumes to VM and Create a File (On Each VM)
+
+
+
+Select  **Run Command Window** from the VM2Page and then click on **Run Shell Script**
+
+<img src="./images/Run-Command.png" alt="Create Volume" width="400">
+
+<img src="./images/Run Shell.png" alt="Create Volume" width="400">
+
+
+
+-  For VM1
+sudo apt-get install nfs-common
+sudo mkdir /mnt/myvol1
+sudo chown 777 /mnt/myvol1
+sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.10.1.244:/myvol1 /mnt/myvol1
+touch /mnt/myvol1/file1
+ls -ls /mnt/myvol1
+
+
+
+Select  **Run Command Window** from the VM2 Page and then click on **Run Shell Script**
+
+<img src="./images/Run-Command.png" alt="Create Volume" width="400">
+
+<img src="./images/Run Shell.png" alt="Create Volume" width="400">
+
+
+- For VM2
+sudo apt-get install nfs-common
+sudo mkdir /mnt/myvol1
+sudo chown 777 /mnt/myvol1
+sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.10.1.244:/myvol1 /mnt/myvol1
+touch /mnt/myvol1/file2
+ls -ls /mnt/myvol1
+
+
+-  You should see in the ouput from the second VM, both files that were created from VM1 (file1) and VM2 (file2) because its a shared volume
 
