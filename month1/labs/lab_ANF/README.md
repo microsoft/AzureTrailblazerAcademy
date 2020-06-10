@@ -222,22 +222,23 @@ Select **Mount Options** from the menu and
 
 ### Step-2: Mount Volumes to VM and Create a File (On Each VM)
 
+-   We will be using Azure Cloud Shell, again to enter a few commands on each VM
 
+#### For VM1: Using Azure Cloud
+####          Username : ata and Password Trailblazers1!
 
-#### For VM1: Using Putty SSH  to your VM's public IP Address from Your Jump Host 
-####          Username : 
+-   ssh ata@<webvm1-Public-IP>
 
+-   confirm with yes, if prompted
 
+-   Enter the password Trailblazers1!
 
-<img src="./images/Run-Command.png" alt="Create Volume" width="400">
-
-<img src="./images/Run-Shell.png" alt="Create Volume" width="400">
-
+Now execute the below commands one by one
 
 
 -  For VM1 (**replace the IP Address below with your IP from the mount instructions of your volume**)
 
-        sudo apt-get install nfs-common
+        sudo apt-get -y install nfs-common
         sudo mkdir /mnt/myvol1
         sudo chown 777 /mnt/myvol1
         sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.10.1.244:/myvol1 /mnt/myvol1
@@ -249,17 +250,25 @@ Select **Mount Options** from the menu and
 
 
 
-#### For VM2: Using Putty SSH to your VM's public IP Address from Your Jump Host
-####          
+#### For VM2: Using Azure Cloud
+####          Username : ata and Password Trailblazers1!
 
-<img src="./images/Run-Command.png" alt="Create Volume" width="400">
+-   ssh ata@<webvm2-Public-IP>
 
-<img src="./images/Run-Shell.png" alt="Create Volume" width="400">
+-   confirm with yes, if prompted
+
+-   Enter the password Trailblazers1!
+
+
+-   Now execute the below commands one by one
+
+
+
 
 
 - For VM2 (**replace the IP Address below with your IP from the mount instructions of your volume**)
 
-        sudo apt-get install nfs-common
+        sudo apt-get -y install nfs-common
         sudo mkdir /mnt/myvol1
         sudo chown 777 /mnt/myvol1
         sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.10.1.244:/myvol1 /mnt/myvol1
