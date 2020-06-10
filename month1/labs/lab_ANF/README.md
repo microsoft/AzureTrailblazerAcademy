@@ -188,7 +188,7 @@ Finally Click the **Create Button**
 
 
 
-Select  **Run Command Window** from the VM2Page and then click on **Run Shell Script**
+#### For VM1: Select  **Run Command Window** from the VM2Page and then click on **Run Shell Script**
 
 
 
@@ -213,7 +213,7 @@ Select  **Run Command Window** from the VM2Page and then click on **Run Shell Sc
 
 
 
-Select  **Run Command Window** from the VM2 Page and then click on **Run Shell Script**
+#### For VM2: Select  **Run Command Window** from the **VM2** Page and then click on **Run Shell Script**
 
 <img src="./images/Run-Command.png" alt="Create Volume" width="400">
 
