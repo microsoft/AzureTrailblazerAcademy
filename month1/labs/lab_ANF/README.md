@@ -160,6 +160,20 @@ Finally Click the **Create Button**
 <img src="./images/Create-Volume.png" alt="Create Volume" width="400">
 
 
+Oncen your volume has created click on **Go to Resource**
+
+<img src="./images/Goto-Volume.png" alt="Create Volume" width="400">
+
+
+
+
+Select **Mount Options** from the menu and 
+        **Take note of your IP Address located under Mount Instructions in  Step 2 (you will need this later on in the lab)**
+
+<img src="./images/IP-Volume.png" alt="Create Volume" width="400">
+
+
+
 
 ## Lab-3: Create VM and Mount Volume
 
@@ -189,7 +203,7 @@ Finally Click the **Create Button**
 
 
 #### For VM1: Select  **Run Command Window** from the VM2Page and then click on **Run Shell Script**
-
+####          You can also perform these commands by establishing an SSH connection to the VM
 
 
 
@@ -199,7 +213,7 @@ Finally Click the **Create Button**
 
 
 
--  For VM1
+-  For VM1 (**replace the IP Address below with your IP from the mount instructions of your volume**)
 
         sudo apt-get install nfs-common
         sudo mkdir /mnt/myvol1
@@ -214,13 +228,14 @@ Finally Click the **Create Button**
 
 
 #### For VM2: Select  **Run Command Window** from the **VM2** Page and then click on **Run Shell Script**
+####          You can also perform these commands by establishing an SSH connection to the VM
 
 <img src="./images/Run-Command.png" alt="Create Volume" width="400">
 
 <img src="./images/Run-Shell.png" alt="Create Volume" width="400">
 
 
-- For VM2
+- For VM2 (**replace the IP Address below with your IP from the mount instructions of your volume**)
 
         sudo apt-get install nfs-common
         sudo mkdir /mnt/myvol1
