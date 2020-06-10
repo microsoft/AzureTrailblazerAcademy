@@ -174,6 +174,28 @@ Select **Mount Options** from the menu and
 
 
 
+### Step-3: Add a VM Subnet to your VNet
+
+- From the search bar search for and  Select **Virtual Network**
+
+<img src="./images/Select-VNet.png" alt="Create Volume" width="400"
+
+- Select your VNet which should be myvnet1
+
+
+- Select **Subnet** from the left hand menu
+
+<img src="./images/Select-Subnet.png" alt="Create Volume" width="400"
+
+- Select +Subnet
+
+<img src="./images/Default-Subnet.png" alt="Create Volume" width="400"
+
+
+-  Enter the name as **default**, leave everything else as is and hit **ok**
+
+
+
 
 ## Lab-3: Create VM and Mount Volume
 
@@ -202,8 +224,8 @@ Select **Mount Options** from the menu and
 
 
 
-#### For VM1: Select  **Run Command Window** from the VM2Page and then click on **Run Shell Script**
-####          You can also perform these commands by establishing an SSH connection to the VM
+#### For VM1: Using Putty SSH  to your VM's public IP Address from Your Jump Host 
+####          Username : 
 
 
 
@@ -227,8 +249,8 @@ Select **Mount Options** from the menu and
 
 
 
-#### For VM2: Select  **Run Command Window** from the **VM2** Page and then click on **Run Shell Script**
-####          You can also perform these commands by establishing an SSH connection to the VM
+#### For VM2: Using Putty SSH to your VM's public IP Address from Your Jump Host
+####          
 
 <img src="./images/Run-Command.png" alt="Create Volume" width="400">
 
