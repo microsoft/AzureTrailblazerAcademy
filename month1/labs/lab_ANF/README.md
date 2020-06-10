@@ -47,7 +47,7 @@ After a few minutes the Provider will show a Registered Status, you can click **
 
 
 ### Step-2: Create ANF Storage account
-- In the Azure portal’s search box, enter Azure NetApp Files and then select Azure NetApp Files from the list that appears.
+- In the Azure portal’s search box, enter Azure NetApp Files and then **select Azure NetApp Files** from the list that appears.
 <img src="./images/Storage-Account.png" width="400">
 
 ### Step-3: Click **+ Add** to create a new NetApp account
@@ -67,7 +67,7 @@ Select Create new to create new resource group.
 
 <img src="./images/Resource-Group.png" alt="Create RG" width="400">
 
-Enter **ata-ANF-username-RG** for the resource group name. Click OK.
+Enter    **ata-ANF-RG** for the resource group name. Click OK.
 
 
 Select your account location.
@@ -173,14 +173,14 @@ Finally Click the **Create Button**
 -  When prompted select **Bash** and if necessary answer **create** to a cloud shell storage account (it will be very tiny)
 
 - Create VM1 
-        At the command prompt, paste in this text below, **replacing the Resource Group** with your Resource Group
+        At the command prompt, paste in this text below,
         
-            az vm create --resource-group Ata-ANF-username-RG --name WebVM1 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --plan-publisher nginxinc --plan-product nginx-plus-v1 --plan-name nginx-plus-ub1804 --image nginxinc:nginx-plus-v1:nginx-plus-ub1804:2.0.0
+            az vm create --resource-group Ata-ANF-RG --name WebVM1 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --plan-publisher nginxinc --plan-product nginx-plus-v1 --plan-name nginx-plus-ub1804 --image nginxinc:nginx-plus-v1:nginx-plus-ub1804:2.0.0
             
 - Create VM2
         At the command prompt, paste in this text below, **replacing the Resource Group** with your Resource Group
         
-        az vm create --resource-group Ata-ANF-username-RG --name WebVM2 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --plan-publisher nginxinc --plan-product nginx-plus-v1 --plan-name nginx-plus-ub1804 --image nginxinc:nginx-plus-v1:nginx-plus-ub1804:2.0.0
+        az vm create --resource-group Ata-ANF-RG --name WebVM2 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --plan-publisher nginxinc --plan-product nginx-plus-v1 --plan-name nginx-plus-ub1804 --image nginxinc:nginx-plus-v1:nginx-plus-ub1804:2.0.0
         
 
 
@@ -192,17 +192,18 @@ Select  **Run Command Window** from the VM2Page and then click on **Run Shell Sc
 
 <img src="./images/Run-Command.png" alt="Create Volume" width="400">
 
-<img src="./images/Run Shell.png" alt="Create Volume" width="400">
+<img src="./images/Run-Shell.png" alt="Create Volume" width="400">
 
 
 
 -  For VM1
-sudo apt-get install nfs-common
-sudo mkdir /mnt/myvol1
-sudo chown 777 /mnt/myvol1
-sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.10.1.244:/myvol1 /mnt/myvol1
-touch /mnt/myvol1/file1
-ls -ls /mnt/myvol1
+
+        sudo apt-get install nfs-common
+        sudo mkdir /mnt/myvol1
+        sudo chown 777 /mnt/myvol1
+        sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.10.1.244:/myvol1 /mnt/myvol1
+        touch /mnt/myvol1/file1
+        ls -ls /mnt/myvol1
 
 
 
@@ -210,16 +211,17 @@ Select  **Run Command Window** from the VM2 Page and then click on **Run Shell S
 
 <img src="./images/Run-Command.png" alt="Create Volume" width="400">
 
-<img src="./images/Run Shell.png" alt="Create Volume" width="400">
+<img src="./images/Run-Shell.png" alt="Create Volume" width="400">
 
 
 - For VM2
-sudo apt-get install nfs-common
-sudo mkdir /mnt/myvol1
-sudo chown 777 /mnt/myvol1
-sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.10.1.244:/myvol1 /mnt/myvol1
-touch /mnt/myvol1/file2
-ls -ls /mnt/myvol1
+
+        sudo apt-get install nfs-common
+        sudo mkdir /mnt/myvol1
+        sudo chown 777 /mnt/myvol1
+        sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.10.1.244:/myvol1 /mnt/myvol1
+        touch /mnt/myvol1/file2
+        ls -ls /mnt/myvol1
 
 
 -  You should see in the ouput from the second VM, both files that were created from VM1 (file1) and VM2 (file2) because its a shared volume
