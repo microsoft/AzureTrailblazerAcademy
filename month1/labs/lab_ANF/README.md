@@ -16,7 +16,7 @@ The Azure NetApp Files service is an enterprise-class, high-performance, file st
 
 - In the serach bar type **Subscription** and **Click on Subscription**
 
-<img src="./images/Locate-Subscription.png" width="400">
+<img src="./images/Locate-Subscription.png" width="600">
 
 
 
@@ -24,7 +24,7 @@ The Azure NetApp Files service is an enterprise-class, high-performance, file st
 
 - **Click on the Subcription**, which was whitelisted for Azure NetApp Files
 
-<img src="./images/Choose-Subscription.png" width="400">
+<img src="./images/Choose-Subscription.png" width="600">
 
 
 
