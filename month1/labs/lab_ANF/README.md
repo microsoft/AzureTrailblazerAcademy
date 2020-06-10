@@ -190,6 +190,9 @@ Finally Click the **Create Button**
 
 Select  **Run Command Window** from the VM2Page and then click on **Run Shell Script**
 
+
+
+
 <img src="./images/Run-Command.png" alt="Create Volume" width="400">
 
 <img src="./images/Run-Shell.png" alt="Create Volume" width="400">
@@ -204,6 +207,9 @@ Select  **Run Command Window** from the VM2Page and then click on **Run Shell Sc
         sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.10.1.244:/myvol1 /mnt/myvol1
         touch /mnt/myvol1/file1
         ls -ls /mnt/myvol1
+
+
+
 
 
 
@@ -224,5 +230,5 @@ Select  **Run Command Window** from the VM2 Page and then click on **Run Shell S
         ls -ls /mnt/myvol1
 
 
--  You should see in the ouput from the second VM, both files that were created from VM1 (file1) and VM2 (file2) because its a shared volume
+-  You should see in the ouput from the second VM, both files that were created from VM1 (file1) and VM2 (file2) since its a shared volume
 
