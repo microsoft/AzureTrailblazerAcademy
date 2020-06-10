@@ -4,7 +4,7 @@
 It is a common need among all compnaies to move databases to the cloud. Azure provide options such as SQL on Azure VM, Azure SQL PaaS DB, Azure SQL Managed Instance. Please refer to this [documentation](https://docs.microsoft.com/en-us/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview) for selecting the appropriate type of Azure SQL database option to migrate your SQL workloads.
 
 ## Architecture:
-<img src="./images/AzureSQLMigrate-Architecture.PNG" alt="SQL Migrate Architecture" Width="400"
+<img src="./images/AzureSQLMigrate-Architecture.PNG" alt="SQL Migrate Architecture" Width="400">
 
 ## Labs:
 - [Lab-1: Restore On-premises SQL Database to an Azure VM](#lab-1-restore-on-premises-sql-atabase-to-an-azure-vm) 
