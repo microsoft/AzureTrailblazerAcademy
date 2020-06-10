@@ -67,7 +67,7 @@ Select Create new to create new resource group.
 
 <img src="./images/Resource-Group.png" alt="Create RG" width="400">
 
-Enter **Ata-labname-username-RG** for the resource group name. Click OK.
+Enter **ata-ANF-username-RG** for the resource group name. Click OK.
 
 
 Select your account location.
@@ -130,7 +130,7 @@ Enter **myvnet1** as the Vnet name
 
 **Accept the default address range**, for example, 10.7.0.0/16
 
-Enter **myANFsubnet** as the subnet name
+Leave **default** as the subnet name
 
 **Accept the default address range, for example**, 10.7.0.0/24
 
@@ -145,7 +145,7 @@ Click **Protocol**, from the Top Selection
 
 Select **NFS** as the protocol type for the volume
 
-Enter **myfilepath1** as the file path that will be used to create the export path for the volume
+Enter **myvol1** as the file path that will be used to create the export path for the volume
 
 Select the NFS version **NFSv3**
 
@@ -173,14 +173,14 @@ Finally Click the **Create Button**
 -  When prompted select **Bash** and if necessary answer **create** to a cloud shell storage account (it will be very tiny)
 
 - Create VM1 
-        At the command prompt, paste in this text below
+        At the command prompt, paste in this text below, **replacing the Resource Group** with your Resource Group
         
-            az vm create --resource-group Ata-labname-username-RG --name VM1 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --public-ip-address “”
+            az vm create --resource-group Ata-ANF-username-RG --name WebVM1 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --plan-publisher nginxinc --plan-product nginx-plus-v1 --plan-name nginx-plus-ub1804 --image nginxinc:nginx-plus-v1:nginx-plus-ub1804:2.0.0
             
 - Create VM2
-        At the command prompt, paste in this text below
+        At the command prompt, paste in this text below, **replacing the Resource Group** with your Resource Group
         
-        az vm create --resource-group Ata-labname-username-RG --name VM2 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --public-ip-address “”
+        az vm create --resource-group Ata-ANF-username-RG --name WebVM2 --image UbuntuLTS --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --plan-publisher nginxinc --plan-product nginx-plus-v1 --plan-name nginx-plus-ub1804 --image nginxinc:nginx-plus-v1:nginx-plus-ub1804:2.0.0
         
 
 
