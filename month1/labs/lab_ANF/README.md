@@ -168,7 +168,7 @@ Oncen your volume has created click on **Go to Resource**
 
 
 Select **Mount Options** from the menu and 
-        **Take note of your IP Address located under Mount Instructions in  Step 2 (you will need this later on in the lab)**
+-   **Take note of your IP Address located under Mount Instructions in  Step 2 (you will need this later on in the lab)**
 
 <img src="./images/IP-Volume.png" alt="Create Volume" width="400">
 
