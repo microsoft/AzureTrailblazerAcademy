@@ -222,5 +222,5 @@ touch /mnt/myvol1/file2
 ls -ls /mnt/myvol1
 
 
--  You should see in the ouput from the second VM, you should see the both files that were created from VM1 and VM2 because its a shared volume
+-  You should see in the ouput from the second VM, both files that were created from VM1 (file1) and VM2 (file2) because its a shared volume
 
