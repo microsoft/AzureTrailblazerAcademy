@@ -227,7 +227,7 @@ Select **Mount Options** from the menu and
 #### For VM1: Using Azure Cloud
 ####          Username : ata and Password Trailblazers1!
 
--   ssh ata@<webvm1-Public-IP>
+-   ssh ata@**(webvm1-Public-IP)**
 
 -   confirm with yes, if prompted
 
@@ -253,7 +253,7 @@ Now execute the below commands one by one
 #### For VM2: Using Azure Cloud
 ####          Username : ata and Password Trailblazers1!
 
--   ssh ata@<webvm2-Public-IP>
+-   ssh ata@**(<webvm2-Public-IP)**
 
 -   confirm with yes, if prompted
 
