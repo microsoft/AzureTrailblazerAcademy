@@ -178,18 +178,18 @@ Select **Mount Options** from the menu and
 
 - From the search bar search for and  Select **Virtual Network**
 
-<img src="./images/Select-VNet.png" alt="Create Volume" width="400"
+<img src="./images/Select-VNet.png" alt="Create Volume" width="400">
 
 - Select your VNet which should be myvnet1
 
 
 - Select **Subnet** from the left hand menu
 
-<img src="./images/Select-Subnet.png" alt="Create Volume" width="400"
+<img src="./images/Select-Subnet.png" alt="Create Volume" width="400">
 
 - Select +Subnet
 
-<img src="./images/Default-Subnet.png" alt="Create Volume" width="400"
+<img src="./images/Default-Subnet.png" alt="Create Volume" width="400">
 
 
 -  Enter the name as **default**, leave everything else as is and hit **ok**
