@@ -235,13 +235,13 @@ Select **Mount Options** from the menu and
 -   We will be using Azure Cloud Shell, again to enter a few commands on each VM
 
 #### For VM1: Using Azure Cloud
-####          Username : ata and Password Trailblazers1!
+####          Username : ata and Password Trailblazer1!
 
 -   ssh ata@**(webvm1-Public-IP)**
 
 -   confirm with yes, if prompted
 
--   Enter the password Trailblazers1!
+-   Enter the password Trailblazer1!
 
 Now execute the below commands one by one
 
@@ -261,13 +261,13 @@ Now execute the below commands one by one
 
 
 #### For VM2: Using Azure Cloud
-####          Username : ata and Password Trailblazers1!
+####          Username : ata and Password Trailblazer1!
 
 -   ssh ata@**(<webvm2-Public-IP)**
 
 -   confirm with yes, if prompted
 
--   Enter the password Trailblazers1!
+-   Enter the password Trailblazer1!
 
 
 -   Now execute the below commands one by one
@@ -287,4 +287,5 @@ Now execute the below commands one by one
 
 
 -  You should see in the ouput from the second VM, both files that were created from VM1 (file1) and VM2 (file2) since its a shared volume
+
 
