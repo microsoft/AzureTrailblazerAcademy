@@ -40,7 +40,7 @@ In this Lab we will create a Highly Available NAS Share, that will shared by two
 
 - Scroll down on left hand menu until you see **Resource Provider** and Click on it
 
-<img src="./images/Resource-Provider.png" width="400">
+<img src="./images/Resource-Provider.png" width="200">
 
 
 - Type **Microsoft.NetApp** in the search bar
