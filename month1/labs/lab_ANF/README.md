@@ -56,6 +56,7 @@ In this Lab we will create a Highly Available NAS Share, that will shared by two
 After a few minutes the Provider will show a Registered Status, you can click **Refresh** periodically to update status
 
 
+
 ### Step-2: Create ANF Storage account
 - In the Azure portal’s search box, enter Azure NetApp Files and then **select Azure NetApp Files** from the list that appears.
 <img src="./images/Storage-Account.png" width="400">
@@ -237,7 +238,7 @@ Select **Mount Options** from the menu and
 #### For VM1: Using Azure Cloud
 ####          Username : ata and Password Trailblazer1!
 
--   ssh ata@**(webvm1-Public-IP)**
+-   ssh ata@**(WebVM1-Public-IP)**
 
 -   confirm with yes, if prompted
 
@@ -263,7 +264,7 @@ Now execute the below commands one by one
 #### For VM2: Using Azure Cloud
 ####          Username : ata and Password Trailblazer1!
 
--   ssh ata@**(<webvm2-Public-IP)**
+-   ssh ata@**(<WebVM2-Public-IP)**
 
 -   confirm with yes, if prompted
 
