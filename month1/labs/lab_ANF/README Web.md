@@ -170,3 +170,4 @@ Set **Name** to **AllowPort80**
   - Using a web browser, connect to http://WebVM1 Public IP Address
   
   - Using a another web browser, connect to http://WebVM2 Public IP Address
+
