@@ -110,11 +110,19 @@ Continue to execute the below commands one by one
   
 - In the list in the center select your VM **WebVM1**
   
-  Selet the **Network Item** form the list on the side
+  Selet the **Networking Item** form the list on the side
   
 <img src="./images/Web-NSG.png" alt="Create Volume" width="400">
+
+
+- You should see a panel that looks imiliar to the below
+ 
+   <img src="./images/Network-Summary.png" alt="Create Volume" width="400">
+   
+   
   
 - Click on **Add Inbound Port Rule** Button on Far Right
+
 
 Complete the fields in the Add Inbound Security Rule Panel
 
@@ -133,9 +141,16 @@ Set **Name** to **AllowHttpInbound**
     
   - In the list in the center select your VM **WebVM1**
     
-    Selet the **Network Item** form the list on the side
+    Selet the **Networking Item** form the list on the side
+    
     
   <img src="./images/Web-NSG.png" alt="Create Volume" width="400">
+  
+  
+  - You should see a panel that looks imiliar to the below
+  
+    <img src="./images/Network-Summary.png" alt="Create Volume" width="400">
+    
     
   - Click on **Add Inbound Port Rule** Button on Far Right
 
