@@ -2,6 +2,16 @@
 ## Overview
 ## Access Data in Azure  with Azure NetApp Files
 The Azure NetApp Files service is an enterprise-class, high-performance, file storage service. Azure NetApp Files supports any workload type and is highly available by default. You can select service and performance levels and set up snapshots through the service.
+
+In this Lab we will create a Highly Available NAS Share, that will shared by two Virtual Machines
+
+<img src="./images/HA-Share.png" width="700">
+
+
+
+
+
+
 ### Labs:
 - [Lab-1: Setup the Azure NetApp Files Service](#lab-1-Register-ANF-service)
 - [Lab-2: Provision a Pool and Volume to Contain Your Data](#lab-2-Provision-Capacity)
