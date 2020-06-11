@@ -5,7 +5,7 @@ The Azure NetApp Files service is an enterprise-class, high-performance, file st
 
 In this Lab we will create a Highly Available NAS Share, that will shared by two Virtual Machines
 
-<img src="./images/HA-Share.png" width="700">
+<img src="./images/HA-Share.png" width="300">
 
 
 
