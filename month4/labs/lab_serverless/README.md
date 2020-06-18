@@ -1,19 +1,6 @@
+# Azure Serverless Lab
 
-
-<div class="MCWHeader1">
-Serverless architecture
-</div>
-
-<div class="MCWHeader2">
-Hands-on lab step-by-step
-</div>
-
-<div class="MCWHeader3">
-June 2020
-</div>
-
-
-**Contents**
+## Table of Content
 
 <!-- TOC -->
 
