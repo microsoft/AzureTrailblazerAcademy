@@ -66,10 +66,6 @@ June 2020
   - [Exercise 8: Rerun the workflow and verify data export](#exercise-8-rerun-the-workflow-and-verify-data-export)
     - [Task 1: Run the Logic App](#task-1-run-the-logic-app)
     - [Task 2: View the exported CSV file](#task-2-view-the-exported-csv-file)
-  - [After the hands-on lab](#after-the-hands-on-lab)
-    - [Task 1: Delete the resource group in which you placed your Azure resources](#task-1-delete-the-resource-group-in-which-you-placed-your-azure-resources)
-    - [Task 2: Delete the GitHub repo](#task-2-delete-the-github-repo)
-
 <!-- /TOC -->
 
 # Serverless architecture hands-on lab step-by-step
@@ -88,7 +84,7 @@ Contoso Ltd. is rapidly expanding their toll booth management business to operat
 
 Below is a diagram of the solution architecture you will build in this lab. Please study this carefully, so you understand the whole of the solution as you are working on the various components.
 
-![The Solution diagram is described in the text following this diagram.](../Whiteboard%20design%20session/media/preferred-solution.png 'Solution diagram')
+![The Solution diagram is described in the text following this diagram.](images/preferred-solution.png 'Solution diagram')
 
 The solution begins with vehicle photos being uploaded to an Azure Storage blobs container, as they are captured. An Event Grid subscription is created against the Blob storage create event, calling the photo processing **Azure Function** endpoint (on the side of the diagram), which in turn sends the photo to the **Cognitive Services Computer Vision API OCR** service to extract the license plate data. If processing was successful and the license plate number was returned, the function submits a new Event Grid event, along with the data, to an Event Grid topic with an event type called "savePlateData". However, if the processing was unsuccessful, the function submits an Event Grid event to the topic with an event type called "queuePlateForManualCheckup". Two separate functions are configured to trigger when new events are added to the Event Grid topic, each filtering on a specific event type, both saving the relevant data to the appropriate **Azure Cosmos DB** collection for the outcome, using the Cosmos DB output binding. A **Logic App** that runs on a 15-minute interval executes an Azure Function via its HTTP trigger, which is responsible for obtaining new license plate data from Cosmos DB and exporting it to a new CSV file saved to Blob storage. If no new license plate records are found to export, the Logic App sends an email notification to the Customer Service department via their Office 365 subscription. **Application Insights** is used to monitor all of the Azure Functions in real-time as data is being processed through the serverless architecture. This real-time monitoring allows you to observe dynamic scaling first-hand and configure alerts when certain events take place. **Azure Key Vault** is used to securely store secrets, such as connection strings and access keys. Key Vault is accessed by the Function Apps through an access policy within Key Vault, assigned to each Function App's system-assigned managed identity.
 
@@ -134,7 +130,7 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
 3. Select **+ Create a resource**, then select **Storage**, **Storage account**.
 
-    ![In the menu pane of Azure Portal, Create a resource is selected. Under Azure Marketplace, Storage is selected, and under Featured, Storage account is selected.](media/new-storage-account.png 'Azure Portal')
+    ![In the menu pane of Azure Portal, Create a resource is selected. Under Azure Marketplace, Storage is selected, and under Featured, Storage account is selected.](images/new-storage-account.png 'Azure Portal')
 
 4. On the **Create storage account** blade, specify the following configuration options:
 
@@ -1088,8 +1084,6 @@ In this task, you will change the Computer Vision API to the Free tier. This wil
 
 5. After this has run for some time, close the UploadImages console to stop uploading photos.
 
-6. Navigate back to the **Computer Vision** API and set the pricing tier back to **S1 Standard**.
-
 ## Exercise 5: Explore your data in Azure Cosmos DB
 
 **Duration**: 15 minutes
@@ -1243,3 +1237,180 @@ In this exercise, you create a new Logic App for your data export workflow. This
 
     ![The Disable button is selected on the TollBoothLogic Logic app blade toolbar menu.](images/image97.png 'TollBoothLogic blade')
 
+## Exercise 7: Configure continuous deployment for your Function App
+
+**Duration**: 40 minutes
+
+In this exercise, configure your Function App that contains the ProcessImage function for continuous deployment. You will first set up a GitHub source code repository, then set that as the deployment source for the Function App.
+
+### Help references
+
+|                                           |                                                                                    |
+| ----------------------------------------- | :--------------------------------------------------------------------------------: |
+| **Description**                           |                                     **Links**                                      |
+| Creating a new GitHub repository          |           <https://help.github.com/articles/creating-a-new-repository/>            |
+| Continuous deployment for Azure Functions | <https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment> |
+
+### Task 1: Add git repository to your Visual Studio solution and deploy to GitHub
+
+1. Open the **TollBooth** project in Visual Studio.
+
+2. Right-click the **TollBooth** solution in Solution Explorer, then select **Add Solution to Source Control**.
+
+    ![In Solution Explorer, TollBooth solution is selected. From its right-click context menu, the Add Solution to Source Control item is selected.](images/vs-add-to-source-control.png 'Solution Explorer')
+
+3. Select **View** in Visual Studio's top menu, then select **Team Explorer**.
+
+    ![The View menu is expanded with the Team Explorer menu item selected.](images/vs-view-team-explorer.png 'Visual Studio')
+
+4. Select **Sync** in the Team Explorer.
+
+    ![The Sync link is highlighted.](images/vs-sync.png "Changes")
+
+5. Choose the **Publish to GitHub** button, then sign in to your GitHub account when prompted.
+
+    ![The Publish to GitHub button is highlighted in the Publish to GitHub section.](images/vs-publish-to-github.png "Push")
+
+6. Type in a name for the new GitHub repository, then select **Publish**. This will create the new GitHub repository, add it as a remote to your local git repo, then publish your new commit.
+
+    ![In the Push form, the repository name is highlighted along with the Publish button.](images/vs-publish-to-new-github.png "Push")
+
+7. Refresh your GitHub repository page in your browser. You should see that the project files have been added. Navigate to the **TollBooth** folder of your repo. Notice that the local.settings.json file has not been uploaded. That's because the .gitignore file of the TollBooth project explicitly excludes that file from the repository, making sure you don't accidentally share your application secrets.
+
+    ![On the GitHub Repository webpage for serverless-architecture-lab, on the Code tab, the project files are displayed.](images/github-repo-page.png 'GitHub Repository page')
+
+### Task 2: Configure your Function App to use your GitHub repository for continuous deployment
+
+1. Open the Azure Function App you created whose name ends with **FunctionApp**, or the name you specified for the Function App containing the ProcessImage function.
+
+2. Select **Deployment Center** underneath Deployment in the left-hand menu.
+
+    ![The Platform features tab is displayed, under Code Deployment, Container settings is selected.](images/functionapp-menu-deployment-center-link.png 'TollBoothFunctionApp blade')
+
+3. Select **GitHub** in the **Deployment Center** blade. Enter your GitHub credentials if prompted. Select **Continue**.
+
+    ![The GitHub tile is selected from a list of repository options.](images/functionapp-dc-github.png 'Deployment Center blade')
+
+4. Select **App Service build service**, then select **Continue**.
+
+    ![Under the Build Provider step, App Service build service tile is selected.](images/functionapp-dc-build-provider.png 'Deployment Center blade')
+
+5. **Choose your organization**.
+
+6. Choose your new repository under **Choose project**. Make sure the **master branch** is selected.
+
+    ![Fields in the Deployment option blade set to the following settings: Choose your organization, obscured; Choose repository, serverless-architecture-lab; Choose branch, master.](images/functionapp-dc-configure.png 'Deployment Center blade')
+
+7. Select **Continue**.
+
+8. On the Summary page, select **Finish**.
+
+9. After continuous deployment is configured, all file changes in your deployment source are copied to the function app and a full site deployment is triggered. The site is redeployed when files in the source are updated.
+
+    ![The Deployment Center tab is shown with a pending build.](images/functionapp-dc.png 'Function App Deployment Center')
+
+### Task 3: Finish your ExportLicensePlates function code and push changes to GitHub to trigger deployment
+
+1. Navigate to the **TollBooth** project using the Solution Explorer of Visual Studio.
+
+2. From the Visual Studio **View** menu, select **Task List**.
+
+    ![Task List is selected from the Visual Studio View menu.](images/image37.png 'Visual Studio View menu')
+
+3. There you will see a list of TODO tasks, where each task represents one line of code that needs to be completed.
+
+4. Open **DatabaseMethods.cs**.
+
+5. The following code represents the completed task in DatabaseMethods.cs:
+
+    ```csharp
+        // TODO 5: Retrieve a List of LicensePlateDataDocument objects from the collectionLink where the exported value is false.
+        licensePlates = _client.CreateDocumentQuery<LicensePlateDataDocument>(collectionLink,
+                new FeedOptions() { EnableCrossPartitionQuery=true,MaxItemCount = 100 })
+            .Where(l => l.exported == false)
+            .ToList();
+        // TODO 6: Remove the line below.
+    ```
+
+6. Make sure that you deleted the following line under TODO 6: `licensePlates = new List<LicensePlateDataDocument>();`.
+
+7. Save your changes then open **FileMethods.cs**.
+
+8. The following code represents the completed task in DatabaseMethods.cs:
+
+    ```csharp
+    // TODO 7: Asyncronously upload the blob from the memory stream.
+    await blob.UploadFromStreamAsync(stream);
+    ```
+
+9. Save your changes.
+
+10. Right-click the **TollBooth** project in Solution Explorer, then select **Commit...** under the **Source Control** menu item.
+
+    ![In Solution Explorer, the TollBooth project is selected. From its right-click context menu, Source Control and Commit... are selected.](images/image101.png 'Solution Explorer')
+
+11. Enter a commit message, then select **Commit All**.
+
+    ![In the Team Explorer - Changes window, "Finished the ExportLicensePlates function" displays in the message box, and the Commit All button is selected.](images/image110.png 'Team Explorer - Changes window')
+
+12. After committing, select the **Sync** link. This will allow us to add the remote GitHub repository.
+
+    ![Under Team Explorer - Changes, in the informational message Commit 02886e85 created locally. Sync to share your changes with the server. The Sync link is selected.](images/image103.png 'Team Explorer - Changes window')
+
+13. Select the **Sync** button on the **Synchronization** step.
+
+    ![Under Synchronization in the Team Explorer - Synchronization window, the Sync link is selected.](images/image111.png 'Team Explorer - Synchronization window')
+
+    Afterward, you should see a message stating that the incoming and outgoing commits were successfully synchronized.
+
+14. Go back to Deployment Center for your Function App in the portal. You should see an entry for the deployment kicked off by this last commit. Check the timestamp on the message to verify that you are looking at the latest one. **Make sure the deployment completes before continuing**.
+
+    ![The latest deployment is displayed in the Deployment Center.](images/functionapp-dc-latest.png 'Deployment Center')
+
+## Exercise 8: Rerun the workflow and verify data export
+
+**Duration**: 10 minutes
+
+With the latest code changes in place, run your Logic App and verify that the files are successfully exported.
+
+### Task 1: Run the Logic App
+
+1. Open your ServerlessArchitecture resource group in the Azure portal, then select your Logic App.
+
+2. From the **Overview** blade, select **Enable**.
+
+    ![In the TollBoothLogic Logic app blade, Overview is selected in the left menu, and the Enable enable button is selected in the right pane.](images/image113.png 'TollBoothLogic blade')
+
+3. Now select **Run Trigger**, then select **Recurrence** to immediately execute your workflow.
+
+    ![In the TollBoothLogic Logic app blade, Run Trigger and Recurrence are selected.](images/image114.png 'TollBoothLogic blade')
+
+4. Select the **Refresh** button next to the Run Trigger button to refresh your run history. Select the latest run history item. If the expression result for the condition is **true**, then that means the CSV file should've been exported to Blob storage. Be sure to disable the Logic App so it doesn't keep sending you emails every 15 minutes. Please note that it may take longer than expected to start running, in some cases.
+
+    ![In Logic App Designer, in the Condition section, under Inputs, true is highlighted.](images/image115.png 'Logic App Designer ')
+
+### Task 2: View the exported CSV file
+
+1. Open your ServerlessArchitecture resource group in the Azure portal, then select your **Storage account** you had provisioned to store uploaded photos and exported CSV files.
+
+2. In the Overview pane of your storage account, select **Containers**.
+
+    ![In the Overview blade, Containers is selected.](images/storage-containers.png 'Services section')
+
+3. Select the **export** container.
+
+    ![Export is selected under Name.](images/image117.png 'Export option')
+
+4. You should see at least one recently uploaded CSV file. Select the filename to view its properties.
+
+    ![In the Export blade, under Name, a .csv file is selected.](images/blob-export.png 'Export blade')
+
+5. Select **Download** in the blob properties window.
+
+    ![In the Blob properties blade, the Download button is selected.](images/blob-download.png 'Blob properties blade')
+
+    The CSV file should look similar to the following:
+
+    ![A CSV file displays with the following columns: FileName, LicensePlateText, TimeStamp, and LicensePlateFound.](images/csv.png 'CSV file')
+
+6. The ExportLicensePlates function updates all of the records it exported by setting the exported value to true. This makes sure that only new records since the last export are included in the next one. Verify this by re-executing the script in Azure Cosmos DB that counts the number of documents in the Processed collection where exported is false. It should return 0 unless you've subsequently uploaded new photos.
