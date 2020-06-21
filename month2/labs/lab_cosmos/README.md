@@ -73,11 +73,11 @@ You do not need to do Steps 1-4 in this section and can proceed to Step 5 by ope
 
     ![Resource groups link is highlighted](./images/03-resource_groups.jpg "Select Resource Groups")
 
-2. In the **Resource groups** blade, locate and select the resource group created for the data factory lab.
+2. In the **Resource groups** blade, locate and select the resource group created for the lab.
 
 3. If you see a Data Factory resource, you can skip to step 5, otherwise select **Add** to add a new resource
 
-    ![A data factory resource is highlighted](./images/03-adf-isntance.png "Review if you have data factory already")
+    ![A data factory resource is highlighted](./images/03-adf-instance.jpg "Review if you have data factory already")
 
     ![Select Add in the nav bar](./images/03-add_adf.jpg "Add a new resource")
 
