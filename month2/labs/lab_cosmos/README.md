@@ -147,23 +147,19 @@ You do not need to do Steps 1-4 in this section and can proceed to Step 5 by ope
 
     !["The table mapping dialog is displayed"](./images/03-adf_correcttable.jpg "Select the FoodCollection container")
 
-20. Select through the `Table mapping` screen.
-
-    !["The column mapping dialog is displayed"](./images/03-adf_destinationconnectionfinal.jpg "Review the dialog, select next")
-
-21. There is no need to change any `Settings`. Select **next**.
+20. There is no need to change any `Settings`. Select **next**.
 
     !["The settings dialog is displayed"](./images/03-adf_settings.jpg "Review the dialog, select next")
 
-22. Select **Next** to begin deployment After deployment is complete, select **Monitor**.
+21. Select **Next** to begin deployment After deployment is complete, select **Monitor**.
 
     !["The pipeline runs are displayed"](./images/03-adf_progress.jpg "Notice the pipeline is In progress")
 
-23. After a few minutes, refresh the page and the status for the ImportNutrition pipeline should be listed as **Succeeded**.
+22. After a few minutes, refresh the page and the status for the ImportNutrition pipeline should be listed as **Succeeded**.
 
     !["The pipeline runs are displayed"](./images/03-adf_progress_complete.jpg "The pipeline has succeeded")
 
-24. Once the import process has completed, close the ADF. You will now proceed to validate your imported data.
+23. Once the import process has completed, close the ADF. You will now proceed to validate your imported data.
 
 ## Validate Imported Data
 
