@@ -11,3 +11,4 @@ Automate your code deployments and releases using Azure DevOps. Learn how to use
 |-------------------|----------------------------------|
 | Data Factory     | - [Data Factory Lab](lab_data/) |
 | Networking       | - [Networking Lab](lab_networking/) |
+| Cosmos DB		   | - [Cosmos DB Lab](lab_cosmos/) |
