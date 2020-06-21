@@ -169,15 +169,11 @@ You will validate that the data was successfully imported into your container us
 
 1. Return to the **Azure Portal** (<http://portal.azure.com>).
 
-1. On the left side of the portal, select the **Resource groups** link.
+1. Select the **Resource groups** link, locate and select the resource group created for the lab.
 
-    ![Resource groups link is highlighted](./images/03-resource_groups.jpg "Select your resource group")
+    ![The Lab resource group is highlighted](./images/03-resource_groups.jpg "Select the resource group")
 
-1. In the **Resource groups** blade, locate and select the **cosmoslabs** resource group.
-
-    ![The Lab resource group is highlighted](./images/03-lab_resource_group.jpg "Select the resource group")
-
-1. In the **cosmoslabs** blade, select the **Azure Cosmos DB** account you recently created.
+1. Inside the resource group, select the **Azure Cosmos DB** account you created for the lab.
 
     ![The Cosmos DB resource is highlighted](./images/03-cosmos_resource.jpg "Select the Cosmos DB resource")
 
