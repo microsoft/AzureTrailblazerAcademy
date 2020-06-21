@@ -7,7 +7,6 @@
 - Permissions to create the following resource 
     - Cosmos DB
     - Data Factory
-    - Storage Account
 
 ## Reference Architecture  
 Below is the architecture of the Cosmos DB Lab.  
