@@ -23,7 +23,7 @@ In this lab section, you will view and modify the indexing policy for your **Foo
 
 4. In the **Azure Cosmos DB** blade, locate and select the **Data Explorer** link on the left side of the blade.
 
-5. In the **Data Explorer** section, expand the **ImportDatabase** database node and then expand the **FoodCollection** container node.
+5. In the **Data Explorer** section, expand the **NutritionDatabase** database node and then expand the **FoodCollection** container node.
 
 6. Within the **FoodCollection** node, select the **Items** link.
 

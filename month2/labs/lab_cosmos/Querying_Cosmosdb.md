@@ -3,8 +3,6 @@
 
 Azure Cosmos DB SQL API accounts provide support for querying items using the Structured Query Language (SQL), one of the most familiar and popular query languages, as a JSON query language. In this lab, you will explore how to use these rich query capabilities directly through the Azure Portal. No separate tools or client side code are required.
 
-If this is your first lab and you have not already completed the setup for the lab content see the instructions for [Account Setup](00-account_setup.md) before starting this lab.
-
 ## Query Overview
 
 Querying JSON with SQL allows Azure Cosmos DB to combine the advantages of a legacy relational databases with a NoSQL database. You can use many rich query capabilities such as sub-queries or aggregation functions but still retain the many advantages of modeling data in a NoSQL database.
@@ -20,11 +18,11 @@ You will begin by running basic queries with `SELECT`, `WHERE`, and `FROM` claus
 ### Open Data Explorer
 
 1. In the **Azure Cosmos DB** blade, locate and select the **Data Explorer** link on the left side of the blade.
-2. In the **Data Explorer** section, expand the **ImportDatabase** database node and then expand the **FoodCollection** container node.
+2. In the **Data Explorer** section, expand the **NutritionDatabase** database node and then expand the **FoodCollection** container node.
 3. Within the **FoodCollection** node, select the **Items** link.
 4. View the items within the container. Observe how these documents have many properties, including arrays.
 
-    ![The ImportDatabase and FoodCollection is displayed and highlighted](./images/lab02/02-food_container.jpg "Browse to the FoodCollection and select an item to review its properties")
+    ![The NutritionDatabase and FoodCollection is displayed and highlighted](./images/lab02/02-food_container.jpg "Browse to the FoodCollection and select an item to review its properties")
 
 5. Select **New SQL Query**.
 
