@@ -59,7 +59,7 @@
 <img src="./images/lab01/01-cosmosdb-add-container.jpg" alt="Cosmos DB Add Container"  Width="600">
 
 ## Step 4: Import Lab Data Into Container
-You will use **Azure Data Factory (ADF)** to import the JSON array stored in the **nutrition.json** file from Azure Blob Storage.
+You will use **Azure Data Factory (ADF)** to import the JSON array stored in the **NutritionData.json** file from Azure Blob Storage.
 
 You do not need to do Steps 1-4 in this section and can proceed to Step 5 by opening your Data Factory if you have created a Data Factory resource for the previous lab.
 
