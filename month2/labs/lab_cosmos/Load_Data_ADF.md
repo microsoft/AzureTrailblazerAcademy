@@ -78,7 +78,7 @@ You do not need to do Steps 1-4 in this section and can proceed to Step 5 by ope
     ![Select Add in the nav bar](./images/lab01/01-add_adf.jpg "Add a new resource")
 
    - Search for **Data Factory** and select it. 
-   - Create a new **Data Factory**. You should name this data factory **importnutritiondata** with a unique number appended and select the relevant Azure subscription. You should ensure your existing **cosmoslabs** resource group is selected as well as a Version **V2**. 
+   - Create a new **Data Factory**. You should give this data factory a unique name and select the relevant Azure subscription. You should ensure your existing resource group is selected as well as a Version **V2**. 
    - Select **East US** as the region. Do not select **Enable GIT** (this may be checked by default). 
    - Select **Create**.
 
@@ -131,9 +131,9 @@ You do not need to do Steps 1-4 in this section and can proceed to Step 5 by ope
 
     !["The New Linked Service dialog is displayed"](./images/lab01/01-adf_selecttarget.jpg "Select the Azure Cosmos DB service type")
 
-17. Name the linked service **targetcosmosdb** and select your Azure subscription and Cosmos DB account. You should also select the Cosmos DB **ImportDatabase** that you created earlier.
+17. Name the linked service **targetcosmosdb** and select your Azure subscription and Cosmos DB account. You should also select the Cosmos DB **NutritionDatabase** that you created earlier.
 
-    !["The linked service configuration dialog is displayed"](./images/lab01/01-adf_selecttargetdb.jpg "Select the ImportDatabase database")
+    !["The linked service configuration dialog is displayed"](./images/lab01/01-adf_selecttargetdb.jpg "Select the NutritionDatabase database")
 
 18. Select your newly created **targetcosmosdb** connection as the Destination date store.
 
@@ -177,9 +177,9 @@ You will validate that the data was successfully imported into your container us
 
     ![The Data Explorer link was selected and is blade is displayed](./images/lab01/01-data_explorer_pane.jpg "Select Data Explorer")
 
-1. In the **Data Explorer** section, expand the **ImportDatabase** database node and then expand the **FoodCollection** container node.
+1. In the **Data Explorer** section, expand the **NutritionDatabase** database node and then expand the **FoodCollection** container node.
 
-    ![The Container node is displayed](./images/lab01/01-collection_node.jpg "Expand the ImportDatabase node")
+    ![The Container node is displayed](./images/lab01/01-collection_node.jpg "Expand the NutritionDatabase node")
 
 1. Within the **FoodCollection** node, select the **Items** link to view a subset of the various documents in the container. Select a few of the documents and observe the properties and structure of the documents.
 
