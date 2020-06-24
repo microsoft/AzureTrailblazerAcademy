@@ -49,7 +49,7 @@
 <img src="./images/lab01/01-cosmosdb-overview-add-container.jpg" alt="Cosmos DB Overview Add Container"  Width="600">
 
 3.	In the **Add Container** popup, fill out the following fields and click the **OK** button.
-- **Database id:** Select the **Create new** option and enter the value **ImportDatabase**.
+- **Database id:** Select the **Create new** option and enter the value **NutritionDatabase**.
 - **Provision database throughput:** Do not check this option.
 - **Container id:** FoodCollection
 - **Partition key:** /foodGroup
@@ -113,9 +113,9 @@ You do not need to do Steps 1-4 in this section and can proceed to Step 5 by ope
 9. Select **Create**
 10. Select **Next**
 11. Select **Browse**, then double-click to open the **nutritiondata** folder
-12. Select the **NutritionData.json** file, then select **Choose**
+12. Select **Choose**
 
-    ![The nutritiiondata folder is displayed](./images/lab01/01-adf_choosestudents.jpg "Select the NutritionData.json file")
+    ![The nutritiiondata folder is displayed](./images/lab01/01-adf_choosenutrition.jpg "Select the nutritiondata folder")
 
 13. Un-check **Copy file recursively** or **Binary Copy** if they are checked. Also ensure that other fields are empty.
 
