@@ -26,6 +26,10 @@ Automate your code deployments and releases using Azure DevOps. Learn how to use
 
 Monitor your Azure Infrastructure and learn how to configure/query logs in Log Analytics Workspace, intall Microsoft Monitoring Agent Extension and setup alerting to be notified under different conditions.
 
+### [**Month 4**: Azure Serverless Services](./month4)
+
+Learn about the different Serverless services available in Azure such as Funtions, LogicApps and EventGrid. This month you will build an end-to-end solution using only serverless components.
+
 
 ## Contributing
 
