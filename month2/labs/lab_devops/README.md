@@ -113,39 +113,18 @@ It will take several minutes for the deployment to complete.
 1. In the **SQL Server – Create new** window
     - (1) Give the **Database server name** a unique name
     - (2) Use the default or select a different **Location**. For better performance, it's good to have the database in the same region as the App Service
-    - (3) Provide a database **Administrator username** and **Administrator password**. 
+    - (3) Provide a database **Administrator username** and **Administrator password**. *You will need this password again in a few minutes.*
     - (4) Click **OK** 
 
         ![](images/publishconfiguresql4.png)
   
 1. Click **Create** in the **Azure SQL Database - Create new window** to create the database and close the window. It will take a few minutes to create the database. 
 
-1. Back in the **Configure Azure SQL Database** wizard click **Next** 
+1. Back in the **Configure Azure SQL Database** wizard click **Cancel** to close the wizard. (For simplicity's sake during this lab, we will use the database admin credentials in our database connection string.) 
  
     ![](images/publishconfiguresql5.png)
 
-1. In the next step of the **Configure Azure SQL Database** wizard: 
-    - (1) Enter the **Database connection string name**, **Database connection user name**, and **Database connection password** fields. These are the details your application will use to connect to the database at runtime. Best practice is to avoid using the same details as the admin username & password used in the previous step. 
-    - (2) Change the **Save connection string value in** setting to **None**.
-    - (3) Click **Finish** then click **Close**. 
- 
-        ![](images/publishconfiguresql6.png)
- 
-
-1. In the **Publish Summary** window click **Edit** 
-
-    ![](images/publishsummarypage1.png)
-
- 
-1. In the **Publish** dialog box
-    - (1) Click **Settings**
-    - (2) Click on the arrow to open the **Databases** dropdown list
-    - (3) Click on the databse name **DotNetAppSqlDb_db**
-    - (4) Click **Save**
-
-        ![](images/publishsettingsdbconnection.png)
-
-1. We now need to update the **Database conection string** in the application's **web.config** file. 
+1. Update the **Database connection string** in the application's **Web.config** file. 
     - (1) In **Internet Explorer** go to your resource group in the **Azure Portal** 
     - (2) Click on the **SQL database** name
 
@@ -159,7 +138,7 @@ It will take several minutes for the deployment to complete.
 
         ![](images/changeconnectionstring3.png)
 
-    - (5) Replace the **{your_password}** placeholder in the connection string with the password of the database user you created in the wizard above. 
+    - (5) Replace the **{your_password}** placeholder in the connection string with the password of the database administrator you created a few steps ago. 
     - (6) **Save** the **Web.config** file then **close its tab** in the editor. 
 
 1. In the **Publish - Deploy your app to a folder...** tab in Visual Studio, click **Publish**
