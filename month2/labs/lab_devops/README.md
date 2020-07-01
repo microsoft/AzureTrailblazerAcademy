@@ -124,9 +124,10 @@ It will take several minutes for the deployment to complete.
  
     ![](images/publishconfiguresql5.png)
 
-1. In the next step of the Configure Azure SQL Database dialog: 
+1. In the next step of the **Configure Azure SQL Database** wizard: 
     - (1) Enter the **Database connection string name**, **Database connection user name**, and **Database connection password** fields. These are the details your application will use to connect to the database at runtime. Best practice is to avoid using the same details as the admin username & password used in the previous step. 
-    - (2) Click **Finish** then click **Close**. 
+    - (2) Change the **Save connection string value in** setting to **None**.
+    - (3) Click **Finish** then click **Close**. 
  
         ![](images/publishconfiguresql6.png)
  
@@ -144,7 +145,24 @@ It will take several minutes for the deployment to complete.
 
         ![](images/publishsettingsdbconnection.png)
 
-1. In the **Publish - Deploy your app to a folder...** window in Visual Studio, click **Publish**
+1. We now need to update the **Database conection string** in the application's **web.config** file. 
+    - (1) In **Internet Explorer** go to your resource group in the **Azure Portal** 
+    - (2) Click on the **SQL database** name
+
+        ![](images/changeconnectionstring1.png)
+    
+    - (3) Click on **Connection strings** in the left navigation bar, then copy the entire **ADO.NET (SQL authentication)** connection string. 
+
+        ![](images/changeconnectionstring2.png)
+
+    - (4) In **Visual Studio** open the **Web.config** file and replace the existing value of the **connectionString** with the value you copied from the Azure Portal. 
+
+        ![](images/changeconnectionstring3.png)
+
+    - (5) Replace the **{your_password}** placeholder in the connection string with the password of the database user you created in the wizard above. 
+    - (6) **Save** the **Web.config** file then **close its tab** in the editor. 
+
+1. In the **Publish - Deploy your app to a folder...** tab in Visual Studio, click **Publish**
 
     ![](images/publishtoazure1.png)
 
