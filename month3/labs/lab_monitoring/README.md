@@ -7,7 +7,7 @@
 - Permissions to create VMs with public IP addresses
 - Environment to monitor  
 
-[![Deploy](/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fdev%2Fmonth3%2Flabs%2Flab_monitoring%2Ftemplate%2FAzureMonitorLab.json)
+[![Deploy](images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fdev%2Fmonth3%2Flabs%2Flab_monitoring%2Ftemplate%2FAzureMonitorLab.json)
 
 # Lab Setup
 
