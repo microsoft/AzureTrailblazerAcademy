@@ -15,11 +15,11 @@ In this lab, you will learn how to use Azure DevOps to create a CI/CD pipeline. 
 
     - Select or create a new resource group
     - Give your VM a name, such as vmatalab plus your initials (such as vmatalabjb)
-    - Provide an admin username and password
-    - Leave the Public inbound ports and Select inbound ports settings as they are.
-    - Click Review + create
+    - Provide an admin **Username** and **Password**
+    - Leave the **Public inbound ports** and **Select inbound ports** settings as they are.
+    - Click **Review + create**
 
-    **Recommendation:** Use the default **D4_v3** VM size rather than a smaller, slower one. You will appreciate the faster speed when walking through the steps that involve Visual Studio. Just be sure to shut down the VM from the Azure portal (or delete it altogether) when you finish the lab. This VM costs around $0.35 an hour while it is not shut down from the Azure portal.
+    **Recommendation:** Use the **D4_v3** VM size rather than a smaller, slower one. You will appreciate the faster speed when walking through the steps that involve Visual Studio. Just be sure to shut down the VM from the Azure portal (or delete it altogether) when you finish the lab. This VM costs around $0.38 an hour while it is not stopped from the Azure portal.
  
 1.	After validation completes, press **Create**. 
  
@@ -28,7 +28,7 @@ It will take several minutes for the deployment to complete.
   
 ## Task 1. Connect to the VM, download the sample project from GitHub, and open Visual Studio. 
  
-1. Once the deployment is complete (it will take a few minutes), click Go to resource.  click **Go to resource**. 
+1. Once the deployment is complete (it will take a few minutes), click **Go to resource**. 
     
     ![](images/gotoresource.png)
  
@@ -43,7 +43,7 @@ It will take several minutes for the deployment to complete.
 1.	When prompted to enter your credentials, 
     - (1) Click **More choices**
     - (2) Click **Use a different account**
-    - (3) Enter the admin username and password you provided when you created the VM
+    - (3) Enter the **User name** and **Password** you provided when you created the VM
     - (4) Click **OK**, then clickk **OK** in the next dialog box.
     
         ![](images/connecttovm6.png)
@@ -56,7 +56,7 @@ It will take several minutes for the deployment to complete.
 
     ![](images/networks.png)
 
-1. Inside the VM, open Internet Explorer and download the sample project to the VM's C: drive from [GitHub](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip)
+1. Inside the VM, open **Internet Explorer** and download the sample project to the VM's C: drive from GitHub: https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip
  
     ![](images/downloadfromgithub.png)
  
@@ -66,9 +66,9 @@ It will take several minutes for the deployment to complete.
 
 1. Open the solution in **Visual Studio 2019** by double-clicking on the extracted solution file **DotNetAppSqlDb.sln**.  
 1. When prompted for credentials you can use your corporate credentials, your Microsoft account, or create them on the fly. 
-1. Once Visual Studio opens, select **View** then **Cloud Explorer**, and login with your Azure account to see your resources. Visual Studio should look something like this with your solution open and signed into Cloud Explorer.
+1. Once Visual Studio opens it should look something like this.
 
-    ![](images/vswithcloudandsolutionexplorer.png)
+    ![](images/vswithsolutionexplorer.png)
  
 ## Task 2. Publish the application to Azure
  
@@ -76,12 +76,13 @@ It will take several minutes for the deployment to complete.
 
     ![](images/clickprojectandpublish.png)
 
-1. In the **Publish – Where are you publishing today?** wizard, click **Next** to select Azure, then click **Next** to select Azure App Service.
+1. In the **Publish – Where are you publishing today?** wizard, click **Next** to select **Azure**, then click **Next** to select **Azure App Service (Windows)**.
 
     - (1) Then click **+ Create a new Azure App Service…**
-    - (2) Select the **Resource Group** you’re using for this lab 
-    - (3) Click **New…** 
-    - (4) Click OK in the **Hosting Plan - Create new** window.
+    - (2) In the **App Service (Windows)** window that opens, select the **Subscription** and **Resource Group** you’re using for this lab 
+    - (3) Click **New…** to the right of **Hosting Plan**
+    - (4) In the **Hosting Plan Create new** window that opens, ensure the **Location** is the same as your other resources in this resource group (having resources in the same region helps with applicaiton performance)
+    - (5) Click OK in the **Hosting Plan - Create new** window.
 
         ![](images/publishwizard1.png)
 
@@ -89,11 +90,11 @@ It will take several minutes for the deployment to complete.
  
     ![](images/appservicewindows.png)
 
-1. Once the App Service Plan is created you will automatically be returned to the **Publish Select existing or create a new Azure App Service** window. Click **Finish**.  
+1. Once the **App Service Plan** is created you will automatically be returned to the **Publish Select existing or create a new Azure App Service** window. Click **Finish**
  
     ![](images/publishfinish.png)
 
-1. In the **Publish – Deploy your app to a folder** window, click **Configure** to configure a SQL Server Database.
+1. In the **Publish – Deploy your app to a folder** window, click **Configure** to configure a **SQL Server Database**
 
     ![](images/publishconfiguresql1.png)
 
@@ -105,52 +106,50 @@ It will take several minutes for the deployment to complete.
  
 1. In the **Azure SQL Database Create new** window 
     - (1) Select the **Resource Group** you’re using for this lab 
-    - (2) Click **New…** to create a new Database server 
+    - (2) Click **New…** to the right of **Database server** 
 
         ![](images/publishconfiguresql3.png)
 
 1. In the **SQL Server – Create new** window
     - (1) Give the **Database server name** a unique name
     - (2) Use the default or select a different **Location**. For better performance, it's good to have the database in the same region as the App Service
-    - (3) Provide a database **Administrator username** and **Administrator password**. 
+    - (3) Provide a database **Administrator username** and **Administrator password**. *You will need this password again in a few minutes.*
     - (4) Click **OK** 
 
         ![](images/publishconfiguresql4.png)
   
-1. Click **Create** in the **Azure SQL Database - Create new window** to create the database and close the window. It will take a couple of minutes to create the database. 
+1. Click **Create** in the **Azure SQL Database - Create new window** to create the database and close the window. It will take a few minutes to create the database. 
 
-1. Click **Next** in the **Configure Azure SQL Database** dialog. 
+1. Back in the **Configure Azure SQL Database** wizard click **Cancel** to close the wizard. (For simplicity's sake during this lab, we will use the database admin credentials in our database connection string.) 
  
     ![](images/publishconfiguresql5.png)
 
-1. In the next step of the Configure Azure SQL Database dialog: 
-    - (1) Enter the **Database connection string** name, **Database connection user name**, and **Database connection password** fields. These are the details your application will use to connect to the database at runtime. Best practice is to avoid using the same details as the admin username & password used in the previous step. 
-    - (2) Click **Finish** then click **Close**. 
- 
-        ![](images/publishconfiguresql6.png)
- 
+1. Update the **Database connection string** in the application's **Web.config** file. 
+    - (1) In **Internet Explorer** go to your resource group in the **Azure Portal** 
+    - (2) Click on the **SQL database** name
 
-1. In the **Publish Summary** window click **Edit** 
+        ![](images/changeconnectionstring1.png)
+    
+    - (3) Click on **Connection strings** in the left navigation bar, then copy the entire **ADO.NET (SQL authentication)** connection string. 
 
-    ![](images/publishsummarypage1.png)
+        ![](images/changeconnectionstring2.png)
 
- 
-1. In the **Publish** dialog box
-    - (1) Click **Settings**
-    - (2) Click on the arrow to open the **Databases** dropdown list
-    - (3) Click on the databse name **DotNetAppSqlDb_db**
-    - (4) Click **Save**
+    - (4) In **Visual Studio** open the **Web.config** file and replace the existing value of the **connectionString** with the value you copied from the Azure Portal. 
 
-        ![](images/publishsettingsdbconnection.png)
+        ![](images/changeconnectionstring3.png)
 
+    - (5) Replace the **{your_password}** placeholder in the connection string with the password of the database administrator you created a few steps ago. 
+    - (6) **Save** the **Web.config** file then **close its tab** in the editor. 
 
-1. In the **Publish - Deploy your app to a folder...** window in Visual Studio, click **Publish**
+1. In the **Publish - Deploy your app to a folder...** tab in Visual Studio, click **Publish**
+
+    ![](images/publishtoazure1.png)
 
 1. In the web browser that opens, verify that the site looks correct. 
 
     ![](images/runningapp2.png)
 
-    **Note:** If your browser did not automatically open, **Ctrl + Click** on the link in the **Output** window in Visual Studio. 
+    **Note:** If your browser did not automatically open, **Ctrl + Click** on the link in the **Output** window in **Visual Studio**. 
 
     ![](images/openpagefromvs.png)
 
@@ -208,7 +207,7 @@ It will take several minutes for the deployment to complete.
  
 1.	Open the source code in File Explorer
     - (1) In the **Team Explorer** window, click on the **Connect** icon 
-    - (2) Right click on the Local Git Repository name **ToDoApp**
+    - (2) Right click on the **Local Git Repository** name **ToDoApp**
     - (3) Click on **Open in File Explorer**
  
         ![](images/openinfileexplorer1.png)
@@ -219,20 +218,19 @@ It will take several minutes for the deployment to complete.
  
         ![](images/copyprojecttoyourrepo1.png)
  
-1.	Push the solution to Azure DevOps. In **Team Explorer**open the **Changes** window
+1.	Push the solution to your Azure DevOps repo. In **Team Explorer** open the **Changes** window
     - (1) Click on the **Home** icon
     - (2) Click **Changes** 
  
         ![](images/clickchanges2.png)
  
-1.	If prompted, in the **Git User Information** window,enter your **Name** and **Email Address**, then click **Save**.
+1.	If prompted, in the **Git User Information** window,enter your **Name** and **Email Address**, then click **Save**. In **Team Explorer** you can see all the changes based on the file copy into your local repo.
 
     ![](images/gituserinfo.png)
 
 1. In **Team Explorer** commit the changes
-    - (1) Notice all the changes based on the file copy into the new repo. 
-    - (2) Add the comment **Release 1.0** 
-    - (3) Click **Commit All**
+    - (1) Add the comment **Release 1.0** 
+    - (2) Click **Commit All**
 
     ![](images/changeswindow3.png)
 
@@ -273,7 +271,7 @@ It will take several minutes for the deployment to complete.
 
     ![](images/opensolution.png)
 
-1. In Visual Studio, Click on the Solution Explorer tab to see the source code view
+1. In **Visual Studio**, **click** on the **Solution Explorer** tab to see the source code view
 
     ![](images/clicksolutionexplorer.png)
 
@@ -293,46 +291,65 @@ It will take several minutes for the deployment to complete.
         ![](images/commitcodetolocalrepo.png)
  
 1. Click on **Sync**, then **Push** to update the Azure DevOps repo
+
     ![](images/syncpush2.png)
  
-1. You can verify the changes in the portal now
+1. You can verify the changes in the Azure DevOps portal now
+
     ![](images/committedfilesindevops.png)
  
 ## Task 5. Create an Azure DevOps CI / CD Pipeline 
  
 1. In your Azure DevOps project, 
     - In the left navigation bar, click on **Pipelines**, then **Create Pipeline**
+
         ![](images/createpipeline1.png)
+    
     - Click on **Azure Repos Git YAML** 
     - Select the **ToDoApp** repository
-    - In **Configure your pipeline** select **ASP.NET Core (.NET Framework)** a YAML pipeline will be generated for you. 
-1. In **Review your pipeline YAML**, scroll to the bottom of the pipeline definition and add the following line  - ```task: PublishBuildArtifacts@1```  (The light gray "Settings" will be added by Azure DevOps - you don't have to type it.) Then click **Save and run**.
+    - In **Configure your pipeline** select **ASP.NET Core (.NET Framework)**.  
+1. In **Review your pipeline YAML** you'll see the YAML build definition that was created for you. We need to add a task to publish the build artifact that's created by the build. We'll use this artifact in the release pipeline in a few minutes. 
+1. **Scroll to the bottom of the pipeline definition** and (1) add the following line  ```- task: PublishBuildArtifacts@1```  (The light gray "Settings" will be added by Azure DevOps - you don't have to type it.) Then (2) click **Save and run**.
+
     ![](images/createpipeline3.png) 
-1. Click **Save and run** in the window that opens
+
+1. In the **Save and run** window that opens, click **Save and run**
 
     ![](images/createpipeline4.png)
  
-1. Once the build finishes you should see a Success status for the run. 
+1. Once the build finishes you should see a **Success** status for the run. 
+
     ![](images/createpipeline5.png)
 
 1. To define your release, click on **Releases** then click on **New pipeline**
+
     ![](images/createrelease1.png)
+
     - On the **Select a template** page, select the **Azure App Service deployment** template and click **Apply**
 1. On the **New release pipeline** page, click **Add an artifact**, select your **Source (build pipeline)**, leave **Latest** for the default version, then click **Add**.
+
     ![](images/createrelease2.png)
+
 1. Click on the words **Stage 1** then change the **Stage name** to **Dev Environment**. Close the **Stage** pane using the **X**. 
+
     ![](images/createrelease3.png)
+
+1. Click on the **lightning bolt** icon on the upper right of the **_ToDoApp** artifacts box, then click on the **Continuous deployment trigger** toggle switch to enable continuous deployment. Close the **Continuous deployment trigger** pane using the **X**.
+
+    ![](images/setcontinuousdeployment.png)
+
 1. Click on the words **New release pipeline** and change the release definition name to **ToDoApp-CD** then click on the **Tasks** tab
+
     ![](images/createrelease4.png)
 
 ### You need to give your Release pipeline the ability to deploy to Azure resources. There are two options.
 1. Option 1) 
-    - Click on the **Azure subscription** dropdown box. If you see the Subscription you used when you created your App Service from Visual Studio, select it. Click Authorize (it's to the right of the dropdown box -- you may have to zoom way out in the browser window to see it). Then select **App type** **"Web App on Windows"** then select your app service in the App service name dropdown box. The window should look something like this: (Your **App service name** will have a different ending). 
+    - With **Dev Environment** selected on the left, click on the **Azure subscription** dropdown box on the right. If you see the Subscription you used when you created your App Service from Visual Studio, select it. Click Authorize (it's to the right of the dropdown box -- you may have to zoom way out in the browser window to see it). Then select **App type** **"Web App on Windows"** then select your app service in the App service name dropdown box. The window should look something like this: (Your **App service name** will have a different ending). 
         ![](images/createrelease5.png)
     - Click **Save** and then **OK** 
 1. Option 2) 
     - If you didn't see your Subscription in Option 1, you will need to use a Service Principal. (FYI, documentation for Service Principal is located here: https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml)
-    - **Right click** on **Project Settings** in the lower left of the navigation pane then 
+    - **Right click** on **Project Settings** in the lower left of the navigation pane then select **Open in new tab** 
 
         ![](images/createrelease6.png)
     
