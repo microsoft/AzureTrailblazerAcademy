@@ -43,8 +43,8 @@ We try to help with the automated deployment to create Azure srevices. Press the
 ## Task List:
 - [Task-1: Create Azure Data Factory Service](#task-1-create-azure-data-factory-service)
 - [Task-2: Create linked services](#task-2-create-linked-services)
-- [Task-3: Create Data Sets](#task-3-create-date-sets) 
-- [Task-4: Create Activity to move the data from the source to target](#task-4-create-activity-to-move-the-data-from-the-source-to-target)
+- [Task-3: Copy Oracle HR Emplyee data to Azure Storage](#task-3-copy-oracle-hr-employee-data-to-azure-storage) 
+- [Task-4: Secure PII Employee data with Data Flows](#task-4-secure-pii-employee-data-with-data-flows)
 - [Task-5: Create Data Transformation Flow](#task-5-create-data-transformation-flow)
 - [Task-6: Build a pipeline to connect activities](#task-6-build-a-pipeline-to-connect-activities)
 - [Task-7: Trigger the pipeline execution](#task-7-trigger-the-pipeline-execution) 
@@ -124,6 +124,69 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - Password: enter the default 'ataadf123!'
 - Click on 'test connect' to test the connection
 - Click on 'Create' after the successful connection to create the Synapse linked service
+
+- You have successfully created connection linked services to Oracle, ADLS Gen2 and Synapse SQL Pool.
+
+### Task-3: Copy Oracle HR Emplyee data to Azure Storage
+- We have established the connection services to the source Oracle DB and the sink Azure storage, we can create a copy activity to ingest the data.
+- 1. Select 'Pencil' icon on the left and select three dots next to pipelines to select 'new pipeline' action. 
+- name the pipeline as 'IngestOracleHREmployeeData' under the properties section on the right side.
+- Drag the 'Copy data' from 'Move & transform' section under 'Activities' list to the convas in the middle.
+- Name the copy activity as 'OracleHREmpToGen2' below the convas under the 'General' tab
+
+<img src="./images/adf-copy-hr-emp-adls-gen2.png" alt="Copy activity to get Oracle HR Emp data to Gen2" width="600">
+
+- 2. Select 'Source' tab next to 'General' to define the source system. 
+- Select 'New' to create a new source dataset
+- Select 'Oracle database' as the data store after filtering with 'Oracle' and click on 'Continue'
+- Select 'Open' to define the source dataset
+- Name the dataset as 'Oracle_HR_Employee_table' under the properties section on the right side.
+- Select the 'OracleDB12cHR' linked service and click on 'Test connection' to test the connectivity.
+- Filter table list by typing 'hr.emp' and select 'HR.EMPLOYEES' table and select 'Preview data'.
+
+<img src-"./images/adf-copy-select-hr-employee-table.png" alt="select Oracle HR table as the source data set" width="600">
+
+- Make sure you are able to see the employee data 
+
+- 3. Select 'Sink' tab next to 'Source' to define the sink system
+- Select 'New' to create a new sink data set
+- Select 'ADLS Gen2' as the data store after filtering with 'Gen2' and click on 'Continue'
+- Select 'Open' to define the sink dataset
+- Select 'Delimited Text' as the format and click on 'Continue'
+- Name the dataset as 'Gen2HREmpData'
+- select the 'Gen2HRStorage' linked service
+- You will have to enter the file system and directory path. 
+- First we need to create the directory path in the storage accont. Leave this browser tab as is and switch to the Azure Services tab in the browser.  
+- Access storage account and open up the 'storage explorer' to create 'hr' under 'data' file system and create 'employee' as a subfolder under 'hr' folder.
+
+<img src="./images/adf-storage-create-employee-folder.png" alt="Gen2 storage create employee folder" width="600">
+
+- Switch back to ADF author browser and enter 'data' and 'hr/Empolyee' as the File path and click on 'OK'
+
+<img src="./images/adf-copy-sink-gen2-dataset.png" alt="create sink gen2 data set" width="600">
+
+- select it again under Datasets to set the first row as the header.
+- check the box 
+
+<img src="./images/adf-copy-sink-gen2-row-header.png" alt="sink-gen2-check-header-row" width="600">
+
+4. Test the copy activity by clicking on 'Debug' option just above the canvas.
+- It will start the process and put it in the queue. Wait till it finishes.
+- Check for the status and make sure it is successful
+
+<img src="./images/adf-copy-trigger-activity.png" alt="execture copy activity to ingest data" width="600">
+
+5. Verify the data ingestion in ADLS Gen2 storage
+- Switch to Azure services tab and access the storage account.
+- open up the 'Storage Explorer' and access the data file syste and drill down to 'hr' and 'Employee' folder. 
+- Confirm the 'HR.EMPLOYEES.txt' file. Double click on the file to download and view the file.
+- You can see how the phone numbers are ingested as text. This is PII data and we should protect this data. 
+<img src="./images/adf-storage-ingest-verify.png" alt="Verify data ingestion to Gen2 from Oracle" width="600">
+
+
+
+
+
 
 
 
