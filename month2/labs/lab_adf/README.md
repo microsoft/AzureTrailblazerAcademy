@@ -18,6 +18,8 @@ We try to help with the automated deployment to create Azure srevices. Press the
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fmaster%2Fmonth2%2Flabs%2Flab_data%2Fscripts%2Flab2_data_deployment.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
+<img src="./images/adf-custom-deployment.png" alt="Enter the required info to run the custom deployment" width="600">
+
 - Enter the following information:
 - Subscription
 - select 'Create new' under Resource group
@@ -52,12 +54,12 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - type 'Data factories' in the search bar 
 - select 'Data factories' and select 'add' to create the service
 
-<img src="./images/adf-service-create.png" alt="Create Resource Group" width="600">
+<img src="./images/adf-main-service-create.png" alt="Create ADF Service" width="600">
 
 - Provide the following info: 
 - Name: 'ata-adf-lab-\<yourname\>'
 - Subscription: Make sure it selected the correct subscription
-- Select 'Create new' under 'Resource Group' and enter 'ata-adf-lab-\<yourname\>'
+- Select 'ata-adf-lab-\<yourname\>', the resource group you have created with custom deployment. 
 - Location: select 'East US'
 - Enable GIT: uncheck the box
 - Click on 'Create' button  
