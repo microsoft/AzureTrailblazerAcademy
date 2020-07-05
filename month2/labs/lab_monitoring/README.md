@@ -15,7 +15,7 @@
 
 We will be monitoring the following environment using Azure Monitor.  
 
-![Monitoring Environment](images/Monitoring_Environment.png)  
+<img src="./images/Monitoring_Environment.png" alt="Monitoring Environment"  Width="900">
 
 Monitoring Setup:  
 1) Metrics  
@@ -42,20 +42,35 @@ Monitoring Setup:
 
 ![VM Basics Tab](images/la_basics.png)
 
+
 4. Click the **Review + Create** button
 5. Click the **Create** button
 
+## Step 2: Connect VM to Log Analytics Workspace  
 
-## Step 2: Enable VM Insights
+1. On the search bar of the Azure Portal, look for **Log Analytics Workspace**. 
+
+2. Open the blade for the workspace you created in Step 1
+
+3. On the left blade, click on **Virtual Machines** under "Workspace Data Sources." 
+
+<img src="./images/DataSources.PNG" alt="Data Sources"  Width="400">  
+
+4. Click on "Not connected" next to "ataubwvm\<initials\>. Then click on connect.  
+
+<img src="./images/ConnectVM.PNG" alt="Connect VM"  Width="400">  
+
+5. Repeat the process for "atawinvm\<initials\> virtual machine. Now both the Linux VM and the Windows VM are reporting to your Log Analytics Workspace.  
+
+## Step 3: Enable VM Insights
 
 Follow these steps to enable VM Insights for the VMs created using the template. Since it takes a couple of minutes for VM Insights to be enabled, you can complete steps below and then move to the next section of the lab. You don't need to wait for that to finish to complete the next section **Metrics Monitoring**. Not that enabling VM Insights is the same process for either Linux or Windows virtual machines.  
 
-1. Open the VM resource once it is provisioned
+1. Open the VM resource for "ataubwvm\<initials\> once it is provisioned
 2. On the left blade, select **Insights**
 3. Click on the **Enable** button
-4. Select your subscription and the Log Analytics Workspace that you deployed in Step 1.
-5. Click the **Enable** button
-6. It will take a couple of minutes for VM Insights to be enabled. As part of this process, two agents will be installed in the VM: the Microsoft Monitoring Agent and the Dependency Agent. The VM will also be configured to send logs and other performance data to the Log Analytics workspace you selected.
+4. Repeat the process for "atawinvm\<initials\>
+6. It will take a couple of minutes for VM Insights to be enabled. The VM will be configured to send logs and other performance data to the Log Analytics workspace.
 
 ![Enable VM Insights](images/vm_insights_enable.png)
 
