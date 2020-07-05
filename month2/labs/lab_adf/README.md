@@ -18,8 +18,6 @@ We try to help with the automated deployment to create Azure srevices. Press the
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fmaster%2Fmonth2%2Flabs%2Flab_data%2Fscripts%2Flab2_data_deployment.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
-<img src="./images/adf-custom-deployment.png" alt="Enter the required info to run the custom deployment" width="600">
-
 - Enter the following information:
 - Subscription
 - select 'Create new' under Resource group
@@ -27,6 +25,9 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - Region: Select 'East US'
 - SQL_Server Name:'ata-adf-lab-sql-/<yourname/>'
 - Server_location:'eastus'
+
+<img src="./images/adf-custom-deployment.png" alt="Enter the required info to run the custom deployment" width="600">
+
 - AdministratorLogin:'azureadmin'
 - Administrator Login Password:'Ataadf123!'
 - Database Name:'ataadflabsqldb'
@@ -54,8 +55,6 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - type 'Data factories' in the search bar 
 - select 'Data factories' and select 'add' to create the service
 
-<img src="./images/adf-main-service-create.png" alt="Create ADF Service" width="600">
-
 - Provide the following info: 
 - Name: 'ata-adf-lab-\<yourname\>'
 - Subscription: Make sure it selected the correct subscription
@@ -63,6 +62,8 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - Location: select 'East US'
 - Enable GIT: uncheck the box
 - Click on 'Create' button  
+
+<img src="./images/adf-main-service-create.png" alt="Create ADF Service" width="600">
 
 - select 'Go to resource' when it completes the deployment
 - select 'Author & Monitor' in the middle of the screen
@@ -81,8 +82,6 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - search for 'Oracle' under 'Data Store' and select 'Oracle Database' and click on 'Continue'
 - Enter the following Oracle Connect Info:
 
-<img src="./images/adf-oracle-connect-info.png" alt="Enter Oracle Connect Info" width="600">
-
 - Name: Enter 'OracleDB12cHR'
 - Leave the default 'Connection string' option
 - Host: Enter Instructor provided server IP address
@@ -92,6 +91,8 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - User name: hr
 - Password: 'hr'
 
+<img src="./images/adf-oracle-connect-info.png" alt="Enter Oracle Connect Info" width="600">
+
 - Select 'test connection' to verify the successful connection
 - Click on 'Create' button to create the Oracle linked service
 
@@ -100,8 +101,6 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - Search for 'Gen2' under data store and select ADLS Gen2 
 - Click on 'Continue'
 
-<img src="./images/adf-gen2-storage-connect-info.png" alt="Enter Gen2 Storage connect info" width="600" >
-
 - Name: Enter 'Gen2HRStorage'
 - Authentication Method: Leave the default 'Account Key' selection
 - Account Selection method: Leave the default 'From Azure subscription'
@@ -109,12 +108,12 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - Click on 'Test connection' 
 - Click on 'Create' after successful connection to create the ADLS Gen2 storage linked service
 
+<img src="./images/adf-gen2-storage-connect-info.png" alt="Enter Gen2 Storage connect info" width="600" >
+
 - 3. Create Synapse Analytics Linked Service
 - Seelct 'New' under Linked Services
 - Search for 'Synapse' under data store and select 'Azure Synapse Analytics' 
 - Click on 'Continue'
-
-<img src="./images/adf-synapse-sink-db-connect-info.png" alt="Enter Synapse sink db connect info" Width="600">
 
 - Enter the folowing info:
 - Name: Enter 'SynapseDBHR'
@@ -124,6 +123,8 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - Password: enter the default 'ataadf123!'
 - Click on 'test connect' to test the connection
 - Click on 'Create' after the successful connection to create the Synapse linked service
+
+<img src="./images/adf-synapse-sink-db-connect-info.png" alt="Enter Synapse sink db connect info" Width="600">
 
 - You have successfully created connection linked services to Oracle, ADLS Gen2 and Synapse SQL Pool.
 
@@ -181,7 +182,7 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - open up the 'Storage Explorer' and access the data file syste and drill down to 'hr' and 'Employee' folder. 
 - Confirm the 'HR.EMPLOYEES.txt' file. Double click on the file to download and view the file.
 - You can see how the phone numbers are ingested as text. This is PII data and we should protect this data. 
-<img src="./images/adf-storage-ingest-verify.png" alt="Verify data ingestion to Gen2 from Oracle" width="600">
+<img src="./images/adf-storage-ingest-confirm.png" alt="Verify data ingestion to Gen2 from Oracle" width="600">
 
 
 
