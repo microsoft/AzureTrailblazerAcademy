@@ -286,7 +286,7 @@ We have a create copy activity to ingest the data from Oracle to Azure Storage a
 - Click on 'Create' button after successfully testing the connection.
 - Specify a folder for the temporay storage during the transformations
 
-<img src="./images/adf-dataflow-staging-linked-service.png" alt="create dataflow staging linked service" width="600">
+<img src="./images/adf-dataflow-staging-linked-service.png" alt="create dataflow staging linked service" width="800">
 
 - Add a folder to the storage
 
@@ -294,11 +294,11 @@ We have a create copy activity to ingest the data from Oracle to Azure Storage a
 
 - click on 'Debug' to test the data transformation to secure the PII data and storing it to Synapse SQL Analytics database.
 
-<img src="./images/adf-dataflow-trigger-run.png" alt="Start the debug to test the data movement to Synapse" width="600">
+<img src="./images/adf-dataflow-trigger-run.png" alt="Start the debug to test the data movement to Synapse" width="800">
 
 - Execution will be queued and wait till it finishes.
 
-<img src="./images/adf-End-to-End-Execution.png" alt="End to end Execution Status" width="600">
+<img src="./images/adf-End-to-End-Execution.png" alt="End to end Execution Status" width="800">
 
 4. Test the transformed data in Azure Synapse Analytics.
 
@@ -307,29 +307,6 @@ We have a create copy activity to ingest the data from Oracle to Azure Storage a
 - Login with 'azureadmin' and password 'Ataadf123!' if needed.
 - Enter 'select * from [HR].[Employee]' to view the ingested Oracle data.
 - You should see all the employee data with the secured phone number.
-<img src="./images/adf-lab-synapse-secure-PII-verify.png" alt="Verify ingested data in Synapse with secured phone number" width="600">
+<img src="./images/adf-lab-synapse-secure-PII-verify.png" alt="Verify ingested data in Synapse with secured phone number" width="800">
 
 Congratulations!! You have successfully ingested the data from Oracle to Azure Datalake, transformed the data as per your needs such as securing the data and stored the data into Azure Synapse Analytics for your business analytics needs.
-
-
-
-
-
-
-
-
-
-
-
--
-
-
-
-
-
-
-
-
-
-
-
