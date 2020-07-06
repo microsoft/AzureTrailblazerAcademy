@@ -45,9 +45,9 @@ Temporary access to an Oracle database for completing this lab will be provided 
 ## Task List
 - [Task-1: Create Azure Data Factory Service](#task-1-create-azure-data-factory-service)
 - [Task-2: Create linked services](#task-2-create-linked-services)
-- [Task-3: Copy Oracle HR Emplyee data to Azure Storage](#task-3-copy-oracle-hr-employee-data-to-azure-storage) 
-- [Task-4: Secure PII Employee data with Data Flows](#task-4-secure-pii-employee-data-with-data-flows)
-- [Task-5: Build pipeline and Execute](#task-5-build-pipeline-and-execute) 
+- [Task-3: Create Copy Activity to ingest Oracle HR Emplyee data to Azure Storage](#task-3-create-copy-activity-to-ingest-oracle-hr-employee-data-to-azure-storage) 
+- [Task-4: Create Data Flows to Transofrm Employee data and store it in Synapse SQL Analytics](#task-4-create-data-flows-to-transofrm-employee-data-and-store-it-in-synapse-sql-analytics)
+- [Task-5: Build a pipeline to connect Copy and Dataflow actvities and Test the Execution](#task-5-build-a-pipeline-to-connect-copy-and-dataflow-activities-and-test-the-execution) 
 
 ### Task-1: Create Azure Data Factory Service
 1. Provision an ADF service
@@ -131,7 +131,7 @@ Click on 'Create' after the successful connection to create the Synapse linked s
 
 You have successfully created connection linked services to Oracle, ADLS Gen2 and Synapse SQL Pool.
 
-### Task-3: Copy Oracle HR Emplyee data to Azure Storage
+### Task-3: Create Copy Activity to ingest Oracle HR Emplyee data to Azure Storage
 We have established the connection services to the source Oracle DB and the sink Azure storage, you will create a copy activity to ingest the data from Oracle to Azure Storage in this task.
 
 1. Select 'Pencil' icon on the left and select three dots next to pipelines to select 'new pipeline' action. 
@@ -192,7 +192,7 @@ You can see how the phone numbers are ingested as text. This is PII data and we 
 
 <img src="./images/adf-storage-ingest-confirm.png" alt="Verify data ingestion to Gen2 from Oracle" width="600">
 
-### Task-4: Secure PII Employee data with Data Flows
+### Task-4: Create Data Flows to Transofrm Employee data and store it in Synapse SQL Analytics
 We have noticed the PII data we just ingested into ADLS Gen2 storage. You will secure the PII data using the Data flow functionality in this task.
  1. Create Source data
 - Drag and drop the data flow activity into the canvas from the 'Move&Transform' section.
@@ -268,7 +268,7 @@ We are now ready to output the transformed data into Synapse SQL Pool
 
 <img src="./images/adf-dataset-synapse-create.png" alt="Create Synaspe Data Set" width="600">
 
-### Task-5: Build pipeline and Execute 
+### Task-5: Build a pipeline to connect Copy and Dataflow actvities and Test the Execution 
 We have a create copy activity to ingest the data from Oracle to Azure Storage and Dataflow activity to secure PII data. You will connect both activity to build a pipeline to execute the end to end functionality. 
 
 1. Connect Copy activity with Data Flow activity
