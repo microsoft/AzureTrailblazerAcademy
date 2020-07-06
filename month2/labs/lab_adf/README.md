@@ -52,8 +52,8 @@ We try to help with the automated deployment to create Azure srevices. Press the
 
 ### Task-1: Create Azure Data Factory Service
 
-- type 'Data factories' in the search bar 
-- select 'Data factories' and select 'add' to create the service
+- Type 'Data factories' in the search bar. 
+- Select 'Data factories' and select 'add' to create a new service
 
 - Provide the following info: 
 - Name: 'ata-adf-lab-\<yourname\>'
@@ -145,7 +145,7 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - Select the 'OracleDB12cHR' linked service and click on 'Test connection' to test the connectivity.
 - Filter table list by typing 'hr.emp' and select 'HR.EMPLOYEES' table and select 'Preview data'.
 
-<img src-"./images/adf-copy-select-hr-employee-table.png" alt="select Oracle HR table as the source data set" width="600">
+<img src="./images/adf-copy-select-hr-employee-table.png" alt="select Oracle HR table as the source data set" width="600">
 
 - Make sure you are able to see the employee data 
 
@@ -183,6 +183,113 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - Confirm the 'HR.EMPLOYEES.txt' file. Double click on the file to download and view the file.
 - You can see how the phone numbers are ingested as text. This is PII data and we should protect this data. 
 <img src="./images/adf-storage-ingest-confirm.png" alt="Verify data ingestion to Gen2 from Oracle" width="600">
+
+### Task-4: Secure PII Employee data with Data Flows
+- We have notieced the PII data we just ingested into ADLS Gen2 storage. Let us see how we can secure the PII data using the Data flow functionality.
+ 
+- Drag and drop the data flow activity into the canvas from the Move&Transform section.
+- select 'create new data flow' and select 'Mapping Data Flow' optin and click on 'Ok'.
+
+<img src="./images/adf-dataflow-create-new.png" alt="create a new data flow" width="600">
+
+- Select "Source" data
+- Name the data flow as 'SecurePIIdata'
+- Provide the following information under 'Source settings' tab
+- Output stream name:Gen2HrEmpDataOut
+- Source type - Select 'Dataset'
+- Dataset - Select 'Gen2HREmpData'
+
+<img src="./images/adf-dataflow-source-settings.png" alt="Provide source settings info" width="600">
+
+- To preview data we need to turn on the dataflow debug option and need to click on 'Import projections' in 'Projections' tab.
+
+<img src="./images/adf-dataflow-turnon-debug-import-projections.png" alt="Turn on the debug option and import projections" width="500">
+
+- Add another data flow step to secure the phone number by selecting '+' sign and select 'Drived Column' under 'Schema modifier' section.
+
+<img src="./images/adf-dataflow-derived-column.png" alt="Select derived column" width="600">
+
+- Name the data flow as 'HREmpSecurePhoneNumber'
+- Select 'PHONE_NUMBER' column from the list
+- Click on 'Enter Expression' box
+
+<img src="./images/adf-dataflow-select-phone-number.png" alt="Name the data flow and Select the Phone Number column" width="600">
+
+- Write RegExpression to replace the digits before the '.' with '#' as shown in the picture. 
+- Click on 'Refresh' to verify the output of the function.
+- Click 'Save and finish' button after you satisfy the result
+
+<img src="./images/adf-dataflow-regreplace-function.png" alt="Enter RegEx Replace function" width="800">
+
+- We are not ready to output the transformed data into Synapse SQL Pool
+- Select '+' and select 'Sink' in the 'Destination' section. Last one in the list.
+
+- Create HR schema in the destination to store the results
+- Switch to Azure Services tab and select Azure Synapse Analytics 'ataadflabsqldb' we have created
+-  select 'Query editor' on the left and enter the 'azureadmin' as the user and 'Ataadf123!' as the password.
+- It may error out since it is protecting the access to 'Query editor'. Take the IP address from the error and add it to the firewall.
+
+<img src="./images/adf-synapse-query-editor-error.png" alt="Synapse-query-editor-access-error" width="600">
+
+- Select 'Overview' and click on the 'Server name' link
+- Select 'Firewalls and virtual networks' from 'Security' section
+- add firewall rule to allow the IP address you copied from the error message.
+- Click on 'Save' button after you added the rule.
+- Select the Overview and scroll down to select the database
+- Select the 'Query editor' and enter the login info again
+- With successful login, you will see the dataware house tabels and views.
+- Enter 'create master key;' in the query editor and click on 'Run' 
+- Enter 'create schema hr;' in the query editor and click on 'Run'
+- You should see 'Query succeeded' message in the bottom.
+
+<img src="./images/adf-synapse-create-hr-schema.png" alt="Create HR Schema in the Query Editor" width="600">
+
+- Switch back to ADF Author tab and create the synapse SQL Analytics data set
+- Enter the following info
+- Click on 'Create' button
+- Specify Destination table info, HR schema and Employee Table name.
+
+- Connect Copy activity with Data Flow activity
+- Create a staging linked service to improve the performance of the data flow operations
+- Select the data flow in the pipeline diagram and access the 'Settings' tab
+- Click on 'New' 'Staging Linked Service' and enter the following info:
+- Name:'dataflowstaging' 
+- Type: select 'Azure Blob Storage'
+- Authentication Method: select 'Account key'
+- Select an available blob storage. create a new one if needed.
+- Click on 'Test connection'
+- Click on 'Create' button after successfully testing the connection.
+- Specify a folder for the temporay storage during the transformations
+
+<img src="./images/adf-dataflow-staging-linked-service.png" alt="create dataflow staging linked service" width="600">
+
+- Add a folder to the storage
+- click on 'Debug' to test the data transformation to secure the PII data and storing it to Synapse SQL Analytics database.
+
+<img src="./images/adf-dataflow-trigger-run.png" alt="Start the debug to test the data movement to Synapse" width="600">
+
+- Execution will be queued and wait till it finishes.
+
+<img src="./images/adf-End-to-End-Execution.png" alt="End to end Execution Status" width="600">
+
+- Switch to Azure Services and access the Synapse SQL Analytics to verify the employee data with secured phone numbers
+- Access synapse SQL Analytics 'ataadflabsqldb' and select 'Query editor' from 'Common Tasks' section.
+- Login with 'azureadmin' and password 'Ataadf123!' if needed.
+- Enter 'select * from [HR].[Employee]' to view the ingested Oracle data.
+- You should see all the employee data with the secured phone number.
+<img src="./images/adf-lab-synapse-secure-PII-verify.png" alt="Verify ingested data in Synapse with secured phone number" width="600">
+
+
+
+
+
+
+
+
+
+
+
+-
 
 
 
