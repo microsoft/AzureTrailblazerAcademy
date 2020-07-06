@@ -1,12 +1,12 @@
 # Azure Trailblazer Academy Azure Data Factory (ADF) Lab
 ## Overview
-Azure Data Factory is the PaaS cloud-based ETL & data integration tool allows you to create data driven workflows in the cloud for orchestrating and automating data movement and data transformation. 
+Azure Data Factory is a PaaS cloud-based ETL & data integration tool allows you to create data driven workflows in the cloud for orchestrating and automating data movement and data transformation. 
 
-Big data requires service that can orchestrate and operationalize processes to refine these enormous stores of raw data into actionable business insights.
+It is a great tool to orchestrate big data and operationalize processes to refine these enormous stores of raw data into actionable business insights.
 
 ## Lab Overview
 This lab will help you gain the experience to ingest data from on-premises databases such as Oracle, SAP, Teradata, Hortonworks, DB2, SQL Server and Cloudera to Azure Data storage, databases and data warehouses services. 
-It will showcase the steps to build a pipeline inside ADF to ingest the data into ADLS GEN2 storage and secure the PII data using data transformation functions inside the Data Flow activity and finally store the data in Synapse SQL Pool (Data warehouse) for building BI dashboard. 
+It will showcase the steps to build a pipeline using ADF to ingest the data into ADLS GEN2 storage and secure the PII data using data transformation functions using the Data Flow activity and finally store the data in Synapse SQL Pool (Data warehouse) for building BI dashboards. 
 
 <img src="./images/ata-adf-lab-architecture.png" alt="Data factory lab architecture diagram" width="600">
 
@@ -16,15 +16,15 @@ It will showcase the steps to build a pipeline inside ADF to ingest the data int
 - Write Access to Synapse SQL Pool Data warehouse  
 
 ## Automated Deployment
-We try to help with the automated deployment to create Azure srevices. Press the "*Deploy to Azure*" button below, to provision the Azure Services required required for this lab.
+This automated deployment script will create thre required Azure srevices for this lab. Press the "*Deploy to Azure*" button below.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fmaster%2Fmonth2%2Flabs%2Flab_data%2Fscripts%2Flab2_data_deployment.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
-- Enter the following information
+Enter the following information
 - Subscription: Enter your subscription.
-- Resource group: Select 'Create new' under Resource group. Enter 'ata-adf-lab-/<yourname/>-rg'
+- Resource group: Select 'Create new' under Resource group. Enter 'ata-adf-lab-\<YourName\>-rg'
 - Region: Select 'East US'.
-- SQL_Server Name:Enter 'ata-adf-lab-sql-/<yourname/>'
+- SQL_Server Name:Enter 'ata-adf-lab-sql-\<YourName\>'
 - Server_location:Enter 'eastus'
 
 <img src="./images/adf-custom-deployment.png" alt="Enter the required info to run the custom deployment" width="600">
@@ -32,15 +32,15 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - AdministratorLogin:'azureadmin'
 - Administrator Login Password:'Ataadf123!'
 - Database Name:'ataadflabsqldb'
-- Storage_Accounts_Data Lake Gen2:'ataadflabstorage/<srini/>/
+- Storage_Accounts_Data Lake Gen2:'ataadflabstorage\<YourName\>/
 - Click on 'Review and Create'
 - Click on 'Create'
 
-- Please check if it created the following services after successful deploypment.
+Please check if it created the following services after successful deploypment.
 
 <img src="./images/adf-custom-deployed-services.png" alt="Customer deployed Azure Services" Width="600">
 
-- We will provide temporary access to an Oracle database for completing this lab in the class.
+Temporary access to an Oracle database for completing this lab will be provided in the class.
 
 ## Task List
 - [Task-1: Create Azure Data Factory Service](#task-1-create-azure-data-factory-service)
@@ -55,30 +55,33 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - Select 'Data factories' and select 'add' to create a new service
 
 Provide the following info: 
-- Name: 'ata-adf-lab-\<yourname\>'
-- Subscription: Make sure it selected the correct subscription
-- Select 'ata-adf-lab-\<yourname\>', the resource group you have created with custom deployment. 
+- Name: 'ata-adf-lab-\<YourName\>'
+- Subscription: Make sure to select your subscription
+- Select 'ata-adf-lab-\<YourName\>', the resource group you have created with custom deployment. 
 - Location: select 'East US'
 - Enable GIT: uncheck the box
+
 Click on 'Create' button  
 
 <img src="./images/adf-main-service-create.png" alt="Create ADF Service" width="600">
+
 2. Open ADF Author Tool
-- select 'Go to resource' when it completes the deployment
-- select 'Author & Monitor' in the middle of the screen
+- Select 'Go to resource' when it completes the deployment.
+- Select 'Author & Monitor' in the middle of the screen.
 
 <img src="./images/adf-select-author.png" alt="Select Author & Monitor" width="600">
 
-opens up a new tab introducing the drag and drop interface to build pipelines
+Opens up a new tab introducing the drag and drop interface to build pipelines.
 
 <img src="./images/adf-select-create-pipeline.png" alt="select create pipeline" width="600">
 
 ### Task-2: Create linked services
-You will be creating connection link services to sync and source systems such as Oracle, ADLS Gen2 and Synapse. 
+You will be creating connection linked services to sync and source systems such as Oracle, ADLS Gen2 and Synapse in this task. 
 1. Create Oracle Linked Service
 - select Management hub (ToolBox) icon on the left and select 'Linked Services' under Connections section.  
 - Select 'New' under Linked Services
 - search for 'Oracle' under 'Data Store' and select 'Oracle Database' and click on 'Continue'
+
 Enter the following Oracle Connect Info:
 - Name: Enter 'OracleDB12cHR'
 - Leave the default 'Connection string' option
@@ -92,7 +95,8 @@ Enter the following Oracle Connect Info:
 <img src="./images/adf-oracle-connect-info.png" alt="Enter Oracle Connect Info" width="600">
 
 - Select 'test connection' to verify the successful connection
-Click on 'Create' button to create the Oracle linked service
+
+Click on 'Create' button to create the Oracle linked service.
 
 2. Create ADLS Gen2 Storage Linked Service
 - Select 'New' under Linked Services
@@ -115,11 +119,12 @@ Click on 'Create' after successful connection to create the ADLS Gen2 storage li
 
 Enter the folowing info:
 - Name: Enter 'SynapseDBHR'
-- Server name: select 'ata-adf-lab-sql-/<yourname/>'
+- Server name: select 'ata-adf-lab-sql-\<yourname\>'
 - Database name: select 'ataadflabsqldb'
 - User name: enter 'azureadmin'
 - Password: enter the default 'ataadf123!'
-- Click on 'test connect' to test the connection
+- Click on 'test connect' to test the connection.
+
 Click on 'Create' after the successful connection to create the Synapse linked service
 
 <img src="./images/adf-synapse-sink-db-connect-info.png" alt="Enter Synapse sink db connect info" Width="600">
@@ -127,13 +132,14 @@ Click on 'Create' after the successful connection to create the Synapse linked s
 You have successfully created connection linked services to Oracle, ADLS Gen2 and Synapse SQL Pool.
 
 ### Task-3: Copy Oracle HR Emplyee data to Azure Storage
-We have established the connection services to the source Oracle DB and the sink Azure storage, we can create a copy activity to ingest the data.
+We have established the connection services to the source Oracle DB and the sink Azure storage, you will create a copy activity to ingest the data from Oracle to Azure Storage in this task.
+
 1. Select 'Pencil' icon on the left and select three dots next to pipelines to select 'new pipeline' action. 
-- name the pipeline as 'IngestOracleHREmployeeData' under the properties section on the right side.
-- Drag the 'Copy data' from 'Move & transform' section under 'Activities' list to the convas in the middle.
+- Name the pipeline as 'IngestOracleHREmployeeData' under the properties section on the right side.
+- Drag the 'Copy data' from 'Move & transform' section under 'Activities' list to the convas in the middle of the screen.
 - Name the copy activity as 'OracleHREmpToGen2' below the convas under the 'General' tab
 
-<img src="./images/adf-copy-hr-emp-adls-gen2.png" alt="Copy activity to get Oracle HR Emp data to Gen2" width="600">
+<img src="./images/adf-copy-hr-emp-adls-gen2.png" alt="Copy activity to get Oracle HR Emp data to Gen2" width="900">
 
 2. Select 'Source' tab next to 'General' to define the source system. 
 - Select 'New' to create a new source dataset
@@ -143,7 +149,7 @@ We have established the connection services to the source Oracle DB and the sink
 - Select the 'OracleDB12cHR' linked service and click on 'Test connection' to test the connectivity.
 - Filter table list by typing 'hr.emp' and select 'HR.EMPLOYEES' table and select 'Preview data'.
 
-<img src="./images/adf-copy-select-hr-employee-table.png" alt="select Oracle HR table as the source data set" width="600">
+<img src="./images/adf-copy-select-hr-employee-table.png" alt="select Oracle HR table as the source data set" width="900">
 
 Make sure you are able to see the employee data 
 
@@ -153,10 +159,11 @@ Make sure you are able to see the employee data
 - Select 'Open' to define the sink dataset
 - Select 'Delimited Text' as the format and click on 'Continue'
 - Name the dataset as 'Gen2HREmpData'
-- select the 'Gen2HRStorage' linked service
+- select the 'Gen2HRStorage' linked service.
+
 You will have to enter the file system and directory path. 
-First we need to create the directory path in the storage accont. Leave this browser tab as is and switch to the Azure Services tab in the browser.  
-- Access storage account and open up the 'storage explorer' to create 'hr' under 'data' file system and create 'employee' as a subfolder under 'hr' folder.
+- First we need to create the directory path in the storage accont. Leave this browser tab as is and switch to the Azure Services tab in the browser.  
+- Access storage account and open up the 'storage explorer' to create 'hr' under 'data' file system and create 'Employee' as a subfolder under 'hr' folder.
 
 <img src="./images/adf-storage-create-employee-folder.png" alt="Gen2 storage create employee folder" width="600">
 
@@ -164,8 +171,8 @@ Switch back to ADF author browser and enter 'data' and 'hr/Empolyee' as the File
 
 <img src="./images/adf-copy-sink-gen2-dataset.png" alt="create sink gen2 data set" width="600">
 
-- select it again under Datasets to set the first row as the header.
-- check the box 
+- Select it again under Datasets section on the left to set the first row as the header.
+- Check the box 
 
 <img src="./images/adf-copy-sink-gen2-row-header.png" alt="sink-gen2-check-header-row" width="600">
 
@@ -175,35 +182,42 @@ Switch back to ADF author browser and enter 'data' and 'hr/Empolyee' as the File
 
 <img src="./images/adf-copy-trigger-activity.png" alt="execture copy activity to ingest data" width="600">
 
-5. Verify the data ingestion in ADLS Gen2 storage
+5. Verify the data ingestion in ADLS Gen2 storage.
+
 Switch to Azure services tab and access the storage account.
 - open up the 'Storage Explorer' and access the data file syste and drill down to 'hr' and 'Employee' folder. 
-- Confirm the 'HR.EMPLOYEES.txt' file. Double click on the file to download and view the file.
+- Confirm the 'HR.EMPLOYEES.txt' file. Double click on the file to download and view the data.
+
 You can see how the phone numbers are ingested as text. This is PII data and we should protect this data. 
 
 <img src="./images/adf-storage-ingest-confirm.png" alt="Verify data ingestion to Gen2 from Oracle" width="600">
 
 ### Task-4: Secure PII Employee data with Data Flows
-We have notieced the PII data we just ingested into ADLS Gen2 storage. Let us see how we can secure the PII data using the Data flow functionality.
- 
-- Drag and drop the data flow activity into the canvas from the Move&Transform section.
+We have noticed the PII data we just ingested into ADLS Gen2 storage. You will secure the PII data using the Data flow functionality in this task.
+ 1. Create Source data
+- Drag and drop the data flow activity into the canvas from the 'Move&Transform' section.
 - select 'create new data flow' and select 'Mapping Data Flow' optin and click on 'Ok'.
 
-<img src="./images/adf-dataflow-create-new.png" alt="create a new data flow" width="600">
+<img src="./images/adf-dataflow-create-new.png" alt="create a new data flow" width="400">
 
 - Select "Source" data
-- Name the data flow as 'SecurePIIdata'
-- Provide the following information under 'Source settings' tab
+- Name the data flow as 'SecurePIIdata'.
+
+Provide the following information under 'Source settings' tab:
 - Output stream name:Gen2HrEmpDataOut
 - Source type - Select 'Dataset'
 - Dataset - Select 'Gen2HREmpData'
 
 <img src="./images/adf-dataflow-source-settings.png" alt="Provide source settings info" width="600">
 
-- To preview data we need to turn on the dataflow debug option and need to click on 'Import projections' in 'Projections' tab.
+2. Turn on Dataflow Debug functionality to test the modifications.
+
+- To preview data we need to turn on the dataflow debug option. 
+- Click on 'Import projections' in the 'Projections' tab to view all the columns.
 
 <img src="./images/adf-dataflow-turnon-debug-import-projections.png" alt="Turn on the debug option and import projections" width="500">
 
+3. Create a data flow step to hash the first 6 digits of the phone number.
 - Add another data flow step to secure the phone number by selecting '+' sign and select 'Drived Column' under 'Schema modifier' section.
 
 <img src="./images/adf-dataflow-derived-column.png" alt="Select derived column" width="600">
@@ -220,13 +234,13 @@ We have notieced the PII data we just ingested into ADLS Gen2 storage. Let us se
 
 <img src="./images/adf-dataflow-regreplace-function.png" alt="Enter RegEx Replace function" width="800">
 
-- We are now ready to output the transformed data into Synapse SQL Pool
-- Select '+' and select 'Sink' in the 'Destination' section. Last one in the list.
+4. Create 'HR' schema in Azure Synapse Analytics.
 
-- Create HR schema in the destination to store the results
-- Switch to Azure Services tab and select Azure Synapse Analytics 'ataadflabsqldb' we have created
--  select 'Query editor' on the left and enter the 'azureadmin' as the user and 'Ataadf123!' as the password.
-- It may error out since it is protecting the access to 'Query editor'. Take the IP address from the error and add it to the firewall.
+We need to create 'HR' schema in the 'Azure Synapse Analytics' service to store the results
+- Switch to Azure Services tab and select Azure Synapse Analytics 'ataadflabsqldb' we have created with the auto deployment step.
+
+-  Select 'Query editor' on the left and enter the 'azureadmin' as the user and 'Ataadf123!' as the password.
+- It will error out since it is protecting the access to 'Query editor'. Copy the IP address from the error and add it to the firewall.
 
 <img src="./images/adf-synapse-query-editor-error.png" alt="Synapse-query-editor-access-error" width="600">
 
@@ -243,14 +257,25 @@ We have notieced the PII data we just ingested into ADLS Gen2 storage. Let us se
 
 <img src="./images/adf-synapse-create-hr-schema.png" alt="Create HR Schema in the Query Editor" width="600">
 
-- Switch back to ADF Author tab and create the synapse SQL Analytics data set
+5. Create a data flow step to store the transformed data into Synapse SQL Pool.
+
+We are now ready to output the transformed data into Synapse SQL Pool
+- Select '+' and select 'Sink' in the 'Destination' section. Last one in the list.
+- Switch back to ADF Author tab and create the Synapse SQL Analytics data set
 - Enter the following info
 - Click on 'Create' button
 - Specify Destination table info, HR schema and Employee Table name.
 
+<img src="./images/adf-dataset-synapse-create.png" alt="Create Synaspe Data Set" width="600">
+
 ### Task-5: Build pipeline and Execute 
-- Connect Copy activity with Data Flow activity
+We have a create copy activity to ingest the data from Oracle to Azure Storage and Dataflow activity to secure PII data. You will connect both activity to build a pipeline to execute the end to end functionality. 
+
+1. Connect Copy activity with Data Flow activity
 - Create a staging linked service to improve the performance of the data flow operations
+
+2. Create a Staging Linked Service to store the temporary data between the dataflow steps.
+
 - Select the data flow in the pipeline diagram and access the 'Settings' tab
 - Click on 'New' 'Staging Linked Service' and enter the following info:
 - Name:'dataflowstaging' 
@@ -264,6 +289,9 @@ We have notieced the PII data we just ingested into ADLS Gen2 storage. Let us se
 <img src="./images/adf-dataflow-staging-linked-service.png" alt="create dataflow staging linked service" width="600">
 
 - Add a folder to the storage
+
+3. Trigger the pipeline execution.
+
 - click on 'Debug' to test the data transformation to secure the PII data and storing it to Synapse SQL Analytics database.
 
 <img src="./images/adf-dataflow-trigger-run.png" alt="Start the debug to test the data movement to Synapse" width="600">
@@ -272,12 +300,16 @@ We have notieced the PII data we just ingested into ADLS Gen2 storage. Let us se
 
 <img src="./images/adf-End-to-End-Execution.png" alt="End to end Execution Status" width="600">
 
+4. Test the transformed data in Azure Synapse Analytics.
+
 - Switch to Azure Services and access the Synapse SQL Analytics to verify the employee data with secured phone numbers
 - Access synapse SQL Analytics 'ataadflabsqldb' and select 'Query editor' from 'Common Tasks' section.
 - Login with 'azureadmin' and password 'Ataadf123!' if needed.
 - Enter 'select * from [HR].[Employee]' to view the ingested Oracle data.
 - You should see all the employee data with the secured phone number.
 <img src="./images/adf-lab-synapse-secure-PII-verify.png" alt="Verify ingested data in Synapse with secured phone number" width="600">
+
+Congratulations!! You have successfully ingested the data from Oracle to Azure Datalake, transformed the data as per your needs such as securing the data and stored the data into Azure Synapse Analytics for your business analytics needs.
 
 
 
