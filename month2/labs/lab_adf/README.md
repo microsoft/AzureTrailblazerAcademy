@@ -50,7 +50,7 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - [Task-5: Build pipeline and Execute](#task-5-build-pipeline-and-execute) 
 
 ### Task-1: Create Azure Data Factory Service
-
+1. Provision an ADF service
 - Type 'Data factories' in the search bar. 
 - Select 'Data factories' and select 'add' to create a new service
 
@@ -63,7 +63,7 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - Click on 'Create' button  
 
 <img src="./images/adf-main-service-create.png" alt="Create ADF Service" width="600">
-
+2. Open ADF Author Tool
 - select 'Go to resource' when it completes the deployment
 - select 'Author & Monitor' in the middle of the screen
 
@@ -74,10 +74,10 @@ We try to help with the automated deployment to create Azure srevices. Press the
 <img src="./images/adf-select-create-pipeline.png" alt="select create pipeline" width="600">
 
 ### Task-2: Create linked services
-- You will be creating connection link services to sync and source systems such as Oracle, ADLS Gen2 and Synapse. 
+You will be creating connection link services to sync and source systems such as Oracle, ADLS Gen2 and Synapse. 
+1. Create Oracle Linked Service
 - select Management hub (ToolBox) icon on the left and select 'Linked Services' under Connections section.  
-- 1. Create Oracle Linked Service
-- Seelct 'New' under Linked Services
+- Select 'New' under Linked Services
 - search for 'Oracle' under 'Data Store' and select 'Oracle Database' and click on 'Continue'
 - Enter the following Oracle Connect Info:
 
@@ -95,8 +95,8 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - Select 'test connection' to verify the successful connection
 - Click on 'Create' button to create the Oracle linked service
 
-- 2. Create ADLS Gen2 Storage Linked Service:
-- Seelct 'New' under Linked Services
+2. Create ADLS Gen2 Storage Linked Service
+- Select 'New' under Linked Services
 - Search for 'Gen2' under data store and select ADLS Gen2 
 - Click on 'Continue'
 
@@ -109,8 +109,8 @@ We try to help with the automated deployment to create Azure srevices. Press the
 
 <img src="./images/adf-gen2-storage-connect-info.png" alt="Enter Gen2 Storage connect info" width="600" >
 
-- 3. Create Synapse Analytics Linked Service
-- Seelct 'New' under Linked Services
+3. Create Synapse Analytics Linked Service
+- Select 'New' under Linked Services
 - Search for 'Synapse' under data store and select 'Azure Synapse Analytics' 
 - Click on 'Continue'
 
@@ -125,7 +125,7 @@ We try to help with the automated deployment to create Azure srevices. Press the
 
 <img src="./images/adf-synapse-sink-db-connect-info.png" alt="Enter Synapse sink db connect info" Width="600">
 
-- You have successfully created connection linked services to Oracle, ADLS Gen2 and Synapse SQL Pool.
+You have successfully created connection linked services to Oracle, ADLS Gen2 and Synapse SQL Pool.
 
 ### Task-3: Copy Oracle HR Emplyee data to Azure Storage
 - We have established the connection services to the source Oracle DB and the sink Azure storage, we can create a copy activity to ingest the data.
