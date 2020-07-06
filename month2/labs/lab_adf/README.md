@@ -6,9 +6,11 @@ Big data requires service that can orchestrate and operationalize processes to r
 
 ## Lab Overview
 This lab will help you gain the experience to ingest data from on-premises databases such as Oracle, SAP, Teradata, Hortonworks, DB2, SQL Server and Cloudera to Azure Data storage, databases and data warehouses services. 
-It will showcase the steps to build a pipeline inside ADF to ingest the data into ADLS GEN2 storage and secure the PII data using data transformation functions inside the Data Flow activity and finally store the data in Synapse SQL Pool (Data warehouse) for building BI dashboard.  
+It will showcase the steps to build a pipeline inside ADF to ingest the data into ADLS GEN2 storage and secure the PII data using data transformation functions inside the Data Flow activity and finally store the data in Synapse SQL Pool (Data warehouse) for building BI dashboard. 
 
-## Pre-requisites:
+<img src="./images/ata-adf-lab-architecture.png" alt="Data factory lab architecture diagram" width="600">
+
+## Pre-requisites
 - Write Access to Azure Data Lake Storage Account (ADLS Gen2)
 - Read Access to Sample HR schema in Oracle Database
 - Write Access to Synapse SQL Pool Data warehouse  
@@ -18,13 +20,12 @@ We try to help with the automated deployment to create Azure srevices. Press the
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fmaster%2Fmonth2%2Flabs%2Flab_data%2Fscripts%2Flab2_data_deployment.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
-- Enter the following information:
-- Subscription
-- select 'Create new' under Resource group
-- Resource group: 'ata-adf-lab-/<yourname/>-rg'
-- Region: Select 'East US'
-- SQL_Server Name:'ata-adf-lab-sql-/<yourname/>'
-- Server_location:'eastus'
+- Enter the following information
+- Subscription: Enter your subscription.
+- Resource group: Select 'Create new' under Resource group. Enter 'ata-adf-lab-/<yourname/>-rg'
+- Region: Select 'East US'.
+- SQL_Server Name:Enter 'ata-adf-lab-sql-/<yourname/>'
+- Server_location:Enter 'eastus'
 
 <img src="./images/adf-custom-deployment.png" alt="Enter the required info to run the custom deployment" width="600">
 
@@ -41,14 +42,12 @@ We try to help with the automated deployment to create Azure srevices. Press the
 
 - We will provide temporary access to an Oracle database for completing this lab in the class.
 
-## Task List:
+## Task List
 - [Task-1: Create Azure Data Factory Service](#task-1-create-azure-data-factory-service)
 - [Task-2: Create linked services](#task-2-create-linked-services)
 - [Task-3: Copy Oracle HR Emplyee data to Azure Storage](#task-3-copy-oracle-hr-employee-data-to-azure-storage) 
 - [Task-4: Secure PII Employee data with Data Flows](#task-4-secure-pii-employee-data-with-data-flows)
-- [Task-5: Create Data Transformation Flow](#task-5-create-data-transformation-flow)
-- [Task-6: Build a pipeline to connect activities](#task-6-build-a-pipeline-to-connect-activities)
-- [Task-7: Trigger the pipeline execution](#task-7-trigger-the-pipeline-execution) 
+- [Task-5: Build pipeline and Execute](#task-5-build-pipeline-and-execute) 
 
 ### Task-1: Create Azure Data Factory Service
 
@@ -249,6 +248,7 @@ We try to help with the automated deployment to create Azure srevices. Press the
 - Click on 'Create' button
 - Specify Destination table info, HR schema and Employee Table name.
 
+### Task-5: Build pipeline and Execute 
 - Connect Copy activity with Data Flow activity
 - Create a staging linked service to improve the performance of the data flow operations
 - Select the data flow in the pipeline diagram and access the 'Settings' tab
