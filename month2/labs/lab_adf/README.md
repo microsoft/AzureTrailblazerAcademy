@@ -18,7 +18,7 @@ It will showcase the steps to build a pipeline using ADF to ingest the data into
 ## Automated Deployment
 This automated deployment script will create thre required Azure srevices for this lab. Press the "*Deploy to Azure*" button below.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fmaster%2Fmonth2%2Flabs%2Flab_data%2Fscripts%2Flab2_data_deployment.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fmaster%2Fmonth2%2Flabs%2Flab_adf%2Fscripts%2Flab2_data_deployment.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 Enter the following information
 - Subscription: Enter your subscription.
@@ -309,4 +309,4 @@ We have a create copy activity to ingest the data from Oracle to Azure Storage a
 - You should see all the employee data with the secured phone number.
 <img src="./images/adf-lab-synapse-secure-PII-verify.png" alt="Verify ingested data in Synapse with secured phone number" width="800">
 
-Congratulations!! You have successfully ingested the data from Oracle to Azure Datalake, transformed the data as per your needs such as securing the data and stored the data into Azure Synapse Analytics for your business analytics needs.
+Congratulations!! You have successfully ingested the data from Oracle to Azure Datalake, transformed the data as per your needs such as securing the data and stored the data into Azure Synapse Analytics for your business analytics needs!!!
