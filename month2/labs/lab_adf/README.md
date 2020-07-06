@@ -176,13 +176,20 @@ Switch back to ADF author browser and enter 'data' and 'hr/Empolyee' as the File
 
 <img src="./images/adf-copy-sink-gen2-row-header.png" alt="sink-gen2-check-header-row" width="600">
 
-4. Test the copy activity by clicking on 'Debug' option just above the canvas.
+4. Turn on Dataflow Debug functionality to test the modifications.
+
+- To preview data we need to turn on the dataflow debug option. 
+- Click on 'Import projections' in the 'Projections' tab to view all the columns.
+
+<img src="./images/adf-dataflow-turnon-debug-import-projections.png" alt="Turn on the debug option and import projections" width="500">
+
+5. Test the copy activity by clicking on 'Debug' option just above the canvas.
 - It will start the process and put it in the queue. Wait till it finishes.
 - Check for the status and make sure it is successful
 
 <img src="./images/adf-copy-trigger-activity.png" alt="execture copy activity to ingest data" width="600">
 
-5. Verify the data ingestion in ADLS Gen2 storage.
+6. Verify the data ingestion in ADLS Gen2 storage.
 
 Switch to Azure services tab and access the storage account.
 - open up the 'Storage Explorer' and access the data file syste and drill down to 'hr' and 'Employee' folder. 
@@ -210,14 +217,7 @@ Provide the following information under 'Source settings' tab:
 
 <img src="./images/adf-dataflow-source-settings.png" alt="Provide source settings info" width="600">
 
-2. Turn on Dataflow Debug functionality to test the modifications.
-
-- To preview data we need to turn on the dataflow debug option. 
-- Click on 'Import projections' in the 'Projections' tab to view all the columns.
-
-<img src="./images/adf-dataflow-turnon-debug-import-projections.png" alt="Turn on the debug option and import projections" width="500">
-
-3. Create a data flow step to hash the first 6 digits of the phone number.
+2. Create a data flow step to hash the first 6 digits of the phone number.
 - Add another data flow step to secure the phone number by selecting '+' sign and select 'Drived Column' under 'Schema modifier' section.
 
 <img src="./images/adf-dataflow-derived-column.png" alt="Select derived column" width="600">
@@ -234,7 +234,7 @@ Provide the following information under 'Source settings' tab:
 
 <img src="./images/adf-dataflow-regreplace-function.png" alt="Enter RegEx Replace function" width="800">
 
-4. Create 'HR' schema in Azure Synapse Analytics.
+3. Create 'HR' schema in Azure Synapse Analytics.
 
 We need to create 'HR' schema in the 'Azure Synapse Analytics' service to store the results
 - Switch to Azure Services tab and select Azure Synapse Analytics 'ataadflabsqldb' we have created with the auto deployment step.
@@ -257,7 +257,7 @@ We need to create 'HR' schema in the 'Azure Synapse Analytics' service to store 
 
 <img src="./images/adf-synapse-create-hr-schema.png" alt="Create HR Schema in the Query Editor" width="600">
 
-5. Create a data flow step to store the transformed data into Synapse SQL Pool.
+4. Create a data flow step to store the transformed data into Synapse SQL Pool.
 
 We are now ready to output the transformed data into Synapse SQL Pool
 - Select '+' and select 'Sink' in the 'Destination' section. Last one in the list.
