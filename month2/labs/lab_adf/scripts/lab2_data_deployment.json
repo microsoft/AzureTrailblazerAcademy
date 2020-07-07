@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "SQL_ServerName": {
-            "defaultValue": "mdw-training-xxxxxx",
+            "defaultValue": "ata-adf-lab-xxxxxx",
             "type": "String",
 			 "metadata": {
       "description": "Specify a unique name for the database server"}
@@ -15,6 +15,7 @@
       "description": "Specify which region this server will be deployed"}
         },
         "administratorLogin": {
+            "defaultValue": "azureadmin",
             "type": "String",
 					"metadata": {
       "description": "Specify which database login name"}
@@ -39,7 +40,7 @@
       "description": "Specify the size of the DW, do not modify for lab/demo purposes - https://azure.microsoft.com/en-us/pricing/details/synapse-analytics/"}
         },
         "storageAccounts_DataLakeGen2": {
-            "defaultValue": "mdwstoragexxxxxxxx",
+            "defaultValue": "ataadfstoragexxxxxxxx",
             "type": "String",
 					"metadata": {
       "description": "Provide the name for the Azure Datalake storage account"}
