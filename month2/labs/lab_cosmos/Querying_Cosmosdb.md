@@ -73,6 +73,7 @@ SELECT food.id,
 food.description,
 food.tags,
 food.foodGroup,
+food.manufacturerName,
 food.version
 FROM food
 WHERE (food.manufacturerName = "The Coca-Cola Company" AND food.version > 0)
@@ -318,4 +319,5 @@ SELECT VALUE c.description
 FROM c
 JOIN n IN c.nutrients
 WHERE n.units= "mg" AND n.nutritionValue > 0
+AND EXISTS(SELECT VALUE t FROM t IN c.tags WHERE t.name = 'orange')
 ```

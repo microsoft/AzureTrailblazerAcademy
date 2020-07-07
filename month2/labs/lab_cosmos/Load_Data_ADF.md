@@ -54,7 +54,7 @@
 - **Container id:** FoodCollection
 - **Partition key:** /foodGroup
 - **My partition key is larger than 100 bytes:** Do not check this option.
-- **Throughput (400 - 100,000 RU/s) More information:** Select **Manual** and enter the value 11000.
+- **Throughput (400 - 100,000 RU/s) More information:** Select **Manual** and enter the value 4000.
 
 <img src="./images/lab01/01-cosmosdb-add-container.jpg" alt="Cosmos DB Add Container"  Width="600">
 
