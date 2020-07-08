@@ -7,7 +7,7 @@
 - Permissions to create VMs with public IP addresses
 - Deploy the environment to your resource group using the "Deploy to Azure" option below  
 
-[![Deploy](images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fmaster%2Fmonth3%2Flabs%2Flab_monitoring%2Ftemplate%2FAzureMonitorLab.json)  
+[![Deploy](images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fmaster%2Fmonth2%2Flabs%2Flab_monitoring%2Ftemplate%2FAzureMonitorLab.json)  
 
 ** Note: This will deploy 2 VMs (Windows and Linux) to a new virtual network and attach a NSG to the subnet
 
