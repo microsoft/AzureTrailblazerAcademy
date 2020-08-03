@@ -2,7 +2,7 @@
     [string]$RGName
 )
 
-$name = (Get-AzWebApp -ResourceGroupName $RGName).name
+$appName = (Get-AzWebApp -ResourceGroupName $RGName).name
 
 for($i=0;$i -lt 1000;$i++) {
    curl "https://$appName.azurewebsites.net/"
