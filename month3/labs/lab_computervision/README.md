@@ -223,13 +223,13 @@ When you run the application, you are prompted to enter a path to an image file 
 
 ```json
 {
-    "id":"7796df8e-acbc-45fc-90b4-1b0c81b73639",
-    "project":"8622c779-471c-4b6e-842c-67a11deffd7b",
-    "iteration":"59ec199d-f3fb-443a-b708-4bca79e1b7f7",
-    "created":"2019-03-20T16:47:31.322Z",
+    "id":"7176edb1-c156-4309-82e4-0f631356df8b",
+    "project":"b8deadcb-c387-4680-bdb7-3847f3529961",
+    "iteration":"cd8d495e-1d48-45c2-8d9a-964db861246d",
+    "created":"2020-08-04T14:42:43.995Z",
     "predictions":[
-        {"tagId":"d9cb3fa5-1ff3-4e98-8d47-2ef42d7fb373","tagName":"open_v_coke", "probability":1.0},
-        {"tagId":"9a8d63fb-b6ed-4462-bcff-77ff72084d99","tagName":"closed_diet_coke", "probability":0.1087869}
+        {"probability":0.999094546,"tagId":"1a5f462f-93cb-4c2e-bf93-31fe7defe487","tagName":"closed_coke","boundingBox":{"left":0.7273862,"top":0.400016129,"width":0.182916582,"height":0.130125463}},
+        {"probability":0.996178269,"tagId":"a16321cb-a8dd-4b40-be47-83adf457ed47","tagName":"closed_diet_coke","boundingBox":{"left":0.07119731,"top":0.399386555,"width":0.207380056,"height":0.160587162}}
     ]
 }
 ```
