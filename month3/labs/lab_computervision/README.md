@@ -164,7 +164,7 @@ In this lab, you will use a local image, so copy the URL under **If you have an 
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
-    namespace CVSPredictionSample
+    namespace CVPredictionSample
     {
         public static class Program
         {
@@ -228,8 +228,8 @@ When you run the application, you are prompted to enter a path to an image file 
     "iteration":"59ec199d-f3fb-443a-b708-4bca79e1b7f7",
     "created":"2019-03-20T16:47:31.322Z",
     "predictions":[
-        {"tagId":"d9cb3fa5-1ff3-4e98-8d47-2ef42d7fb373","tagName":"cat", "probability":1.0},
-        {"tagId":"9a8d63fb-b6ed-4462-bcff-77ff72084d99","tagName":"dog", "probability":0.1087869}
+        {"tagId":"d9cb3fa5-1ff3-4e98-8d47-2ef42d7fb373","tagName":"open_v_coke", "probability":1.0},
+        {"tagId":"9a8d63fb-b6ed-4462-bcff-77ff72084d99","tagName":"closed_diet_coke", "probability":0.1087869}
     ]
 }
 ```
