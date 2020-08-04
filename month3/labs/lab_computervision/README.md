@@ -2,7 +2,7 @@
 - Microsoft Azure subscription
 - Resource Group to deploy Azure services
 - Permissions to create Custom Vision resource 
-- A set of images with which to train your custom vision model.
+- A set of images with which to train the custom vision model
 
 ## Create a Resource Group
 1. In a new browser window, sign in to the [Azure portal](https://portal.azure.com).
@@ -10,7 +10,7 @@
 3. Click on the **Add** button.
 4. Fill out the **Basics** tab as follows:
 - **Subscription:** Choose your subscription
-- **Resource group:** Provide a unique name like **<initial>-ata-customvision-rg
+- **Resource group:** Provide a unique name
 - **Region:** East US
 
 <img src="./images/rg-basics.jpg" alt="Resource Group Basics Tab"  Width="600">
@@ -42,17 +42,17 @@ To use the Custom Vision Service you will need to create Custom Vision Training 
 
 <img src="./images/browser-home.jpg" alt="Sign-in page"  Width="600">
 
-1. If this is your first time visiting the portal, it will request some permissions. Click the **Yes** button to agree (you can revoke these permissions later if necessary).
-1. If this is your first time visiting the portal, it will also prompt you to agree with the terms and conditions. **Check** the box to indicate consent and then click the **I agree** button.
+2. If this is your first time visiting the portal, it will request some permissions. Click the **Yes** button to agree (you can revoke these permissions later if necessary).
+3. If this is your first time visiting the portal, it will also prompt you to agree with the terms and conditions. **Check** the box to indicate consent and then click the **I agree** button.
 
-1. To create your first project, select **New Project**. The **Create new project** dialog box will appear.
+4. To create your first project, select **New Project**. The **Create new project** dialog box will appear.
 
 <img src="./images/create-project-object-detection.jpg" alt="Create new project"  Width="600">
 
-1. Enter Name and Description for the project and select the Custom Vision resource created for the lab.
-1. Select __Object Detection__ under __Project Types__.
+5. Enter Name and Description for the project and select the Custom Vision resource created for the lab.
+6. Select __Object Detection__ under __Project Types__.
 
-1. Next, select one of the available domains. Each domain optimizes the detector for specific types of images, as described in the following table. You will be able to change the domain later if you wish.
+7. Next, select one of the available domains. Each domain optimizes the detector for specific types of images, as described in the following table. You will be able to change the domain later if you wish.
 
     |Domain|Purpose|
     |---|---|
@@ -62,7 +62,7 @@ To use the Custom Vision Service you will need to create Custom Vision Training 
     |__General (compact)__| Optimized for the constraints of real-time object detection on edge devices.|
     |__General (compact)[S1]__| Optimized for the constraints of real-time object detection on edge devices, for models without the postprocessing logic.|
 
-1. Finally, select __Create project__.
+8. Finally, select __Create project__.
 
 ## Upload and tag images
 
@@ -88,11 +88,11 @@ Additionally, make sure all of your training images meet the following criteria:
 
 <img src="./images/customvision-add-images.jpg" alt="Add images"  Width="600">
 
-1. You'll see your uploaded images in the **Untagged** section of the UI. The next step is to manually tag the objects that you want the detector to learn to recognize. Click the first image to open the tagging dialog window. 
+2. You'll see your uploaded images in the **Untagged** section of the UI. The next step is to manually tag the objects that you want the detector to learn to recognize. Click the first image to open the tagging dialog window. 
 
 <img src="./images/images-untagged.jpg" alt="Images uploaded, in Untagged section"  Width="600">
 
-1. Click and drag a rectangle around the object in your image. Then, enter a new tag name with the **+** button, or select an existing tag from the drop-down list. It's very important to tag every instance of the object(s) you want to detect, because the detector uses the untagged background area as a negative example in training. When you're done tagging, click the arrow on the right to save your tags and move on to the next image.
+3. Click and drag a rectangle around the object in your image. Then, enter a new tag name with the **+** button, or select an existing tag from the drop-down list. It's very important to tag every instance of the object(s) you want to detect, because the detector uses the untagged background area as a negative example in training. When you're done tagging, click the arrow on the right to save your tags and move on to the next image.
 <img src="./images/image-tagging.jpg" alt="Tagging an object with a rectangular selection"  Width="600">
 
 To upload another set of images, return to the top of this section and repeat the steps.
