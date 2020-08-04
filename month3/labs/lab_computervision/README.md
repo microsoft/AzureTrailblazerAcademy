@@ -2,7 +2,7 @@
 - Microsoft Azure subscription
 - Resource Group to deploy Azure services
 - Permissions to create Custom Vision resource 
-- A set of images with which to train your classifier. See below for tips on choosing images.
+- A set of images with which to train your custom vision model.
 
 ## Create a Resource Group
 1. In a new browser window, sign in to the [Azure portal](https://portal.azure.com).
@@ -15,8 +15,8 @@
 
 <img src="./images/rg-basics.jpg" alt="Resource Group Basics Tab"  Width="600">
 
-4. Click the **Next: Review + Create** button
-5. Click the **Create** button
+5. Click the **Next: Review + Create** button
+6. Click the **Create** button
 
 ## Create a Custom Vision resource
 
