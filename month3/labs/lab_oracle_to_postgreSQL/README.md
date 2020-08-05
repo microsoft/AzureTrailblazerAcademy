@@ -19,7 +19,7 @@
 ### We will provision Azure PostgreSQL service in this task.
 - Type 'postgresql' on the search bar to select Azure database for postgreSQL service
 
-<img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" width="400">
+<img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" width="600">
 
 - Enter the following details
 - Resource group: Select 'Create new' and enter 'ata-ora2pg-\<yourname\>-rg'.
@@ -29,7 +29,7 @@
 - Admin username: enter 'pgadmin'
 - Password: enter 'atapg123!'
 
-<img src="./images/ata-pg-create-single-server.PNG" alt="create single server postgreSQL" width="600">
+<img src="./images/ata-pg-create-single-server.PNG" alt="create single server postgreSQL" width="800">
 
 - Click on 'Review + create'.
 - Click on 'Create' after the successful validation.
