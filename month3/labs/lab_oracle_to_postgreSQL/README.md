@@ -16,22 +16,22 @@
 - [Task-6: Perform the cutover and go live](#task-6-perform-the-cutover-and-go-live)
 
 ### Task-1: Create Azure Database for PostgreSQL Service
-### We will provision Azure PostgreSQL service in this task.
+We will provision Azure PostgreSQL service in this task.
 - Type 'postgresql' on the search bar to select Azure database for postgreSQL service
 
 <img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" width="600">
 
 - Enter the following details
-- Resource group: Select 'Create new' and enter 'ata-ora2pg-\<yourname\>-rg'.
-- Server name: enter 'pg11\<yourname\>'.
-- Location: select 'East US'
-- Version: 11
-- Admin username: enter 'pgadmin'
-- Password: enter 'atapg123!'
+Resource group: Select 'Create new' and enter 'ata-ora2pg-\<yourname\>-rg'.
+Server name: enter 'pg11\<yourname\>'.
+Location: select 'East US'
+Version: 11
+Admin username: enter 'pgadmin'
+Password: enter 'atapg123!'
 
 <img src="./images/ata-pg-create-single-server.PNG" alt="create single server postgreSQL" width="800">
 
-- Click on 'Review + create'.
-- Click on 'Create' after the successful validation.
+Click on 'Review + create'.
+Click on 'Create' after the successful validation.
 
 
