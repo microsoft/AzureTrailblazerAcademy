@@ -10,4 +10,5 @@ Monitor your Azure Infrastructure and learn how to configure/query logs in Log A
 | Labs          | Links                            |
 |-------------------|----------------------------------|
 | Azure Monitoring     | - [Azure Monitoring Lab](labs/lab_monitoring/) |
+| Azure Cognitive Services - Custom Vision   | - [Custom Vision Lab](labs/lab_customvision) |
 | Architectural Design Session - MoonPase Case Study    | - [Architectural Design Session](ads/) |
