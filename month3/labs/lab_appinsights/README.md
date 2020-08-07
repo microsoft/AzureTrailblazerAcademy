@@ -8,7 +8,7 @@
 - Permission to creat an Application Insights Instance
 - Deploy the environment to your resource group using the "Deploy to Azure" option below  
 
-[![Deploy](images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fdev%2Fmonth3%2Flabs%2Flap_appinsights%2Ftemplate%2FAppInsightsLab.json)  
+[![Deploy](images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fmaster%2Fmonth3%2Flabs%2Flap_appinsights%2Ftemplate%2FAppInsightsLab.json)  
 
 ** Note: This will deploy a free tier Web App on an App Service Plan
 
