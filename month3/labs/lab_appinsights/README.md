@@ -37,7 +37,7 @@ Monitoring Setup:
 2. Open the Resource Group used in the deployment of the Web App
 3. There should be two resources in the resource group. An App Service Plan and an App Service. Click on the **App Service** which will be named initials-appservice-random  
 
-<img src="./images/RG.png" alt="Resource Group"  Width="900">
+<img src="./images/RG.PNG" alt="Resource Group"  Width="900">
 
 
 4. Click on **Application Insights** under settings  
