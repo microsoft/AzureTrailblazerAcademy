@@ -38,9 +38,11 @@ To use the Custom Vision Service you will need to create Custom Vision Training 
 
 ## Create a new project
 
-1. In your web browser, navigate to the [Custom Vision web page](https://customvision.ai) and select __Sign in__. Sign in with the same account you used to sign into the Azure portal.
+1. You can go to custom vision portal from Azure portal by clicking on "Quick start" under "RESOURCE MANAGEMENT" or open a browser and navigate to the [Custom Vision web page](https://customvision.ai) and select __Sign in__. Sign in with the same account you used to sign into the Azure portal.
 
-<img src="./images/browser-home.jpg" alt="Sign-in page"  Width="600">
+<img src="./images/customvision-portal.jpg" alt="Custom Vision Portal"  Width="600">
+
+<img src="./images/browser-home.jpg" alt="Custom Vision Sign-in page"  Width="600">
 
 2. If this is your first time visiting the portal, it will request some permissions. Click the **Yes** button to agree (you can revoke these permissions later if necessary).
 3. If this is your first time visiting the portal, it will also prompt you to agree with the terms and conditions. **Check** the box to indicate consent and then click the **I agree** button.
@@ -92,7 +94,7 @@ Additionally, make sure all of your training images meet the following criteria:
 
 <img src="./images/images-untagged.jpg" alt="Images uploaded, in Untagged section"  Width="600">
 
-3. Click and drag a rectangle around the object in your image. Then, enter a new tag name with the **+** button, or select an existing tag from the drop-down list. It's very important to tag every instance of the object(s) you want to detect, because the detector uses the untagged background area as a negative example in training. When you're done tagging, click the arrow on the right to save your tags and move on to the next image.
+3. Click and drag a rectangle around the object in your image. Then, enter a new tag name with the **+** button, or select an existing tag from the drop-down list. If you use the sample coke can images for this lab, you can click and drag an rectangle around a closed diet coke can, enter "closed_diet_coke" as the new tag name. It's very important to tag every instance of the object(s) you want to detect, because the detector uses the untagged background area as a negative example in training. When you're done tagging, click the arrow on the right to save your tags and move on to the next image.
 <img src="./images/image-tagging.jpg" alt="Tagging an object with a rectangular selection"  Width="600">
 
 To upload another set of images, return to the top of this section and repeat the steps.
