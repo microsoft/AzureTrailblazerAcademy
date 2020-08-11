@@ -1,0 +1,59 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.1",
+    "parameters": {
+        "initials": {
+           "type": "string",
+           "metadata": {
+                "description": "Please provide your initials"
+            }
+        }
+    },
+    "variables": {
+        "hostingPlanName": "[concat('hpn-', resourceGroup().name)]",
+        "siteName": "[concat(parameters('initials'),'-appservice-', uniqueString(resourceGroup().id))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2018-02-01",
+            "name": "[variables('hostingPlanName')]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "F1",
+                "capacity": 1
+            },
+            "properties": {
+                "name": "[variables('hostingPlanName')]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-02-01",
+            "name": "[variables('siteName')]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+            ],
+            "properties": {
+                "serverFarmId": "[variables('hostingPlanName')]"
+            },
+            "resources": [
+                {
+                    "type": "sourcecontrols",
+                    "apiVersion": "2018-02-01",
+                    "name": "web",
+                    "location": "[resourceGroup().location]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/sites', variables('siteName'))]"
+                    ],
+                    "properties": {
+                        "repoUrl": "https://github.com/Azure-Samples/app-service-web-html-get-started.git",
+                        "branch": "master",
+                        "isManualIntegration": true
+                    }
+                }
+            ]
+        }
+    ]
+}
