@@ -4,7 +4,6 @@
 ## Table of Content
 
 <!-- TOC -->
-<!-- 
 - [Serverless architecture hands-on lab step-by-step](#serverless-architecture-hands-on-lab-step-by-step)
   - [Overview](#overview)
   - [Solution architecture](#solution-architecture)
@@ -53,10 +52,9 @@
   - [Exercise 8: Rerun the workflow and verify data export](#exercise-8-rerun-the-workflow-and-verify-data-export)
     - [Task 1: Run the Logic App](#task-1-run-the-logic-app)
     - [Task 2: View the exported CSV file](#task-2-view-the-exported-csv-file)
- -->
 <!-- /TOC -->
 
-<!--
+
 # Serverless architecture hands-on lab step-by-step
 
 In this hand-on lab, you will be challenged to implement an end-to-end scenario using a supplied sample that is based on Microsoft Azure Functions, Azure Cosmos DB, Event Grid, and related services. The scenario will include implementing compute, storage, workflows, and monitoring, using various components of Microsoft Azure.
@@ -1406,5 +1404,4 @@ With the latest code changes in place, run your Logic App and verify that the fi
 
 6. The ExportLicensePlates function updates all of the records it exported by setting the exported value to true. This makes sure that only new records since the last export are included in the next one. Verify this by re-executing the script in Azure Cosmos DB that counts the number of documents in the Processed collection where exported is false. It should return 0 unless you've subsequently uploaded new photos.
 
--->
 
