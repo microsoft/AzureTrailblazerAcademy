@@ -120,7 +120,7 @@ The following section walks you through the manual steps to provision the servic
 
 4. Set the following configuration on the Disks tab:
 
-    - **OS disk type**: Select **Standard SSD**.
+    - **OS disk type**: Select **Premium SSD**.
 
     - **Advanced** - Use managed disks: **Yes**
 
@@ -176,9 +176,9 @@ The following section walks you through the manual steps to provision the servic
 
 ### Task 3: Download and open the ConciergePlus starter solution
 
-1. From your Lab VM, download the starter project by downloading a .zip copy of the Intelligent analytics GitHub repo.
+1. From your Lab VM open the Edge browser.
 
-2. In a web browser, navigate to the [Intelligent analytics MCW repo](https://github.com/Microsoft/MCW-Intelligent-analytics).
+2. Go to the following URL to download the intelligent-bot project .zip file [Intelligent Bot Zip File](/code/intelligent-bot.zip).
 
 3. On the repo page, select **Clone or download**, then select **Download ZIP**.
 
@@ -1823,9 +1823,9 @@ In this exercise, attendees will deprovision any Azure resources that were creat
 
 1. Using the Azure portal, navigate to the Resource group you used throughout this hands-on lab by selecting Resource groups in the left menu.
 
-2. Search for the name of your research group and select it from the list.
+2. Search for the name of your Resource Group and select it from the list.
 
-3. Select Delete in the command bar and confirm the deletion by re-typing the Resource group name and selecting Delete.
+3. Select Delete in the command bar and confirm the deletion by re-typing the Resource Group name and selecting Delete.
 
 4. Power BI - Delete **Real-time Sentiment** workspace.
 
