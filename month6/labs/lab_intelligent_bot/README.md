@@ -483,29 +483,25 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
     - **Database id**: Create new. Enter `awhotels`.
 
+    - **Throughput**: Set to `400`.
+
     - **Container Id**: Enter `messagestore`.
 
     - **Partition Key**: Enter a partition key such as `/username`.
 
-        > **Note**: Pick a field in this schema.  Otherwise, you will have no documents in the Cosmo DB container. Below is a sample of the messages stored in the Cosmo DB at a later part in the lab.
-
-        ![A sample document in Json format is shown displaying all of the fields available to use as a partition key. The username field is highlighted.](images/2019-03-21-13-18-47.png "Possible fields to partition on.")
-
-    - **Throughput**: Set to `400`.
-
     - Select **OK** to add the container.
 
-    ![The Add Container form is displayed and is populated with the preceding values.](images/2020-06-29-15-01-20.png "Add New Container")
+    ![The Add Container form is displayed and is populated with the preceding values.](images/cosmosdb_addcontainer.png "Add New Container")
 
 6. Add another container with the following:
 
     - **Database id**: Enter existing database id `awhotels`.
 
+    - **Throughput**: Set to `400`.
+
     - **Container Id**: Enter `trendingsentiment`.
 
-    - **Partition Key**: Enter a partition key such as `/Snapshot`.
-
-    - **Throughput**: Set to `400`.
+    - **Partition Key**: Enter a partition key such as `/Snapshot`.    
 
     - Select **OK** to add the container.
 
@@ -529,7 +525,7 @@ In this section, you will create an Azure Search instance.
 
     - **Location**: Select the location you are using for resources in this hands-on lab, or the next closest location if your location is unavailable in the list.
 
-    - **Pricing Tier**: Select **Change Pricing Tier** and choose **Basic**.
+    - **Pricing Tier**: Select **Standard**.
 
     - Select **Review + Create**, and once validation has passed, select **Create**.
 
@@ -633,6 +629,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 11. Select **Save**.
 
+<!--
 12. Create another Output, this time for **Power BI**.
 
     ![The Add New Outputs is shown with the Power BI option selected.](images/image57.png "Add New Outputs")
@@ -676,13 +673,23 @@ In this section, you will create the Stream Analytics Job that will be used to r
     ![The Power BI New output form is shown populated with the preceding values.](images/2019-09-03-14-41-07.png "Power BI new output")
 
 16. Select **Save**.
+-->
 
-17. Next, select **Query** from the left-hand menu, under **Job Topology**.
+12. Next, select **Query** from the left-hand menu, under **Job Topology**.
 
     ![In the Stream Analytics job left menu, under the Job topology section the Query menu item is highlighted.](images/image59.png "Job Topology section")
 
-18. Paste the following text into the query window:
+13. Paste the following text into the query window:
 
+```sql
+    SELECT
+    *
+    INTO
+    cosmosdb
+    FROM
+    eventhub
+```
+<!--
     ```sql
     SELECT
     *
@@ -704,8 +711,8 @@ In this section, you will create the Stream Analytics Job that will be used to r
     WHERE score > 0
     GROUP BY TumblingWindow(minute, 2)
     ```
-
-19. Select **Save** again.
+-->
+14. Select **Save** again.
 
     ![The query editor toolbar is displayed with the Save button selected.](images/image60.png "Save option")
 
