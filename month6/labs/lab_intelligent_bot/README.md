@@ -204,8 +204,6 @@ The following section walks you through the manual steps to provision the servic
 
 > **Note**: If you attempt to build the solution at this point, you will see many build errors. This is intentional. You will correct these in the exercises that follow.
 
-> **Note**: Visual Studio Installer will show the installed version of Visual Studio and if the Azure SDK is installed. If the Azure SDK is missing, go back to the **Before the HOL** and make sure you created the correct VM. Updating Visual Studio manually may install components that may not work with the lab.
-
 ### Task 4: Create App Services
 
 In these steps, you will provision a Web App within a single App Service Plan.
@@ -220,7 +218,7 @@ In these steps, you will provision a Web App within a single App Service Plan.
 
     - **Subscription**: Select your subscription.
     - **Resource Group**: Select Use existing, and select the **intelligent-analytics** resource group created previously.
-    - **Name**: Provide **a unique name** that is indicative of this resource being used to host the Concierge+ chat website (e.g., `conciergepluschatapp + (namespace)`).
+    - **Name**: Provide **a unique name** that is indicative of this resource being used to host the Concierge+ chat website (e.g., `conciergepluschatapp13`).
     - **Publish**: Choose the **Code** option.
     - **Runtime stack**: **.NET Core 3.1**
     - **OS**: **Windows**
@@ -258,7 +256,7 @@ In this section, you will provision a Function App that will be used as the Even
 
     - **Resource Group**: Select Use existing, and select the **intelligent-analytics** resource group created previously.
 
-    - **App Name**: Provide **a unique name** that is indicative of this resource being used to process chat messages (e.g., `chatprocessor`).
+    - **App Name**: Provide **a unique name** that is indicative of this resource being used to process chat messages (e.g., `chatprocessor13`).
 
     - **Publish**: **Code**
   
@@ -268,7 +266,7 @@ In this section, you will provision a Function App that will be used as the Even
 
     - **Region**: Select the location you used for the resource group created previously.
 
-    - Select **Review + create** to provision the Function App.
+    - Select **Review + create** to provision the Function App and then click **Create**.
 
     ![The Function App basics tab displays with the form populated with the preceding values.](images/2019-11-13-14-38-10.png "Function App Configuration")
 
@@ -294,9 +292,9 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
-      ![The Create namespace blade fields display the previously mentioned settings.](images/2019-06-19-16-43-46.png "Create namespace blade")
+      ![The Create namespace blade fields display the previously mentioned settings.](images/create_service_bus.png "Create namespace blade")
 
-4. Select **Create**.
+4. Select **Review + create** and then click **Create**.
 
 5. Once provisioning completes, navigate to your new Service Bus in the portal by choosing Resource Groups in the left menu, then selecting the **intelligent-analytics** resource group, and selecting your Service Bus Namespace from the list of resources.
 
@@ -335,7 +333,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
     - Enter `ChatMessageSub` as the name.
     - Max delivery count: 10
-    - Auto-delete after idle: 1 day.
+    - Auto-delete after idle: 7 days.
     - Message time to live and dead-lettering: 1 day.
   
     Select the **Create** button.
@@ -386,11 +384,12 @@ In this task, you will create a new Event Hubs namespace and instance.
 
     - **Throughput Units**: Leave at `1`.
 
-    - **Enable auto-inflate**: **Unchecked**.
 
-    - Select **Create** to provision the Event Hubs namespace.
+      ![The Create Namespace blade fields display the previously mentioned settings.](images/create-event-hub-namespace.png "Create namespace blade")
 
-      ![The Create Namespace blade fields display the previously mentioned settings.](images/image38.png "Create namespace blade")
+    - Click **Next: Features** and ensure that **Enable auto-inflate** is unchecked.
+
+    - Select **Review + Create** and then click on **Create** to provision the Event Hubs namespace.
 
 3. When provisioning completes, navigate to your new Event Hub namespace in the portal by choosing **Resource Groups** from the Azure Portal left menu. Select the **intelligent-analytics** resource group followed by your Event Hub Namespace.
 
