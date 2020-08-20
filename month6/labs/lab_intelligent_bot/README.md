@@ -178,7 +178,7 @@ The following section walks you through the manual steps to provision the servic
 
 1. From your Lab VM open the Edge browser.
 
-2. Go to the following URL to download the intelligent-bot project .zip file [Intelligent Bot Zip File](/code/intelligent-bot.zip).
+2. Go to the following URL to download the intelligent-bot project .zip file [Intelligent Bot Zip File](code/intelligent-bot.zip).
 
 3. On the repo page, select **Clone or download**, then select **Download ZIP**.
 
