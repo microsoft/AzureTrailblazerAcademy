@@ -681,14 +681,14 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 13. Paste the following text into the query window:
 
-```sql
+    ```sql
     SELECT
     *
     INTO
     cosmosdb
     FROM
     eventhub
-```
+    ```
 <!--
     ```sql
     SELECT
@@ -784,7 +784,7 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Pricing tier**: Choose **F0 (5K Transactions per 30 days)**.
+    - **Pricing tier**: Choose **Standard S (1000 Calls per minute)**.
 
     - **Resource Group**: Select the **intelligent-analytics** resource group.
 
@@ -824,15 +824,15 @@ To provision access to the Text Analytics API (which provides sentiment analysis
   
     - **Prediction Resource: Prediction Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Prediction Resource: Prediction Pricing Tier**: Select **F0 (5 Calls per second, 1M Calls per month)**.
+    - **Prediction Resource: Prediction Pricing Tier**: Select **Standard S0 (50 Calls per second)**.
 
      ![The Create Cognitive Services screen is displayed with the Basics tab selected and the form is populated with the preceding values.](images/luis-basics.png "Create Cognitive Services")
 
 9. Select **Review + create**, then select **Create**.
 
-10. Select the **Keys and Endpoint** link under Resource Management to  retrieve the **Key 1** value for the **luis-api-namespace** Cognitive Service.
+10. Go to the resource and Select **Keys and Endpoint** link under Resource Management
 
-11. Verify that you have captured the two API keys for later reference in this lab.
+11. Retrieve the **Key 1** value for the **luis-api-namespace** Cognitive Service.
 
 ## Exercise 2: Implement message forwarding
 
@@ -852,8 +852,54 @@ In this section, you will implement the message forwarding from the ingest Event
 
     ![A Visual Studio source code window is displayed with the method signature of the Run method shown.](images/2020-06-30-14-37-10.png "Run method")
 
-4. Locate **TODO: 1** through **TODO: 5** comments and uncomment the code:
+4. Locate **TODO: 1** through **TODO: 5**  and confirm that those lines of code are uncommented. Leave **TODO: 6** and **TODO: 7** commented out for now. Your code should look exactly like code below:
 
+```csharp
+//TODO: 1.Extract the JSON payload from the binary message
+string sourceEventHubEventBody = Encoding.UTF8.GetString(eventData.Body);
+var sentimentMessage = JsonConvert.DeserializeObject<MessageType>(sourceEventHubEventBody);
+
+//TODO: 6 Append sentiment score to chat message object
+//if (sentimentMessage.messageType.Equals("chat", StringComparison.OrdinalIgnoreCase))
+//{
+//    sentimentMessage.score = await GetSentimentScore(sentimentMessage);
+//    log.LogInformation("SentimentScore: " + sentimentMessage.score);
+//}
+
+//TODO: 2.Create a Message (for Service Bus) and EventData instance (for EventHubs) from source message body
+var updatedMessage = JsonConvert.SerializeObject(sentimentMessage);
+var chatMessage = new Message(Encoding.UTF8.GetBytes(updatedMessage));
+
+// Write the body of the message to the console.
+log.LogInformation($"Sending message: {updatedMessage}");
+
+//TODO: 3.Copy the message properties from source to the outgoing message instances
+foreach (var prop in eventData.Properties)
+{
+    chatMessage.UserProperties.Add(prop.Key, prop.Value);
+}
+
+//TODO: 4.Send chat message to Topic
+//Send the message to the topic which will be eventually picked up by ChatHub.cs in the web app.
+await topicClient.SendAsync(chatMessage);
+
+//TODO: 5.Send chat message to next EventHub (for archival)
+using var eventBatch = archiveEventHubClient.CreateBatch();
+EventData updatedEventData = new EventData(Encoding.UTF8.GetBytes(updatedMessage));
+
+eventBatch.TryAdd(updatedEventData);
+await archiveEventHubClient.SendAsync(eventBatch);
+log.LogInformation("Forwarded message to event hub.");
+
+//TODO: 7.Respond to chat message intent if appropriate
+//var updatedMessageObject = JsonConvert.DeserializeObject<MessageType>(updatedMessage);
+
+// Get your most likely intent based on your message.
+//var intent = await GetIntentAndEntities(updatedMessageObject.message);
+//await HandleIntent(intent, updatedMessageObject, topicClient);
+```
+
+<!--
     ```csharp
     //TODO: 1.Extract the JSON payload from the binary message
     string sourceEventHubEventBody = Encoding.UTF8.GetString(eventData.Body);
@@ -891,6 +937,7 @@ In this section, you will implement the message forwarding from the ingest Event
     await archiveEventHubClient.SendAsync(eventBatch);
     Console.WriteLine("Forwarded message to event hub.");
     ```
+-->
 
 5. Save the file.
 
@@ -1013,9 +1060,9 @@ Duration: 15 minutes
     ServiceBusConnectionString
     ```
 
-    ![The screenshot shows the web application configuration settings.](images/2020-06-29-10-27-36.png "Web application configuration settings")
+    ![The screenshot shows the web application configuration settings.](images/appservice_settings.png "Web application configuration settings")
 
-With the App Services projects properly configured, you are now ready to deploy them to their pre-created services in Azure.
+With the Function App and the Web App resources properly configured, you are now ready to deploy them to their pre-created services in Azure.
 
 ### Task 1: Restore NuGet Packages for the solution
 
@@ -1029,13 +1076,11 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![In Solution Explorer, the sub-menu for ChatMessageSentimentProcessorFunction displays, with Publish... selected.](images/vs-publish-function-menu.png "Solution Explorer")
 
-2. In the **Publish** dialog, choose **Select Existing** beneath Azure App Service as the publish target.
+2. In the **Publish** dialog, choose **Azure** and click **Next**.
 
-    ![In the Pick a publish target dialog, Select Existing is selected for the Azure App Service Plan.](images/2019-11-16-13-22-55.png "Publish dialog box")
+3. Select **Azure Function App (Windows) and click **Next**.
 
-3. Select **Create Profile**.
-
-4. In the **App Service** dialog, choose the **Subscription** that contains your Function App you provisioned earlier. Expand your **Resource Group** (e.g., **intelligent-analytics**), then select the node for your **Function App** in the tree view to select it.
+4. Choose the **Subscription** that contains your Function App you provisioned earlier. Expand your **Resource Group** (e.g., **intelligent-analytics**), then select the node for your **Function App** in the tree view to select it and click **Finish**.
 
     ![In the App Service dialog box, the resource group is expanded and the function app chatprocessor is selected.](images/2019-09-03-15-40-04.png "App Service dialog box")
 
@@ -1047,9 +1092,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![The Output window is set to show output from Build. Output indicates it is updating files, and that Publish Succeeded.](images/vs-publish-function-output.png "Output window")
 
-    > **Note**: If you receive an error in the Output window, as a result of the publish process failing (The target "MSDeployPublish" does not exist in the project), expand the Properties folder within the Visual Studio project, then delete the PublishProfiles folder.
-
-7. Repeat steps 1-5 to publish.
+    > **Note**: If you receive an error in the Output window, as a result of the publish process failing (The target "MSDeployPublish" does not exist in the project), expand the Properties folder within the Visual Studio project, then delete the PublishProfiles folder. Then repeat steps 1-5 to publish.
 
 ### Task 3: Publish the ChatWebApp
 
@@ -1057,23 +1100,19 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![In the Visual Studio Solution Explorer ChatWebApp sub-menu, Publish is selected.](images/image100.png "Visual Studio Solution Explorer")
 
-2. In the **Publish blade**, select **App Service**, and choose the **Select Existing** radio button. Select **Create Profile**.
+2. In the **Publish blade**, select **Azure** and click **Next**. Then select **Azure App Service (Windows)** and click **Next**.
 
-    ![In the Publish window, the Microsoft Azure App Service option is selected, as is the Select Existing radio button.](images/vs-webapp-publish-target.png "Publish window")
-
-    > **Note**: You may see a different dialog than what is shown above. If so, select Microsoft Azure App Service:
+3. In the **App Service** dialog, choose your **Subscription** that contains your Web App you provisioned earlier. Expand your **Resource Group**, **intelligent-analytics**, then select the node for your **Web App** in the tree view to select it. Click **Finish**.
 
     ![The screen shows the publish folder options. The web app is selected.](images/2019-11-16-13-31-12.png "Azure Web App Publish Options")
 
-3. In the **App Service** dialog, choose your **Subscription** that contains your Web App you provisioned earlier. Expand your **Resource Group**, **intelligent-analytics**, then select the node for your **Web App** in the tree view to select it.
-
-4. Select **OK**.
+4. Select **Publish**.
 
 5. When the publishing is complete, a browser window should appear with content like the following:
 
     ![The Browser window displays the Contoso Hotels webpage with a Join Chat section that has a username textbox and a chat room selection drop down list.](images/2020-06-29-10-10-20.png "Join chat landing page")
 
-    > **Note**: It may take a couple of minutes for the browser to render. You must use a modern browser like Edge. If the site is opened in Internet Explorer, copy the URL from the address bar, open Edge (that you installed earlier), and navigate to the site with Edge instead.
+6. **Note**: It may take a couple of minutes for the browser to render. You must use a modern browser like Edge. If the site is opened in Internet Explorer, copy the URL from the address bar, open Edge (that you installed earlier), and navigate to the site with Edge instead.
 
 ### Task 4: Testing hotel lobby chat
 
@@ -1181,11 +1220,16 @@ In this task, you will add code that enables the Event Processor to invoke the T
     }
     ```
 
-4. Build your **ChatMessageSentimentProcessFunction** project.
-5. Publish your **ChatMessageSentimentProcessFunction** project to Azure.
+4. Right click on **ChatMessageSentimentProcessFunction** project and select **Build**.
+5. Right click on **ChatMessageSentimentProcessFunction** project and select **Publish**. Then click on **Publish**.
+6. The new sentiment functionality will be tested in the Concierge Chat application after deploying Language Understanding (LUIS) in the next task
+
+<!--
 6. Test your sentiment query by selecting the sentiment query and selecting the `Test selected query` button.  Check your results.  Look at the **score** column. You should have all of the negative chat messages. Sentiment analysis has not been applied just yet. The sentiment analysis will be tested after the Language Understanding configuration has been completed.
 
     ![The screen shows the ability to test your queries before saving them.](images/2020-07-02-17-01-33.png "Test your queries")
+
+-->
 
 ### Task 2: Implement linguistic understanding
 
@@ -1199,13 +1243,13 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     > **Note**: If in Exercise 1, Step 12 you created your Luis account in Azure in an European region (e.g. West Europe), user <http://eu.luis.ai> instead. If you selected an Australian region use <http://au.luis.ai>.
 
-2. Select **Sign in** **or create an account**.
+2. Select **Login / Sign up**.
 
-3. Sign in using your Microsoft account (or \@Microsoft.com account if that is appropriate to you). The new account startup process may take a few minutes. If you are prompted to migrate to the Preview version of the LUIS portal, select **Migrate Later**.
+3. Sign in using your work account. The new account startup process may take a few minutes. If you are prompted to migrate to the Preview version of the LUIS portal, select **Migrate Later**.
 
-4. Select **Accept** terms button.
+4. Select **Accept** terms button (if this is your first time logging into LUIS).
 
-5. You should be redirected to the **My Apps** list page. In the toolbar, select **+Create new app**.
+5. You should be redirected to the **My Apps** list page. Make sure the correct **Subscription** and **Authoring Resource** is selected and then click on **+Create new app for conversation**.
 
     ![The My Apps table is displayed with the + Create new app button highlighted in the toolbar.](images/2020-08-18-17-39-36.png "Create LUIS app")
 
@@ -1237,7 +1281,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![The Add Entity dialog is displayed. Name and Entity Type are set to the preceding values.](images/2020-06-28-08-18-43.png "Add Entity dialog box")
 
-14. Return to the **OrderIn** intent screen to enter `utterances`.
+14. Return to the **OrderIn** intent screen to enter utterances.
 
     ![The OrderIn intent item is selected.](images/2020-06-28-08-31-26.png "Return to OrderIn Intent")
 
@@ -1285,15 +1329,19 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 22. Train and test your model.  Did you get the expected test results?
 
-23. Enter one more utterance, `order a hotdog`. There is some new functionality in LUIS. Notice the predicted label/entity was suggested for you.  Confirm the **RoomService** entity. Train and test your model.
+23. Enter one more utterance, `order a hotdog`. There is some new functionality in LUIS. Notice the predicted label/entity was suggested for you.  Confirm the **RoomService** entity. **Train** your model again.
 
     ![The screenshot shows the new machine learning prediction for the utterance. The user did not have to select the phrase and associated it with the entity.](images/2020-08-18-19-02-58.png "Machine learning entity prediction")
 
     ![The screenshot shows the Confirm RoomService option highlighted](images/2020-08-18-19-04-47.png "Confirm RoomService")
 
-24. Right-click on the **ChatMessageSentimentFunction** project in Visual Studio. Build the project. Select **Publish App** from the Visual Studio menu.
+24. Click on **Publish** and select **Production Slot**. Click **Done**.
 
-25. When the publish process completes, go back to the LUIS web page. Select **Manage** from the toolbar, then select **Azure Resources** from the left menu. In the **luis-api-namespace** section, the URL is available in the **Example Query** textbox.
+![The screenshot shows the Publish button highlighted.](images/2020-08-18-20-08-05.png "Publish Slot Button")
+
+![The screenshot shows the publishing slot settings. The Production Slot is selected.](images/2020-08-18-20-05-23.png "Production Slot")
+
+25. When the publish process completes, go to **Manage** from the toolbar, then select **Azure Resources** from the left menu. In the **luis-api-namespace** section, the URL is available in the **Example Query** textbox.
 
     ![The Azure Resources menu item is selected from the left menu and the Example Query URL is shown in a textbox.](images/2020-08-18-19-27-46.png "LUIS Key Information")
 
@@ -1301,7 +1349,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![An example of the LUIS call JSON result is displayed.](images/2019-11-24-11-14-17.png "Sample LUIS Response")
 
-27. Go back to the **luis-api-namespace** screen. Capture three LUIS values and add them to the Azure Function application settings.
+27. Go back to the **luis-api-namespace** screen and capture these 3 LUIS values: 
 
     ```text
     LuisPredictionKey
@@ -1311,19 +1359,17 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     !["The screenshot shows the LUIS Starter_Key settings. Three application settings are highlighted. LuisPredictionKey, LuisBaseUrl, and LuisAppId"](images/2020-08-18-19-32-28.png "LUIS Application Settings")
 
-28. In the LUIS web page, select the **Publish** button.
+28. Go back to your Azure Function App and add those 3 new values you just captured into **Application Settings**. 
 
-    ![The screenshot shows the Publish button highlighted.](images/2020-08-18-20-08-05.png "Publish Slot Button")
+    ![Example of Application Settings Configuration for LUIS values](images/luis_appsettings.png "Application Settings Configuration")
 
-29. Select the **Production Slot** setting.  Select the **Done** button.
 
-    ![The screenshot shows the publishing slot settings. The Production Slot is selected.](images/2020-08-18-20-05-23.png "Production Slot")
 
-30. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
+29. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
 
-31. Open **Visual Studio** then open **ProcessChatMessage.cs** within the **ChatMessageSentimentProcessorFunction** project, and navigate to the Run method.
+30. Open **Visual Studio** then open **ProcessChatMessage.cs** within the **ChatMessageSentimentProcessorFunction** project, and navigate to the Run method.
 
-32. Locate **TODO: 7** and uncomment the code:
+31. Locate **TODO: 7** and uncomment the code:
 
     ```csharp
     //TODO: 7.Respond to chat message intent if appropriate
@@ -1334,9 +1380,9 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     await HandleIntent(intent, updatedMessageObject, topicClient);
     ```
 
-33. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
+32. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
 
-34. Save the file.
+33. Save the file.
 
 ### Task 3: Re-deploy the function application and test
 
@@ -1354,6 +1400,7 @@ Now that you have added sentiment analysis and language understanding to the sol
 
     ![In the chat window, Tim is having a conversation with a ConciergeBot. He asks for towels, and the ConciergeBot says they are forwarding the request to Housekeeping.](images/2020-06-29-05-47-15.png "Live Chat window")
 
+<!--
 ## Exercise 5: Building the Power BI dashboard
 
 Duration: 30 minutes
@@ -1511,6 +1558,8 @@ The sentiment visualization you created is great for getting a sense of sentimen
     - Upset Users (Bar chart visualization): Average score by username between yesterday and today.
 
 10. Invite some peers to chat and monitor the sentiments using your new, real-time dashboard.
+
+-->
 
 ## Exercise 6: Enabling search indexing
 
