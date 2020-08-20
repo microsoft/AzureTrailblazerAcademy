@@ -178,19 +178,17 @@ The following section walks you through the manual steps to provision the servic
 
 1. From your Lab VM open the Edge browser.
 
-2. Go to the following URL to download the intelligent-bot project .zip file [Intelligent Bot Zip File](code/intelligent-bot.zip).
+2. Go to the following URL [Intelligent Bot Zip File](code/intelligent-bot.zip).
 
-3. On the repo page, select **Clone or download**, then select **Download ZIP**.
+3. Click on the "View Raw" link to download the intelligent-bot project .zip file  
 
-    ![Download .zip containing the Intelligent analytics repository](images/git-hub-download-repo.png "Download ZIP")
-
-4. Unzip the contents of the downloaded ZIP file to the folder **C:\\ConciergePlus**\\.
+4. Open the .zip file and unzip the contents of the starter-project folder to **C:\\ConciergePlus**\\.
 
    >**Note**: Make sure to extract to this exact path. If you extract to a longer directory path, you will hit a Windows max 260 character path limit when you try to build the Visual Studio solution. You will not be able to download the NuGet packages. Keep the solution directory path short.
 
     ![In the Extract Compressed (Zipped) Folders window, files will be extracted to C:\ConciergePlus.](images/image18.png "Extract Compressed (Zipped) Folders window")
 
-5. Open **ConciergePlusSentiment.sln** in the `C:\ConciergePlus\MCW-Intelligent-analytics-master\Hands-on lab\lab-files\starter-project` folder with Visual Studio 2019.
+5. Open **ConciergePlusSentiment.sln** in the `C:\ConciergePlus\starter-project` folder with Visual Studio 2019.
 
 6. Sign in to Visual Studio or select create account, if prompted.
 
