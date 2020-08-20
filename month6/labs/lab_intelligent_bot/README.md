@@ -39,17 +39,19 @@
     - [Task 1: Implement sentiment analysis](#task-1-implement-sentiment-analysis)
     - [Task 2: Implement linguistic understanding](#task-2-implement-linguistic-understanding)
     - [Task 3: Re-deploy the function application and test](#task-3-re-deploy-the-function-application-and-test)
+<!--
   - [Exercise 5: Building the Power BI dashboard](#exercise-5-building-the-power-bi-dashboard)
     - [Task 1: Provision Power BI](#task-1-provision-power-bi)
     - [Task 2: Create the static dashboard](#task-2-create-the-static-dashboard)
     - [Task 3: Create the real-time dashboard](#task-3-create-the-real-time-dashboard)
     - [Task 4: Add a trending sentiment chart to the dashboard](#task-4-add-a-trending-sentiment-chart-to-the-dashboard)
-  - [Exercise 6: Enabling search indexing](#exercise-6-enabling-search-indexing)
+-->
+  - [Exercise 5: Enabling search indexing](#exercise-6-enabling-search-indexing)
     - [Task 1: Verifying message archive](#task-1-verifying-message-archive)
     - [Task 2: Creating the index and indexer](#task-2-creating-the-index-and-indexer)
     - [Task 3: Update the Chat Web App Configuration](#task-3-update-the-chat-web-app-configuration)
     - [Task 4: Re-publish web app](#task-4-re-publish-web-app)
-  - [Exercise 7: Add a bot using Bot service and QnA Maker](#exercise-7-add-a-bot-using-bot-service-and-qna-maker)
+  - [Exercise 6: Add a bot using Bot service and QnA Maker](#exercise-7-add-a-bot-using-bot-service-and-qna-maker)
     - [Task 1: Create a QnA service instance in Azure](#task-1-create-a-qna-service-instance-in-azure)
     - [Task 2: Create a QnA bot](#task-2-create-a-qna-bot)
     - [Task 3: Embed the bot into your web app](#task-3-embed-the-bot-into-your-web-app)
@@ -1561,7 +1563,7 @@ The sentiment visualization you created is great for getting a sense of sentimen
 
 -->
 
-## Exercise 6: Enabling search indexing
+## Exercise 5: Enabling search indexing
 
 Duration: 30 minutes
 
@@ -1711,7 +1713,7 @@ Before going further, a good thing to check is whether messages are being writte
 
     ![In the Search Messages box, in the Search messages for text box, Hi is typed. Below that, 32 results have been found.](images/2020-06-30-18-55-16.png "Search Messages box")
 
-## Exercise 7: Add a bot using Bot service and QnA Maker
+## Exercise 6: Add a bot using Bot service and QnA Maker
 
 Duration: 30 minutes
 
