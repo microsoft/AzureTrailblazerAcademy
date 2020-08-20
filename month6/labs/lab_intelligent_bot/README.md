@@ -8,18 +8,19 @@
   - [Solution architecture](#solution-architecture)
   - [Requirements](#requirements)
   - [Exercise 1: Environment setup](#exercise-1-environment-setup)
-    - [Task 1: Connect to the lab VM](#task-1-connect-to-the-lab-vm)
-    - [Task 2: Download and open the ConciergePlus starter solution](#task-2-download-and-open-the-conciergeplus-starter-solution)
-    - [Task 3: Create App Services](#task-3-create-app-services)
-    - [Task 4: Provision Function App](#task-4-provision-function-app)
-    - [Task 5: Provision Service Bus](#task-5-provision-service-bus)
-    - [Task 6: Provision Event Hubs](#task-6-provision-event-hubs)
-    - [Task 7: Provision Azure Cosmos DB](#task-7-provision-azure-cosmos-db)
-    - [Task 8: Provision Azure Search](#task-8-provision-azure-search)
-    - [Task 9: Create Stream Analytics job](#task-9-create-stream-analytics-job)
-    - [Task 10: Start the Stream Analytics job](#task-10-start-the-stream-analytics-job)
-    - [Task 11: Provision an Azure Storage account](#task-11-provision-an-azure-storage-account)
-    - [Task 12: Provision Cognitive Services](#task-12-provision-cognitive-services)
+    - [Task 1: Setup a lab virtual machine](#task-1-setup-a-lab-virtual-machine)
+    - [Task 2: Connect to the lab VM](#task-1-connect-to-the-lab-vm)
+    - [Task 3: Download and open the ConciergePlus starter solution](#task-2-download-and-open-the-conciergeplus-starter-solution)
+    - [Task 4: Create App Services](#task-3-create-app-services)
+    - [Task 5: Provision Function App](#task-4-provision-function-app)
+    - [Task 6: Provision Service Bus](#task-5-provision-service-bus)
+    - [Task 7: Provision Event Hubs](#task-6-provision-event-hubs)
+    - [Task 8: Provision Azure Cosmos DB](#task-7-provision-azure-cosmos-db)
+    - [Task 9: Provision Azure Search](#task-8-provision-azure-search)
+    - [Task 10: Create Stream Analytics job](#task-9-create-stream-analytics-job)
+    - [Task 11: Start the Stream Analytics job](#task-10-start-the-stream-analytics-job)
+    - [Task 12: Provision an Azure Storage account](#task-11-provision-an-azure-storage-account)
+    - [Task 13: Provision Cognitive Services](#task-12-provision-cognitive-services)
   - [Exercise 2: Implement message forwarding](#exercise-2-implement-message-forwarding)
     - [Task 1: Implement the event processor](#task-1-implement-the-event-processor)
     - [Task 2: Configure the Chat Message Processor Function App](#task-2-configure-the-chat-message-processor-function-app)
@@ -57,12 +58,6 @@
 
 # Intelligent analytics hands-on lab step-by-step
 
-## Abstract and learning objectives
-
-This hands-on lab is designed to provide exposure to many of Microsoft's transformative line of business applications built using Microsoft advanced analytics. The goal is to show an end-to-end solution, leveraging many of these technologies, but not necessarily doing work in every component possible.
-
-By the end of the hands-on lab, you will be more confident in the various services and technologies provided by Azure, and how they can be combined to build a real-time chat solution that is enhanced by Cognitive Services.
-
 ## Overview
 
 First Up Consultants specialize in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
@@ -89,7 +84,65 @@ Duration: 60 minutes
 
 The following section walks you through the manual steps to provision the services required in the [Azure portal](https://portal.azure.com).  First Up Consultants have provided a starter solution for you. They have asked you to use this as the starting point for creating the Concierge Plus intelligent chat solution in Azure.
 
-### Task 1: Connect to the lab VM
+### Task 1: Setup a lab virtual machine
+
+1. In the [Azure Portal](https://portal.azure.com/), select **+Create a resource** from the left menu, then type `Visual Studio Latest` into the search bar. Select **Visual Studio Community 2019(latest release) on Windows Server 2016 (x64)** from the results.
+
+    ![In the Azure Portal, Visual Studio 2019 Latest is entered into the search textbox. Visual Studio 2019 Latest is displayed in the Search suggestions.](images/2019-06-19-15-05-08.png "Visual Studio 2019 Latest option is displayed")
+
+    ![The product page for Visual Studio 2019 Latest is displayed. The Select a software plan dropdown list is expanded showing a list of possible VM images.  Visual Studio Community 2019 (latest release) on Windows 2019 (x64) is highlighted.](images/2019-09-03-12-22-16.png "Visual Studio Community 2019 (latest release) on Windows 2019 (x64) selected")
+
+2. Select the **Create** button.
+
+3. Set the following configuration on the Basics tab:
+
+    - **Subscription**: (Your Subscription) Select the subscription you are using for this hands-on lab.
+
+    - **Resource Group**: Select the **Create new** link, and enter `intelligent-analytics` as the name of the new resource group.
+
+    - **Virtual Machine Name**: Enter `LabVM`
+
+    - **Region**: Select a region close to you.
+
+    - **Availability Options**:  Leave the availability option as **No infrastructure redundancy required**
+
+    - **Image**: Select **Visual Studio 2019 Community (latest release) on Windows Server 2019 (x64)**
+
+    - **Size**: Select the **Change size** link, and choose **Standard D2s v3**
+
+    - **Username**: `demouser`
+
+    - **Password**: (your password)
+
+    - **Public inbound ports**: **Allow selected ports**
+
+    - **Select inbound ports**: Select **RDP (3389)**.
+
+4. Set the following configuration on the Disks tab:
+
+    - **OS disk type**: Select **Standard SSD**.
+
+    - **Advanced** - Use managed disks: **Yes**
+
+    ![The Create virtual machine, Disks tab is displayed configured with the settings outlined above.](images/2019-03-20-11-28-25.png "Create a Virtual Machine")
+
+5. Select **Next: Networking**.
+
+    ![The Create virtual machine, Disks tab is displayed with the Next: Networking button selected.](images/2019-03-20-11-18-33.png "Review the next blade - Networking.")
+
+6. Leave defaults.
+
+    ![The Networking tab form is displayed with default values, including a new Virtual network, intelligent-analytics-vnet, and a new Subnet, default(10.0.1.0/24). The NIC network security group is set to Basic, and Public inbound ports is set to Allow selected ports. The Select inbound ports is set to RDP. Accelerated networking is set to Off and Load balancing is set to No.](images/2019-03-20-11-20-21.png "Networking tab - Configure Virtual Networks")
+
+7. Select the **Review + create** button.
+
+    ![The Review + create button displayed.](images/2019-03-20-11-23-20.png "Review and create button")
+
+8. Azure will validate your settings.  If everything is valid, then select **Create**.
+
+    ![A Validation passed success message.](images/2019-03-20-15-18-30.png "Validation passed")
+
+### Task 2: Connect to the lab VM
 
 1. In the [Azure portal](https://portal.azure.com), and select Resource groups from the left-hand menu, then enter intelligent-analytics into the filter box, and select the resource group from the list.
 
@@ -121,7 +174,7 @@ The following section walks you through the manual steps to provision the servic
 
 8. Open **Internet Explorer**, then download and install Edge.
 
-### Task 2: Download and open the ConciergePlus starter solution
+### Task 3: Download and open the ConciergePlus starter solution
 
 1. From your Lab VM, download the starter project by downloading a .zip copy of the Intelligent analytics GitHub repo.
 
@@ -155,7 +208,7 @@ The following section walks you through the manual steps to provision the servic
 
 > **Note**: Visual Studio Installer will show the installed version of Visual Studio and if the Azure SDK is installed. If the Azure SDK is missing, go back to the **Before the HOL** and make sure you created the correct VM. Updating Visual Studio manually may install components that may not work with the lab.
 
-### Task 3: Create App Services
+### Task 4: Create App Services
 
 In these steps, you will provision a Web App within a single App Service Plan.
 
@@ -193,7 +246,7 @@ In these steps, you will provision a Web App within a single App Service Plan.
 
 7. Select **Save**.
 
-### Task 4: Provision Function App
+### Task 5: Provision Function App
 
 In this section, you will provision a Function App that will be used as the EventProcessorHost for processing and enriching Event Hubs data.
 
@@ -221,7 +274,7 @@ In this section, you will provision a Function App that will be used as the Even
 
     ![The Function App basics tab displays with the form populated with the preceding values.](images/2019-11-13-14-38-10.png "Function App Configuration")
 
-### Task 5: Provision Service Bus
+### Task 6: Provision Service Bus
 
 In this section, you will provision a Service Bus Namespace and Service Bus Topic.
 
@@ -313,7 +366,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
     ![The screenshot shows the ServiceBusConnectionString](images/2020-06-29-10-43-15.png "ServiceBusConnectionString value")
 
-### Task 6: Provision Event Hubs
+### Task 7: Provision Event Hubs
 
 In this task, you will create a new Event Hubs namespace and instance.
 
@@ -385,7 +438,7 @@ In this task, you will create a new Event Hubs namespace and instance.
 
     ![The screenshot highlights ChatConsole primary connection string used for the EventHubConnectionString.](images/2020-08-16-07-40-01.png "EventHubConnectionString")
 
-### Task 7: Provision Azure Cosmos DB
+### Task 8: Provision Azure Cosmos DB
 
 Duration: 15 minutes
 
@@ -461,7 +514,7 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
     ![The Cosmos DB Data Explorer displays the awhotels database expanded with messagestore and sentiment child containers.](images/2020-06-29-20-17-45.png "Displaying the Cosmos DB Containers")
 
-### Task 8: Provision Azure Search
+### Task 9: Provision Azure Search
 
 In this section, you will create an Azure Search instance.
 
@@ -485,7 +538,7 @@ In this section, you will create an Azure Search instance.
 
       ![The New Search Service form is shown populated with the previously mentioned settings.](images/2019-06-19-17-27-13.png "New Search Service blade fields")
 
-### Task 9: Create Stream Analytics job
+### Task 10: Create Stream Analytics job
 
 In this section, you will create the Stream Analytics Job that will be used to read chat messages from the Archival Event Hub and write them to the Azure Cosmos DB and Service Bus.
 
@@ -659,7 +712,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     ![The query editor toolbar is displayed with the Save button selected.](images/image60.png "Save option")
 
-### Task 10: Start the Stream Analytics job
+### Task 11: Start the Stream Analytics job
 
 1. Navigate to your Stream Analytics job in the portal by selecting Resource Groups in the left menu, and selecting **intelligent-analytics**, then selecting your **Stream Analytics Job**.
 
@@ -679,7 +732,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     ![A message is displayed indicating the Stream Analytics Job is running.](images/2019-06-20-15-46-47.png "Stream analytics job running")
 
-### Task 11: Provision an Azure Storage account
+### Task 12: Provision an Azure Storage account
 
 The EventProcessorHost requires an Azure Storage account that it will use to manage its state among multiple instances. In this section, you create that Storage account.
 
@@ -711,7 +764,7 @@ The EventProcessorHost requires an Azure Storage account that it will use to man
 
       ![The Create storage account Basics tab fields display the previously mentioned settings. ](images/image66.png "Create storage account blade")
 
-### Task 12: Provision Cognitive Services
+### Task 13: Provision Cognitive Services
 
 To provision access to the Text Analytics API (which provides sentiment analysis features), you will need to provision a Cognitive Services account. Based on a phrase, you can tell if a hotel guest is happy or upset.
 
