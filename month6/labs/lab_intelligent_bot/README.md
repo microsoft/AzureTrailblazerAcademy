@@ -39,13 +39,6 @@
     - [Task 1: Implement sentiment analysis](#task-1-implement-sentiment-analysis)
     - [Task 2: Implement linguistic understanding](#task-2-implement-linguistic-understanding)
     - [Task 3: Re-deploy the function application and test](#task-3-re-deploy-the-function-application-and-test)
-<!--
-  - [Exercise 5: Building the Power BI dashboard](#exercise-5-building-the-power-bi-dashboard)
-    - [Task 1: Provision Power BI](#task-1-provision-power-bi)
-    - [Task 2: Create the static dashboard](#task-2-create-the-static-dashboard)
-    - [Task 3: Create the real-time dashboard](#task-3-create-the-real-time-dashboard)
-    - [Task 4: Add a trending sentiment chart to the dashboard](#task-4-add-a-trending-sentiment-chart-to-the-dashboard)
--->
   - [Exercise 5: Enabling search indexing](#exercise-6-enabling-search-indexing)
     - [Task 1: Verifying message archive](#task-1-verifying-message-archive)
     - [Task 2: Creating the index and indexer](#task-2-creating-the-index-and-indexer)
@@ -57,6 +50,14 @@
     - [Task 3: Embed the bot into your web app](#task-3-embed-the-bot-into-your-web-app)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
+
+<!--
+  - [Exercise 5: Building the Power BI dashboard](#exercise-5-building-the-power-bi-dashboard)
+    - [Task 1: Provision Power BI](#task-1-provision-power-bi)
+    - [Task 2: Create the static dashboard](#task-2-create-the-static-dashboard)
+    - [Task 3: Create the real-time dashboard](#task-3-create-the-real-time-dashboard)
+    - [Task 4: Add a trending sentiment chart to the dashboard](#task-4-add-a-trending-sentiment-chart-to-the-dashboard)
+-->
 
 # Intelligent analytics hands-on lab step-by-step
 
