@@ -71,7 +71,7 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 
 ![The preferred solution is shown to meet the customer requirements. From right to left there is an architecture diagram which shows the connections from a mobile device to a Web Application. The Web Application is shown setting data to an Event Hub which is connected to a Web Job. From there Event Hub and Service Bus work together with Stream Analytics, Power BI and Cosmos DB to provide the full solution.](images/preferred-solution-architecture3.png "Solution architecture")
 
-Messages are sent from browsers running within laptop or mobile clients via SignalR to an endpoint running in an Azure Web App. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to Cosmos DB for archiving, and to Power BI for visualization of sentiment in real-time as well as trending sentiment. An indexer runs atop Cosmos DB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by SignalR. When the Subscription receives a message, it is pushed via SignalR down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
+Messages are sent from browsers running within laptop or mobile clients via SignalR to an endpoint running in an Azure Web App. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to Cosmos DB for archiving. An indexer runs atop Cosmos DB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by SignalR. When the Subscription receives a message, it is pushed via SignalR down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
 
 ## Requirements
 
@@ -1660,17 +1660,13 @@ Before going further, a good thing to check is whether messages are being writte
 
 24. Select **Submit** to begin importing data using your indexer.
 
-25. You should test your index and configure it to be searchable by client applications. After a few moments, examine the Indexers tile for the status of the Indexer.
-
-    ![The Indexers tile shows that there was one success, and zero failed.](images/image171.png "Indexers tile")
-
-    You should see your messages indexed.
+25. You should test your index and configure it to be searchable by client applications. After a few moments, examine the Indexers tile for the status of the Indexer. You should see your messages indexed.
 
     ![In the Search service Overview screen, the Indexes tab is selected. The chatmessages index is listed and displays number of documents indexed.](images/2019-03-21-16-22-06.png "Documents Indexed")
 
-    Select the **chatmessages** index.  You can test the searches by entering values in the **Query string** text box. Enter `search=test` into the Query string box and select **Search**.
+    Select the **chatmessages** index.  You can test the searches by entering values in the **Query string** text box. Enter `search=pizza` into the Query string box and select **Search**.
 
-    ![Testing the chat message search, the term search=test is entered in the Query string textbox and the results of the search are shown in JSON format."](images/2019-03-21-16-24-18.png "Testing Search Indexes")
+    ![Testing the chat message search, the term search=test is entered in the Query string textbox and the results of the search are shown in JSON format."](images/search_pizza.png "Testing Search Indexes")
 
     Select the **CORS** tab. Select **All** for the option. Press the Save button.
 
@@ -1678,31 +1674,27 @@ Before going further, a good thing to check is whether messages are being writte
 
     > **Note**: The **All** setting allows search requests from other client applications to successfully execute. For a production application, you would choose the **Custom** option and enter the domain you will be receiving requests from.
 
-26. We need to capture the index query api key for the Azure Web App configuration.
+26. We now need to capture the index query api key and endpoint for the Azure Web App configuration. On the **Search Service** blade, go to **Overview** and copy the URL value on the right side (e.g., <https://conciergeplusappsearchth.search.windows.net>)
 
-    - On the **Search service** blade, select **Keys** on the left-hand menu. Capture the **Primary admin key**. The value will be used for the ChatSearchApiKey.
+     ![The Azure Search Service overview is displayed. On the right hand side, the Url value is highlighted.](images/2019-09-08-15-35-46.png "Search Service URL Displayed")
+
+27. Select **Keys** on the left-hand menu. Capture the **Primary admin key**. The value will be used for the ChatSearchApiKey.
 
     ![The Azure Cognitive Search Service key configuration screen is displayed.](images/2020-06-30-16-12-38.png "Display Search Keys")
 
 ### Task 3: Update the Chat Web App Configuration
 
-1. Navigate to your web app.
+1. Navigate to your Web App resource and select **Configuration**.
 
-2. Select the configuration blade. We are going to add the following values:
+2. We are going to add the following values. You will use the Search service endpoint and key (that you captured earlier) as the values for ChatSearchApiBase and ChatSearchApiKey respectively.
 
     ```text
     ChatSearchApiBase
-    ChatSearchApiIndexName
     ChatSearchApiKey
+    ChatSearchApiIndexName (e.g. chatmessages)
     ```
 
-3. For the `ChatSearchApiBase` key, enter the URI of the Search App (e.g., <https://conciergeplusappsearchth.search.windows.net)>.
-
-    - You can find this by going to **Resource Groups**, selecting the **intelligent-analytics** resource group, and selecting your **search app service** from the list.
-
-    ![The Azure Search Service overview is displayed. On the right hand side, the Url value is highlighted.](images/2019-09-08-15-35-46.png "Search Service URL Displayed")
-
-4. Save the web application configuration.
+3. Save the web application configuration.
 
 ### Task 4: Re-publish web app
 
@@ -1740,17 +1732,17 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 5. Within the **Create QnA Maker** form in Azure, provide the following:
 
-    - **Name**: Provide a **unique name** for the QnA Maker Service (e.g., `awhotel-qna`).
-
     - **Subscription**: Choose the same subscription you used previously.
-
-    - **Pricing tier**: Choose **F0 (3 managed documents per month ...**
 
     - **Resource Group**: Choose the **intelligent-analytics** resource group.
 
-    - **Azure Search pricing tier**: Choose **F (3 Indexes)**.
+    - **Name**: Provide a **unique name** for the QnA Maker Service (e.g., `awhotel-qna`).
+
+    - **Pricing tier**: Choose **Standard S0**
 
     - **Azure Search location**: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
+
+    - **Azure Search pricing tier**: Choose **Basic B**.
 
     - **App name**: Provide a **unique name** for the QnA Maker Service (e.g., `awhotel-qna`).
 
@@ -1770,7 +1762,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 9. Underneath Step 3 (Name your KB), provide a unique name, such as `ConciergePlus`
 
-10. Underneath Step 4 (Populate your KB), select **+ Add file**. [Download this file](lab-files/faq.xlsx) then select it from the file browser.
+10. Underneath Step 4 (Populate your KB), select **+ Add file**. [Download this file](data/faq.xlsx) then select it from the file browser.
 
     ![On STEP 4 Populate your KB, the +Add file button is selected.](images/create-qna-maker-add-file.png "Knowledge base creation page")
 
