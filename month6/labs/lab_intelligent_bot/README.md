@@ -69,7 +69,7 @@ First Up Consultants specialize in building software solutions for the hospitali
 
 Below is a diagram of the solution architecture you will build in this lab. Please study this carefully so you understand the whole of the solution as you are working on the various components.
 
-![The preferred solution is shown to meet the customer requirements. From right to left there is an architecture diagram which shows the connections from a mobile device to a Web Application. The Web Application is shown setting data to an Event Hub which is connected to a Web Job. From there Event Hub and Service Bus work together with Stream Analytics, Power BI and Cosmos DB to provide the full solution.](images/preferred-solution-architecture3.png "Solution architecture")
+![The preferred solution is shown to meet the customer requirements. From right to left there is an architecture diagram which shows the connections from a mobile device to a Web Application. The Web Application is shown setting data to an Event Hub which is connected to a Web Job. From there Event Hub and Service Bus work together with Stream Analytics, Power BI and Cosmos DB to provide the full solution.](images/preferred-architecture4.jpg "Solution architecture")
 
 Messages are sent from browsers running within laptop or mobile clients via SignalR to an endpoint running in an Azure Web App. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to Cosmos DB for archiving. An indexer runs atop Cosmos DB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by SignalR. When the Subscription receives a message, it is pushed via SignalR down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
 
@@ -442,7 +442,7 @@ In this task, you will create a new Event Hubs namespace and instance.
 
 Duration: 15 minutes
 
-In this section, you will provision an Azure Cosmos DB account, a database, and a collection that will be used to collect all the chat messages. Cognitive Search will index this data later. Power BI will use the data for visualizations.
+In this section, you will provision an Azure Cosmos DB account, a database, and a collection that will be used to collect all the chat messages. Cognitive Search will index this data later.
 
 1. In the [Azure portal](https://portal.azure.com), select **+Create a resource**.  Search for **Azure Cosmos DB**.
 
@@ -1804,7 +1804,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
     - **Subscription**: Select your subscription.
     - **Resource Group**: Select **intelligent-analytics**.
     - **Location**: Select the region you've been using throughout this lab.
-    - **Pricing tier**: Select **F0 (10K Premium Messages)**.
+    - **Pricing tier**: Select **S1 (1K Premium Msgs/Unit)**.
     - **App name**: This will be defaulted to the same name as the **Bot handle**.
     - **Application Insights**: Set to **Off**.
 
@@ -1855,7 +1855,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![In Visual Studio, the contents of the Bot.cshtml page is displayed with the embed code highlighted.](images/vs-bot-embed.png "Visual Studio")
 
-4. **Publish** your web app.
+4. **Save** and **Publish** your web app.
 
 5. After the web app has been published, navigate to it by selecting the **Bot** menu item. Type in a few questions to ensure the bot is functioning correctly.
 
@@ -1875,8 +1875,6 @@ In this exercise, attendees will deprovision any Azure resources that were creat
 
 3. Select Delete in the command bar and confirm the deletion by re-typing the Resource Group name and selecting Delete.
 
-4. Power BI - Delete **Real-time Sentiment** workspace.
-
-5. LUIS - <https://www.luis.ai/applications>.  Delete the **awchat** app.
+4. LUIS - <https://www.luis.ai/applications>.  Delete the **awchat** app.
 
 You should follow all steps provided _after_ attending the Hands-on lab.
