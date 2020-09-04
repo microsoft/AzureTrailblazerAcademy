@@ -24,7 +24,7 @@
 
 1. Create a virtual machine (VM) in Azure using the Visual Studio Community 2019 on Windows Server 2019 (x64) image. A Windows 10 image will work as well. **Note:** Your Azure subscription must include MSDN offers to create a VM with Visual Studio pre-loaded.
 
-   ![In Azure Portal, in the search field, Visual Studio Community 2019 (latest release) on Windows Server 2019 (x64) is selected.](media/select-vs2019-image.png 'Azure Portal')
+   ![In Azure Portal, in the search field, Visual Studio Community 2019 (latest release) on Windows Server 2019 (x64) is selected.](images/Setup/select-vs2019-image.png 'Azure Portal')
 
    - Select **+ Create a resource**.
 
@@ -94,7 +94,7 @@
 
 2. To validate connectivity to your Azure subscription, open **Cloud Explorer** from the **View** menu, and ensure that you can connect to your Azure subscription.
 
-   ![In Cloud Explorer, the list of Azure subscriptions is shown. A single subscription is highlighted and expanded in the list.](media/vs-cloud-explorer.png 'Cloud Explorer')
+   ![In Cloud Explorer, the list of Azure subscriptions is shown. A single subscription is highlighted and expanded in the list.](images/Setup/vs-cloud-explorer.png 'Cloud Explorer')
 
 ### Task 6: Download and explore the TollBooth starter solution
 
@@ -108,7 +108,7 @@
 
 4. Unzip the contents to the folder **C:\\ServerlessMCW\\**
 
-   ![On the Extract Compressed (Zipped) Folders dialog window, the extraction path is highlighted in the Files will be extracted to this folder field.](media/zip-extract.png 'Extract Compressed Folders')
+   ![On the Extract Compressed (Zipped) Folders dialog window, the extraction path is highlighted in the Files will be extracted to this folder field.](images/Setup/zip-extract.png 'Extract Compressed Folders')
 
 5. Navigate to `C:\ServerlessMCW\MCW-Serverless-architecture-master\Hands-on lab\starter`
 
