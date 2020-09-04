@@ -1,11 +1,11 @@
 # Azure Serverless Lab Setup Guide
-## Task List:
-    - [Task 1: Create a new Azure Resource group](#task-1-create-a-new-azure-resource-group)
-    - [Task 2: Set up a development environment](#task-2-set-up-a-development-environment)
-    - [Task 3: Disable IE Enhanced Security](#task-3-disable-ie-enhanced-security)
-    - [Task 4: Install Microsoft Edge](#task-4-install-microsoft-edge)
-    - [Task 5: Validate connectivity to Azure](#task-5-validate-connectivity-to-azure)
-    - [Task 6: Download and explore the TollBooth starter solution](#task-6-download-and-explore-the-tollbooth-starter-solution)
+## Task List
+- [Task 1: Create a new Azure Resource group](#task-1-create-a-new-azure-resource-group)
+- [Task 2: Set up a development environment](#task-2-set-up-a-development-environment)
+- [Task 3: Disable IE Enhanced Security](#task-3-disable-ie-enhanced-security)
+- [Task 4: Install Microsoft Edge](#task-4-install-microsoft-edge)
+- [Task 5: Validate connectivity to Azure](#task-5-validate-connectivity-to-azure)
+- [Task 6: Download and explore the TollBooth starter solution](#task-6-download-and-explore-the-tollbooth-starter-solution)
 
 
 ### Task 1: Create a new Azure Resource group
