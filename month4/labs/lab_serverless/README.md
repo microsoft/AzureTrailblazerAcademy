@@ -362,9 +362,8 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
     e. Throughput: Select AutoPilot and enter **4000**
 
-    ![In the Add Container blade, fields are set to the previously defined values.](images/CosmosDB-Database-container-create01.PNG 'Add Container blade') 
-    ![In the Add Container blade, fields are set to the previously defined values.]
-    (images/CosmosDB-Database-container-create02.PNG 'Add Container blade')
+    ![In the Add Create Database blade, fields are set to the previously defined values.](images/CosmosDB-Database-container-create01.PNG 'Add Container blade') 
+    ![In the Add Container blade, fields are set to the previously defined values.](images/CosmosDB-Database-container-create02.PNG 'Add Container blade')
 
 8. Select **OK**.
 
