@@ -1,9 +1,9 @@
+
 # Azure Serverless (Functions, Logic Apps, Event Grid) Lab
 
 ## Table of Content
 
 <!-- TOC -->
-
 - [Serverless architecture hands-on lab step-by-step](#serverless-architecture-hands-on-lab-step-by-step)
   - [Overview](#overview)
   - [Solution architecture](#solution-architecture)
@@ -54,6 +54,7 @@
     - [Task 2: View the exported CSV file](#task-2-view-the-exported-csv-file)
 <!-- /TOC -->
 
+
 # Serverless architecture hands-on lab step-by-step
 
 In this hand-on lab, you will be challenged to implement an end-to-end scenario using a supplied sample that is based on Microsoft Azure Functions, Azure Cosmos DB, Event Grid, and related services. The scenario will include implementing compute, storage, workflows, and monitoring, using various components of Microsoft Azure.
@@ -86,6 +87,8 @@ Contoso Ltd. is rapidly expanding their toll booth management business to operat
 
 Below is a diagram of the solution architecture you will build in this lab. Please study this carefully, so you understand the whole of the solution as you are working on the various components.
 
+
+
 ![The Solution diagram is described in the text following this diagram.](images/preferred-solution.png 'Solution diagram')
 
 1. The solution begins with vehicle photos being uploaded to an Azure Storage blobs container, as they are captured. 
@@ -97,7 +100,7 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 7. If no new license plate records are found to export, the Logic App sends an email notification to the Customer Service department via their Office 365 subscription. 
 8. **Application Insights** is used to monitor all of the Azure Functions in real-time as data is being processed through the serverless architecture. This real-time monitoring allows you to observe dynamic scaling first-hand and configure alerts when certain events take place. 
 9. **Azure Key Vault** is used to securely store secrets, such as connection strings and access keys. Key Vault is accessed by the Function Apps through an access policy within Key Vault, assigned to each Function App's system-assigned managed identity.
-
+  
 ## Requirements
 
 - Microsoft Azure subscription (non-Microsoft subscription).
@@ -1414,3 +1417,5 @@ With the latest code changes in place, run your Logic App and verify that the fi
     ![A CSV file displays with the following columns: FileName, LicensePlateText, TimeStamp, and LicensePlateFound.](images/csv.png 'CSV file')
 
 6. The ExportLicensePlates function updates all of the records it exported by setting the exported value to true. This makes sure that only new records since the last export are included in the next one. Verify this by re-executing the script in Azure Cosmos DB that counts the number of documents in the Processed collection where exported is false. It should return 0 unless you've subsequently uploaded new photos.
+
+
