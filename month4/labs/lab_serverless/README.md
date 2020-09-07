@@ -377,8 +377,6 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
     c. Partition key: **/fileName**
 
-    d. Throughput: **5000**
-
     ![In the Add Container blade, fields are set to the previously defined values.](images/CosmosDB-Database-container-create03.PNG 'Add Collection blade')
 
 11. Select **OK**.
