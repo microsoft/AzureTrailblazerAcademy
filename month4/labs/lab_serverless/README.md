@@ -356,13 +356,13 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
     b. Leave **Provision database throughput** unchecked.
 
-    c. Enter **Processed** for the **Container id**.
-
-    d. Partition key: **/licensePlateText**
-
-    e. Throughput: Select AutoPilot and enter **4000**
+    c. Throughput: Select AutoPilot and enter **4000**
 
     ![In the Add Create Database blade, fields are set to the previously defined values.](images/CosmosDB-Database-container-create01.PNG 'Add Database blade') 
+ 
+    d. Enter **Processed** for the **Container id**.
+
+    e. Partition key: **/licensePlateText**
     ![In the Add Container blade, fields are set to the previously defined values.](images/CosmosDB-Database-container-create02.PNG 'Add Container blade')
 
 8. Select **OK**.
