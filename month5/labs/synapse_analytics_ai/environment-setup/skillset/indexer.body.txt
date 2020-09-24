@@ -1,0 +1,38 @@
+{
+  "name": "{{indexer-name}}",
+  "description": "",
+  "dataSourceName": "{{datasource-name}}",
+  "skillsetName": "{{skillset-name}}",
+  "targetIndexName": "{{index-name}}",
+  "disabled": null,
+  "schedule": null,
+  "parameters": {
+    "batchSize": null,
+    "maxFailedItems": 0,
+    "maxFailedItemsPerBatch": 0,
+    "base64EncodeKeys": null,
+    "configuration": {
+      "dataToExtract": "contentAndMetadata",
+      "parsingMode": "default"
+    }
+  },
+  "fieldMappings": [
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "id",
+      "mappingFunction": {
+        "name": "base64Encode"
+      }
+    },
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "metadata_storage_path"
+    },
+    {
+      "sourceFieldName": "/document/formrecognizer/analyzeResult/readResults/0/lines/13/words/0/text",
+      "targetFieldName": "ProductId"
+    }
+  ],
+  "outputFieldMappings": [],
+  "encryptionKey": null
+}

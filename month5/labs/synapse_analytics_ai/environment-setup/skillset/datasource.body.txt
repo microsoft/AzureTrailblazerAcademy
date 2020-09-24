@@ -1,0 +1,16 @@
+{
+  "name": "{{datasource-name}}",
+  "description": "Demo files to demonstrate knowledge store capabilities.",
+  "type": "azureblob",
+  "subtype": null,
+  "credentials": {
+    "connectionString": "{{storage-connection-string}}"
+  },
+  "container": {
+    "name": "{{storage-container-name}}",
+    "query": "Test"
+  },
+  "dataChangeDetectionPolicy": null,
+  "dataDeletionDetectionPolicy": null,
+  "encryptionKey": null
+}
