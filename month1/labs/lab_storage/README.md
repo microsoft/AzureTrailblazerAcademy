@@ -84,7 +84,7 @@ Share structured and unstructured data from multiple Azure data stores with othe
 
 2. Enter the following Information to create the Data Lake Storage
 - Resouce group: Select "ata-storage-lab-\<YourName\>-rg". 
-- Storage account name: Enter 'atastorageADLSGen2\<YourName\>' format.
+- Storage account name: Enter 'atastorageadlsgen2\<YourName\>' format.
 - Location: Select 'East US' as the region.
 - Leave defaults for the rest.
 - Select the 'Networking' button.
