@@ -1,0 +1,97 @@
+{
+  "name": "{{skillset-name}}",
+  "description": "Skillset created from the portal. skillsetName: invoices-skillset; contentField: content; enrichmentGranularity: document; knowledgeStoreStorageAccount: ;",
+  "skills": [
+    {
+      "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+      "name": "#5",
+      "description": "Use form recognizer to process the invoice",
+      "context": "/document",
+      "uri": "{{skillset-function}}",
+      "httpMethod": "POST",
+      "timeout": "PT30S",
+      "batchSize": 1,
+      "degreeOfParallelism": null,
+      "inputs": [
+        {
+          "name": "metadata_storage_path",
+          "source": "/document/metadata_storage_path"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "targetName": "formrecognizer"
+        }
+      ],
+      "httpHeaders": {}
+    }
+  ],
+  "cognitiveServices": null,
+  "knowledgeStore": {
+    "storageConnectionString": "{{storage-connection-string}}",
+    "projections": [
+      {
+        "tables": [],
+        "objects": [
+          {
+            "storageContainer": "invoices-json",
+            "referenceKeyName": null,
+            "generatedKeyName": "invoice",
+            "source": null,
+            "sourceContext": "/document",
+            "inputs": [
+              {
+                "name": "filename",
+                "source": "/document/metadata_storage_name",
+                "sourceContext": null,
+                "inputs": []
+              },
+              {
+                "name": "transactionid",
+                "source": "/document/formrecognizer/analyzeResult/readResults/0/lines/1/words/0/text",
+                "sourceContext": null,
+                "inputs": []
+              },
+              {
+                "name": "productid",
+                "source": "/document/formrecognizer/analyzeResult/readResults/0/lines/16/words/0/text",
+                "sourceContext": null,
+                "inputs": []
+              },
+              {
+                "name": "productprice",
+                "source": "/document/formrecognizer/analyzeResult/readResults/0/lines/17/words/0/text",
+                "sourceContext": null,
+                "inputs": []
+              },
+              {
+                "name": "quantity",
+                "source": "/document/formrecognizer/analyzeResult/readResults/0/lines/18/words/0/text",
+                "sourceContext": null,
+                "inputs": []
+              },
+              {
+                "name": "totalcharges",
+                "source": "/document/formrecognizer/analyzeResult/readResults/0/lines/19/words/0/text",
+                "sourceContext": null,
+                "inputs": []
+              },
+              {
+                "name": "customerid",
+                "source": "/document/formrecognizer/analyzeResult/readResults/0/lines/11/words/0/text",
+                "sourceContext": null,
+                "inputs": []
+              }
+            ]
+          }
+        ],
+        "files": []
+      }
+    ],
+    "parameters": {
+      "synthesizeGeneratedKeyName": true
+    }
+  },
+  "encryptionKey": null
+}

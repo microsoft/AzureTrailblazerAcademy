@@ -1,0 +1,36 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "Suffix": {
+            "value": "SUF"
+        },
+        "VirtualMachineAdminUsernameLinux": {
+            "value": "adminfabmedical"
+        },
+        "VirtualMachineAdminPublicKeyLinux": {
+            "value": "ssh-rsa AAAAB3N(...)vPiybQV admin@fabmedical"
+        },
+        "KubernetesServicePrincipalClientId": {
+            "value": "GUID"
+        },
+        "KubernetesServicePrincipalClientSecret": {
+            "value": "GUID"
+        },
+        "KubernetesServicePrincipalObjectId": {
+            "value": "GUID"
+        },
+        "CosmosLocation": {
+            "value": "location"
+        },
+        "CosmosLocationName": {
+            "value": "Location Name"
+        },
+        "CosmosPairedLocation": {
+            "value": "pairedlocation"
+        },
+        "CosmosPairedLocationName": {
+            "value": "Paired Location Name"
+        }
+    }
+}
