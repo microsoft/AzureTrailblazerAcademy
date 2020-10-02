@@ -106,7 +106,9 @@ We will utilize the PowerShell DSC extension to deploy a simple website to our s
 
 2. Inside the cloud shell run the following command to download the needed script:
 
-**curl https://raw.githubusercontent.com/microsoft/AzureTrailblazerAcademy/master/month1/labs/lab_IaaS/scripts/add_website.ps1 > add_website.ps1**
+```
+curl https://raw.githubusercontent.com/microsoft/AzureTrailblazerAcademy/master/month1/labs/lab_IaaS/scripts/add_website.ps1 > add_website.ps1
+```
 
 3. After that download run the following command to install the PowerShell DSC extension:
 
