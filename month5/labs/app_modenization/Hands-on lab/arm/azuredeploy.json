@@ -17,19 +17,6 @@
         "VirtualMachineAdminPublicKeyLinux": {
             "type": "securestring"
         },
-        "KubernetesServicePrincipalClientId": {
-            "type": "securestring"
-        },
-        "KubernetesServicePrincipalClientSecret": {
-            "type": "securestring"
-        },
-        "KubernetesServicePrincipalObjectId": {
-            "type": "string"
-        },
-        "KubernetesServicePrincipalRoleGuid": {
-            "type": "string",
-            "defaultValue": "[newGuid()]"
-        },
         "CosmosLocation": {
             "type": "string",
             "defaultValue": "eastus"
@@ -294,10 +281,6 @@
                         "type": "VirtualMachineScaleSets"
                     }
                 ],
-                "servicePrincipalProfile": {
-                    "clientId": "[parameters('KubernetesServicePrincipalClientId')]",
-                    "secret": "[parameters('KubernetesServicePrincipalClientSecret')]"
-                },
                 "networkProfile": {
                     "networkPlugin": "[variables('kubernetesNetworkProfilePlugin')]"
                 },
@@ -312,6 +295,35 @@
                         }
                     }
                 }
+            },
+            "identity": {
+                "type": "SystemAssigned"
+            }
+        },
+        {
+            "name": "PoolIdentity",
+            "type": "Microsoft.Authorization/roleAssignments",
+            "dependsOn": [
+                "[concat('Microsoft.ContainerService/managedClusters/', variables('kubernetesClusterName'))]"
+            ],
+            "apiVersion": "2018-09-01-preview",
+            "properties": {
+                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+                "principalId": "[reference(concat('Microsoft.ContainerService/managedClusters/', variables('kubernetesClusterName'))).identityProfile.kubeletidentity.objectId]",
+                "scope": "[resourceGroup().id]"
+            }
+        },
+        {
+            "name": "AKSIdentity",
+            "type": "Microsoft.Authorization/roleAssignments",
+            "dependsOn": [
+                "PoolIdentity"
+            ],
+            "apiVersion": "2018-09-01-preview",
+            "properties": {
+                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+                "principalId": "[reference(resourceId('Microsoft.ContainerService/managedClusters', variables('kubernetesClusterName')), '2020-06-01', 'full').identity.principalId]",
+                "scope": "[resourceGroup().id]"
             }
         },
         {
@@ -369,35 +381,6 @@
                                 "product": "OMSGallery/ContainerInsights",
                                 "promotionCode": "",
                                 "publisher": "Microsoft"
-                            }
-                        }
-                    ]
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2017-05-10",
-            "name": "[concat('ClusterMonitoringMetricPulisherRoleAssignmentDepl-fabmedical-', parameters('Suffix'))]",
-            "dependsOn": [
-                "[concat('Microsoft.ContainerService/managedClusters/', variables('kubernetesClusterName'))]"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {},
-                    "variables": {},
-                    "resources": [
-                        {
-                            "type": "Microsoft.ContainerService/managedClusters/providers/roleAssignments",
-                            "apiVersion": "2018-01-01-preview",
-                            "name": "[concat(variables('kubernetesClusterName'), '/Microsoft.Authorization/', parameters('KubernetesServicePrincipalRoleGuid'))]",
-                            "properties": {
-                                "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/3913510d-42f4-4e42-8a64-420c390055eb')]",
-                                "principalId": "[parameters('KubernetesServicePrincipalObjectId')]",
-                                "scope": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.ContainerService/managedClusters/', variables('kubernetesClusterName'))]"
                             }
                         }
                     ]
