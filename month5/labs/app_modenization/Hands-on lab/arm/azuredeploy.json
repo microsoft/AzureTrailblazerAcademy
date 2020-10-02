@@ -32,6 +32,14 @@
         "CosmosPairedLocationName": {
             "type": "string",
             "defaultValue": "West US"
+        },
+        "guid": {
+            "type": "string",
+            "defaultValue": "[newGuid()]"
+        },
+        "guid2": {
+            "type": "string",
+            "defaultValue": "[newGuid()]"
         }
     },
     "variables": {
@@ -301,23 +309,10 @@
             }
         },
         {
-            "name": "PoolIdentity",
+            "name": "[parameters('guid')]",
             "type": "Microsoft.Authorization/roleAssignments",
             "dependsOn": [
                 "[concat('Microsoft.ContainerService/managedClusters/', variables('kubernetesClusterName'))]"
-            ],
-            "apiVersion": "2018-09-01-preview",
-            "properties": {
-                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
-                "principalId": "[reference(concat('Microsoft.ContainerService/managedClusters/', variables('kubernetesClusterName'))).identityProfile.kubeletidentity.objectId]",
-                "scope": "[resourceGroup().id]"
-            }
-        },
-        {
-            "name": "AKSIdentity",
-            "type": "Microsoft.Authorization/roleAssignments",
-            "dependsOn": [
-                "PoolIdentity"
             ],
             "apiVersion": "2018-09-01-preview",
             "properties": {
