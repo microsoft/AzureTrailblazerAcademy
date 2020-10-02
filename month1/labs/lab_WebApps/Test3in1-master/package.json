@@ -1,0 +1,31 @@
+{
+  "name": "SalesforcePEvents",
+  "version": "1.0.0",
+  "description": "SalesforcePEvents",
+  "main": "server.js",
+  "scripts": {
+    "test": "jasmine-node spec",
+    "start": "node server.js"
+  },
+  "author": "pl",
+  "license": "ISC",
+  "dependencies": {
+    "aguid": "^1.0.4",
+    "azure-storage": "^2.8.0",
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "jsforce": "^1.9.3",
+    "mssql": "^6.2.0",
+    "path": "^0.12.7",
+    "pg": "^7.11.0",
+    "request": "^2.79.0",
+    "save": "^2.3.2"
+  },
+  "engines": {
+    "npm": ">6.4.1",
+    "node": "8.1.4"
+  }
+}
