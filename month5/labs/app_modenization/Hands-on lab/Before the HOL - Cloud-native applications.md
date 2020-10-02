@@ -31,13 +31,12 @@ The names of manufacturers, products, or URLs are provided for informational pur
     - [Task 2: Download Starter Files](#task-2-download-starter-files)
     - [Task 3: Resource Group](#task-3-resource-group)
     - [Task 4: Create an SSH key](#task-4-create-an-ssh-key)
-    - [Task 5: Create a Service Principal](#task-5-create-a-service-principal)
-    - [Task 6: Deploy ARM Template](#task-6-deploy-arm-template)
-    - [Task 7: Grant AKS Pool Identity RBAC](#task-7-grant-aks-pool-identity-rbac)
-    - [Task 8: Create a GitHub repository](#task-7-create-a-github-repository)
-    - [Task 9: Connect securely to the build agent](#task-8-connect-securely-to-the-build-agent)
-    - [Task 10: Complete the build agent setup](#task-9-complete-the-build-agent-setup)
-    - [Task 11: Clone Repositories to the Build Agent](#task-10-clone-repositories-to-the-build-agent)
+    - [Task 5: Deploy ARM Template](#task-6-deploy-arm-template)    
+    - [Task 6: Grant AKS Pool Identity RBAC](#task-6-grant-aks-pool-identity-rbac)
+    - [Task 7: Create a GitHub repository](#task-7-create-a-github-repository)
+    - [Task 8: Connect securely to the build agent](#task-8-connect-securely-to-the-build-agent)
+    - [Task 9: Complete the build agent setup](#task-9-complete-the-build-agent-setup)
+    - [Task 10: Clone Repositories to the Build Agent](#task-10-clone-repositories-to-the-build-agent)
 
 <!-- /TOC -->
 
@@ -57,15 +56,13 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
      > **Note** If you do not meet these requirements, ask another member user with subscription owner rights to login to the portal and execute the task to create the service principal.
 
-   - You must have enough cores available in your subscription to create the build agent and Azure Kubernetes Service cluster in your subscription. You'll need eight cores if following the exact instructions in the lab, more if you choose additional agents or larger VM sizes. Execute the steps required before the lab to see if you need to request more cores in your sub.
+   - You must have enough cores available in your subscription to create the build agent and Azure Kubernetes Service cluster in [Task 6: Deploy ARM Template](#Task-6-Deploy-ARM-Template). You'll need eight cores if following the exact instructions in the lab, more if you choose additional agents or larger VM sizes. Execute the steps required before the lab to see if you need to request more cores in your sub.
 
-2. An account in Azure DevOps.
-
-3. Local machine or a virtual machine configured with:
+2. Local machine or a virtual machine configured with:
 
    - A browser, preferably Chrome for consistency with the lab implementation tests.
 
-4. You will be asked to install other tools throughout the exercises.
+3. You will be asked to install other tools throughout the exercises.
 
 ## Before the hands-on lab
 
@@ -114,17 +111,22 @@ In this task, you use `git` to copy the lab content to your cloud shell so that 
 1. Type the following command and press `<ENTER>`:
 
    ```bash
-   git clone https://github.com/microsoft/MCW-Cloud-native-applications.git
+   git clone https://github.com/microsoft/AzureTrailblazerAcademy.git
    ```
 
 2. The lab files download.
 
    ![In this screenshot of a Bash window, git clone has been typed and run at the command prompt. The output from git clone is shown.](media/b4-2019-09-30_21-25-06.png)
 
-3. We do not need the `.git` folder, and later steps will be less complex if we remove it. Run this command:
+3. We'll move this lab to it's own directory. Run this command:
 
    ```bash
-   rm -rf MCW-Cloud-native-applications/.git
+   mv AzureTrailblazerAcademy/month5/labs/app_modenization/ ~/MCW-Cloud-native-applications
+   ```
+4. We can remove the AzureTrailblazerAcademy folder. Run this command:   
+
+```bash
+   rm -rf ~/AzureTrailblazerAcademy/
    ```
 
 ### Task 3: Resource Group
@@ -189,35 +191,7 @@ You create VMs during the upcoming exercises. In this section, you create an SSH
 
     ![In this screenshot of the cloud shell window, cat .ssh/fabmedical has been typed and run at the command prompt. Information about the public key content appears in the window.](media/b4-image571.png)
 
-### Task 5: Create a Service Principal
-
-Azure Kubernetes Service requires an Azure Active Directory service principal to interact with Azure APIs. The service principal is needed to dynamically manage resources such as user-defined routes and the Layer 4 Azure Load Balancer. The easiest way to set up the service principal is by using the Azure cloud shell.
-
-> **Note**: To complete this task, ensure your account is an [Owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) built-in role for the subscription you use and is a [Member](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions#member-and-guest-users) user in the Azure AD tenant you use. You may have trouble creating a service principal if you do not meet these requirements.
-
-1. To create a service principal, type the following command in the cloud shell command line, replacing {id} with your subscription identifier, and replacing suffix with your chosen suffix to make the name unique:
-
-   > **Note**: If you don't have a cloud shell available, refer back to [Task 1: Setup Azure Cloud Shell](#task-1-setup-azure-cloud-shell).
-
-   ```bash
-   az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/{id}" --name="http://Fabmedical-sp-{SUFFIX}"
-   ```
-
-2. The command produces output like this. Copy this information to use later.
-
-   ![In this screenshot of a Bash window, az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/{id}" --name="Fabmedical-sp-SUFFIX" has been typed and run at the command prompt. Service principal information is visible in the window, but at this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](media/b4-image39.png)
-
-3. To get the service principal object id, type the following command, replacing {appId} with your service principal appId:
-
-   ```bash
-   az ad sp show --id {appId} --query "{objectId:@.objectId}"
-   ```
-
-4. The command produces output like this. Copy this information to use later.
-
-   ![In this screenshot of a Bash window, az ad sp show --id d41261a3-d8b8-4cf0-890d-1fb6efc20a67 --query "{objectId:@.objectId}" has been typed and run at the command prompt. Service Principal information is visible in the window.](media/b4-image58.png)
-
-### Task 6: Deploy ARM Template
+### Task 5: Deploy ARM Template
 
 In this section, you configure and execute an ARM template that creates all the resources that you need throughout the exercises.
 
@@ -242,9 +216,6 @@ In this section, you configure and execute an ARM template that creates all the 
    - **Suffix**: Enter a shortened version of your SUFFIX with a max of 3 chars.
    - **VirtualMachineAdminUsernameLinux**: The Linux Build Agent VM admin username (example: `"adminfabmedical"`).
    - **VirtualMachineAdminPublicKeyLinux**: The Linux Build Agent VM admin ssh public key. You find this value in the `.ssh/fabmedical.pub` file created previously (example: `"ssh-rsa AAAAB3N(...)vPiybQV admin@fabmedical"`).
-   - **KubernetesServicePrincipalClientId**: The Kubernetes Cluster Service Principal Client Id. Use the service principal **appId** from a previous step.
-   - **KubernetesServicePrincipalClientSecret**: The Kubernetes Cluster Service Principal Client Secret. Use the service principal **password** from a previous step.
-   - **KubernetesServicePrincipalObjectId**: The Kubernetes Cluster Service Principal Object Id. Use the service principal **objectId** from a previous step.
    - **CosmosLocation**: The primary location of the Azure Cosmos DB. Use the same location as the resource group previously created (example: `"eastus"`).
    - **CosmosLocationName**: The name of the primary location of the Azure Cosmos DB. Use the name of the same location as the resource group previously created (example: `"East US"`).
    - **CosmosPairedLocation**: The secondary location of the Azure Cosmos DB. The below link can be used to help find the Azure Region Pair for your primary location. (example: `"westus"`).
@@ -266,9 +237,9 @@ In this section, you configure and execute an ARM template that creates all the 
    az deployment group create --resource-group {resourceGroup} --template-file azuredeploy.json --parameters azuredeploy.parameters.json
    ```
 
-   This command takes up to 30 to 60 minutes to deploy all lab resources. You can continue to the next task to setup Azure DevOps while the deployment runs.
+   This command takes up to 30 to 60 minutes to deploy all lab resources. You can continue to the next task to setup Azure DevOps while the deployment runs.  
 
-### Task 7: Grant AKS Pool Identity RBAC  
+### Task 6: Grant AKS Pool Identity RBAC  
 
 1. In the Azure Portal open your Resource Group blade.  
 
@@ -290,7 +261,7 @@ In this section, you configure and execute an ARM template that creates all the 
 5. Click on **Save**
 
 
-### Task 8: Create a GitHub repository
+### Task 7: Create a GitHub repository
 
 FabMedical has provided starter files for you. They have taken a copy of the websites for their customer Contoso Neuro and refactored it from a single node.js site into a website with a content API that serves up the speakers and sessions. This refactored code is a starting point to validate the containerization of their websites. Use this to help them complete a POC that validates the development workflow for running the website and API as Docker containers and managing them within the Azure Kubernetes Service environment.
 
@@ -374,7 +345,7 @@ FabMedical has provided starter files for you. They have taken a copy of the web
 
     > **Note**: Reference the following link for help with setting up a GitHub personal access token to use for authenticating `git` with your GitHub account: <https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token>
 
-### Task 9: Connect securely to the build agent
+### Task 8: Connect securely to the build agent
 
 In this section, you validate that you can connect to the new build agent
 VM.
@@ -427,7 +398,7 @@ VM.
 
 > **Note**: If you have issues connecting, you may have pasted the SSH public key incorrectly in the ARM template. Unfortunately, if this is the case, you will have to recreate the VM and try again.
 
-### Task 10: Complete the build agent setup
+### Task 9: Complete the build agent setup
 
 In this task, you update the packages and install the Docker engine.
 
@@ -529,7 +500,7 @@ In this task, you update the packages and install the Docker engine.
 
     ![In this screenshot of a Cloud Shell window, docker container ls has been typed and run at the command prompt, as has the docker container ls -a command.](media/b4-image31.png)
 
-### Task 11: Clone Repositories to the Build Agent
+### Task 10: Clone Repositories to the Build Agent
 
 In this task, you clone your repositories from Azure DevOps so you can work with them on the build agent.
 
