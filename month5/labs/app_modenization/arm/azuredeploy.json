@@ -17,12 +17,6 @@
         "VirtualMachineAdminPublicKeyLinux": {
             "type": "securestring"
         },
-        "KubernetesServicePrincipalClientId": {
-            "type": "securestring"
-        },
-        "KubernetesServicePrincipalClientSecret": {
-            "type": "securestring"
-        },
         "KubernetesServicePrincipalObjectId": {
             "type": "string"
         },
@@ -294,10 +288,6 @@
                         "type": "VirtualMachineScaleSets"
                     }
                 ],
-                "servicePrincipalProfile": {
-                    "clientId": "[parameters('KubernetesServicePrincipalClientId')]",
-                    "secret": "[parameters('KubernetesServicePrincipalClientSecret')]"
-                },
                 "networkProfile": {
                     "networkPlugin": "[variables('kubernetesNetworkProfilePlugin')]"
                 },
@@ -312,6 +302,35 @@
                         }
                     }
                 }
+            },
+            "identity": {
+                "type": "SystemAssigned"
+            }
+        },
+        {
+            "name": "PoolIdentity",
+            "type": "Microsoft.Authorization/roleAssignments",
+            "dependsOn": [
+                "[variables('kubernetesClusterName')]"
+            ],
+            "apiVersion": "2018-09-01-preview",
+            "properties": {
+                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+                "principalId": "[reference(variables('kubernetesClusterName')).identityProfile.kubeletidentity.objectId]",
+                "scope": "[resourceGroup().id]"
+            }
+        },
+        {
+            "name": "AKSIdentity",
+            "type": "Microsoft.Authorization/roleAssignments",
+            "dependsOn": [
+                "PoolIdentity"
+            ],
+            "apiVersion": "2018-09-01-preview",
+            "properties": {
+                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+                "principalId": "[reference(resourceId('Microsoft.ContainerService/managedClusters', variables('kubernetesClusterName')), '2020-06-01', 'full').identity.principalId]",
+                "scope": "[resourceGroup().id]"
             }
         },
         {
