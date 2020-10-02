@@ -25,7 +25,7 @@ For this lab we are going to deploy something simular to the business tier of th
 2. Click on the **Add** button
 3. Fill out the **Basics** tab as follows:
 - **Subscription:** Choose your subscription
-- **Resource Group:** Provide a unique name like **atl-ata-\<username\>-rg
+- **Resource Group:** Provide a unique name like **ata-\<username\>-rg
 - **Region:** EastUS
 
 <img src="./images/rg-basics.PNG" alt="RG Basic Tab"  Width="700">  
@@ -40,7 +40,7 @@ For this lab we are going to deploy something simular to the business tier of th
 3. Fill out the **Basics** tab as follows:
 - **Subscription:** Choose your subscription
 - **Resource Group:** Select the Resource Group you created for this lab.
-- **Virtual Machine Scale Set Name:** Choose a unique name for the VM. Ex: atl-ata-\<username\>-ssvm
+- **Virtual Machine Scale Set Name:** Choose a unique name for the VM. Ex: ata-\<username\>-ssvm
 - **Region:** East US
 - **Availability zone:** Zone 1,2,3
 - **Orchestration mode (Preview):** ScaleSet VMs
