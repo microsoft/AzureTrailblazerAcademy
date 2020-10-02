@@ -112,7 +112,9 @@ curl https://raw.githubusercontent.com/microsoft/AzureTrailblazerAcademy/master/
 
 3. After that download run the following command to install the PowerShell DSC extension:
 
-**./add_website.ps1 -RGNAME \<ResourceGroupName\> -ScaleSetName \<NameofScaleSet\>**
+```
+./add_website.ps1 -RGNAME \<ResourceGroupName\> -ScaleSetName \<NameofScaleSet\>
+```
 
 4. Once the command completes close out of the Cloud Shell and go back to the Portal
 
