@@ -329,7 +329,7 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2017-05-10",
-            "name": "[concat('WorkspaceDeployment-fabmedical-', parameters('Suffix'), uniqueString(resourceGroup()))]",
+            "name": "[concat('WorkspaceDeployment-fabmedical-', parameters('Suffix'))]",
             "properties": {
                 "mode": "Incremental",
                 "template": {
@@ -358,7 +358,7 @@
             "apiVersion": "2017-05-10",
             "name": "[concat('SolutionDeployment-fabmedical-', parameters('Suffix'))]",
             "dependsOn": [
-                "[concat('Microsoft.Resources/deployments/', 'WorkspaceDeployment-fabmedical-', parameters('Suffix'), uniqueString(resourceGroup()))]"
+                "[concat('Microsoft.Resources/deployments/', 'WorkspaceDeployment-fabmedical-', parameters('Suffix'))]"
             ],
             "properties": {
                 "mode": "Incremental",
