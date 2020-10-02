@@ -88,12 +88,8 @@ This screen will transition to .. **Your deployment was successful..**.  There i
 
 ![Web Service Basic Tab](images/webapp-happy.JPG)
   
-   
-5. Make sure you see a web page and based on the Runtime selected, it should greet you with **Hello, Node developer.** 
- </BR>Had you selected Java it would have greeted you wuth **Hello, Java Developer.**
- 
 
- 6. CONGRATULATIONS !! YOU JUST CREATED A WEB APPLICATION ON AZURE CLOUD
+5. CONGRATULATIONS !! YOU JUST CREATED A WEB APPLICATION ON AZURE CLOUD
   
   
 ## Step 5: Now that our default web application that got deployed by Microsoft, lets deploy our actual application!
