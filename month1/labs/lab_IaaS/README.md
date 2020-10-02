@@ -130,7 +130,7 @@ curl https://raw.githubusercontent.com/microsoft/AzureTrailblazerAcademy/master/
 
 ## Step 4: Allow External Port 80
 
-We are currently allowing the Load Balancer to other VNets in Azure to connect to our Scale Set. In order for us to connect ot the website we will allow port 80 from any location.
+In order for us to connect ot the website we will now need to allow port 80 from any location to be able to reach out those Virtual Machines inside the VM Scale Set. Follow steps below to open TCP port 80.
 
 1. While still on the Scale Set Resource blade go to the **Networking** tab.
 
