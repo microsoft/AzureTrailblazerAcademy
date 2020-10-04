@@ -31,12 +31,11 @@ The names of manufacturers, products, or URLs are provided for informational pur
     - [Task 2: Download Starter Files](#task-2-download-starter-files)
     - [Task 3: Resource Group](#task-3-resource-group)
     - [Task 4: Create an SSH key](#task-4-create-an-ssh-key)
-    - [Task 5: Deploy ARM Template](#task-6-deploy-arm-template)    
-    - [Task 6: Grant AKS Pool Identity RBAC](#task-6-grant-aks-pool-identity-rbac)
-    - [Task 7: Create a GitHub repository](#task-7-create-a-github-repository)
-    - [Task 8: Connect securely to the build agent](#task-8-connect-securely-to-the-build-agent)
-    - [Task 9: Complete the build agent setup](#task-9-complete-the-build-agent-setup)
-    - [Task 10: Clone Repositories to the Build Agent](#task-10-clone-repositories-to-the-build-agent)
+    - [Task 5: Deploy ARM Template](#task-5-deploy-arm-template)  
+    - [Task 6: Create a GitHub repository](#task-6-create-a-github-repository)
+    - [Task 7: Connect securely to the build agent](#task-7-connect-securely-to-the-build-agent)
+    - [Task 8: Complete the build agent setup](#task-8-complete-the-build-agent-setup)
+    - [Task 9: Clone Repositories to the Build Agent](#task-9-clone-repositories-to-the-build-agent)
 
 <!-- /TOC -->
 
@@ -239,29 +238,7 @@ In this section, you configure and execute an ARM template that creates all the 
 
    This command takes up to 30 to 60 minutes to deploy all lab resources. You can continue to the next task to setup Azure DevOps while the deployment runs.  
 
-### Task 6: Grant AKS Pool Identity RBAC  
-
-1. In the Azure Portal open your Resource Group blade.  
-
-2. Along the tabs on the left hand side go to **Access Control (IAM)**  
-
-![Access Control of the Resource Group](media/b4-rgRBAC.PNG)
-
-3. Click on the **Add** button across the top and choose **Add role assignment**:  
-
-![Access Control of the Resource Group](media/b4-rgRBAC2.PNG)  
-
-4. Fill in the following:  
-
-- Role: **ACRPULL**
-- Select: **fabmedical-{suffix}-agentpool  
-
-![Access Control of the Resource Group](media/b4-rgRBAC3.PNG)  
-
-5. Click on **Save**
-
-
-### Task 7: Create a GitHub repository
+### Task 6: Create a GitHub repository
 
 FabMedical has provided starter files for you. They have taken a copy of the websites for their customer Contoso Neuro and refactored it from a single node.js site into a website with a content API that serves up the speakers and sessions. This refactored code is a starting point to validate the containerization of their websites. Use this to help them complete a POC that validates the development workflow for running the website and API as Docker containers and managing them within the Azure Kubernetes Service environment.
 
@@ -345,7 +322,7 @@ FabMedical has provided starter files for you. They have taken a copy of the web
 
     > **Note**: Reference the following link for help with setting up a GitHub personal access token to use for authenticating `git` with your GitHub account: <https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token>
 
-### Task 8: Connect securely to the build agent
+### Task 7: Connect securely to the build agent
 
 In this section, you validate that you can connect to the new build agent
 VM.
@@ -398,7 +375,7 @@ VM.
 
 > **Note**: If you have issues connecting, you may have pasted the SSH public key incorrectly in the ARM template. Unfortunately, if this is the case, you will have to recreate the VM and try again.
 
-### Task 9: Complete the build agent setup
+### Task 8: Complete the build agent setup
 
 In this task, you update the packages and install the Docker engine.
 
@@ -500,7 +477,7 @@ In this task, you update the packages and install the Docker engine.
 
     ![In this screenshot of a Cloud Shell window, docker container ls has been typed and run at the command prompt, as has the docker container ls -a command.](media/b4-image31.png)
 
-### Task 10: Clone Repositories to the Build Agent
+### Task 9: Clone Repositories to the Build Agent
 
 In this task, you clone your repositories from Azure DevOps so you can work with them on the build agent.
 
