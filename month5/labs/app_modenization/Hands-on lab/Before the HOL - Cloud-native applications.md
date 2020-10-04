@@ -47,7 +47,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
    - Trial subscriptions will _not_ work.
 
-   - To complete this lab setup (including [Task 5: Create a Service Principal](#Task-5-Create-a-Service-Principal)) ensure your account includes the following:
+   - To complete this lab setup ensure your account includes the following:
 
      - Has the [Owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) built-in role for the subscription you use.
 
@@ -57,11 +57,13 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
    - You must have enough cores available in your subscription to create the build agent and Azure Kubernetes Service cluster in [Task 6: Deploy ARM Template](#Task-6-Deploy-ARM-Template). You'll need eight cores if following the exact instructions in the lab, more if you choose additional agents or larger VM sizes. Execute the steps required before the lab to see if you need to request more cores in your sub.
 
-2. Local machine or a virtual machine configured with:
+2. An account in GitHub  
+
+3. Local machine or a virtual machine configured with:
 
    - A browser, preferably Chrome for consistency with the lab implementation tests.
 
-3. You will be asked to install other tools throughout the exercises.
+4. You will be asked to install other tools throughout the exercises.
 
 ## Before the hands-on lab
 
