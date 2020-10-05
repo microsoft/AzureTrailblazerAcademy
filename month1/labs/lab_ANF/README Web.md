@@ -167,7 +167,7 @@ Set **Name** to **AllowPort80**
   
   ### Step-4 : Connect to the Web Server
   
-  - Using a web browser, connect to http://<WebVM1 Public IP Address>/images/
+  - Using a web browser, connect to http://WebVM1 Public IP Address/images/
   
-  - Using a another web browser, connect to http://<WebVM2 Public IP Address>/images/
+  - Using a another web browser, connect to http://WebVM2 Public IP Address/images/
 
