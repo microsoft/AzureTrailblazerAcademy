@@ -120,7 +120,7 @@ This screen will transition to .. **Your deployment was successful..**.  There i
 5. CONGRATULATIONS !! YOU JUST CREATED A WEB APPLICATION ON AZURE CLOUD
   
   
-## Step 6: Now that our default web application that got deployed by Microsoft, lets deploy our actual application!
+## Step 6: Configure CI/CD to deploy our Web App
           
            
 1. In the Azure Portal, search for **App Services**
@@ -132,42 +132,33 @@ This screen will transition to .. **Your deployment was successful..**.  There i
 
 ![Web Service Basic Tab](images/app-service-deployment-center.JPG)
 
-5. We are in the CI/CD section of the your code deployment. <BR>
-   Our plan is to deploy from https://github.com/RobinGhosh64/Test3in1.git sample repository provided in your lab.
-   Select the **External** thumbnail
-    
-6. Then Click on **Continue** 
-
-![Web Service Basic Tab](images/app-service-deployment-center-continue.JPG)
-
-
+5. Select the **External** from the list of options and click on **Continue**
 
 ![Web Service Basic Tab](images/app-service-deployment-continue-kudu.JPG)
 
-7. Select Kudu **K App Service** option thumbnail
-8. Click on **Continue**
+6. Select Kudu **App Service Build Service** option and click on **Continue**
 
-9. Configure the following fields:
+7. Configure the following fields:
 - **Repository Name:** to https://github.com/RobinGhosh64/Test3in1
 - **Branch:** master
 - **Repository Type:** Git
 - **Private Repository:** No
-10. Click the **Continue** button
+8. Click the **Continue** button
 
 ![Web Service Basic Tab](images/app-service-deployment-finish.JPG)
 
-11. Click the **Finish** button
+9. Click the **Finish** button
 ![Web Service Basic Tab](images/app-service-deployment-onway.JPG)
 
-12. You should see a screen that will show the deployment steps. There is a single table record, that will show the progress of the deployment. It should finally settle and show 'Success Active' which is the correct status for the deployment
+10. You should see a screen that will show the deployment steps. There is a single table record, that will show the progress of the deployment. It should finally settle and show 'Success Active' which is the correct status for the deployment
 
 ![Web Service Basic Tab](images/app-service-check-deployment-logs.JPG)
 
-13. Click on the **phone like icon** to see the details of the deployment.
+11. Click on the **Logs** icon to see the details about the deployment.
 
 ![Web Service Basic Tab](images/app-service-deployment-successful.JPG)
 
-14. Make sure everything was good, in which case you can close the window using the top right **X** button
+12. Confirm the **Status** of the deployment is **Success (Active)**
 
 
 ## Step 7: Configure application to connect to Storage Account
