@@ -1020,7 +1020,7 @@ In this task, you will deploy the API application to the Azure Kubernetes Servic
 
 3. Select **SHOW ADVANCED OPTIONS**
 
-   - Enter `0.125` for the CPU requirement.
+   - Enter `1` for the CPU requirement.
 
    - Enter `128` for the Memory requirement.
 
@@ -1038,7 +1038,11 @@ In this task, you will deploy the API application to the Azure Kubernetes Servic
 
    ![This screenshot of the Kubernetes management dashboard shows logs output for the api container.](media/Ex2-Task1.6.png)
 
-7. Open the Azure portal in your browser and navigate to your resource group and find your Cosmos DB resource. Select the Cosmos DB resource to view details.
+7. We will resolve this issue and redeploy using kubectl. So at this point we can delete the current API deployment. In the Kubernetes Dashboard to to **Deployments** and delete the **API** deployment.  
+
+![This screenshot of the Kubernetes management dashboard shows deleting the API Deployment](media/b4-deploymentdelete.png)
+
+8. Open the Azure portal in your browser and navigate to your resource group and find your Cosmos DB resource. Select the Cosmos DB resource to view details.
 
    ![A screenshot of the Azure Portal showing the Cosmos DB among existing resources.](media/Ex2-Task1.9.png)
 
