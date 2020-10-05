@@ -239,7 +239,7 @@ Select **Mount Options** from the menu and
              
         az vm create --resource-group ata-ANF-RG --name WebVM1 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --image UbuntuLTS
                  
-    - Create VM2
+- Create VM2
         At the command prompt, paste in this text below, **replacing the Resource Group** with your Resource Group
                          
           az vm create --resource-group ata-ANF-RG --name WebVM2 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --image UbuntuLTS
@@ -265,7 +265,7 @@ Now execute the below commands one by one
 
         sudo apt-get -y install nfs-common
         sudo mkdir /mnt/myvol1
-        sudo chown 777 /mnt/myvol1
+        sudo chmod 777 /mnt/myvol1
         sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.10.1.244:/myvol1 /mnt/myvol1
         touch /mnt/myvol1/file1
         ls -ls /mnt/myvol1
@@ -295,7 +295,7 @@ Now execute the below commands one by one
 
         sudo apt-get -y install nfs-common
         sudo mkdir /mnt/myvol1
-        sudo chown 777 /mnt/myvol1
+        sudo chmod 777 /mnt/myvol1
         sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.10.1.244:/myvol1 /mnt/myvol1
         touch /mnt/myvol1/file2
         ls -ls /mnt/myvol1
