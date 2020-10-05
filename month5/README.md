@@ -1,12 +1,8 @@
-# Month 4: Azure Serverless Services
-
-## Session Abstract
-
-Learn about the different Serverless services available in Azure such as Funtions, LogicApps and EventGrid. This month you will build an end-to-end solution using only serverless components.
-
+# Month 5: AKS and Synapse
 
 ## Table of Content
 
 | Labs          | Links                            |
 |-------------------|----------------------------------|
-| Azure Serverless Lab     | - [Azure Serverless Lab](labs/lab_serverless/) |
+| AKS Lab     | - [Cloud Native Lab](labs/app_modenization/Hands-on%20lab) |  
+| Synapse Lab     | - [Synapse Analytics Lab](labs/synapse_analytics_ai/) |

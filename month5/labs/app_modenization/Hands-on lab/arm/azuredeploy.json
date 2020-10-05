@@ -92,7 +92,7 @@
         "publicIpAddressSkuLinux": "Basic",
         "networkInterfaceNameLinux": "[concat('fabmedical-', parameters('Suffix'))]",
         "nsgIdLinux": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupNameLinux'))]",
-        "diagnosticsStorageAccountNameLinux": "[concat('fabmedical', toLower(parameters('Suffix')), 'diag')]",
+        "diagnosticsStorageAccountNameLinux": "[tolower(concat('fab', toLower(parameters('Suffix')), 'diag',uniqueString(resourceGroup().id)))]",
         "diagnosticsStorageAccountTypeLinux": "Standard_LRS",
         "diagnosticsStorageAccountKindLinux": "Storage",
         "virtualMachineNameLinux": "[concat('fabmedical-', parameters('Suffix'))]",
@@ -110,7 +110,7 @@
         "kubernetesAgentVmSize": "Standard_D2_v2",
         "kubernetesNetworkProfilePlugin": "kubenet",
         "kubernetesRBACEnabled": true,
-        "logAnalyticsName": "[concat('fabmedical-', parameters('Suffix'))]",
+        "logAnalyticsName": "[concat('fabmed-', parameters('Suffix'),uniqueString(resourceGroup().id))]",
         "logAnalyticsSku": "standalone",
         "logAnalyticsId": "[resourceId(resourceGroup().name, 'Microsoft.OperationalInsights/workspaces', variables('logAnalyticsName'))]",
         "cosmosName": "[concat('fabmedical-', toLower(parameters('Suffix')))]",
@@ -268,7 +268,7 @@
         },
         {
             "type": "Microsoft.ContainerService/managedClusters",
-            "apiVersion": "2019-08-01",
+            "apiVersion": "2020-03-01",
             "name": "[variables('kubernetesClusterName')]",
             "location": "[parameters('Location')]",
             "dependsOn": [
@@ -306,7 +306,7 @@
             },
             "identity": {
                 "type": "SystemAssigned"
-            }
+            }            
         },
         {
             "name": "[parameters('guid')]",
@@ -318,6 +318,19 @@
             "properties": {
                 "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
                 "principalId": "[reference(resourceId('Microsoft.ContainerService/managedClusters', variables('kubernetesClusterName')), '2020-06-01', 'full').identity.principalId]",
+                "scope": "[resourceGroup().id]"
+            }
+        },
+        {
+            "name": "[parameters('guid2')]",
+            "type": "Microsoft.Authorization/roleAssignments",
+            "dependsOn": [
+                "[concat('Microsoft.ContainerService/managedClusters/', variables('kubernetesClusterName'))]"
+            ],
+            "apiVersion": "2018-09-01-preview",
+            "properties": {
+                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', '7f951dda-4ed3-4680-a7ca-43fe172d538d')]",
+                "principalId": "[reference(resourceId('Microsoft.ContainerService/managedClusters', variables('kubernetesClusterName'))).identityProfile.kubeletidentity.objectId]",
                 "scope": "[resourceGroup().id]"
             }
         },
