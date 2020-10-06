@@ -286,7 +286,8 @@
                         "osType": "[variables('kubernetesAgentOsType')]",
                         "vmSize": "[variables('kubernetesAgentVmSize')]",
                         "storageProfile": "ManagedDisks",
-                        "type": "VirtualMachineScaleSets"
+                        "type": "VirtualMachineScaleSets",
+                        "mode": "System"
                     }
                 ],
                 "networkProfile": {
