@@ -304,3 +304,16 @@ Now execute the below commands one by one
 -  You should see in the ouput from the second VM, both files that were created from VM1 (file1) and VM2 (file2) since its a shared volume
 
 
+
+### Step-3: Create Additional Volumes and Mount to VM1
+
+-   Create the following volumes as you did above using 100GB for the volume size.
+
+            hdata   
+            hlog
+            shared
+            odatafiles
+            ologs
+            
+-   Mount the Volumes into your VM1 using the  mount instructions provided on the volumes tab
+
