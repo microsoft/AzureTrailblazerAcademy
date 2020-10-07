@@ -309,11 +309,26 @@ Now execute the below commands one by one
 
 -   Create the following volumes as you did above using 100GB for the volume size.
 
-            hdata   
-            hlog
+            hdataA   
+            hlogA
+            hdataB
+            hlogB
             shared
             odatafiles
             ologs
             
--   Mount the Volumes into your VM1 using the  mount instructions provided on the volumes tab
+-   Mount the following Volumes into your VM1 using the  mount instructions provided on the volumes tab
 
+            hdataA   
+            hlogA
+            shared
+            odatafiles
+            ologs
+
+
+-   Mount the following Volumes into your VM2 using the  mount instructions provided on the volumes tab
+
+            hdataB  
+            hlogB
+            shared
+            
