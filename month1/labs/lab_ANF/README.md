@@ -211,38 +211,18 @@ Select **Mount Options** from the menu and
 ## Lab-3: Create VM and Mount Volume
 
 
-### Step-1: Provision Two VM's
-
-#### When provisioning VM's, attempt to use the first two commands below, however if you are receiving permission/access errors, then use the second set of commands to provision your VM's
-
-- Start a **Cloud Shell**, by selecting the icon shown below
-
-<img src="./images/Cloud-Shell.png" alt="Create Volume" width="400">
-
--  When prompted select **Bash** and if necessary answer **create** to a cloud shell storage account (it will be very tiny)
-
-- Create VM1 
-        At the command prompt, paste in this text below,
-        
-        az vm create --resource-group ata-ANF-RG --name WebVM1 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --plan-publisher nginxinc --plan-product nginx-plus-v1 --plan-name nginx-plus-ub1804 --image nginxinc:nginx-plus-v1:nginx-plus-ub1804:2.0.0
-            
-- Create VM2
-        At the command prompt, paste in this text below, **replacing the Resource Group** with your Resource Group
-        
-        az vm create --resource-group ata-ANF-RG --name WebVM2 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --plan-publisher nginxinc --plan-product nginx-plus-v1 --plan-name nginx-plus-ub1804 --image nginxinc:nginx-plus-v1:nginx-plus-ub1804:2.0.0
 
 
-#### Alternate commands to use if the above two VM create commands are not working for you
 
 - Create VM1 
         At the command prompt, paste in this text below,
              
-        az vm create --resource-group ata-ANF-RG --name WebVM1 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --image UbuntuLTS
+        az vm create --resource-group ata-ANF-RG --name VM1 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --image UbuntuLTS
                  
 - Create VM2
         At the command prompt, paste in this text below, **replacing the Resource Group** with your Resource Group
                          
-          az vm create --resource-group ata-ANF-RG --name WebVM2 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --image UbuntuLTS
+          az vm create --resource-group ata-ANF-RG --name VM2 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --image UbuntuLTS
 
 
 ### Step-2: Mount Volumes to VM and Create a File (On Each VM)
@@ -252,7 +232,7 @@ Select **Mount Options** from the menu and
 #### For VM1: Using Azure Cloud
 ####          Username : ata and Password Trailblazer1!
 
--   ssh ata@**(WebVM1-Public-IP)**
+-   ssh ata@**(VM1-Public-IP)**
 
 -   confirm with yes, if prompted
 
@@ -278,7 +258,7 @@ Now execute the below commands one by one
 #### For VM2: Using Azure Cloud
 ####          Username : ata and Password Trailblazer1!
 
--   ssh ata@**(<WebVM2-Public-IP)**
+-   ssh ata@**(<VM2-Public-IP)**
 
 -   confirm with yes, if prompted
 
