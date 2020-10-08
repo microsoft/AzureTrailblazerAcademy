@@ -311,8 +311,6 @@ Now execute the below commands one by one
 
             hdataA   
             hlogA
-            hdataB
-            hlogB
             shared
             odatafiles
             ologs
@@ -324,11 +322,4 @@ Now execute the below commands one by one
             shared
             odatafiles
             ologs
-
-
--   Mount the following Volumes into your VM2 using the  mount instructions provided on the volumes tab
-
-            hdataB  
-            hlogB
-            shared
             
