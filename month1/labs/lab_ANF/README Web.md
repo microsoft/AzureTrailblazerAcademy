@@ -19,14 +19,35 @@ In this Lab we will create a Highly Available NAS Share, that will shared by two
 ## Lab-4: Follow Along to Setup Web Server
 
 
-### Step-1: Configure Web Server (On Each VM)
+### Step-1: Provision Two VM's
+
+
+
+- Start a **Cloud Shell**, by selecting the icon shown below
+
+<img src="./images/Cloud-Shell.png" alt="Create Volume" width="400">
+
+-  When prompted select **Bash** and if necessary answer **create** to a cloud shell storage account (it will be very tiny)
+
+- Create VM1 
+        At the command prompt, paste in this text below,
+        
+        az vm create --resource-group ata-ANF-RG --name WebVM1 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --plan-publisher nginxinc --plan-product nginx-plus-v1 --plan-name nginx-plus-ub1804 --image nginxinc:nginx-plus-v1:nginx-plus-ub1804:2.0.0
+            
+- Create VM2
+        At the command prompt, paste in this text below, **replacing the Resource Group** with your Resource Group
+        
+        az vm create --resource-group ata-ANF-RG --name WebVM2 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --plan-publisher nginxinc --plan-product nginx-plus-v1 --plan-name nginx-plus-ub1804 --image nginxinc:nginx-plus-v1:nginx-plus-ub1804:2.0.0
+
+
+### Step-2: Configure Web Server (On Each VM)
 
 -   We will be using Azure Cloud Shell, again to enter a few commands on each VM
 
-#### For VM1: Using Azure Cloud
+#### For WebVM1: Using Azure Cloud
 ####          Username : ata and Password Trailblazer1!
 
--   ssh ata@**(webvm1-Public-IP)**
+-   ssh ata@**(WebVM1-Public-IP)**
 
 -   confirm with yes, if prompted
 
@@ -66,10 +87,10 @@ Continue to execute the below commands one by one
         
         
 
-#### For VM2: Using Azure Cloud
+#### For WebVM2: Using Azure Cloud
 ####          Username : ata and Password Trailblazer1!
 
--   ssh ata@**(webvm2-Public-IP)**
+-   ssh ata@**(WebVM2-Public-IP)**
 
 -   confirm with yes, if prompted
 
@@ -104,7 +125,7 @@ Continue to execute the below commands one by one
   
   
   
-  ### Step-2: For VM1 Enable Http Port 80 Access
+  ### Step-3: For WebVM1 Enable Http Port 80 Access
   
 - In the Azure Portal, Locate and Select Your Resource Group
   
@@ -135,11 +156,11 @@ Set **Name** to **AllowPort80**
 - Click Add Button
 
   
-  ### Step-3: For VM2 Enable Http Port 80 Access
+  ### Step-4: For WebVM2 Enable Http Port 80 Access
     
   - In the Azure Portal, Locate and Select Your Resource Group
     
-  - In the list in the center select your VM **WebVM1**
+  - In the list in the center select your VM **WebVM2**
     
     Selet the **Networking Item** form the list on the side
     
@@ -165,7 +186,7 @@ Set **Name** to **AllowPort80**
   - Click Add Button
 
   
-  ### Step-4 : Connect to the Web Server
+  ### Step-5 : Connect to the Web Server
   
   - Using a web browser, connect to http://WebVM1 Public IP Address/images/
   
