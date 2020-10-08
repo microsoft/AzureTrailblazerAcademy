@@ -139,18 +139,25 @@ Once the two VMs are deployed, follow these steps to review their configuration 
 1. Go back to your resource group and open the first Vnet you created (ata-vnet1)
 2. On the left blade select **Peerings** and click **+ Add**
 3. Fill out the form with the following information:
+4. Within **This virtual network** configure the following setting:  
 
-- **Name of the peering:** Enter a unique name for this peering(Ex: vnet1-to-vnet2-peering)
-- **Virtual Network deployment model:** Resource Manager
-- **Subscription:** Select your subscription
-- **Virtual Network**: Select your second Virtual Network (ata-vnet2)
-- **Name of the peering:** Enter a name for this peering(Ex: vnet2-to-vnet1-peering)
-- Leave everything else as default and click **OK**
+- **Peering link name:** Enter a unique name for this peering(Ex: vnet1-to-vnet2-peering)  
+- Leave everything else as default  
 
 ![VNet Peering](images/vnet_peering.png)
 
-4. After this is completed, the two VNets should be peered and VMs on one VNet should be able to reach VMs on the other VNet.
-5. Repeat **Step 7** and confirm that the ata-vm-2 is now able to ping and SSH into ata-vm-1
+5. Within ‘Remote virtual network’ configure the following settings:  
+
+- **Peering link name:** Enter a unique name for this peering(Ex: vnet2-to-vnet1-peering)  
+- **Virtual Network deployment model:** Resource Manager  
+- **Subscription:** Select your subscription  
+- **Virtual Network:** Select your second Virtual Network (ata-vnet2)  
+- Leave everything else as default and click Add  
+
+![VNet Peering](images/vnet_peering2.png)
+
+6. After this is completed, the two VNets should be peered and VMs on one VNet should be able to reach VMs on the other VNet.
+7. Repeat **Step 7** and confirm that the ata-vm-2 is now able to ping and SSH into ata-vm-1
 
 ![VM2 Ping/SSH Succeeds](images/vm2_pingsucceeds.png)
 
