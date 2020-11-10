@@ -218,18 +218,21 @@ The last step of this monitoring lab is to create an alert for you to be notifie
 
 7. Click on **Create Action Group**. Fill out that form as follows:
 
-- **Action Group name:** Enter a unique name for this action group (ex: admin-sms-actiongroup)
-- **Short name:** Enter a unique name. This is the name of the action that will be seen by SMS recipients.
 - **Subscription:** Select your subscription
 - **Resource Group:** Select the resource group where you want to create this action group.
-- **Action Name:** Enter a unique name for the action. (Ex:admins)
-- **Action Type:** Email/SMS message/Push/Voice
+- **Action Group Name:** Enter a unique name for the action. (Ex:admins)
+- **Display name:** Enter a unique name. This is the name of the action that will be seen by SMS recipients.
 
-![Create a new action group](images/vm_alert.png)
+- Click **Next: Notifications**
 
-8. Click **Edit details**. Check the **SMS** checkbox and enter a phone number where you want to be contacted. Click **OK** and then click **OK** again on the Action Group form.
+8. Fill out the Notifications form as follows:
 
-9. Enter a name in the **Alert rule name** field and select a **Severity** of 2. Then click **Create alert rule**.
+- **Notification Type:** Email/SMS message/Push/Voice
+- **Name:** Enter a unique name. This is the name of the action that will be seen by recipients
+
+Check the pencil icon to edit details and enter an email address where you want to be contacted. Click **OK** and then click **Review and Create** on the Action Group form.  And then **Create** to complete creation of the new Action Group.
+
+9. Enter a name in the **Alert rule name** field and select a **Severity** of Sev 2. Then click **Create alert rule**.
 
 ![Create a new alert rule](images/vm_alert_rule.png)
 
