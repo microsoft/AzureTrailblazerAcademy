@@ -18,10 +18,13 @@
 
 ### Prep-1: Create Oracle Database in an Azure VM
 1. Create a resource group 
+- Open Cloud shell in bash mode
+- Enter the following command:
 - az group create --name ataPostgreSQL --location eastus
 <img src="./images/ata-pg-create-rg.PNG" alt="Create Resource Group with Script" width="600">
 
 2. Create virtual machine
+- Enter the following command:
 - az vm create \
     --resource-group ataPostgreSQL \
     --name myOracleVM \
@@ -32,13 +35,15 @@
 
 <img src="./images/ata-pg-create-vm.PNG" alt="Create Virtual Machine using a Script" hight="500">
 
--  Get the IP address from the output
+-  Copy the Public_IP_Address from the output
 3. Connect to the VM from the bash shell
-- ssh azureuser@<publicIpAddress>
+- ssh azureuser@<Public_IP_Address>
 4. Swith to the Oracle User and create dataabse
-- $ sudo -su oracle
-    $ lsnrctl start
+- Enter the following commands:
+- sudo -su oracle
+    lsnrctl start
 5. Create a data directory for the Oracle data files
+- Enter the following commands:
 - mkdir /u01/app/oracle/oradata
 - Create the database
 - dbca -silent \
@@ -60,13 +65,14 @@
        -datafileDestination "/u01/app/oracle/oradata/" \
        -ignorePreReqs
 6. Set Oracle variales
-- Open ~/.bashrc file and add the following lines
+- Open ~/.bashrc file and add the following lines as shown in the picture
 - export ORACLE_SID=cdb1;
 - export ORACLE_HOME=<Installed Directory>
-<img src="./images/ata-pg-store-oracle-home.PNG" alt="Set Oracle Home and Oracle SID" width="600">
+<img src="./images/ata-pg-store-oracle-home.PNG" alt="Set Oracle Home and Oracle SID" width="400">
 
 7. Open ports for connectivity
 - Open Oracle Database port to migrate the data
+- Enter the following command:
 - az network nsg rule create \
     --resource-group ataPostgreSQL\
     --nsg-name myOracleVmNSG \
@@ -74,38 +80,41 @@
     --protocol tcp \
     --priority 1001 \
     --destination-port-range 1521
-- Open the port to access Oracle EM Express website.
-
 
 ### Prep-2: Add Sample HR Schema
 1. Get the HR schema install script from Github
+- Enter the following commands:
 - wget https://github.com/oracle/db-sample-schemas/archive/v19.2.zip
 - unzip v19.2.zip
-2. Replace Oracle HOME path in the scripts
+2. Replace ORACLE_HOME path in the scripts
 - Run perl script to replace the Oracle Home directory
 - perl -p -i.bak -e 's#__SUB__CWD__#'/u01/app/oracle/product/12.1.0/dbhome_1'#g' *.sql
 <img src="./images/ata-pg-download-hr-schema-scripts.PNG" alt="download hr schema install scripts" width="600">
+
 3. Copy the scripts to Oracle Home
 - cd $ORACLE_HOME
 - Enter "mkdir human_resources" to create a directory.
 - cd human_resources
 - copy /home/oracle/db-sample-schemas-19.2/human_resources/*.sql .
 4. Connect to Oracle Database to setup environment
+- Enter the following command:
+- sqlplus / as sysdba
 - Open the container PDB1 
 -   Enter "alter session set container=pdb1;" 
 -   Enter "alter database open;"
 -   Enter "select con_id, name, open_mode from v$pdbs;"
 <img src="./images/ata-pg-hr-sample-env-setup.PNG" alt="Commands to start the container database" width="600">
+
 5. Run the script to install HR schema
 - Enter the info as shown in the picture
 - Replace your IP address in step 6
 - <YourIP>:1521/pdb1
 <img src="./images/ata-pg-run-create-hr-schema-scripts.jpg" alt="Enter the options to run the script" Width="600">
+
 - quit; to exit sqlplus
 6. Test Sample Schema
 - sqlplus hr/hr@<YourIP>:1521/pdb1
 <img src="./images/ata-pg-sample-hr-schema-test.PNG" alt="Test HR schema tables" Width="660">
-
 
 ### Task-1: Create Azure Database for PostgreSQL Service
 1. Select Azure Database for PostgreSQL service
