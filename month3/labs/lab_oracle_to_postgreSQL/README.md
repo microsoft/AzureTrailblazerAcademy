@@ -245,6 +245,24 @@ Click on Save button
 12. Check the migration results
 - Verify the source and target server and version details. Check the migration status.
 <img src="./images/ata-pg-dms-migration-results.PNG" alt="Migration status" Width="600">
+- Insert two rows
+- update a row
+- delete a row
+- Verify all the changes have been captured in DMS and propagated to PostgreSQL
+<img src="./images/ata-pg-dms-cdc-testing.PNG" alt="Verify CDC changes" Width="600">
+
+13. Complete the cutover
+- Stop the source Oracle database
+- Activate cutover
+- Make sure there are no pending changes
+- Apply changes to application connectivity
+- Confirm the cutover
+<img src="./images/ata-pg-dms-complete-cutover.PNG" alt="Complete Cutover Process" Width="600">
+
+- Restart the applications with Azure PostgreSQL database connectivity
+
+- You have successfully migrated Oracle database to Azure PostgreSQL.
+
 
 
 
