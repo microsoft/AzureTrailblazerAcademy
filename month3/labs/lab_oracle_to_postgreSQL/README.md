@@ -33,7 +33,7 @@
     --admin-username azureuser \
     --generate-ssh-keys
 
-<img src="./images/ata-pg-create-vm.PNG" alt="Create Virtual Machine using a Script" hight="500">
+<img src="./images/ata-pg-create-vm_02.jpg" alt="Create Virtual Machine using a Script" hight="500">
 
 -  Copy the Public_IP_Address from the output
 3. Connect to the VM from the bash shell
@@ -215,6 +215,7 @@
 - Create a storage account file share and upload the file
 - Get the path, user and password from the connection info as shown in the picture.
 <img src="./images/ata-dms-FileShare_OracleDriver.png" alt="Access File Share and get the connection details" hight="700">
+
 - Enter the following location details to access the driver file
 - OCI driver path: Get the path from the connect info and add "instantclient-basiclite-windows.x64-12.2.0.1.0.zip" at the end.
 - User Name: Get the details from Connect Info
@@ -230,7 +231,7 @@
 <img src="./images/ata-pg-dms-add-target-info.PNG" alt="Add PostgreSQL target database info" hight="400">
 
 5. Add the network access to DMS Service from PostgreSQL service
-- You will get an error showing the IP address which needs access from PostgreSQL.
+- You will get an error showing the IP address which need the access from PostgreSQL.
 6. Select Source and Target Schemas
 - Select 'HR' from Oracle and 'PGHR' from PostgreSQL
 <img src="./images/ata-pg-dms-schema-mapping.PNG" alt="Map source and target schemas" Width="600">
