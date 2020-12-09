@@ -2,7 +2,7 @@
 ## Overview
 - Azure Database for PostgreSQL is a relational database service based on the open-source Postgres database engine. It's a fully managed database-as-a-service offering that can handle mission-critical workloads with predictable performance, security, high availability, and dynamic scalability. It offers two deployment options Single Server and Hyperscale (Citus). Please access <a href="https://docs.microsoft.com/en-us/azure/postgresql/overview"> this link </a> for more details. 
 
-- This lab provides the steps to migrate Oracle 12c database to Azure PostgreSQL version 11. This labs assumes that you have completed the assessment step using <a href="https://datamigration.microsoft.com/scenario/oracle-to-azurepostgresql"> Ora2Pg </a> free tool.
+- This lab provides the steps to migrate Oracle 12c database to Azure PostgreSQL version 11. This labs assumes that you have completed the assessment step using an open source tool <a href="https://datamigration.microsoft.com/scenario/oracle-to-azurepostgresql"> Ora2Pg </a>.
 
 ## Pre-requisites
 - [Prep-1: Create Oracle Database in an Azure VM](#prep-1-create-oracle-database-in-an-azure-vm)
@@ -30,15 +30,16 @@
     --admin-username azureuser \
     --generate-ssh-keys
 
-<img src="./images/ata-pg-create-vm.PNG" alt="Create Virtual Machine using a Script" width="600">
--   Get the IP address from the output
+<img src="./images/ata-pg-create-vm.PNG" alt="Create Virtual Machine using a Script" hight="500">
+
+-  Get the IP address from the output
 3. Connect to the VM from the bash shell
--   ssh azureuser@<publicIpAddress>
+- ssh azureuser@<publicIpAddress>
 4. Swith to the Oracle User and create dataabse
--   $ sudo -su oracle
+- $ sudo -su oracle
     $ lsnrctl start
 5. Create a data directory for the Oracle data files
--   mkdir /u01/app/oracle/oradata
+- mkdir /u01/app/oracle/oradata
 - Create the database
 - dbca -silent \
        -createDatabase \
@@ -60,13 +61,13 @@
        -ignorePreReqs
 6. Set Oracle variales
 - Open ~/.bashrc file and add the following lines
--   export ORACLE_SID=cdb1;
--   export ORACLE_HOME=<Installed Directory>
+- export ORACLE_SID=cdb1;
+- export ORACLE_HOME=<Installed Directory>
 <img src="./images/ata-pg-store-oracle-home.PNG" alt="Set Oracle Home and Oracle SID" width="600">
 
 7. Open ports for connectivity
 - Open Oracle Database port to migrate the data
--   az network nsg rule create \
+- az network nsg rule create \
     --resource-group ataPostgreSQL\
     --nsg-name myOracleVmNSG \
     --name allow-oracle \
