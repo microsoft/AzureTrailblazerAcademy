@@ -20,13 +20,13 @@
 1. Create a resource group 
 - Open Cloud shell in bash mode
 - Enter the following command:
-- az group create --name ataPostgreSQL --location eastus
+- az group create --name ataPostgreSQL-initial --location eastus
 <img src="./images/ata-pg-create-rg.PNG" alt="Create Resource Group with Script" width="600">
 
 2. Create virtual machine
 - Enter the following command:
 - az vm create \
-    --resource-group ataPostgreSQL \
+    --resource-group ataPostgreSQL-initial \
     --name myOracleVM \
     --image Oracle:Oracle-Database-Ee:12.1.0.2:latest \
     --size Standard_DS2_v2 \
@@ -89,13 +89,14 @@
 2. Replace ORACLE_HOME path in the scripts
 - Run perl script to replace the Oracle Home directory
 - perl -p -i.bak -e 's#__SUB__CWD__#'/u01/app/oracle/product/12.1.0/dbhome_1'#g' *.sql
-<img src="./images/ata-pg-download-hr-schema-scripts.PNG" alt="download hr schema install scripts" width="600">
+<img src="./images/ata-pg-download-hr-schema-scripts.PNG" alt="download hr schema install scripts" hight="500">
 
 3. Copy the scripts to Oracle Home
+- Enter the following commands:
 - cd $ORACLE_HOME
-- Enter "mkdir human_resources" to create a directory.
+- mkdir human_resources
 - cd human_resources
-- copy /home/oracle/db-sample-schemas-19.2/human_resources/*.sql .
+- cp /home/oracle/db-sample-schemas-19.2/human_resources/*.sql .
 4. Connect to Oracle Database to setup environment
 - Enter the following command:
 - sqlplus / as sysdba
@@ -107,23 +108,24 @@
 
 5. Run the script to install HR schema
 - Enter the info as shown in the picture
-- Replace your IP address in step 6
-- <YourIP>:1521/pdb1
+- Replace your IP address in step 6 \<YourIP\>:1521/pdb1
 <img src="./images/ata-pg-run-create-hr-schema-scripts.jpg" alt="Enter the options to run the script" Width="600">
 
-- quit; to exit sqlplus
+- "quit;" to exit sqlplus
 6. Test Sample Schema
-- sqlplus hr/hr@<YourIP>:1521/pdb1
+- sqlplus hr/hr@\<YourIP\>:1521/pdb1
 <img src="./images/ata-pg-sample-hr-schema-test.PNG" alt="Test HR schema tables" Width="660">
+7. You have successfully completed the pre-requisits for this lab:
 
 ### Task-1: Create Azure Database for PostgreSQL Service
 1. Select Azure Database for PostgreSQL service
-- Type 'postgresql' on the search bar to select Azure database for postgreSQL service
+- Type 'Azure Database for postgresql' on the search bar to select Azure database for postgreSQL service
+- Select Single Server option
 
 <img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" width="600">
 
 2. Enter the following details
-- Resource group: Select 'Create new' and enter 'ata-ora2pg-\<yourname\>-rg'.
+- Resource group: Select an existing resource group "ataPostgreSQL-initial" from the drop down.
 - Server name: enter 'pg11\<yourname\>'.
 - Location: select 'East US'
 - Version: 11
@@ -134,22 +136,27 @@
 
 - Click on 'Review + create'.
 - Click on 'Create' after the successful validation.
+
 3. Install pgadmin tool
 - Download PostgreSQL Admin tool using <a href="https://www.pgadmin.org/download/pgadmin-4-windows/">thislink</a>
 
 
-4. Create a 'HR' database
-- Download pgadmin tool to access PostgreSQL.
-- Add the IP address of the client
-- Connect to the Azure PostgreSQL from PgAdmin Tool
+4. Open access to the PgAdmin Client Server
+- Connect to the Azure PostgreSQL Server
+- Add the IP address of the client in the server NSG setup
+<img src="./images/ata-pg-network-setup.PNG" alt="Add the client IP address to the network security" Width="600">
+
+5. Connect to the Azure PostgreSQL from PgAdmin Tool
 Enter the following:
 - Host Name: copy host name from the Azure Portal
 - User name:pgadmin@hostname
 - Password:atapg123!
-<img src="./src/images/ata-pg-connect-pg-service.PNG" alt="Create PG server connection" width="500">
+<img src="./images/ata-pg-connect-pg-service.PNG" alt="Create PG server connection" width="500">
+
 - Select 'Databases' and create a new Database
 - Enter HR as the new database
-<img src="./src/images/ata-pg-create-hr-database.PNG" alt="Create PG server connection" width="500">
+- Create 'PGHR' as the schema
+<img src="./images/ata-pg-create-hr-database.PNG" alt="Create PG server connection" width="500">
 
 ## Task-2: Create Azure Database Migration Service
 1. Select Azure Database Migration Service
@@ -159,13 +166,31 @@ Enter 'Database Migration' in the search bar to select the service.
 - Migration service name: Enter 'ata-dms-\<youname\>'
 - Pricing tier: Click on 'Configure tier' and select Premium service.
 - Click on 'Networking' button
-<img src="./src/images/ata-pg-create-dms.PNG" alt="Create Azure Database Migration Service" width="800">
-- Enter 'ata-ora2pg-\<youname\>-vnet' name to create a new Virtual network name
-<img src="./src/images/ata-pg-create-dms-vnet.PNG" alt="Create a new Virutal Network" Width="800">
+<img src="./images/ata-pg-create-dms.PNG" alt="Create Azure Database Migration Service" width="800">
+- Select the existing Virtual Network for the resource group
+<img src="./images/ata-dms-VNet-Selection.PNG" alt="Select the existing Virutal Network" Width="800">
+
 - Click on 'Review + create'.
 - Click on 'Create' after the successful validation.
 - Click on 'Goto Resource' after it is done.
-3. Create a migration project 
+3. Enable Supplimental Loging and Archive Loging in Oracle
+- Open the Cloud Shell
+- Login to Oracle Server
+- Enter the following commands:
+- ssh azureuser@\<YourIP\> to access the VM
+- sudo su - oracle to change the user as Oracle
+- sqlplus \ as sysdba to connect to the database
+- SHUTDOWN IMMEDIATE;
+- STARTUP MOUNT;
+- ALTER DATABASE ARCHIVELOG;
+- ALTER DATABASE OPEN;
+- ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
+- SHUTDOWN IMMEDIATE;
+- STARTUP;
+- alter session set container=pdb1;
+- alter database open;
+
+4. Create a migration project 
 - Select '+' next to 'New Migration Project' 
 Enter the following information
 - Project name: ora12cToPg11
@@ -173,7 +198,8 @@ Enter the following information
 - Target server type: select 'Azure Database for PostgreSQL' 
 - Click on 'Create and Run Activity' button
 - It opens up 6 step configuration
-4. Add Source Details
+
+5. Add Source Details
 Enter the following Oracle 12c HR database details
 - Source Server name: Enter the Instructor provided Oracle Server IP address.
 - Server port: Enter the default port number 1521.
@@ -181,13 +207,47 @@ Enter the following Oracle 12c HR database details
 - User Name: Enter 'system'
 - Password: Enter 'OraPasswd1'
 Click on Save button.
-<img src="./src/images/ata-pg-dms-add-source.PNG" alt="Enter source oracle database access details" width="800">
-5. Driver Install Detail
+<img src="./images/ata-pg-dms-add-source.PNG" alt="Enter source oracle database access details" width="800">
+
+6. Driver Install Detail
+- Download the driver file from <a href="https://aka.ms/OracleDriverDownloads"> Oracle site</a> 
+- Create a storage account file share and upload the file
+- Get the path, user and password from the connection info as shown in the picture.
+<img src="./images/ata-dms-FileShare_OracleDriver.png" alt="Access File Share and get the connection details" Width="800">
 Enter the following location details to access the driver file
-OCI driver path: Enter \\WindowsVMDBeave\Oracle\instantclient-basiclite-windows.x64-12.2.0.1.0.zip
-User Name: Enter 'azure\azureuser'
-Password: Enter 'Password123!'
+OCI driver path: Get the path from the connect info and add "instantclient-basiclite-windows.x64-12.2.0.1.0.zip" at the end.
+User Name: Get the details from Connect Info
+Password: Get the details from the connect Info
 Click on Save button
+
+7. Add Target Info
+- Enter the following info:
+- Target Server Name: Get the name from PostgreSQL Overview 
+- Database: keep the default value
+- User Name: Get the admin name from the PostgreSQL Overview
+- Password: Enter the password similar to 'atapg123!'
+<img src="./images/ata-pg-dms-add-target-info.PNG" alt="Add PostgreSQL target database info" Width="600">
+
+8. Add the network access to DMS Service from PostgreSQL service
+- You will get an error showing the IP address which needs access from PostgreSQL.
+9. Select Source and Target Schemas
+- Select 'HR' from Oracle and 'PGHR' from PostgreSQL
+<img src="./images/ata-pg-dms-schema-mapping.PNG" alt="Map source and target schemas" Width="600">
+
+10. Select Source and target table mappings
+<img src="./images/ata-pg-dms-migration-settings.PNG" alt="Migration table mappings" Width="600">
+
+11. Start Migration
+- Activity Name: 'MigrationTest01'
+- Select 'Start Migration' button
+<img src="./images/ata-pg-dms-start-migration.PNG" alt="Start migration" Width="600">
+
+12. Check the migration results
+- Verify the source and target server and version details. Check the migration status.
+<img src="./images/ata-pg-dms-migration-results.PNG" alt="Migration status" Width="600">
+
+
+
 
 
   
