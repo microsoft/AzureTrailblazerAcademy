@@ -6,7 +6,7 @@
 
 ## Pre-requisites
 - [Prep-1: Create Oracle Database in an Azure VM](#prep-1-create-oracle-database-in-an-azure-vm)
-- [Prep-2: Add Sample HR Schema](#prep-2-add-sample-hr-schema) 
+- [Prep-2: Install Sample HR Schema](#prep-2-Install-sample-hr-schema) 
 
 ## Task List
 - [Task-1: Create Azure Database for PostgreSQL Service](#task-1-create-azure-database-for-postgresql-service)
@@ -38,14 +38,15 @@
 -  Copy the Public_IP_Address from the output
 3. Connect to the VM from the bash shell
 - ssh azureuser@<Public_IP_Address>
-4. Swith to the Oracle User and create dataabse
+4. Swith to Oracle User and create dataabse
 - Enter the following commands:
 - sudo -su oracle
-    lsnrctl start
+- Start the Oracle listner
+- lsnrctl start
 5. Create a data directory for the Oracle data files
 - Enter the following commands:
 - mkdir /u01/app/oracle/oradata
-- Create the database
+- Create Oracle database by entering the following command:
 - dbca -silent \
        -createDatabase \
        -templateName General_Purpose.dbc \
@@ -64,7 +65,7 @@
        -storageType FS \
        -datafileDestination "/u01/app/oracle/oradata/" \
        -ignorePreReqs
-6. Set Oracle variales
+6. Set Oracle environment variables
 - Open ~/.bashrc file and add the following lines as shown in the picture
 - export ORACLE_SID=cdb1;
 - export ORACLE_HOME=<Installed Directory>
@@ -81,7 +82,7 @@
     --priority 1001 \
     --destination-port-range 1521
 
-### Prep-2: Add Sample HR Schema
+### Prep-2: Install Sample HR Schema
 1. Get the HR schema install script from Github
 - Enter the following commands:
 - wget https://github.com/oracle/db-sample-schemas/archive/v19.2.zip
@@ -91,7 +92,7 @@
 - perl -p -i.bak -e 's#__SUB__CWD__#'/u01/app/oracle/product/12.1.0/dbhome_1'#g' *.sql
 <img src="./images/ata-pg-download-hr-schema-scripts.PNG" alt="download hr schema install scripts" hight="500">
 
-3. Copy the scripts to Oracle Home
+3. Copy the sql scripts to Oracle Home
 - Enter the following commands:
 - cd $ORACLE_HOME
 - mkdir human_resources
@@ -108,12 +109,12 @@
 
 5. Run the script to install HR schema
 - Enter the info as shown in the picture
-- Replace your IP address in step 6 \<YourIP\>:1521/pdb1
+- Replace your IP address in step 6 \<OracleVMIP\>:1521/pdb1
 <img src="./images/ata-pg-run-create-hr-schema-scripts.jpg" alt="Enter the options to run the script" Width="600">
 
 - "quit;" to exit sqlplus
 6. Test Sample Schema
-- sqlplus hr/hr@\<YourIP\>:1521/pdb1
+- sqlplus hr/hr@\<OracleVMIP\>:1521/pdb1
 <img src="./images/ata-pg-sample-hr-schema-test.PNG" alt="Test HR schema tables" Width="660">
 7. You have successfully completed the pre-requisits for this lab:
 
@@ -122,11 +123,11 @@
 - Type 'Azure Database for postgresql' on the search bar to select Azure database for postgreSQL service
 - Select Single Server option
 
-<img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" width="600">
+<img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" hight="500">
 
 2. Enter the following details
 - Resource group: Select an existing resource group "ataPostgreSQL-initial" from the drop down.
-- Server name: enter 'pg11\<yourname\>'.
+- Server name: enter 'atapg11\<yourname\>'.
 - Location: select 'East US'
 - Version: 11
 - Admin username: enter 'pgadmin'
@@ -137,17 +138,16 @@
 - Click on 'Review + create'.
 - Click on 'Create' after the successful validation.
 
-3. Install pgadmin tool
-- Download PostgreSQL Admin tool using <a href="https://www.pgadmin.org/download/pgadmin-4-windows/">thislink</a>
-
-
-4. Open access to the PgAdmin Client Server
+3. Open access to the PgAdmin Client Server
 - Connect to the Azure PostgreSQL Server
 - Add the IP address of the client in the server NSG setup
-<img src="./images/ata-pg-network-setup.PNG" alt="Add the client IP address to the network security" Width="600">
+<img src="./images/ata-pg-network-setup.PNG" alt="Add the client IP address to the network security" hight="600">
+
+4. Install pgadmin tool
+- Download PostgreSQL Admin tool using <a href="https://www.pgadmin.org/download/pgadmin-4-windows/">thislink</a>
 
 5. Connect to the Azure PostgreSQL from PgAdmin Tool
-Enter the following:
+- Enter the following:
 - Host Name: copy host name from the Azure Portal
 - User name:pgadmin@hostname
 - Password:atapg123!
@@ -160,13 +160,14 @@ Enter the following:
 
 ## Task-2: Create Azure Database Migration Service
 1. Select Azure Database Migration Service
-Enter 'Database Migration' in the search bar to select the service.
+- Type 'Database Migration' in the search bar to select the service.
 2. Enter the following information
 - Resource Group: Select the resource group you have created in the Task-1.
 - Migration service name: Enter 'ata-dms-\<youname\>'
 - Pricing tier: Click on 'Configure tier' and select Premium service.
 - Click on 'Networking' button
 <img src="./images/ata-pg-create-dms.PNG" alt="Create Azure Database Migration Service" width="800">
+
 - Select the existing Virtual Network for the resource group
 <img src="./images/ata-dms-VNet-Selection.PNG" alt="Select the existing Virutal Network" Width="800">
 
@@ -189,77 +190,88 @@ Enter 'Database Migration' in the search bar to select the service.
 - STARTUP;
 - alter session set container=pdb1;
 - alter database open;
-
-4. Create a migration project 
+## Task-3: Create a project to Migrate Oracle HR schema
+1. Create a migration project 
 - Select '+' next to 'New Migration Project' 
-Enter the following information
+- Enter the following information
 - Project name: ora12cToPg11
 - Source server type: select 'Oracle' from the dropdown list
 - Target server type: select 'Azure Database for PostgreSQL' 
 - Click on 'Create and Run Activity' button
 - It opens up 6 step configuration
 
-5. Add Source Details
-Enter the following Oracle 12c HR database details
+2. Add Source Details
+- Enter the following Oracle 12c HR database details
 - Source Server name: Enter the Instructor provided Oracle Server IP address.
 - Server port: Enter the default port number 1521.
 - Oracle SID: Enter 'nonpdb' 
 - User Name: Enter 'system'
 - Password: Enter 'OraPasswd1'
-Click on Save button.
+- Click on Save button.
 <img src="./images/ata-pg-dms-add-source.PNG" alt="Enter source oracle database access details" width="800">
 
-6. Driver Install Detail
+3. Provide Driver Install Detail
 - Download the driver file from <a href="https://aka.ms/OracleDriverDownloads"> Oracle site</a> 
 - Create a storage account file share and upload the file
 - Get the path, user and password from the connection info as shown in the picture.
-<img src="./images/ata-dms-FileShare_OracleDriver.png" alt="Access File Share and get the connection details" Width="800">
-Enter the following location details to access the driver file
-OCI driver path: Get the path from the connect info and add "instantclient-basiclite-windows.x64-12.2.0.1.0.zip" at the end.
-User Name: Get the details from Connect Info
-Password: Get the details from the connect Info
-Click on Save button
+<img src="./images/ata-dms-FileShare_OracleDriver.png" alt="Access File Share and get the connection details" hight="700">
+- Enter the following location details to access the driver file
+- OCI driver path: Get the path from the connect info and add "instantclient-basiclite-windows.x64-12.2.0.1.0.zip" at the end.
+- User Name: Get the details from Connect Info
+- Password: Get the details from the connect Info
+- Click on Save button
 
-7. Add Target Info
+4. Add Target Info
 - Enter the following info:
 - Target Server Name: Get the name from PostgreSQL Overview 
 - Database: keep the default value
 - User Name: Get the admin name from the PostgreSQL Overview
 - Password: Enter the password similar to 'atapg123!'
-<img src="./images/ata-pg-dms-add-target-info.PNG" alt="Add PostgreSQL target database info" Width="600">
+<img src="./images/ata-pg-dms-add-target-info.PNG" alt="Add PostgreSQL target database info" hight="400">
 
-8. Add the network access to DMS Service from PostgreSQL service
+5. Add the network access to DMS Service from PostgreSQL service
 - You will get an error showing the IP address which needs access from PostgreSQL.
-9. Select Source and Target Schemas
+6. Select Source and Target Schemas
 - Select 'HR' from Oracle and 'PGHR' from PostgreSQL
 <img src="./images/ata-pg-dms-schema-mapping.PNG" alt="Map source and target schemas" Width="600">
 
-10. Select Source and target table mappings
+7. Select Source and target table mappings
 <img src="./images/ata-pg-dms-migration-settings.PNG" alt="Migration table mappings" Width="600">
 
-11. Start Migration
+## Task-4: Execute the initial load
+1. Create an activity to start the migration
 - Activity Name: 'MigrationTest01'
 - Select 'Start Migration' button
 <img src="./images/ata-pg-dms-start-migration.PNG" alt="Start migration" Width="600">
 
-12. Check the migration results
+2. Check the initial load statistics
 - Verify the source and target server and version details. Check the migration status.
-<img src="./images/ata-pg-dms-migration-results.PNG" alt="Migration status" Width="600">
-- Insert two rows
-- update a row
-- delete a row
-- Verify all the changes have been captured in DMS and propagated to PostgreSQL
-<img src="./images/ata-pg-dms-cdc-testing.PNG" alt="Verify CDC changes" Width="600">
+<img src="./images/ata-pg-dms-migration-results.PNG" alt="Migration status" hight="600">
 
-13. Complete the cutover
-- Stop the source Oracle database
-- Activate cutover
-- Make sure there are no pending changes
-- Apply changes to application connectivity
-- Confirm the cutover
-<img src="./images/ata-pg-dms-complete-cutover.PNG" alt="Complete Cutover Process" Width="600">
+## Task-5: Perform the data sync and Prepare for the cutover
+- Perform the following operations on the Oracle Database
+1. Insert two rows using the SQL commands
+- INSERT INTO hr.jobs VALUES('AC_MGR_02', 'Account Manager 02', 50000, 90000);
+- INSERT INTO hr.jobs VALUES('AC_MGR_03', 'Account Manager 03', 60000, 99000);
+- COMMIT;
+2. Update a row using the SQL command
+- UPDATE hr.jobs SET JOB_TITLE='Major Accountant' WHERE job_id='AC_ACCOUNT';
+- COMMIT;
+3. delete a row using the SQL command
+- DELETE hr.jobs WHERE job_id='AC_MGR_02';
+- COMMIT;
+4. Verify all the changes have been captured in DMS and propagated to PostgreSQL
+<img src="./images/ata-pg-dms-cdc-testing.PNG" alt="Verify CDC changes" hight="700">
 
-- Restart the applications with Azure PostgreSQL database connectivity
+## Task-6: Perform the cutover and go live
+1. Stop the source Oracle database
+2. Activate cutover
+3. Make sure there are no pending changes
+4. Update the database connectivity info in all applications accessing the Oracle HR schema.
+5. Confirm the cutover
+<img src="./images/ata-pg-dms-complete-cutover.PNG" alt="Complete Cutover Process" Width="400">
+
+5. Restart the applications with Azure PostgreSQL database connectivity to Go Live!!
 
 - You have successfully migrated Oracle database to Azure PostgreSQL.
 
