@@ -102,7 +102,7 @@
         "registrySku": "Standard",
         "registryAdminUserEnabled": true,
         "kubernetesClusterName": "[concat('fabmedical-', parameters('Suffix'))]",
-        "kubernetesVersion": "1.17.9",
+        "kubernetesVersion": "1.18.10",
         "kubernetesDnsPrefix": "[concat('fabmedical-', parameters('Suffix'), '-dns',uniqueString(resourceGroup().id))]",
         "kubernetesAgentOsType": "Linux",
         "kubernetesAgentOsDiskSizeGB": 0,
