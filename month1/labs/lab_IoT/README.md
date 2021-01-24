@@ -37,12 +37,18 @@ Below is the architecture of the IoT Lab.
 - **Resource group:** Select the Resource Group you created for this lab
 - **Region:** East US
 - **IoT hub name:** Choose a unique name for the IoT Hub
-- **Pricing tier:** Free
+
 
 <img src="./images/iothub-create-basics.jpg" alt="Iot Hub Basics Tab"  Width="600">
 
-4. Click the **Review + create** button
-5. Click the **Create** button
+4. Fill out the **Management** tab as follows:
+
+- **Pricing and scale tier:** F1: Free tier
+
+<img src="./images/iothub-create-management.jpg" alt="Iot Hub Management Tab"  Width="600">
+
+5. Click the **Review + create** button
+6. Click the **Create** button
 
 ## Step 3: Add an IoT device
 1. In the Azure Portal, search for the IoT Hub that was created for the lab.
