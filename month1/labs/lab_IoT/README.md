@@ -250,7 +250,7 @@ Below is the architecture of the IoT Lab.
 <img src="./images/storage-container-files.jpg" alt="Storage Account Container Files"  Width="600">
 
 ## Step 11: Option 2 - Create Power BI Dashboard
-1. Go to [powerbi.com](https://powerbi.microsoft.com/en-us/) and sign in with your work or school account. If the Stream Analytics job query outputs results, you will see that your dataset is already created:
+1. Go to [powerbi.com](https://powerbi.microsoft.com/en-us/) and sign in with your work or school account. If the Stream Analytics job query outputs results, you will see that your dataset is already created.
 
 <img src="./images/pbi-dashboard-dataset.jpg" alt="Power BI dataset"  Width="600">
 
