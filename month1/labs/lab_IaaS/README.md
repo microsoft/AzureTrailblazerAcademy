@@ -22,7 +22,7 @@ For this lab we are going to deploy something simular to the business tier of th
 
 ## Step 1: Create a Resource Group
 1. In the Azure Portal, search for **Resource Groups**
-2. Click on the **Create** button
+2. Click on the **Create** button - test
 3. Fill out the **Basics** tab as follows:
 - **Subscription:** Choose your subscription
 - **Resource Group:** Provide a unique name like **ata-\<username\>-rg
