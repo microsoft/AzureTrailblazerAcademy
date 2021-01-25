@@ -37,12 +37,18 @@ Below is the architecture of the IoT Lab.
 - **Resource group:** Select the Resource Group you created for this lab
 - **Region:** East US
 - **IoT hub name:** Choose a unique name for the IoT Hub
-- **Pricing tier:** Free
+
 
 <img src="./images/iothub-create-basics.jpg" alt="Iot Hub Basics Tab"  Width="600">
 
-4. Click the **Review + create** button
-5. Click the **Create** button
+4. Fill out the **Management** tab as follows:
+
+- **Pricing and scale tier:** F1: Free tier
+
+<img src="./images/iothub-create-management.jpg" alt="Iot Hub Management Tab"  Width="600">
+
+5. Click the **Review + create** button
+6. Click the **Create** button
 
 ## Step 3: Add an IoT device
 1. In the Azure Portal, search for the IoT Hub that was created for the lab.
@@ -95,9 +101,9 @@ Below is the architecture of the IoT Lab.
 - **Input alias:** Choose a unique name for the input and check "Select IoT Hub from your subscriptions"
 - **Subscription:** Choose your subscription
 - **IoT Hub:** Choose the IoT Hub created for this lab
-- **Endpoint:** Messaging
-- **Shared access policy name:** service
 - **Consumer group:** $Default
+- **Shared access policy name:** service
+- **Endpoint:** Messaging
 - **Partition key:** 
 - **Event serialization format:** JSON
 - **Encoding:** UTF-8
@@ -182,21 +188,25 @@ Below is the architecture of the IoT Lab.
 1. In the Azure Portal, search for **Time Series Insights**.
 2. Click on the **Create** button.
 3. Fill out the **Basics** tab as follows:
-- **Environment name:** Choose a unique name for the Time Series Insights
 - **Subscription:** Choose your subscription
 - **Resource group:** Select the Resource Group you created for this lab
+- **Environment name:** Choose a unique name for the Time Series Insights
 - **Location:** East US
-- **Pricing tier:** S1
-- **Capacity:** 1
+- **Tier:** Gen2 (L1)
+- **Property name:** deviceId
+- **Storage account name:** Choose a unique name for the storage account
+- **Storage account kind:** StorageV2 (general purpose V2)
+- **Storage account replication:** Locally redundant storage (LRS)
 
-<img src="./images/tsi-create-basics.jpg" alt="Time Series Insights Basics Tab"  Width="600">
+<img src="./images/tsi-create-basics-1.jpg" alt="Time Series Insights Basics Tab"  Width="600">
 
-4. Click the **Next: Event Source** button.
+<img src="./images/tsi-create-basics-2.jpg" alt="Time Series Insights Basics Tab"  Width="600">
+
+4. Leave the rest as default and click the **Next: Event Source** button.
 5. Fill out **Event Source** tab as follows:
 - **Create an event source:** Yes
-- **Name:** Choose a unique name for the Event Source
 - **Source Type:** IoT Hub
-- **Select a hub:** Select Existing
+- **Name:** Choose a unique name for the Event Source
 - **Subscription:** Choose your subscription
 - **IoT Hub name:** Select the IoT Hub you created for this lab
 - **IoT Hub access policy name:** service
@@ -209,14 +219,29 @@ Below is the architecture of the IoT Lab.
 
 ## Step 10: Explore Time Series Insights
 1. In the Azure Portal, search for the created Time Series Insights name.
-2. Go to Time Series Insights environment by clicking on **Go to Environment** under **Overview** menu.
+2. Go to Time Series Insights Explorer by clicking on **Go to TSI Explorer** under **Overview** menu.
 
-<img src="./images/tsi-goto-environment.jpg" alt="Time Series Insights Goto Environment"  Width="600">
+<img src="./images/tsi-goto-environment.jpg" alt="Time Series Insights Goto TSI Explorer"  Width="600">
 
-3. Add a meaure to the chart by clicking on **Add** button and selecting a measure from the **MEASURE** drop down.
-4. Adjust **Interval size** by moving the green dot on the sliding bar.
+3. Add measures to the chart by clicking on the deviceId **Raspberry Pi Web Client**, select **humidity** and **temperature** from the drop down, then click on **Add**.
 
 <img src="./images/tsi-add-measure.jpg" alt="Time Series Insights Add Measure"  Width="600">
+
+4. Change chart settings for **Auto refresh** to Show most recent 30 minutes and Auto refresh every 30 seconds.
+
+<img src="./images/tsi-auto-refresh-setting.jpg" alt="Time Series Insights Auto Refresh Setting"  Width="600">
+
+5. Turn on Auto refresh
+
+<img src="./images/tsi-auto-refresh-on.jpg" alt="Time Series Insights Auto Refresh On"  Width="600">
+
+6. Explore raw events by clicking on **More actions** and select **Explore raw events**
+
+<img src="./images/tsi-explore-raw-events.jpg" alt="Time Series Insights Explore raw events"  Width="600">
+
+7. Save the view by cicking on **Save** and give the view a name.
+
+<img src="./images/tsi-save-view.jpg" alt="Time Series Insights Save view"  Width="600">
 
 ## Step 11: Option 1 - Verify parquet files are being added to the storage account
 
@@ -229,7 +254,7 @@ Below is the architecture of the IoT Lab.
 
 <img src="./images/pbi-dashboard-dataset.jpg" alt="Power BI dataset"  Width="600">
 
-2. In your workspace, click **+ Create** to create a dashboard.
+2. In your workspace, click **+ New** to create a dashboard.
 
 <img src="./images/pbi-create-dashboard.jpg" alt="Power BI create dashboard"  Width="600">
 
@@ -237,7 +262,7 @@ Below is the architecture of the IoT Lab.
 
 <img src="./images/pbi-create-dashboard-name.jpg" alt="Power BI create dashboard name"  Width="600">
 
-4. At the top of the window, click **Add tile**, select **Custom Streaming Data**, and then click **Next**.
+4. At the top of the window click **Edit** and select **Add tile**, select **Custom Streaming Data** under REAL-TIME DATA, then click **Next**.
 
 <img src="./images/pbi-dashboard-add-tile.jpg" alt="Power BI dashboard add tile"  Width="600">
 
