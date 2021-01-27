@@ -1,9 +1,9 @@
-# Azure Trailblazer Academy Azure Net App Files Storage Lab
+# Azure Trailblazer Academy Azure NetApp Files Storage Lab
 ## Overview
 ## Access Data in Azure  with Azure NetApp Files
 The Azure NetApp Files service is an enterprise-class, high-performance, file storage service. Azure NetApp Files supports any workload type and is highly available by default. You can select service and performance levels and set up snapshots through the service.
 
-In this Lab we will create a Highly Available NAS Share, that will shared by two Virtual Machines
+In this Lab we will create  Highly Available NFS Mounts, that will shared by two Virtual Machines
 
 <img src="./images/HA-Share.png" width="300">
 
@@ -171,7 +171,7 @@ Finally Click the **Create Button**
 <img src="./images/Create-Volume.png" alt="Create Volume" width="400">
 
 
-Oncen your volume has created click on **Go to Resource**
+Once your volume has created click on **Go to Resource**
 
 <img src="./images/Goto-Volume.png" alt="Create Volume" width="400">
 
@@ -229,7 +229,7 @@ Select **Mount Options** from the menu and
 
 -   We will be using Azure Cloud Shell, again to enter a few commands on each VM
 
-#### For VM1: Using Azure Cloud
+#### For VM1: Using Azure Cloud Shell
 ####          Username : ata and Password Trailblazer1!
 
 -   ssh ata@**(VM1-Public-IP)**
@@ -255,7 +255,7 @@ Now execute the below commands one by one
 
 
 
-#### For VM2: Using Azure Cloud
+#### For VM2: Using Azure Cloud Shell
 ####          Username : ata and Password Trailblazer1!
 
 -   ssh ata@**(<VM2-Public-IP)**
@@ -289,17 +289,26 @@ Now execute the below commands one by one
 
 -   Create the following volumes as you did above using 100GB for the volume size.
 
-            hdataA   
-            hlogA
+            dataA   
+            logA
+            dataB
+            logB
             shared
-            odatafiles
-            ologs
+            
             
 -   Mount the following Volumes into your VM1 using the  mount instructions provided on the volumes tab
 
-            hdataA   
-            hlogA
+            dataA   
+            logA
             shared
-            odatafiles
-            ologs
             
+    
+    
+-   Mount the following Volumes into your VM2 using the  mount instructions provided on the volumes tab
+
+            dataB   
+            logB
+            shared
+                        
+
+## You have now created the basic volume layout for a DB environment, where each node has its own dataA and logA volume for VM1 and dataB and logB volumes for VM2, and a shared volume between the two VM's
