@@ -109,6 +109,8 @@ Select **Premium** for the service level
 
 Specify **4** (TiB) as the pool size
 
+Leave the QoS type set to Auto
+
 Click **OK**
 
 ### Step-2: Create a NFS Volume to Contain Your Data
@@ -141,7 +143,7 @@ Enter **myvnet1** as the Vnet name
 
 **Accept the default address range**, for example, 10.7.0.0/16
 
-Leave **default** as the subnet name
+Type **anf** as the subnet name
 
 **Accept the default address range, for example**, 10.7.0.0/24
 
@@ -203,7 +205,7 @@ Select **Mount Options** from the menu and
 <img src="./images/Default-Subnet.png" alt="Create Volume" width="400">
 
 
--  Enter the name as **default**, leave everything else as is and hit **ok**
+-  Enter the name as **vm**, leave everything else as is and hit **ok**
 
 
 
@@ -217,12 +219,12 @@ Select **Mount Options** from the menu and
 - Create VM1 
         At the command prompt, paste in this text below,
              
-        az vm create --resource-group ata-ANF-RG --name VM1 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --image UbuntuLTS
+        az vm create --resource-group ata-ANF-RG --name VM1 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet vm --image UbuntuLTS
                  
 - Create VM2
         At the command prompt, paste in this text below, **replacing the Resource Group** with your Resource Group
                          
-          az vm create --resource-group ata-ANF-RG --name VM2 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --image UbuntuLTS
+          az vm create --resource-group ata-ANF-RG --name VM2 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet vm --image UbuntuLTS
 
 
 ### Step-2: Mount Volumes to VM and Create a File (On Each VM)
