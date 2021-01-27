@@ -16,3 +16,5 @@ Introduction to key Azure Resources from IaaS to IoT.
 | IoT       | - [IoT Lab](labs/lab_IoT/) |
 | Networking       | - [Networking Lab](labs/lab_Networking/) |
 | Cost       | - [Cost Lab](labs/lab_Cost/) |
+
+test
