@@ -127,7 +127,7 @@ In the Create a Volume window, provide information for the volume:
 
 Enter **myvol1** as the volume name.
 
-Select your capacity pool (**mypool1**)
+If shown, Select your capacity pool (**mypool1**)
 
 Use the **default value** for quota.
 
@@ -200,12 +200,12 @@ Select **Mount Options** from the menu and
 
 <img src="./images/Select-Subnet.png" alt="Create Volume" width="400">
 
-- Select +Subnet
+- Select **+Subnet**
 
 <img src="./images/Default-Subnet.png" alt="Create Volume" width="400">
 
 
--  Enter the name as **vm**, leave everything else as is and hit **ok**
+-  Enter the **name** as **vm**, leave everything else as is and hit **ok**
 
 
 
