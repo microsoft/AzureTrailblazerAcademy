@@ -9,9 +9,9 @@ Introduction to Azure Data Services.
 
 | Labs          | Links                            |
 |-------------------|----------------------------------|
-| Azure Data Factory    | - [IaaS Lab](labs/lab_adf/) |
-| CosmosDB       | - [WebApp Lab](labs/lab_cosmos/) |
-| Data      | - [SQL Lab](labs/lab_data/) |
-| DevOps       | - [IoT Lab](labs/lab_devops/) |
+| Azure Data Factory    | - [Azure Data Factory Lab](labs/lab_adf/) |
+| CosmosDB       | - [CosmosDB Lab](labs/lab_cosmos/) |
+| Data      | - [Data Lab](labs/lab_data/) |
+| DevOps       | - [DevOps Lab](labs/lab_devops/) |
 | Networking       | - [Networking Lab](labs/lab_Networking/) |
-| Monitoring      | - [Cost Lab](labs/lab_monitoring/) |
+| Monitoring      | - [Monitoring  Lab](labs/lab_monitoring/) |
