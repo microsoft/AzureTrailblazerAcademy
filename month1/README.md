@@ -14,5 +14,5 @@ Introduction to key Azure Resources from IaaS to IoT.
 | SQL       | - [SQL Lab](lab_SQL/) |
 | Storage       | - [Storage Lab](lab_storage/) |
 | IoT       | - [IoT Lab](lab_IoT/) |
-| Networking       | - [Networking Lab](lab_Networking/) |
+| Networking       | - [Networking Lab](labs/lab_Networking/) |
 | Cost       | - [Cost Lab](lab_Cost/) |
