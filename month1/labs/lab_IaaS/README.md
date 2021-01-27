@@ -25,7 +25,7 @@ For this lab we are going to deploy something simular to the business tier of th
 2. Click on the **Add** button
 3. Fill out the **Basics** tab as follows:
 - **Subscription:** Choose your subscription
-- **Resource Group:** Provide a unique name like **atl-ata-\<username\>-rg
+- **Resource Group:** Provide a unique name like **ata-\<username\>-rg
 - **Region:** EastUS
 
 <img src="./images/rg-basics.PNG" alt="RG Basic Tab"  Width="700">  
@@ -40,7 +40,7 @@ For this lab we are going to deploy something simular to the business tier of th
 3. Fill out the **Basics** tab as follows:
 - **Subscription:** Choose your subscription
 - **Resource Group:** Select the Resource Group you created for this lab.
-- **Virtual Machine Scale Set Name:** Choose a unique name for the VM. Ex: atl-ata-\<username\>-ssvm
+- **Virtual Machine Scale Set Name:** Choose a unique name for the VM. Ex: ata-\<username\>-ssvm
 - **Region:** East US
 - **Availability zone:** Zone 1,2,3
 - **Orchestration mode (Preview):** ScaleSet VMs
@@ -106,11 +106,15 @@ We will utilize the PowerShell DSC extension to deploy a simple website to our s
 
 2. Inside the cloud shell run the following command to download the needed script:
 
-**curl https://raw.githubusercontent.com/microsoft/AzureTrailblazerAcademy/master/month1/labs/lab_IaaS/scripts/add_website.ps1 > add_website.ps1**
+```
+curl https://raw.githubusercontent.com/microsoft/AzureTrailblazerAcademy/master/month1/labs/lab_IaaS/scripts/add_website.ps1 > add_website.ps1
+```
 
 3. After that download run the following command to install the PowerShell DSC extension:
 
-**./add_website.ps1 -RGNAME \<ResourceGroupName\> -ScaleSetName \<NameofScaleSet\>**
+```
+./add_website.ps1 -RGNAME \<ResourceGroupName\> -ScaleSetName \<NameofScaleSet\>
+```
 
 4. Once the command completes close out of the Cloud Shell and go back to the Portal
 
@@ -126,7 +130,7 @@ We will utilize the PowerShell DSC extension to deploy a simple website to our s
 
 ## Step 4: Allow External Port 80
 
-We are currently allowing the Load Balancer to other VNets in Azure to connect to our Scale Set. In order for us to connect ot the website we will allow port 80 from any location.
+In order for us to connect ot the website we will now need to allow port 80 from any location to be able to reach out those Virtual Machines inside the VM Scale Set. Follow steps below to open TCP port 80.
 
 1. While still on the Scale Set Resource blade go to the **Networking** tab.
 

@@ -10,7 +10,7 @@ Introduction to key Azure Resources from IaaS to IoT.
 | Labs          | Links                            |
 |-------------------|----------------------------------|
 | IaaS     | - [IaaS Lab](labs/lab_IaaS/) |
-| WebApp       | - [WebApp Lab](lab_WebApps/) |
+| WebApp       | - [WebApp Lab](labs/lab_WebApps/) |
 | SQL       | - [SQL Lab](lab_SQL/) |
 | Storage       | - [Storage Lab](lab_storage/) |
 | IoT       | - [IoT Lab](lab_IoT/) |

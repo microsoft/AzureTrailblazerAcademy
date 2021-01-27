@@ -22,7 +22,35 @@
 4. Click the **Next: Review + Create** button
 5. Click the **Create** button
 
-## Step 2: Create a App Service Plan
+## Step 2: Create a Storage Account
+
+1. In the Azure Portal, search for **Storage accounts**
+2. Click **Add+**
+3. Fill out the form:
+- **Resource Group:** Select resource group created earlier
+- **Storage account name:** Enter a globally unique name for your storage account
+- **Location:** Select region closest to you (or your users)
+- **Performance:** Standard
+- **Account Kind:** StorageV2 (general purpose v2)
+- **Replication:** Locally-redundandt storage (LRS)
+- **Blob access tier:** Hot
+
+![Storage Basic Tab](images/storage_form.jpg) 
+
+4. Click **Next: Networking**
+5. Leave everything as default and click **Next: Data Protection**
+6. Leave everything as it is and click **Next:Advanced**
+7. Leave defaults and click **Next:Tags**
+8. Enter any tags if you'd like and click **Next: Review + Create**
+9. Click **Create**
+10. Once the Storage Account has been created go to the resource and select **Access Keys**
+11. Copy and paste the value from **key 1: Connection String**. You will use that value later to connect your Web Application to the Storage Account.
+
+
+4. Click **Review + Create**
+
+
+## Step 3: Create a App Service Plan
 1. In the Azure Portal, search for **App Service Plan**
 2. Click on the **Create** button
 3. Fill out the **Basics** tab as follows:
@@ -43,7 +71,7 @@
 6. You now ended up creating a App Service Plan. One App Service Plan can hold many App Services/Web Services and Apps.
 
 
-## Step 3: Add a Web App using your App Service Plan
+## Step 4: Add a Web App using your App Service Plan
 1. In the Azure Portal, search for **App Services**
 2. From the left menu, click on **App Services** under **Explorers**, then click **+ Add**
 
@@ -73,7 +101,7 @@ This screen will transition to .. **Your deployment was successful..**.  There i
 
 6. If everything was okay, you just successfully created a new 'App Service'. 
 
-## Step 4: Go to your newly created Web App
+## Step 5: Go to your newly created Web App
 1. In the Azure Portal, search for **App Services**
 2. From the left menu, click on **App Services** under **Explorers**, find your app service and then click **on your new app service**
    OR
@@ -88,15 +116,11 @@ This screen will transition to .. **Your deployment was successful..**.  There i
 
 ![Web Service Basic Tab](images/webapp-happy.JPG)
   
-   
-5. Make sure you see a web page and based on the Runtime selected, it should greet you with **Hello, Node developer.** 
- </BR>Had you selected Java it would have greeted you wuth **Hello, Java Developer.**
- 
 
- 6. CONGRATULATIONS !! YOU JUST CREATED A WEB APPLICATION ON AZURE CLOUD
+5. CONGRATULATIONS !! YOU JUST CREATED A WEB APPLICATION ON AZURE CLOUD
   
   
-## Step 5: Now that our default web application that got deployed by Microsoft, lets deploy our actual application!
+## Step 6: Configure CI/CD to deploy our Web App
           
            
 1. In the Azure Portal, search for **App Services**
@@ -108,45 +132,36 @@ This screen will transition to .. **Your deployment was successful..**.  There i
 
 ![Web Service Basic Tab](images/app-service-deployment-center.JPG)
 
-5. We are in the CI/CD section of the your code deployment. <BR>
-   Our plan is to deploy from https://github.com/RobinGhosh64/Test3in1.git sample repository provided in your lab.
-   Select the **External** thumbnail
-    
-6. Then Click on **Continue** 
-
-![Web Service Basic Tab](images/app-service-deployment-center-continue.JPG)
-
-
+5. Select the **External** from the list of options and click on **Continue**
 
 ![Web Service Basic Tab](images/app-service-deployment-continue-kudu.JPG)
 
-7. Select Kudu **K App Service** option thumbnail
-8. Click on **Continue**
+6. Select Kudu **App Service Build Service** option and click on **Continue**
 
-
-![Web Service Basic Tab](images/app-service-deployment-pick-your-project.JPG)
-
-9. Enter **Repository Name** to https://github.com/RobinGhosh64/Test3in1  and **Branch** to master
-10. Select **Repository** to Git, **Private Repository** to YES
-11. Click the **Continue** button
+7. Configure the following fields:
+- **Repository Name:** to https://github.com/RobinGhosh64/Test3in1
+- **Branch:** master
+- **Repository Type:** Git
+- **Private Repository:** No
+8. Click the **Continue** button
 
 ![Web Service Basic Tab](images/app-service-deployment-finish.JPG)
 
-11. Click the **Finish** button
+9. Click the **Finish** button
 ![Web Service Basic Tab](images/app-service-deployment-onway.JPG)
 
-12. You should see a screen that will show the deployment steps. There is a single table record, that will show the progress of the deployment. It should finally settle and show 'Success Active' which is the correct status for the deployment
+10. You should see a screen that will show the deployment steps. There is a single table record, that will show the progress of the deployment. It should finally settle and show 'Success Active' which is the correct status for the deployment
 
 ![Web Service Basic Tab](images/app-service-check-deployment-logs.JPG)
 
-13. Click on the **phone like icon** to see the details of the deployment.
+11. Click on the **Logs** icon to see the details about the deployment.
 
 ![Web Service Basic Tab](images/app-service-deployment-successful.JPG)
 
-14. Make sure everything was good, in which case you can close the window using the top right **X** button
+12. Confirm the **Status** of the deployment is **Success (Active)**
 
 
-## Step 6: Our application got deployed. Let's proceed to set the configuration variables so that it can connect to LOB storage, SalesForce and SQL Server DB resource
+## Step 7: Configure application to connect to Storage Account
 
 1. Go back and again Select our web application  
 3. You should be back on your new web app
@@ -163,8 +178,9 @@ This screen will transition to .. **Your deployment was successful..**.  There i
 
 7. Click on **New application Setting**
 
-8. Add all the configuration parameters needed by your application. Make sure as your adding the list get's updated.
-   Make sure you are adding the BLOB config. variable called AZURE_STORAGE_CONNECTION_STRING. This is a mandatory for our LAB.
+8. Crete a new Application Setting that contins the Connection String for the Storage Account that was created earlier.
+- **Name:** AZURE_STORAGE_CONNECTION_STRING
+- **Value:** Enter the connection string that was copied earlier in the lab
     
 ![RG Basic Tab](images/app-service-add-app-settings-1.JPG)
 
@@ -174,7 +190,7 @@ This screen will transition to .. **Your deployment was successful..**.  There i
 
 10. You should see a message stating 'Updating the Web app'
 
-## Step 7: Our App Service has restarted. Hopefully, taken the settings update. Let's go to our Web App
+## Step 8: Test Web App
 
 1. Go back to you App Service by selecting the **Overview** on the left blade
 
