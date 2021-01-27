@@ -205,7 +205,7 @@ Select **Mount Options** from the menu and
 <img src="./images/Default-Subnet.png" alt="Create Volume" width="400">
 
 
--  Enter the **name** as **vm**, leave everything else as is and hit **ok**
+-  Enter the **name** as **default**, leave everything else as is and hit **ok**
 
 
 
@@ -219,12 +219,12 @@ Select **Mount Options** from the menu and
 - Create VM1 
         At the command prompt, paste in this text below,
              
-        az vm create --resource-group ata-ANF-RG --name VM1 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet vm --image UbuntuLTS
+        az vm create --resource-group ata-ANF-RG --name VM1 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --image UbuntuLTS
                  
 - Create VM2
         At the command prompt, paste in this text below, **replacing the Resource Group** with your Resource Group
                          
-          az vm create --resource-group ata-ANF-RG --name VM2 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet vm --image UbuntuLTS
+        az vm create --resource-group ata-ANF-RG --name VM2 --admin-username ata --admin-password Trailblazer1! --nsg-rule ssh --vnet-name myvnet1 --subnet default --image UbuntuLTS
 
 
 ### Step-2: Mount Volumes to VM and Create a File (On Each VM)
