@@ -100,6 +100,8 @@ While the first VM is being deployed, you can follow the same steps you just com
 
 ![VM2 Networking Tab](images/vm2_networking.png)
 
+3. For all the other tabs just follow the same configuration as ata-vm1
+
 ## Step 5: Review VM configuration and test connectivity
 
 Once the two VMs are deployed, follow these steps to review their configuration and test connectivity between the two VMs:
