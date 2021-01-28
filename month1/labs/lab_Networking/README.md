@@ -13,7 +13,7 @@
 Before following the steps below, make sure you have created a resource group where you will be deploying all the resources for this lab. The first resource we'll be depoying is ata-vnet1.
 
 1. In the Azure Portal, search for **Virtual Networks**
-2. Click on the **Add** button
+2. Click on the **Create** button
 3. Fill out the **Basics** tab as follows:
 - **Subscription:** Choose your subscription
 - **Resource Group:** Select the Resource Group you created for this lab.
