@@ -193,7 +193,7 @@ Once the two VMs are deployed, follow these steps to review their configuration 
 
 ![Create a new Container](images/storage_newcontainer.png)
 
-14. Click on the new container nad then select **Upload** to upload any picture you want.
+14. Click on the new container and then select **Upload** to upload any picture you want.
 15. Click on the new file uploaded and copy the URL field for the file
 
 ![URL for New File](images/storage_fileURL.png)
@@ -202,7 +202,7 @@ Once the two VMs are deployed, follow these steps to review their configuration 
 
 ## Step 9: Create Service Endpoint and restrict connectivity
 
-1. Back to the Storage Account, click on **Firewalls and Virtual Networks** on the left blade
+1. Back to the Storage Account, click on **Networking** on the left blade
 2. Select **Selected Networks**
 3. Click on **+Add existing virtual network** button
 4. On the menu that opens, select the Virtual Network and Subnet where VM2 was deployed (Ex:ata-vnet2/default). Click **Enable**
