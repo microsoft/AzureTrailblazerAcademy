@@ -181,14 +181,15 @@ Once the two VMs are deployed, follow these steps to review their configuration 
 
 4. Click on **Next: Networking**
 5. In the **Networking** tab, make sure that **Public endpoint (all networks) is selected as the Connectivity Method
-6. Click on **Next: Advanced**
-7. Leave everything as default and click on **Next: Tags**
-8. Enter any custom tags (optional) and click on **Review + create**
-9. Click the **Create** button
-10. Open the new Storage Account once it finishes deploying
-11. In the **Overview** page click on **Containers**
-12. Click the **+ Container** and enter the name of the new container (Ex: ata-container). For the **Public access level** dropdown select "Container (anonymous read access for container and blobs).
-13. Click **Create**
+6. Leave everything as default and click on **Next: Data Protection**
+7. Leave everything as default and click on **Next: Advanced**
+8. Leave everything as default and click on **Next: Tags**
+9. Enter any custom tags (optional) and click on **Review + create**
+10. Click the **Create** button
+11. Open the new Storage Account once it finishes deploying
+12. In the **Overview** page click on **Containers**
+13. Click the **+ Container** and enter the name of the new container (Ex: ata-container). For the **Public access level** dropdown select "Container (anonymous read access for container and blobs).
+14. Click **Create**
 
 ![Create a new Container](images/storage_newcontainer.png)
 
