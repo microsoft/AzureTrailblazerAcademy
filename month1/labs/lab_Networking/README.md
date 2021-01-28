@@ -166,7 +166,7 @@ Once the two VMs are deployed, follow these steps to review their configuration 
 ## Step 8: Create Storage Account and test connectivity
 
 1. In the Azure Portal, search for **Storage Accounts**
-2. Click the **+Add** button
+2. Click the **+Create** button
 3. Fill out the **Basics** tab as follows:
 - **Subscription:** Select your subscription
 - **Resource Group:** Select the resource group you created for this lab
