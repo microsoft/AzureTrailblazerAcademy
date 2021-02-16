@@ -13,7 +13,7 @@
 Before following the steps below, make sure you have created a resource group where you will be deploying all the resources for this lab. The first resource we'll be depoying is ata-vnet1.
 
 1. In the Azure Portal, search for **Virtual Networks**
-2. Click on the **Add** button
+2. Click on the **Create** button
 3. Fill out the **Basics** tab as follows:
 - **Subscription:** Choose your subscription
 - **Resource Group:** Select the Resource Group you created for this lab.
@@ -100,6 +100,8 @@ While the first VM is being deployed, you can follow the same steps you just com
 
 ![VM2 Networking Tab](images/vm2_networking.png)
 
+3. For all the other tabs just follow the same configuration as ata-vm1
+
 ## Step 5: Review VM configuration and test connectivity
 
 Once the two VMs are deployed, follow these steps to review their configuration and test connectivity between the two VMs:
@@ -164,7 +166,7 @@ Once the two VMs are deployed, follow these steps to review their configuration 
 ## Step 8: Create Storage Account and test connectivity
 
 1. In the Azure Portal, search for **Storage Accounts**
-2. Click the **+Add** button
+2. Click the **+Create** button
 3. Fill out the **Basics** tab as follows:
 - **Subscription:** Select your subscription
 - **Resource Group:** Select the resource group you created for this lab
@@ -179,18 +181,19 @@ Once the two VMs are deployed, follow these steps to review their configuration 
 
 4. Click on **Next: Networking**
 5. In the **Networking** tab, make sure that **Public endpoint (all networks) is selected as the Connectivity Method
-6. Click on **Next: Advanced**
-7. Leave everything as default and click on **Next: Tags**
-8. Enter any custom tags (optional) and click on **Review + create**
-9. Click the **Create** button
-10. Open the new Storage Account once it finishes deploying
-11. In the **Overview** page click on **Containers**
-12. Click the **+ Container** and enter the name of the new container (Ex: ata-container). For the **Public access level** dropdown select "Container (anonymous read access for container and blobs).
-13. Click **Create**
+6. Leave everything as default and click on **Next: Data Protection**
+7. Leave everything as default and click on **Next: Advanced**
+8. Leave everything as default and click on **Next: Tags**
+9. Enter any custom tags (optional) and click on **Review + create**
+10. Click the **Create** button
+11. Open the new Storage Account once it finishes deploying
+12. In the **Overview** page click on **Containers**
+13. Click the **+ Container** and enter the name of the new container (Ex: ata-container). For the **Public access level** dropdown select "Container (anonymous read access for container and blobs).
+14. Click **Create**
 
 ![Create a new Container](images/storage_newcontainer.png)
 
-14. Click on the new container nad then select **Upload** to upload any picture you want.
+14. Click on the new container and then select **Upload** to upload any picture you want.
 15. Click on the new file uploaded and copy the URL field for the file
 
 ![URL for New File](images/storage_fileURL.png)
@@ -199,7 +202,7 @@ Once the two VMs are deployed, follow these steps to review their configuration 
 
 ## Step 9: Create Service Endpoint and restrict connectivity
 
-1. Back to the Storage Account, click on **Firewalls and Virtual Networks** on the left blade
+1. Back to the Storage Account, click on **Networking** on the left blade
 2. Select **Selected Networks**
 3. Click on **+Add existing virtual network** button
 4. On the menu that opens, select the Virtual Network and Subnet where VM2 was deployed (Ex:ata-vnet2/default). Click **Enable**

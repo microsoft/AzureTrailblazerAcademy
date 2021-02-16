@@ -22,7 +22,7 @@ For this lab we are going to deploy something simular to the business tier of th
 
 ## Step 1: Create a Resource Group
 1. In the Azure Portal, search for **Resource Groups**
-2. Click on the **Add** button
+2. Click on the **Create** button
 3. Fill out the **Basics** tab as follows:
 - **Subscription:** Choose your subscription
 - **Resource Group:** Provide a unique name like **ata-\<username\>-rg
@@ -43,10 +43,8 @@ For this lab we are going to deploy something simular to the business tier of th
 - **Virtual Machine Scale Set Name:** Choose a unique name for the VM. Ex: ata-\<username\>-ssvm
 - **Region:** East US
 - **Availability zone:** Zone 1,2,3
-- **Orchestration mode (Preview):** ScaleSet VMs
 - **Image:** Windows Server 2019 Datacenter
-- **Azure Spot Instance:** Yes
-- **Eviction policy:** Capacity only
+- **Azure Spot Instance:** No
 - **Size:** Standard D2s v3
 - **Username:** Enter your user name. Ex: ata-user
 - **Password:** Enter your password
@@ -76,9 +74,8 @@ For this lab we are going to deploy something simular to the business tier of th
 7. Click the **Next: Management** button
 8. Inside the **Management** tab:
 
-- **Upgrade mode:** Manual
-- **Boot diagnostics:** On
-- **Automatic OS upgrades:** On
+- **Upgrade mode:** Manual - Existing instances must be manually upgraded
+- **Boot diagnostics:** Enable with managed storage account (recommended)
 - Leave everything else as default
 
 <img src="./images/vm-management.PNG" alt="VM Management Tab"  Width="700">
