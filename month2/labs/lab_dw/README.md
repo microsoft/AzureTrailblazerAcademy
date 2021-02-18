@@ -74,8 +74,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 1: Workload importance](#task-1-workload-importance)
     - [Task 2: Workload isolation](#task-2-workload-isolation)
     - [Task 3: Monitoring with Dynamic Management Views](#task-3-monitoring-with-dynamic-management-views)
-    - [Task 4: Orchestration Monitoring with the Monitor Hub](#task-4-orchestration-monitoring-with-the-monitor-hub)
-    - [Task 5: Monitoring SQL Requests with the Monitor Hub](#task-5-monitoring-sql-requests-with-the-monitor-hub)
+    - [Task 4: Monitoring SQL Requests with the Monitor Hub](#task-4-monitoring-sql-requests-with-the-monitor-hub)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
 
@@ -141,7 +140,7 @@ For the remainder of this lab, the following terms will be used for various ASA 
 
 ### Task 1: Download the current lab assets
 
-1. Access the [GitHub repository page](https://github.com/microsoft/MCW-Azure-Synapse-Analytics-and-AI).
+1. Access the [ATA GitHub repository page](https://github.com/microsoft/AzureTrailblazerAcademy).
 
 2. Toward the right side of the screen, expand the **Code** button menu.
 
@@ -2380,21 +2379,7 @@ All logins to your data warehouse are logged to `sys.dm_pdw_exec_sessions`. This
 
     > When a DSQL plan is taking longer than expected, the cause can be a complex plan with many DSQL steps or just one step taking a long time. If the plan is many steps with several move operations, consider optimizing your table distributions to reduce data movement.
 
-### Task 4: Orchestration Monitoring with the Monitor Hub
-
-1. Let's run a pipeline to monitor its execution in the next step. To do this, select the `Integrate` item from the left menu. **Run** the **Exercise 8 - Execute Business Analyst Queries** Pipeline.
-
-    ![The add trigger and trigger now menu items are highlighted.](images/ex7-task4-01.png "Add trigger")
-
-2. Navigate to the `Monitor` hub. Then select **Pipeline runs** to get a list of pipelines that ran during the last 24 hours. Observe the Pipeline status.
-
-    ![The pipeline runs blade is displayed within the Monitor hub.](images/ex7-task4-02.png "Monitor - Pipeline runs")
-
-3. Hover over the running pipeline and select **Cancel** to cancel the execution of the current instance of the pipeline.
-
-    ![The Cancel option is highlighted.](images/ex7-task4-03.png "Cancel")
-
-### Task 5: Monitoring SQL Requests with the Monitor Hub
+### Task 4: Monitoring SQL Requests with the Monitor Hub
 
 1. Let's run a pipeline to monitor its execution in the next step. To do this, select the `Integrate` item from the left menu. **Run** the **Exercise 8 - Execute Business Analyst Queries** Pipeline.
 
