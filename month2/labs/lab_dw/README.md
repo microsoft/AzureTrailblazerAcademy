@@ -106,7 +106,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 1. Deploy the workspace through the following Azure ARM template (press the button below):
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https://raw.githubusercontent.com/microsoft/AzureTrailblazerAcademy/dev/month2/labs/lab_dw/scripts/automation/00-asa-workspace-core.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png" /></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzureTrailblazerAcademy%2Fmonth2%2Flabs%2Flab_dw%2Fscripts%2Fautomation%2F00-asa-workspace-core.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png" /></a>
 
 2. On the **Custom deployment** form:
 
@@ -132,7 +132,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 2. In the Cloud Shell window, enter the following command to clone the repository files.
 
     ```PowerShell
-    git clone https://github.com/microsoft/MCW-Azure-Synapse-Analytics-and-AI.git Synapse-MCW
+    git clone https://github.com/microsoft/AzureTrailblazerAcademy.git Synapse-MCW
     ```
 
 3. Keep the Cloud Shell open.
@@ -160,7 +160,7 @@ When executing the script below, it is important to let the scripts run to compl
 1. In the Cloud Shell, change the current directory to the **automation** folder of the cloned repository by executing the following:
 
     ```PowerShell
-    cd './Synapse-MCW/Hands-on lab/environment-setup/automation'
+    cd './Synapse-MCW/month2/labs/lab_dw/scripts/automation'
     ```
 
 2. Execute the **01-environment-setup.ps1** script by executing the following command:
