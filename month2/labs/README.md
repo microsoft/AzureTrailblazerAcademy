@@ -2,14 +2,11 @@
 
 ## Session Abstract
 
-Automate your code deployments and releases using Azure DevOps. Learn how to use Azure Data Factory and CosmosDB to transform and store data for modern applications.
-
+Introduction to Azure Data Services.
 
 ## Table of Content
 
 | Labs          | Links                            |
 |-------------------|----------------------------------|
-| DevOps           | - [DevOps Lab](lab_devops) |
-| Data Factory     | - [Data Factory Lab](lab_data/) |
-| Cosmos DB		   | - [Cosmos DB Lab](lab_cosmos/) |
-| AzureMonitor       | - [Monitoring Lab](lab_monitoring/) |
+| CosmosDB       | - [CosmosDB Lab](labs/lab_cosmos/) |
+| Synapse/Data Warehouse     | - [Data Lab](labs/lab_dw/) |
