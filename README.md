@@ -18,10 +18,11 @@ In this repository you will find the content and labs you will need to complete 
 
 Learn the basics of Azure, the difference between Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) and build a web application from scratch using Azure native services.
 
-### [**Month 2**: Azure DevOps and Azure Data Services](./month2/labs)
+### [**Month 2**: Azure Data Services](./month2/labs)
 
-Automate your code deployments and releases using Azure DevOps. Learn how to use Azure Data Factory and CosmosDB to transform and store data for modern applications.
+Learn how to use CosmosDB to store data for modern applications. Understand the basics of Azure Synapse (formerly known as Azure Data Warehouse) and how to transform and integrate data from other data stores using Synapse Pipelines.
 
+<!---
 ### [**Month 3**: Azure Monitoring, Computer Vision and PowerBI](./month3)
 
 Monitor your Azure Infrastructure and learn how to configure/query logs in Log Analytics Workspace, intall Microsoft Monitoring Agent Extension and setup alerting to be notified under different conditions.
@@ -30,7 +31,7 @@ Monitor your Azure Infrastructure and learn how to configure/query logs in Log A
 
 Learn about the different Serverless services available in Azure such as Funtions, LogicApps and EventGrid. This month you will build an end-to-end solution using only serverless components.
 
-
+--->
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
