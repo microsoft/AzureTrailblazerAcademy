@@ -1,4 +1,4 @@
-![Microsoft Cloud Workshop](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/images/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+![Microsoft Cloud Workshop](https://raw.githubusercontent.com/Microsoft/MCW-Template-Cloud-Workshop/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
 Azure Synapse Analytics and AI
@@ -1162,7 +1162,7 @@ A common format for exporting and storing data is with text based files. These c
 
    ![The top toolbar menu is displayed with the Discard all button highlighted.](images/toptoolbar_discardall.png "Discard changes")
 
-## Exercise 5: Synapse Pipelines and Cognitive Search (Optional)
+## Exercise 5: Synapse Pipelines and Cognitive Search
 
 **Duration**: 45 minutes
 
@@ -1929,7 +1929,7 @@ In this exercise, you will create multiple machine learning models. You will lea
     SELECT P.ProductId,P.Seasonality,S.TransactionDateId,COUNT(*) as TransactionItemsCount
     FROM wwi_mcw.SaleSmall S
     JOIN wwi_mcw.Product P ON S.ProductId = P.ProductId
-    where TransactionDateId between 20190101 and 20191231
+    where TransactionDateId between 01012019 and 12312019
     GROUP BY P.ProductId ,P.Seasonality,S.TransactionDateId
     ```
 
@@ -2013,7 +2013,7 @@ In this exercise, you will create multiple machine learning models. You will lea
 
 ### Task 4: Leverage Automated ML to create and deploy a Product Seasonality Classifier model
 
-1. In Azure Machine Learning (AML) Studio, select **Experiments** from the left menu, then expand the **+ Create** button, and select **Automated ML run**.
+1. In Azure Machine Learning (AML) Studio, select **Automated ML** from the left menu, then click on **+ New Automated ML Run** button.
 
     ![The AML Studio Experiments screen is shown with the Create button expanded and the Automated ML run item selected.](images/aml_experiment_create.png "The AML Studio Experiments screen")
 
