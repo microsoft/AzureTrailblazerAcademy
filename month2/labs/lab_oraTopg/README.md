@@ -57,7 +57,7 @@
 5. Connect to Oracle VM to set the environment
 - Type "who am i" in the cloud shell
 - Access the Oracle VM (sample-oracledb-vm01) from the portal and get the public IP Address.
-- connect to the vm by typing "ssh /<name/>@/<IPaddress/>"
+- connect to the vm by typing "ssh \<name\>@\<IPaddress\>"
 - switch to root to stop the linux firewall. Not recommended for production
 - Type "sudo su - "
 - Type "systemctl status firewalld" to check the status of the linux firewall.
