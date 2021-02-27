@@ -21,7 +21,7 @@
 - Start a cloud shell 
 - Select Bash shell from dropdown 
 - Create a default storage account if you don't have already
-- az group create --name ataPostgreSQL-initial --location eastus
+
 <img src="./images/OraDBInstall_AzureCloudShell.png" alt="Access Cloud Shell from Portal" width="600">
 
 2. Copy Install Script
@@ -40,7 +40,6 @@
 - Select '+' sign to create a new service group
 - Enter 'sample-oracledb-rg' as the name
   
-
 4. Run the Script
 - Enter the command from the cloud shell in the same folder where you created the install script
 - ./cr_oravm.sh -S <Your SubscriptionId> -O sample -P oracledb -r eastus
@@ -51,19 +50,21 @@
 - Make sure you see a log message saying 'be prepared - long wait'
 - DO NOT WAIT, please continue with your next task. Come back after 25min to finish the rest of the steps.
 - You should see the following message for a successful completion. 
-<img src="./images/" alt="Verify successful script completion" width="600">
+<img src="./images/OraDBInstall_CompleteScriptRun.png" alt="Verify successful script completion" width="600">
 
 - You have successfully created an Oracle database with sample schema on a Azure VM.
 
 5. Connect to Oracle VM to set the environment
 - Type "who am i" in the cloud shell
 - Access the Oracle VM (sample-oracledb-vm01) from the portal and get the public IP Address.
-- connect to the vm by typing "ssh <name>@<IPaddress>"
+- connect to the vm by typing "ssh /<name/>@/<IPaddress/>"
 - switch to root to stop the linux firewall. Not recommended for production
 - Type "sudo su - "
 - Type "systemctl status firewalld" to check the status of the linux firewall.
 - Type "systemctl stop firewalld" to stop the filewall.
 - Type "systemctl status firewalld" to verify if the firewall has stopped. 
+
+6. Set Oracle Environment
 - Type "sudo su - oralce" to login as oracle user
 - type ". oraevn" and enter "oradb01". make sure you have space after "."
 - connect to oracle database by typing "sqlplus / as sysdba"
@@ -72,9 +73,8 @@
 - Connect to HR schema by typing "connect hr/hr;"
 - View table data by typeing "select * from jobs;"
 - You are able to successfully access Jobs table in Oracle HR schema.
-6. Set Oracle Environment
 
-7. Check the connectivity to Oracle Database
+7. Set the connectivity to Oracle Database
 - Access Oracle VM from the Azure Portal
 - Create an inbound port rule to provide access to Oracle database from outside
 - Select 'networking' from the left side setting section
