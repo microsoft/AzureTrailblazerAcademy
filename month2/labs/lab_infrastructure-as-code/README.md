@@ -31,23 +31,22 @@
 1. Visit [Quickstart Template Gallery](https://github.com/Azure/azure-quickstart-templates)
 2. Browse some of the templates to see what is available
 3. Visit [Virtual Network with two Subnets](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)
-3. Fill out the **Basics** tab as follows:
+4. Click **Deloy to Azure** 
+5. The Azure Portal will launch.  It may ask you to login if you are not already.
+6. Click **Edit Template**
+7. Click **Save**
+3. Fill out the following fields:
 - **Subscription:** Choose your subscription
-- **Resource group:** Select the Resource Group you created for this lab
-- **Account name:** Choose a unique name for the Cosmos DB Account
-- **API:** Core (SQL)
-- **Location:** (US) East US
+- **Resource group:** Select the **ATA-Infrastructure-as-Code-RG** resource group that you created for this lab. 
+- **Region:** Choose **East US**
 
-<img src="./images/lab01/01-cosmosdb-account-create-basics.jpg" alt="Cosmos DB Account Create Basics Tab"  Width="600">
+<img src="./images/02-vnet-basics.jpg" alt="VNET Basics"  Width="600">
 
 4. Leave the rest of the fields as default, and click the **Review + create** button.
-
-<img src="./images/lab01/01-cosmosdb-account-create-review.jpg" alt="Cosmos DB Account Create Review"  Width="600">
-
 5. Click the **Create** button.
 
-## Step 3: Create a container
-1. In the Azure Portal, search for the Cosmos DB Account that was created for the lab.
+## Step 3: Deploy a highly available web server farm via Azure Resource Manager (ARM) Template
+1. Get [IaaS ARM Template](./code/iaas-foundations.json)
 2. In the Azure Cosmos DB blade, locate and select the **Overview** link on the left side of the blade. At the top select the **Add Container** button.
 
 <img src="./images/lab01/01-cosmosdb-overview-add-container.jpg" alt="Cosmos DB Overview Add Container"  Width="600">
