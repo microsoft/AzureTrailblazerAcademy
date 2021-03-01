@@ -31,7 +31,7 @@
       "lbProbeID": "[concat(variables('lbID'),'/probes/tcpProbe')]",
       "lbPublicIPAddressName": "[concat(variables('publicIpAddressName'),'3')]",
       "lbPublicIPAddressID": "[concat(resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName')),'3')]",
-      "modulesURL": "https://technoseansk.blob.core.windows.net/iaas/iisInstall.zip",
+      "modulesURL": "https://technosean.blob.core.windows.net/iaas/iisInstall.zip",
       "configurationFunction": "iisInstall.ps1\\iisInstall"
    },
    "resources": [
