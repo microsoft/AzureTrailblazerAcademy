@@ -28,9 +28,9 @@
 5. Click the **Create** button
 
 ## Step 2: Deploy an Azure Resource Manager (ARM) Quickstart Template
-1. Visit [Quickstart Template Gallery](https://github.com/Azure/azure-quickstart-templates)
+1. Right click [Quickstart Template Gallery](https://github.com/Azure/azure-quickstart-templates) to open in a new tab.  
 2. Browse some of the templates to see what is available
-3. Visit [Virtual Network with two Subnets](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)
+3. Right click [Virtual Network with two Subnets](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets) to open in a new tab.  
 4. Click **Deloy to Azure** 
 5. The Azure Portal will launch. It may ask you to login if you are not already. 
 6. Click **Edit Template**
