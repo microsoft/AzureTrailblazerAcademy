@@ -10,4 +10,4 @@ Introduction to Azure Data Services.
 | Labs          | Links                            |
 |-------------------|----------------------------------|
 | CosmosDB       | - [CosmosDB Lab](labs/lab_cosmos/) |
-| Synapse/Data Warehouse     | - [Data Lab](labs/lab_dw/) |
+| Synapse/Data Warehouse     | - [Synapse Lab](labs/lab_dw/) |
