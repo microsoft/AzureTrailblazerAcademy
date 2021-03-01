@@ -22,7 +22,7 @@
 - **Resource group:** Provide the name of "ATA-Infrastructure-as-Code-RG"
 - **Region:** East US
 
-<img src="./images/lab01/01-rg-basics.jpg" alt="Resource Group Basics Tab"  Width="600">
+<img src="./images/01-rg-basics.jpg" alt="Resource Group Basics Tab"  Width="600">
 
 4. Click the **Next: Review + Create** button
 5. Click the **Create** button
