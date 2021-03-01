@@ -1,0 +1,335 @@
+{
+   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+   "contentVersion": "1.0.0.0",
+   "parameters": {
+      "adminUserName": {
+         "type": "string"
+      },
+      "adminPassword": {
+         "type": "securestring"
+      }
+   },
+   "variables": {
+      "virtualMachineName": "VM-WebServer-",
+      "virtualNetworkName": "WebServers-VNET",
+      "publicIpAddressName": "[concat(variables('virtualMachineName'),'PIP-')]",
+      "networkInterfaceName": "[concat(variables('virtualMachineName'),'NIC-')]",
+      "networkSecurityGroupName": "[concat(variables('virtualMachineName'),'NSG')]",
+      "addressPrefix": "10.0.0.0/16",
+      "subnetName": "Servers",
+      "subnetPrefix": "10.0.0.0/24",
+      "virtualMachineSize": "Standard_DS2_v2",
+      "publicIpAddressType": "Dynamic",
+      "publicIpAddressSku": "Basic",
+      "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
+      "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
+      "availabilitySetName": "webAVSet",
+      "lbName": "webFrontEnd-LB",
+      "lbID": "[resourceId('Microsoft.Network/loadBalancers',variables('lbName'))]",
+      "frontEndIPConfigID": "[concat(variables('lbID'),'/frontendIPConfigurations/LoadBalancerFrontEnd')]",
+      "lbPoolID": "[concat(variables('lbID'),'/backendAddressPools/BackendPool1')]",
+      "lbProbeID": "[concat(variables('lbID'),'/probes/tcpProbe')]",
+      "lbPublicIPAddressName": "[concat(variables('publicIpAddressName'),'3')]",
+      "lbPublicIPAddressID": "[concat(resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName')),'3')]",
+      "modulesURL": "https://technosean.blob.core.windows.net/iaas/iisInstall.zip",
+      "configurationFunction": "iisInstall.ps1\\iisInstall"
+   },
+   "resources": [
+      {
+         "name": "[concat(variables('virtualMachineName'),copyIndex(1))]",
+         "type": "Microsoft.Compute/virtualMachines",
+         "apiVersion": "2016-04-30-preview",
+         "location": "[resourceGroup().location]",
+         "dependsOn": [
+            "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'),copyIndex(1))]"
+         ],
+         "copy": {
+            "name": "virtualMachineCopy",
+            "count": 2
+         },
+         "properties": {
+            "availabilitySet": {
+               "id": "[resourceId('Microsoft.Compute/availabilitySets',variables('availabilitySetName'))]"
+            },
+            "osProfile": {
+               "computerName": "[concat(variables('virtualMachineName'),copyIndex(1))]",
+               "adminUsername": "[parameters('adminUsername')]",
+               "adminPassword": "[parameters('adminPassword')]",
+               "windowsConfiguration": {
+                  "provisionVmAgent": "true",
+                  "enableAutomaticUpdates": "false"
+               }
+            },
+            "hardwareProfile": {
+               "vmSize": "[variables('virtualMachineSize')]"
+            },
+            "storageProfile": {
+               "imageReference": {
+                  "publisher": "MicrosoftWindowsServer",
+                  "offer": "WindowsServer",
+                  "sku": "2016-Datacenter",
+                  "version": "latest"
+               },
+               "osDisk": {
+                  "createOption": "fromImage",
+                  "managedDisk": {
+                     "storageAccountType": "Premium_LRS"
+                  }
+               },
+               "dataDisks": []
+            },
+            "networkProfile": {
+               "networkInterfaces": [
+                  {
+                     "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName')),copyIndex(1))]"
+                  }
+               ]
+            }
+         }
+      },
+      {
+         "name": "[variables('virtualNetworkName')]",
+         "type": "Microsoft.Network/virtualNetworks",
+         "apiVersion": "2017-08-01",
+         "location": "[resourceGroup().location]",
+         "properties": {
+            "addressSpace": {
+               "addressPrefixes": [
+                  "[variables('addressPrefix')]"
+               ]
+            },
+            "subnets": [
+               {
+                  "name": "[variables('subnetName')]",
+                  "properties": {
+                     "addressPrefix": "[variables('subnetPrefix')]"
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "name": "[concat(variables('networkInterfaceName'),copyIndex(1))]",
+         "type": "Microsoft.Network/networkInterfaces",
+         "apiVersion": "2016-09-01",
+         "location": "[resourceGroup().location]",
+         "dependsOn": [
+            "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+            "[concat('Microsoft.Network/publicIpAddresses/', variables('publicIpAddressName'),copyIndex(1))]",
+            "[concat('Microsoft.Network/networkSecurityGroups/', variables('networkSecurityGroupName'))]",
+            "[concat('Microsoft.Network/loadBalancers/', variables('lbName'))]"
+         ],
+         "copy": {
+            "name": "networkInterfaceCopy",
+            "count": 2
+         },
+         "properties": {
+            "ipConfigurations": [
+               {
+                  "name": "ipconfig1",
+                  "properties": {
+                     "subnet": {
+                        "id": "[variables('subnetRef')]"
+                     },
+                     "loadBalancerBackendAddressPools": [
+                        {
+                           "id": "[concat(variables('lbID'), '/backendAddressPools/BackendPool1')]"
+                        }
+                     ],
+                     "loadBalancerInboundNatRules": [
+                        {
+                           "id": "[concat(variables('lbID'),'/inboundNatRules/RDP-VM', copyindex(1))]"
+                        }
+                     ],
+                     "privateIPAllocationMethod": "Dynamic",
+                     "publicIpAddress": {
+                        "id": "[concat(resourceId('Microsoft.Network/publicIpAddresses', variables('publicIpAddressName')),copyIndex(1))]"
+                     }
+                  }
+               }
+            ],
+            "networkSecurityGroup": {
+               "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+            }
+         }
+      },
+      {
+         "name": "[concat(variables('publicIPAddressName'),copyIndex(1))]",
+         "type": "Microsoft.Network/publicIpAddresses",
+         "apiVersion": "2017-08-01",
+         "location": "[resourceGroup().location]",
+         "properties": {
+            "publicIpAllocationMethod": "[variables('publicIpAddressType')]"
+         },
+         "sku": {
+            "name": "[variables('publicIpAddressSku')]"
+         },
+         "copy": {
+            "name": "publicIPCopy",
+            "count": 3
+         }
+      },
+      {
+         "name": "[variables('networkSecurityGroupName')]",
+         "type": "Microsoft.Network/networkSecurityGroups",
+         "apiVersion": "2017-06-01",
+         "location": "[resourceGroup().location]",
+         "properties": {
+            "securityRules": [
+               {
+                  "name": "default-allow-rdp",
+                  "properties": {
+                     "priority": 1000,
+                     "protocol": "TCP",
+                     "access": "Allow",
+                     "direction": "Inbound",
+                     "sourceAddressPrefix": "*",
+                     "sourcePortRange": "*",
+                     "destinationAddressPrefix": "*",
+                     "destinationPortRange": "3389"
+                  }
+               },
+               {
+                  "name": "default-allow-http",
+                  "properties": {
+                     "priority": 1001,
+                     "protocol": "TCP",
+                     "access": "Allow",
+                     "direction": "Inbound",
+                     "sourceAddressPrefix": "*",
+                     "sourcePortRange": "*",
+                     "destinationAddressPrefix": "*",
+                     "destinationPortRange": "80"
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "type": "Microsoft.Compute/availabilitySets",
+         "name": "[variables('availabilitySetName')]",
+         "apiVersion": "2016-04-30-preview",
+         "location": "[resourceGroup().location]",
+         "properties": {
+            "platformFaultDomainCount": 2,
+            "platformUpdateDomainCount": 2,
+            "managed": true
+         }
+      },
+      {
+         "type": "Microsoft.Compute/virtualMachines/extensions",
+         "name": "[concat(variables('virtualMachineName'),CopyIndex(1),'/dscExtension')]",
+         "apiVersion": "2015-05-01-preview",
+         "location": "[resourceGroup().location]",
+         "dependsOn": [
+            "[concat('Microsoft.Compute/virtualMachines/', variables('virtualMachineName'),copyIndex(1))]"
+         ],
+         "copy": {
+            "name": "dscExtensionCopy",
+            "count": 2
+         },
+         "properties": {
+            "publisher": "Microsoft.Powershell",
+            "type": "DSC",
+            "typeHandlerVersion": "2.76",
+            "autoUpgradeMinorVersion": true,
+            "settings": {
+               "configuration": {
+                  "url": "[variables('modulesUrl')]",
+                  "script": "iisInstall.ps1",
+                  "function": "IISInstall"
+               },
+               "ConfigurationArguments": {
+                  "MachineName": "[concat(variables('virtualMachineName'),CopyIndex(1))]"
+               }
+            },
+            "protectedSettings": null
+         }
+      },
+      {
+         "apiVersion": "2015-05-01-preview",
+         "name": "[variables('lbName')]",
+         "type": "Microsoft.Network/loadBalancers",
+         "location": "[resourceGroup().location]",
+         "dependsOn": [
+            "[concat('Microsoft.Network/publicIPAddresses/', variables('lbPublicIPAddressName'))]"
+         ],
+         "properties": {
+            "frontendIPConfigurations": [
+               {
+                  "name": "LoadBalancerFrontEnd",
+                  "properties": {
+                     "publicIPAddress": {
+                        "id": "[variables('lbPublicIPAddressID')]"
+                     }
+                  }
+               }
+            ],
+            "backendAddressPools": [
+               {
+                  "name": "BackendPool1"
+               }
+            ],
+            "inboundNatRules": [
+               {
+                  "name": "RDP-VM1",
+                  "properties": {
+                     "frontendIPConfiguration": {
+                        "id": "[variables('frontEndIPConfigID')]"
+                     },
+                     "protocol": "tcp",
+                     "frontendPort": 50001,
+                     "backendPort": 3389,
+                     "enableFloatingIP": false
+                  }
+               },
+               {
+                  "name": "RDP-VM2",
+                  "properties": {
+                     "frontendIPConfiguration": {
+                        "id": "[variables('frontEndIPConfigID')]"
+                     },
+                     "protocol": "tcp",
+                     "frontendPort": 50002,
+                     "backendPort": 3389,
+                     "enableFloatingIP": false
+                  }
+               }
+            ],
+            "loadBalancingRules": [
+               {
+                  "name": "LBRule",
+                  "properties": {
+                     "frontendIPConfiguration": {
+                        "id": "[variables('frontEndIPConfigID')]"
+                     },
+                     "backendAddressPool": {
+                        "id": "[variables('lbPoolID')]"
+                     },
+                     "protocol": "tcp",
+                     "frontendPort": 80,
+                     "backendPort": 80,
+                     "enableFloatingIP": false,
+                     "idleTimeoutInMinutes": 5,
+                     "probe": {
+                        "id": "[variables('lbProbeID')]"
+                     }
+                  }
+               }
+            ],
+            "probes": [
+               {
+                  "name": "tcpProbe",
+                  "properties": {
+                     "protocol": "tcp",
+                     "port": 80,
+                     "intervalInSeconds": 5,
+                     "numberOfProbes": 2
+                  }
+               }
+            ]
+         }
+      }
+   ],
+   "outputs": {}
+}
