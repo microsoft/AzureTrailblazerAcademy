@@ -32,7 +32,7 @@
 2. Browse some of the templates to see what is available
 3. Visit [Virtual Network with two Subnets](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)
 4. Click **Deloy to Azure** 
-5. The Azure Portal will launch.  It may ask you to login if you are not already.
+5. The Azure Portal will launch. It may ask you to login if you are not already. 
 6. Click **Edit Template**
 7. Click **Save**
 3. Fill out the following fields:
