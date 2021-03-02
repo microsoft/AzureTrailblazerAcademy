@@ -113,10 +113,11 @@
 - You have successfully completed the pre-requisits for this lab!
 
 ### Prep-2: Database access Tools
-1. Download DBeaver Community Edition 21.0.0 using <a href="https://dbeaver.io/download/"> this link </a>.
-- Install on your laptop.
-2. Install pgadmin tool
-- Download PostgreSQL Admin tool using <a href="https://www.pgadmin.org/download/pgadmin-4-windows/">thislink</a>
+1. Install DBeaver tool to access Oracle Database.
+- Download DBeaver Community Edition 21.0.0 using <a href="https://dbeaver.io/download/"> this link </a>.
+
+2. Install pgadmin tool to access Azure PostgreSQL.
+- Download PostgreSQL Admin tool using <a href="https://www.pgadmin.org/download/pgadmin-4-windows/">thislink</a>.
 
 ### Task-1: Create Azure Database for PostgreSQL Service
 1. Select Azure Database for PostgreSQL service.
