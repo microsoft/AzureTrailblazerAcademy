@@ -187,13 +187,13 @@
 - type "sudo su - oracle" to become Oracle user
 - type ". oraenv" to set the oracle environment
 - enter "oradb01' as the ORACLE_SID
-- Type "sqlplus \ as sysdba" to connect to the database
+- Type "sqlplus / as sysdba" to connect to the database
 - Once you are in sqlpus, type the following commands:
 - SHUTDOWN IMMEDIATE;
 - STARTUP MOUNT;
 - ALTER DATABASE ARCHIVELOG;
-- ALTER SYSTEM ARCHIVE LOG CURRENT
 - ALTER DATABASE OPEN;
+- ALTER SYSTEM ARCHIVE LOG CURRENT;
 - ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 - SHUTDOWN IMMEDIATE;
 - STARTUP;
