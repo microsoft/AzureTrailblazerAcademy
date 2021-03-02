@@ -6,6 +6,7 @@
 
 ## Pre-requisites
 - [Prep-1: Create Oracle Database on Azure VM](#prep-1-create-oracle-database-on-azure-vm)
+- [Prep-2: Database access Tools](#prep-2:database-access-tools) 
 
 ## Task List
 - [Task-1: Create Azure Database for PostgreSQL Service](#task-1-create-azure-database-for-postgresql-service)
@@ -111,12 +112,18 @@
 
 - You have successfully completed the pre-requisits for this lab!
 
+### Prep-2: Database access Tool
+1. Download DBeaver Community Edition 21.0.0 using <a href="https://dbeaver.io/download/"> this link </a>.
+- Install on your laptop.
+2. Install pgadmin tool
+- Download PostgreSQL Admin tool using <a href="https://www.pgadmin.org/download/pgadmin-4-windows/">thislink</a>
+
 ### Task-1: Create Azure Database for PostgreSQL Service
 1. Select Azure Database for PostgreSQL service.
 - Type 'Azure Database for postgresql' on the search bar to select Azure database for postgreSQL service
 - Select Single Server option.
 
-<img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" hight="200">
+<img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" width="400">
 
 2. Enter the following details:
 - Resource group: Select an existing resource group "sample-oracledb-rg" from the drop down.
@@ -127,7 +134,7 @@
 - Admin username: enter 'pgadmin'
 - Password: enter 'atapg123!'
 
-<img src="./images/ata-pg-create-single-server.PNG" alt="create single server postgreSQL" width="800">
+<img src="./images/ata-pg-create-single-server.PNG" alt="create single server postgreSQL" width="600">
 
 - Click on 'Review + create'.
 - Click on 'Create' after the successful validation.
@@ -140,10 +147,8 @@
 
 <img src="./images/ata-pg-network-setup.PNG" alt="Add the client IP address to the network security" hight="600">
 
-4. Install pgadmin tool
-- Download PostgreSQL Admin tool using <a href="https://www.pgadmin.org/download/pgadmin-4-windows/">thislink</a>
 
-5. Connect to the Azure PostgreSQL from PgAdmin Tool
+4. Connect to the Azure PostgreSQL from PgAdmin Tool
 - Enter the following:
 - Host Name: copy host name from the Azure Portal
 - User name:pgadmin@hostname
