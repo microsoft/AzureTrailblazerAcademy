@@ -55,11 +55,13 @@
 - You have successfully created an Oracle database with sample schema on a Azure VM.
 
 5. Connect to Oracle VM to set the environment
-- Type "who am i" in the cloud shell to get the "UserName".
+- Type "whoami" in the cloud shell to get the "UserName".
 - Type "cd" enter to be in the home directory.
 - Locate the public key file 'id_rsa.pub' in ".ssh" directory.
 - Type 'cat id_rsa.pub' and copy the public key.
-- Reset the VM password with the public key by accessing "Reset Password" under "Support + troubleshooting" section of Oracle VM left menu from Azure Portal.   
+- Reset the VM password with the public key by accessing "Reset Password" under "Support + troubleshooting" section of Oracle VM left menu from Azure Portal.
+<img src="./images/ata_VM_Reset_Password_PublicKey.png" alt="Reset Oracle VM Password with Public Key" width="800">
+
 - Access the Oracle VM (sample-oracledb-vm01) from the portal and get the public IP Address.
 - Connect to the vm by typing "ssh \<UserName\>@\<IPAddress\>".
 - Switch to root to stop the linux firewall. It is not recommended for enterprise use. 
