@@ -6,7 +6,7 @@
 
 ## Pre-requisites
 - [Prep-1: Create Oracle Database on Azure VM](#prep-1-create-oracle-database-on-azure-vm)
-- [Prep-2: Database access Tools](#prep-2:database-access-tools) 
+- [Prep-2: Database access Tools](#prep-2-database-access-tools) 
 
 ## Task List
 - [Task-1: Create Azure Database for PostgreSQL Service](#task-1-create-azure-database-for-postgresql-service)
