@@ -42,7 +42,7 @@
   
 4. Run the Script
 - Enter the command from the cloud shell in the same folder where you created the install script
-- ./cr_oravm.sh -S <Your SubscriptionId> -O sample -P oracledb -r eastus -u Oracle:Oracle-Database-Ee:12.2.0.1:12.2.2018072
+- ./cr_oravm.sh -S \<Your SubscriptionId\> -O sample -P oracledb -r eastus -u Oracle:Oracle-Database-Ee:12.2.0.1:12.2.2018072
 - Script should start running without any errors. 
 - Check the log file in the same folder to troubleshoot issues.
 <img src="./images/OraDBInstall_RunScript.png" alt="Run install script from cloud shell" width="600">
