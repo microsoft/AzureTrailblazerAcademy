@@ -114,7 +114,7 @@
 - Type 'Azure Database for postgresql' on the search bar to select Azure database for postgreSQL service
 - Select Single Server option.
 
-<img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" hight="350">
+<img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" hight="200">
 
 2. Enter the following details:
 - Resource group: Select an existing resource group "sample-oracledb-rg" from the drop down.
