@@ -6,6 +6,7 @@
 
 ## Pre-requisites
 - [Prep-1: Create Oracle Database on Azure VM](#prep-1-create-oracle-database-on-azure-vm)
+- [Prep-2: Database access Tools](#prep-2-database-access-tools) 
 
 ## Task List
 - [Task-1: Create Azure Database for PostgreSQL Service](#task-1-create-azure-database-for-postgresql-service)
@@ -72,7 +73,7 @@
 
 6. Set Oracle Environment
 - Continue in the cloud shell environment.
-- Type "sudo su - oralce" to login as oracle user.
+- Type "sudo su - oracle" to login as oracle user.
 - type ". oraenv" and enter "oradb01" as ORACLE_SID. make sure you have space after "."
 - connect to oracle database by typing "sqlplus / as sysdba".
 - Unlock the HR schema account by typing "alter user hr identified by hr account unlock;".
@@ -111,12 +112,19 @@
 
 - You have successfully completed the pre-requisits for this lab!
 
+### Prep-2: Database access Tools
+1. Install DBeaver tool to access Oracle Database.
+- Download DBeaver Community Edition 21.0.0 using <a href="https://dbeaver.io/download/"> this link </a>.
+
+2. Install pgadmin tool to access Azure PostgreSQL.
+- Download PostgreSQL Admin tool using <a href="https://www.pgadmin.org/download/pgadmin-4-windows/">thislink</a>.
+
 ### Task-1: Create Azure Database for PostgreSQL Service
 1. Select Azure Database for PostgreSQL service.
 - Type 'Azure Database for postgresql' on the search bar to select Azure database for postgreSQL service
 - Select Single Server option.
 
-<img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" hight="200">
+<img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" width="400">
 
 2. Enter the following details:
 - Resource group: Select an existing resource group "sample-oracledb-rg" from the drop down.
@@ -127,7 +135,7 @@
 - Admin username: enter 'pgadmin'
 - Password: enter 'atapg123!'
 
-<img src="./images/ata-pg-create-single-server.PNG" alt="create single server postgreSQL" width="800">
+<img src="./images/ata-pg-create-single-server.PNG" alt="create single server postgreSQL" width="600">
 
 - Click on 'Review + create'.
 - Click on 'Create' after the successful validation.
@@ -140,10 +148,8 @@
 
 <img src="./images/ata-pg-network-setup.PNG" alt="Add the client IP address to the network security" hight="600">
 
-4. Install pgadmin tool
-- Download PostgreSQL Admin tool using <a href="https://www.pgadmin.org/download/pgadmin-4-windows/">thislink</a>
 
-5. Connect to the Azure PostgreSQL from PgAdmin Tool
+4. Connect to the Azure PostgreSQL from PgAdmin Tool
 - Enter the following:
 - Host Name: copy host name from the Azure Portal
 - User name:pgadmin@hostname
@@ -181,20 +187,19 @@
 - type "sudo su - oracle" to become Oracle user
 - type ". oraenv" to set the oracle environment
 - enter "oradb01' as the ORACLE_SID
-- Type "sqlplus \ as sysdba" to connect to the database
+- Type "sqlplus / as sysdba" to connect to the database
+- Once you are in sqlpus, type the following commands:
 - SHUTDOWN IMMEDIATE;
 - STARTUP MOUNT;
 - ALTER DATABASE ARCHIVELOG;
-- ALTER SYSTEM ARCHIVE LOG CURRENT
 - ALTER DATABASE OPEN;
+- ALTER SYSTEM ARCHIVE LOG CURRENT;
 - ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 - SHUTDOWN IMMEDIATE;
 - STARTUP;
 - run the following commands to check the status:
-- select log_mode from v$database;
-- You should see 'ARCHIVELOG' as the response.
-- select supplemental_log_data_min from v$database;
-- You should see 'YES' as the response.
+- SELECT LOG_MODE FROM V$DATABASE; (You should see 'ARCHIVELOG' as the response)
+- SELECT SUPPLEMENTAL_LOG_DATA_MIN FROM V$DATABASE; (You should see 'YES' as the response)
 - type exit to come out of sqlplus prompt.
 - You successfully enabled Oracle database for on-line migration.
 
