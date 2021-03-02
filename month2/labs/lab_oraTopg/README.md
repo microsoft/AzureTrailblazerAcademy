@@ -72,7 +72,7 @@
 
 6. Set Oracle Environment
 - Continue in the cloud shell environment.
-- Type "sudo su - oralce" to login as oracle user.
+- Type "sudo su - oracle" to login as oracle user.
 - type ". oraenv" and enter "oradb01" as ORACLE_SID. make sure you have space after "."
 - connect to oracle database by typing "sqlplus / as sysdba".
 - Unlock the HR schema account by typing "alter user hr identified by hr account unlock;".
