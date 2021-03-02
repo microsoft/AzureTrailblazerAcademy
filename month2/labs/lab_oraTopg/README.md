@@ -25,24 +25,24 @@
 <img src="./images/OraDBInstall_AzureCloudShell.png" alt="Access Cloud Shell from Portal" width="600">
 
 2. Copy Install Script
-- create a directory called 'oradb-install'
+- Create a directory called 'oradb-install' by typing 'mkdir oradb-install'.
 - Open the cr_oravm.sh file from github located in the same folder of this document in a browser and copy the content.
 - Use your favorite file editor on linux such as 'vi' and create cr_oravm.sh file to paste the content.
 - Give execute permissions to the file by typing 'chmod +x cr_oravm.sh' command.   
 
-3. Get SubscriptionID and Create a resource group
+3. Get SubscriptionID and Create a resource group.
 - Use portal and select 'Subscriptions' from the left navigation menu or type 'subscriptions' in the search bar.
-- Copy the 'SubscriptionId'
+- Copy the 'SubscriptionId'.
 
 <img src="./images/OraDBInstall_SubscriptionId.PNG" alt="Select SubscriptionId from Portal" width="600">
 
-- Type 'Resource' to select 'Resource Group' service
-- Select '+' sign to create a new service group
-- Enter 'sample-oracledb-rg' as the name
+- Type 'Resource' to select 'Resource Group' service.
+- Select '+' sign to create a new service group.
+- Enter 'sample-oracledb-rg' as the name.
   
 4. Run the Script
-- Enter the command from the cloud shell in the same folder where you created the install script
-- ./cr_oravm.sh -S <Your SubscriptionId> -O sample -P oracledb -r eastus
+- Enter the following command from the cloud shell in the same folder where you created the install script:
+- ./cr_oravm.sh -S \<Your SubscriptionId\> -O sample -P oracledb -r eastus -u Oracle:Oracle-Database-Ee:12.2.0.1:12.2.20180725 -H /u01/app/oracle/product/12.2.0/dbhome_1
 - Script should start running without any errors. 
 - Check the log file in the same folder to troubleshoot issues.
 <img src="./images/OraDBInstall_RunScript.png" alt="Run install script from cloud shell" width="600">
@@ -55,39 +55,43 @@
 - You have successfully created an Oracle database with sample schema on a Azure VM.
 
 5. Connect to Oracle VM to set the environment
-- Type "who am i" in the cloud shell
+- Type "whoami" in the cloud shell to get the "UserName".
+- Type "cd" enter to be in the home directory.
+- Locate the public key file 'id_rsa.pub' in ".ssh" directory.
+- Type 'cat id_rsa.pub' and copy the public key.
+- Reset the VM password with the public key by accessing "Reset Password" under "Support + troubleshooting" section of Oracle VM left menu from Azure Portal.
+<img src="./images/ata_VM_Reset_Password_PublicKey.png" alt="Reset Oracle VM Password with Public Key" width="800">
+
 - Access the Oracle VM (sample-oracledb-vm01) from the portal and get the public IP Address.
-- connect to the vm by typing "ssh \<name\>@\<IPaddress\>"
-- switch to root to stop the linux firewall. Not recommended for production
-- Type "sudo su - "
+- Connect to the vm by typing "ssh \<UserName\>@\<IPAddress\>".
+- Switch to root to stop the linux firewall. It is not recommended for enterprise use. 
+- Type "sudo su - " to become root user.
 - Type "systemctl status firewalld" to check the status of the linux firewall.
 - Type "systemctl stop firewalld" to stop the filewall.
 - Type "systemctl status firewalld" to verify if the firewall has stopped. 
 
 6. Set Oracle Environment
-- Type "sudo su - oralce" to login as oracle user
-- type ". oraevn" and enter "oradb01". make sure you have space after "."
-- connect to oracle database by typing "sqlplus / as sysdba"
-- Unlock the HR schema account by typing "alter user hr account unlocked;"
-- Change HR user password by typing "alter user hr identified by hr;"
-- Connect to HR schema by typing "connect hr/hr;"
-- View table data by typeing "select * from jobs;"
-- You are able to successfully access Jobs table in Oracle HR schema.
+- Continue in the cloud shell environment.
+- Type "sudo su - oralce" to login as oracle user.
+- type ". oraenv" and enter "oradb01" as ORACLE_SID. make sure you have space after "."
+- connect to oracle database by typing "sqlplus / as sysdba".
+- Unlock the HR schema account by typing "alter user hr identified by hr account unlock;".
+- Connect to HR schema by typing "connect hr/hr;". 
+- View table data by typeing "select * from jobs;".
+- type "exit" to come out of sqlplus.
+- You are able to successfully access "Jobs" table in Oracle HR schema!
 
-7. Set the connectivity to Oracle Database
-- Access Oracle VM from the Azure Portal
-- Create an inbound port rule to provide access to Oracle database from outside
-- Select 'networking' from the left side setting section
-- Select 'Add inbound port rule' 
+7. Set the client connectivity to Oracle Database
+- Access Oracle VM from the Azure Portal.
+- Create an inbound port rule to provide access to Oracle database from outside.
+- Select 'networking' from the left side setting section.
+- Select 'Add inbound port rule'. 
 - Leave the default values except the following:
 - Destination port ranges:1521
 - Name: port_1521
 
-<img src="./images/OraDBInstall_AddInboundPortRule.png" alt="Adding Inbound Port Rule for Oracle Access" width="600">
+<img src="./images/OraDBInstall_AddInboundPortRule.png" alt="Adding Inbound Port Rule for Oracle Access" width="400">
 
-- open a command prompt in your local environment.
-- type "curl -v telnet://\<OracleVM_IPAddress\>:1521"
-- It should come back with "Connected to \<OracleVM_IPAddress\>"
 - Connect to Oracle HR schema from your favorite database tool for example DBeaver, toad etc
 - Enter the following info: 
 - Host: <OracleVM_IPAddress>
@@ -96,23 +100,30 @@
 - type:SID
 - Username: hr
 - Password: hr
-<img src="./images/OraDBInstall_DBConnectivityTest.png" alt="Testing Connectivity from local Environment" width="600">
-- View the data in Jobs & Employees tables
+<img src="./images/OraDBInstall_DBConnectivityTest.jpg" alt="Testing Connectivity from local Environment" width="600">
 
-- You have successfully completed the pre-requisits for this lab:
+- View the data in Jobs & Employees tables for verification. 
+
+- Connection Troubleshooting tip:
+- open a command prompt in your local environment.
+- type "curl -v telnet://\<OracleVM_IPAddress\>:1521"
+- It should come back with "Connected to \<OracleVM_IPAddress\>"
+
+- You have successfully completed the pre-requisits for this lab!
 
 ### Task-1: Create Azure Database for PostgreSQL Service
-1. Select Azure Database for PostgreSQL service
+1. Select Azure Database for PostgreSQL service.
 - Type 'Azure Database for postgresql' on the search bar to select Azure database for postgreSQL service
-- Select Single Server option
+- Select Single Server option.
 
-<img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" hight="500">
+<img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" hight="200">
 
-2. Enter the following details
-- Resource group: Select an existing resource group "ataPostgreSQL-initial" from the drop down.
-- Server name: enter 'atapg11\<yourname\>'.
+2. Enter the following details:
+- Resource group: Select an existing resource group "sample-oracledb-rg" from the drop down.
+- Server name: enter 'atapg11-\<yourname\>'.
 - Location: select 'East US'
 - Version: 11
+- Compute + Storage: opt for 2 vCores by selecting 'Configure Server' link 
 - Admin username: enter 'pgadmin'
 - Password: enter 'atapg123!'
 
@@ -120,10 +131,13 @@
 
 - Click on 'Review + create'.
 - Click on 'Create' after the successful validation.
+- Server creation takes few minutes. No need to wait, Start Task-2 and come back.
 
 3. Open access to the PgAdmin Client Server
-- Connect to the Azure PostgreSQL Server
-- Add the IP address of the client in the server NSG setup
+- Access Azure PostgreSQL Service and select 'Connection Security' from the left menu. 
+- Set 'Allow access to Azure Services' to 'YES'
+- Select 'Add current client IP Address' button to add the clientIP to the NSG Firewall setup.
+
 <img src="./images/ata-pg-network-setup.PNG" alt="Add the client IP address to the network security" hight="600">
 
 4. Install pgadmin tool
@@ -137,42 +151,53 @@
 <img src="./images/ata-pg-connect-pg-service.PNG" alt="Create PG server connection" width="500">
 
 - Select 'Databases' and create a new Database
-- Enter HR as the new database
+- Enter 'Oracle_Migrate' as the new database
 - Create 'PGHR' as the schema
 <img src="./images/ata-pg-create-hr-database.PNG" alt="Create PG server connection" width="500">
 
 ## Task-2: Create Azure Database Migration Service
 1. Select Azure Database Migration Service
 - Type 'Database Migration' in the search bar to select the service.
+
 2. Enter the following information
-- Resource Group: Select the resource group you have created in the Task-1.
+- Resource Group: Select the resource group "sample-oracledb-rg" from the dropdown .
 - Migration service name: Enter 'ata-dms-\<youname\>'
-- Pricing tier: Click on 'Configure tier' and select Premium service.
+- Pricing tier: Click on 'Configure tier' and select Premium service. *** DO NOT MISS THIS STEP!! ***.  
 - Click on 'Networking' button
 <img src="./images/ata-pg-create-dms.PNG" alt="Create Azure Database Migration Service" width="800">
 
-- Select the existing Virtual Network for the resource group
+- Select the existing Virtual Network for the resource group starts with 'sample-'.
 <img src="./images/ata-dms-VNet-Selection.PNG" alt="Select the existing Virutal Network" Width="800">
 
 - Click on 'Review + create'.
 - Click on 'Create' after the successful validation.
-- Click on 'Goto Resource' after it is done.
+- It will take a while, don't wait, go to the next step.
+
 3. Enable Supplimental Loging and Archive Loging in Oracle
 - Open the Cloud Shell
-- Login to Oracle Server
-- Enter the following commands:
-- ssh azureuser@\<YourIP\> to access the VM
-- sudo su - oracle to change the user as Oracle
-- sqlplus \ as sysdba to connect to the database
+- Enter the following commands to access the Oracle VM:
+- Type "who am i" and get the \<UserName\>
+- ssh \<UserName\>@\<YourIP\> to access the VM
+- type "sudo su - oracle" to become Oracle user
+- type ". oraenv" to set the oracle environment
+- enter "oradb01' as the ORACLE_SID
+- Type "sqlplus \ as sysdba" to connect to the database
 - SHUTDOWN IMMEDIATE;
 - STARTUP MOUNT;
 - ALTER DATABASE ARCHIVELOG;
+- ALTER SYSTEM ARCHIVE LOG CURRENT
 - ALTER DATABASE OPEN;
 - ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 - SHUTDOWN IMMEDIATE;
 - STARTUP;
-- alter session set container=pdb1;
-- alter database open;
+- run the following commands to check the status:
+- select log_mode from v$database;
+- You should see 'ARCHIVELOG' as the response.
+- select supplemental_log_data_min from v$database;
+- You should see 'YES' as the response.
+- type exit to come out of sqlplus prompt.
+- You successfully enabled Oracle database for on-line migration.
+
 ## Task-3: Create a project to Migrate Oracle HR schema
 1. Create a migration project 
 - Select '+' next to 'New Migration Project' 
@@ -183,29 +208,31 @@
 - Click on 'Create and Run Activity' button
 - It opens up 6 step configuration
 
-2. Add Source Details
+2. Add Source Details:
 - Enter the following Oracle 12c HR database details
-- Source Server name: Enter the Instructor provided Oracle Server IP address.
+- Source Server name: Identify the internal IP address of the Oracle VM from the portal and enter, For Example '10.0.0.4'.
 - Server port: Enter the default port number 1521.
-- Oracle SID: Enter 'nonpdb' 
+- Oracle SID: Enter 'oradb01' 
 - User Name: Enter 'system'
-- Password: Enter 'OraPasswd1'
+- Password: Enter 'oracleA1'
 - Click on Save button.
 <img src="./images/ata-pg-dms-add-source.PNG" alt="Enter source oracle database access details" width="800">
 
-3. Provide Driver Install Detail
+3. Provide Driver Install Detail:
 - Download the driver file from <a href="https://aka.ms/OracleDriverDownloads"> Oracle site</a> 
-- Create a storage account file share and upload the file
-- Get the path, user and password from the connection info as shown in the picture.
+- Access the storage account in the resource group
+- Create a file share and upload the driver file
+- Get the path, user and password from the connection info by copying it to a notepad.
 <img src="./images/ata-dms-FileShare_OracleDriver.png" alt="Access File Share and get the connection details" hight="700">
 
 - Enter the following location details to access the driver file
-- OCI driver path: Get the path from the connect info and add "instantclient-basiclite-windows.x64-12.2.0.1.0.zip" at the end.
+- OCI driver path: Get the path from the connect info and add "instantclient-basiclite-windows.x64-12.2.0.1.0.zip" at the end. 
+- For Example: \\sampleoracledbsa.file.core.windows.net\oracle-driver\instantclient-basiclite-windows.x64-12.2.0.1.0.zip
 - User Name: Get the details from Connect Info
-- Password: Get the details from the connect Info
+- Password: Get the details from the connect Info. Grab only the text inside the quotes. 
 - Click on Save button
 
-4. Add Target Info
+4. Add Target Info:
 - Enter the following info:
 - Target Server Name: Get the name from PostgreSQL Overview 
 - Database: keep the default value
@@ -213,13 +240,11 @@
 - Password: Enter the password similar to 'atapg123!'
 <img src="./images/ata-pg-dms-add-target-info.PNG" alt="Add PostgreSQL target database info" hight="400">
 
-5. Add the network access to DMS Service from PostgreSQL service
-- You will get an error showing the IP address which need the access from PostgreSQL.
-6. Select Source and Target Schemas
+5. Select Source and Target Schemas
 - Select 'HR' from Oracle and 'PGHR' from PostgreSQL
 <img src="./images/ata-pg-dms-schema-mapping.PNG" alt="Map source and target schemas" Width="600">
 
-7. Select Source and target table mappings
+6. Select Source and target table mappings
 <img src="./images/ata-pg-dms-migration-settings.PNG" alt="Migration table mappings" Width="600">
 
 ## Task-4: Execute the initial load
