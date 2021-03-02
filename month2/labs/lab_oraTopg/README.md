@@ -25,24 +25,24 @@
 <img src="./images/OraDBInstall_AzureCloudShell.png" alt="Access Cloud Shell from Portal" width="600">
 
 2. Copy Install Script
-- create a directory called 'oradb-install'
+- Create a directory called 'oradb-install' by typing 'mkdir oradb-install'.
 - Open the cr_oravm.sh file from github located in the same folder of this document in a browser and copy the content.
 - Use your favorite file editor on linux such as 'vi' and create cr_oravm.sh file to paste the content.
 - Give execute permissions to the file by typing 'chmod +x cr_oravm.sh' command.   
 
-3. Get SubscriptionID and Create a resource group
+3. Get SubscriptionID and Create a resource group.
 - Use portal and select 'Subscriptions' from the left navigation menu or type 'subscriptions' in the search bar.
-- Copy the 'SubscriptionId'
+- Copy the 'SubscriptionId'.
 
 <img src="./images/OraDBInstall_SubscriptionId.PNG" alt="Select SubscriptionId from Portal" width="600">
 
-- Type 'Resource' to select 'Resource Group' service
-- Select '+' sign to create a new service group
-- Enter 'sample-oracledb-rg' as the name
+- Type 'Resource' to select 'Resource Group' service.
+- Select '+' sign to create a new service group.
+- Enter 'sample-oracledb-rg' as the name.
   
 4. Run the Script
-- Enter the command from the cloud shell in the same folder where you created the install script
-- ./cr_oravm.sh -S \<Your SubscriptionId\> -O sample -P oracledb -r eastus -u Oracle:Oracle-Database-Ee:12.2.0.1:12.2.2018072
+- Enter the following command from the cloud shell in the same folder where you created the install script:
+- ./cr_oravm.sh -S \<Your SubscriptionId\> -O sample -P oracledb -r eastus -u Oracle:Oracle-Database-Ee:12.2.0.1:12.2.20180725 -H /u01/app/oracle/product/12.2.0/dbhome_1
 - Script should start running without any errors. 
 - Check the log file in the same folder to troubleshoot issues.
 <img src="./images/OraDBInstall_RunScript.png" alt="Run install script from cloud shell" width="600">
@@ -55,21 +55,21 @@
 - You have successfully created an Oracle database with sample schema on a Azure VM.
 
 5. Connect to Oracle VM to set the environment
-- Type "who am i" in the cloud shell to get the "UserName"
-- Locate the public key in ".ssh" directory
-- Copy the public key
+- Type "who am i" in the cloud shell to get the "UserName".
+- Locate the public key in ".ssh" directory.
+- Copy the public key.
 - Reset the VM password with the public key by accessing "Reset Password" under "Support + troubleshooting" section of Oracle VM left menu from Azure Portal.   
 - Access the Oracle VM (sample-oracledb-vm01) from the portal and get the public IP Address.
-- connect to the vm by typing "ssh \<UserName\>@\<IPAddress\>"
-- switch to root to stop the linux firewall. Not recommended for production
-- Type "sudo su - "
+- connect to the vm by typing "ssh \<UserName\>@\<IPAddress\>".
+- switch to root to stop the linux firewall. It is not recommended for enterprise use. 
+- Type "sudo su - " to become root user.
 - Type "systemctl status firewalld" to check the status of the linux firewall.
 - Type "systemctl stop firewalld" to stop the filewall.
 - Type "systemctl status firewalld" to verify if the firewall has stopped. 
 
 6. Set Oracle Environment
 - Type "sudo su - oralce" to login as oracle user.
-- type ". oraenv" and enter "oradb01". make sure you have space after "."
+- type ". oraenv" and enter "oradb01" as ORACLE_SID. make sure you have space after "."
 - connect to oracle database by typing "sqlplus / as sysdba".
 - Unlock the HR schema account by typing "alter user hr identified by hr account unlock;".
 - Connect to HR schema by typing "connect hr/hr;". 
@@ -77,7 +77,7 @@
 - type "exit" to get out of sqlplus.
 - You are able to successfully access Jobs table in Oracle HR schema.
 
-7. Set the connectivity to Oracle Database
+7. Set the client connectivity to Oracle Database
 - Access Oracle VM from the Azure Portal.
 - Create an inbound port rule to provide access to Oracle database from outside.
 - Select 'networking' from the left side setting section.
@@ -98,23 +98,23 @@
 - Password: hr
 <img src="./images/OraDBInstall_DBConnectivityTest.png" alt="Testing Connectivity from local Environment" width="600">
 
-- View the data in Jobs & Employees tables
+- View the data in Jobs & Employees tables for verification. 
 
 - Connection Troubleshooting tip:
 - open a command prompt in your local environment.
 - type "curl -v telnet://\<OracleVM_IPAddress\>:1521"
 - It should come back with "Connected to \<OracleVM_IPAddress\>"
 
-- You have successfully completed the pre-requisits for this lab:
+- You have successfully completed the pre-requisits for this lab!
 
 ### Task-1: Create Azure Database for PostgreSQL Service
-1. Select Azure Database for PostgreSQL service
+1. Select Azure Database for PostgreSQL service.
 - Type 'Azure Database for postgresql' on the search bar to select Azure database for postgreSQL service
-- Select Single Server option
+- Select Single Server option.
 
 <img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" hight="500">
 
-2. Enter the following details
+2. Enter the following details:
 - Resource group: Select an existing resource group "sample-oracledb-rg" from the drop down.
 - Server name: enter 'atapg11-\<yourname\>'.
 - Location: select 'East US'
