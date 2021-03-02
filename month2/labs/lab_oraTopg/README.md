@@ -56,26 +56,28 @@
 
 5. Connect to Oracle VM to set the environment
 - Type "who am i" in the cloud shell to get the "UserName".
-- Locate the public key in ".ssh" directory.
-- Copy the public key.
+- Type "cd" enter to be in the home directory.
+- Locate the public key file 'id_rsa.pub' in ".ssh" directory.
+- Type 'cat id_rsa.pub' and copy the public key.
 - Reset the VM password with the public key by accessing "Reset Password" under "Support + troubleshooting" section of Oracle VM left menu from Azure Portal.   
 - Access the Oracle VM (sample-oracledb-vm01) from the portal and get the public IP Address.
-- connect to the vm by typing "ssh \<UserName\>@\<IPAddress\>".
-- switch to root to stop the linux firewall. It is not recommended for enterprise use. 
+- Connect to the vm by typing "ssh \<UserName\>@\<IPAddress\>".
+- Switch to root to stop the linux firewall. It is not recommended for enterprise use. 
 - Type "sudo su - " to become root user.
 - Type "systemctl status firewalld" to check the status of the linux firewall.
 - Type "systemctl stop firewalld" to stop the filewall.
 - Type "systemctl status firewalld" to verify if the firewall has stopped. 
 
 6. Set Oracle Environment
+- Continue in the cloud shell environment.
 - Type "sudo su - oralce" to login as oracle user.
 - type ". oraenv" and enter "oradb01" as ORACLE_SID. make sure you have space after "."
 - connect to oracle database by typing "sqlplus / as sysdba".
 - Unlock the HR schema account by typing "alter user hr identified by hr account unlock;".
 - Connect to HR schema by typing "connect hr/hr;". 
 - View table data by typeing "select * from jobs;".
-- type "exit" to get out of sqlplus.
-- You are able to successfully access Jobs table in Oracle HR schema.
+- type "exit" to come out of sqlplus.
+- You are able to successfully access "Jobs" table in Oracle HR schema!
 
 7. Set the client connectivity to Oracle Database
 - Access Oracle VM from the Azure Portal.
@@ -132,7 +134,7 @@
 3. Open access to the PgAdmin Client Server
 - Access Azure PostgreSQL Service and select 'Connection Security' from the left menu. 
 - Set 'Allow access to Azure Services' to 'YES'
-- Select 'Add current client IP Address' button to the NSG setup.
+- Select 'Add current client IP Address' button to add the clientIP to the NSG Firewall setup.
 
 <img src="./images/ata-pg-network-setup.PNG" alt="Add the client IP address to the network security" hight="600">
 
@@ -162,7 +164,7 @@
 - Click on 'Networking' button
 <img src="./images/ata-pg-create-dms.PNG" alt="Create Azure Database Migration Service" width="800">
 
-- Select the existing Virtual Network for the resource group
+- Select the existing Virtual Network for the resource group starts with 'sample-'.
 <img src="./images/ata-dms-VNet-Selection.PNG" alt="Select the existing Virutal Network" Width="800">
 
 - Click on 'Review + create'.
@@ -199,37 +201,37 @@
 1. Create a migration project 
 - Select '+' next to 'New Migration Project' 
 - Enter the following information
-- Project name: ora19cToPg11
+- Project name: ora12cToPg11
 - Source server type: select 'Oracle' from the dropdown list
 - Target server type: select 'Azure Database for PostgreSQL' 
 - Click on 'Create and Run Activity' button
 - It opens up 6 step configuration
 
-2. Add Source Details
+2. Add Source Details:
 - Enter the following Oracle 12c HR database details
-- Source Server name: Enter the Instructor provided Oracle Server IP address.
+- Source Server name: Identify the internal IP address of the Oracle VM from the portal and enter, For Example '10.0.0.4'.
 - Server port: Enter the default port number 1521.
-- Oracle SID: Enter 'nonpdb' 
+- Oracle SID: Enter 'oradb01' 
 - User Name: Enter 'system'
 - Password: Enter 'oracleA1'
 - Click on Save button.
 <img src="./images/ata-pg-dms-add-source.PNG" alt="Enter source oracle database access details" width="800">
 
-3. Provide Driver Install Detail
+3. Provide Driver Install Detail:
 - Download the driver file from <a href="https://aka.ms/OracleDriverDownloads"> Oracle site</a> 
 - Access the storage account in the resource group
 - Create a file share and upload the driver file
-- Get the path, user and password from the connection info as shown in the picture.
+- Get the path, user and password from the connection info by copying it to a notepad.
 <img src="./images/ata-dms-FileShare_OracleDriver.png" alt="Access File Share and get the connection details" hight="700">
 
 - Enter the following location details to access the driver file
 - OCI driver path: Get the path from the connect info and add "instantclient-basiclite-windows.x64-12.2.0.1.0.zip" at the end. 
-- For Example: \\ora122pgtestsa.file.core.windows.net\oracle-driver\instantclient-basiclite-windows.x64-12.2.0.1.0.zip
+- For Example: \\sampleoracledbsa.file.core.windows.net\oracle-driver\instantclient-basiclite-windows.x64-12.2.0.1.0.zip
 - User Name: Get the details from Connect Info
 - Password: Get the details from the connect Info. Grab only the text inside the quotes. 
 - Click on Save button
 
-4. Add Target Info
+4. Add Target Info:
 - Enter the following info:
 - Target Server Name: Get the name from PostgreSQL Overview 
 - Database: keep the default value
