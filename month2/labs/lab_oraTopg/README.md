@@ -88,7 +88,7 @@
 - Destination port ranges:1521
 - Name: port_1521
 
-<img src="./images/OraDBInstall_AddInboundPortRule.png" alt="Adding Inbound Port Rule for Oracle Access" width="600">
+<img src="./images/OraDBInstall_AddInboundPortRule.png" alt="Adding Inbound Port Rule for Oracle Access" width="400">
 
 - Connect to Oracle HR schema from your favorite database tool for example DBeaver, toad etc
 - Enter the following info: 
@@ -114,7 +114,7 @@
 - Type 'Azure Database for postgresql' on the search bar to select Azure database for postgreSQL service
 - Select Single Server option.
 
-<img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" hight="500">
+<img src="./images/ATA_PostgreSQL_Select_Single_Server.PNG" alt="Select PostgreSQL Single Server Service" hight="350">
 
 2. Enter the following details:
 - Resource group: Select an existing resource group "sample-oracledb-rg" from the drop down.
@@ -160,7 +160,7 @@
 2. Enter the following information
 - Resource Group: Select the resource group "sample-oracledb-rg" from the dropdown .
 - Migration service name: Enter 'ata-dms-\<youname\>'
-- Pricing tier: Click on 'Configure tier' and select Premium service.
+- Pricing tier: Click on 'Configure tier' and select Premium service. *** DO NOT MISS THIS STEP!! ***.  
 - Click on 'Networking' button
 <img src="./images/ata-pg-create-dms.PNG" alt="Create Azure Database Migration Service" width="800">
 
@@ -176,7 +176,6 @@
 - Enter the following commands to access the Oracle VM:
 - Type "who am i" and get the \<UserName\>
 - ssh \<UserName\>@\<YourIP\> to access the VM
-- type "sudo su -" to become root 
 - type "sudo su - oracle" to become Oracle user
 - type ". oraenv" to set the oracle environment
 - enter "oradb01' as the ORACLE_SID
