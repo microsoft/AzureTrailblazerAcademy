@@ -100,7 +100,7 @@
 - type:SID
 - Username: hr
 - Password: hr
-<img src="./images/OraDBInstall_DBConnectivityTest.png" alt="Testing Connectivity from local Environment" width="600">
+<img src="./images/OraDBInstall_DBConnectivityTest.jpg" alt="Testing Connectivity from local Environment" width="600">
 
 - View the data in Jobs & Employees tables for verification. 
 
