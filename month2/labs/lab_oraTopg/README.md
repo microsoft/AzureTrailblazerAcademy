@@ -188,6 +188,7 @@
 - type ". oraenv" to set the oracle environment
 - enter "oradb01' as the ORACLE_SID
 - Type "sqlplus \ as sysdba" to connect to the database
+- Once you are in sqlpus, type the following commands:
 - SHUTDOWN IMMEDIATE;
 - STARTUP MOUNT;
 - ALTER DATABASE ARCHIVELOG;
@@ -197,10 +198,8 @@
 - SHUTDOWN IMMEDIATE;
 - STARTUP;
 - run the following commands to check the status:
-- select log_mode from v$database;
-- You should see 'ARCHIVELOG' as the response.
-- select supplemental_log_data_min from v$database;
-- You should see 'YES' as the response.
+- SELECT LOG_MODE FROM V$DATABASE; (You should see 'ARCHIVELOG' as the response)
+- SELECT SUPPLEMENTAL_LOG_DATA_MIN FROM V$DATABASE; (You should see 'YES' as the response)
 - type exit to come out of sqlplus prompt.
 - You successfully enabled Oracle database for on-line migration.
 
