@@ -56,7 +56,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Exercise 4: Exploring raw text based data with Azure Synapse SQL Serverless](#exercise-4-exploring-raw-text-based-data-with-azure-synapse-sql-serverless)
     - [Task 1: Query CSV data](#task-1-query-csv-data)
     - [Task 2: Query JSON data](#task-2-query-json-data)
-  - [Exercise 5: Synapse Pipelines and Cognitive Search (Optional)](#exercise-5-synapse-pipelines-and-cognitive-search)
+  - [Exercise 5: Synapse Pipelines and Cognitive Search](#exercise-5-synapse-pipelines-and-cognitive-search)
     - [Task 1: Create the invoice storage container](#task-1-create-the-invoice-storage-container)
     - [Task 2: Create and train an Azure Forms Recognizer model and setup Cognitive Search](#task-2-create-and-train-an-azure-forms-recognizer-model-and-setup-cognitive-search)
     - [Task 3: Configure a skillset with Form Recognizer](#task-3-configure-a-skillset-with-form-recognizer)
