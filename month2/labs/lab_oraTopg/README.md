@@ -26,6 +26,7 @@
 <img src="./images/OraDBInstall_AzureCloudShell.png" alt="Access Cloud Shell from Portal" width="600">
 
 2. Copy Install Script
+- Type "whoami" in the cloud shell to get the "UserName".
 - Create a directory called 'oradb-install' by typing 'mkdir oradb-install'.
 - Open the cr_oravm.sh file from github located in the same folder of this document in a browser and copy the content.
 - Use your favorite file editor on linux such as 'vi' and create cr_oravm.sh file to paste the content.
@@ -39,11 +40,11 @@
 
 - Type 'Resource' to select 'Resource Group' service.
 - Select '+' sign to create a new service group.
-- Enter 'sample-oracledb-rg' as the name.
+- Enter '\<UserName\>-oracledb-rg' as the name.
   
 4. Run the Script
 - Enter the following command from the cloud shell in the same folder where you created the install script:
-- ./cr_oravm.sh -S \<Your SubscriptionId\> -O sample -P oracledb -r eastus -u Oracle:Oracle-Database-Ee:12.2.0.1:12.2.20180725 -H /u01/app/oracle/product/12.2.0/dbhome_1
+- ./cr_oravm.sh -S \<Your SubscriptionId\> -O \<UserName\> -P oracledb -r eastus -u Oracle:Oracle-Database-Ee:12.2.0.1:12.2.20180725 -H /u01/app/oracle/product/12.2.0/dbhome_1
 - Script should start running without any errors. 
 - Check the log file in the same folder to troubleshoot issues.
 <img src="./images/OraDBInstall_RunScript.png" alt="Run install script from cloud shell" width="600">
@@ -65,11 +66,7 @@
 
 - Access the Oracle VM (sample-oracledb-vm01) from the portal and get the public IP Address.
 - Connect to the vm by typing "ssh \<UserName\>@\<IPAddress\>".
-- Switch to root to stop the linux firewall. It is not recommended for enterprise use. 
-- Type "sudo su - " to become root user.
-- Type "systemctl status firewalld" to check the status of the linux firewall.
-- Type "systemctl stop firewalld" to stop the filewall.
-- Type "systemctl status firewalld" to verify if the firewall has stopped. 
+
 
 6. Set Oracle Environment
 - Continue in the cloud shell environment.
