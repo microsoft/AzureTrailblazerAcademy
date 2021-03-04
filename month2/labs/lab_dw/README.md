@@ -1530,7 +1530,7 @@ In this exercise you will create a Synapse Pipeline that will orchestrate updati
 
     ![The set properties form is displayed with the file path and import schema fields populated as described.](images/ex5-task4-025.png "Data set properties form")
 
-22. Select **Browse** and select the file located at **Hands-on lab/environment-setup/synapse/sampleformrecognizer.json** and select **OK**.
+22. Select **Browse** and select the file located at **month2/labs/lab_dw/scripts/synapse/sampleformrecognizer.json** and select **OK**.
 
     ![The Set properties form is displayed with the sampleformrecognizer.json selected as the selected file.](images/ex5-task4-026.png "Data set properties form")
 
