@@ -1325,7 +1325,7 @@ In this exercise you will create a Synapse Pipeline that will orchestrate updati
 
 1. Open a new instance of Visual Studio Code.
 
-2. In Visual Studio Code open the folder **Hands-on lab/environment-setup/functions**.
+2. In Visual Studio Code open the folder **month2\labs\lab_dw\scripts\functions**.
 
    ![The file structure of the /environment-setup/functions folder is shown.](images/ex5-task1-001.png "The file structure of the functions folder")
 
@@ -1371,7 +1371,7 @@ In this exercise you will create a Synapse Pipeline that will orchestrate updati
 
 10. Now that we have the function published and all our resources created, we can create the skillset. This will be accomplished using **Postman**. Open Postman.
 
-11. From the **File** menu, select **Import** and choose to import the postman collection from **Hands-on lab/environment-setup/skillset** named **InvoiceKnowledgeStore.postman_collection.json**.
+11. From the **File** menu, select **Import** and choose to import the postman collection from **month2\labs\lab_dw\scripts\skillset** named **InvoiceKnowledgeStore.postman_collection.json**.
 
     ![The Postman File menu is expanded with the Import option selected.](images/ex5-task3-004.png "Postman File menu")
 
