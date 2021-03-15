@@ -1929,7 +1929,7 @@ In this exercise, you will create multiple machine learning models. You will lea
     SELECT P.ProductId,P.Seasonality,S.TransactionDateId,COUNT(*) as TransactionItemsCount
     FROM wwi_mcw.SaleSmall S
     JOIN wwi_mcw.Product P ON S.ProductId = P.ProductId
-    where TransactionDateId between 01012019 and 12312019
+    where TransactionDateId between 20190101 and 20191231
     GROUP BY P.ProductId ,P.Seasonality,S.TransactionDateId
     ```
 
@@ -1999,7 +1999,7 @@ In this exercise, you will create multiple machine learning models. You will lea
 
     ![In Azure Machine Learning Studio, the Notebooks item is selected from the left menu, and the Upload Icon is highlighted in the Notebooks panel.](images/aml_uploadnotebook_menu.png "Upload notebook")
 
-3. In the **Open** dialog, select **Hands-on lab/artifacts/ProductSeasonality_sklearn.ipynb**. When prompted, check the boxes to **Overwrite if already exists** and **I trust contents of this file** and select **Upload**.
+3. In the **Open** dialog, select **month2/labs/lab_dw/scripts/artifacts/ProductSeasonality_sklearn.ipynb**. When prompted, check the boxes to **Overwrite if already exists** and **I trust contents of this file** and select **Upload**.
 
     ![A dialog is displayed with the Overwrite if already exists and the I trust contents of this file checkboxes checked.](images/aml_notebook_uploadwarning.png "File upload warning dialog")
 
