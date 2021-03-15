@@ -111,7 +111,8 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 ## Requirements
 
 - Microsoft Azure subscription (non-Microsoft subscription).
-- Follow instructions provided in <a href="https://github.com/microsoft/AzureTrailblazerAcademy/blob/dev/month4/labs/lab_serverless/SetupGuide%20-%20Serverless%20architecture.md">SetupGuide - Serverless architecture.md</a> document to setup the lab environment (**complete the day before the lab!**):
+- GitHub account. You can create a free account at https://github.com.
+- Office 365 account.
 
 ## Before the hands-on lab
 
@@ -153,9 +154,9 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 
    > **Note**: It is highly recommended to use a D4s or DS2_v2 instance size for this VM.
 
-   - For username, type **demouser**
+   - Type username (Suggested: **ata-user**)
 
-   - For password, type **Password.1!!**
+   - Type password (Suggested: **at@February2021**)
 
    - Select **Allow selected ports**.
 
@@ -207,7 +208,7 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 
 1. From your LabVM, download the starter files by downloading a .zip copy of the Cosmos DB real-time advanced analytics GitHub repo.
 
-2. In a web browser, navigate to the [MCW Serverless architecture repo](https://github.com/Microsoft/MCW-Serverless-architecture).
+2. In a web browser, navigate to the [ATA Repo](https://github.com/microsoft/AzureTrailblazerAcademy).
 
 3. On the repo page, select **Clone or download**, then select **Download ZIP**.
 
@@ -217,16 +218,14 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 
    ![On the Extract Compressed (Zipped) Folders dialog window, the extraction path is highlighted in the Files will be extracted to this folder field.](images/Setup/zip-extract.png 'Extract Compressed Folders')
 
-5. Navigate to `C:\ServerlessMCW\MCW-Serverless-architecture-master\Hands-on lab\starter`
+5. Navigate to `C:\ServerlessMCW\AzureTrailblazerAcademy-master\month3\lab_serverless\code\TollBooth`
 
 6. From the **TollBooth** folder, open the Visual Studio Solution file: **TollBooth.sln**. Notice the solution contains the following projects:
 
    - TollBooth
    - UploadImages
    
-   > **Note**: The UploadImages project is used for uploading a handful of car photos for testing scalability of the serverless architecture.
-
-7. Switch to windows explorer, navigate back to the **starter** subfolder and open the **license plates** subfolder. It contains sample license plate photos used for testing out the solution. One of the photos is guaranteed to fail OCR processing, which is meant to show how the workload is designed to handle such failures. The **copyfrom** folder is used by the UploadImages project as a basis for the 1,000 photo upload option for testing scalability.
+   > **Note**: The UploadImages project is used for uploading a handful of car photos for testing scalability of the serverless architecture.s
 
 
 ## Exercise 1: Azure data, storage, and serverless environment setup
@@ -317,7 +316,7 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
     d. **Publish**: Select **Code**.
 
-    e. **Runtime stack**: Select **.NET Core**.
+    e. **Runtime stack**: Select **.NET**.
 
     f. **Version**: Select **3.1**.
 
@@ -359,7 +358,7 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
     e. **Runtime stack**: Select **Node.js**.
 
-    f. **Version**: Select **12**.
+    f. **Version**: Select **12 LTS**.
 
     g. **Region**: Select the region you are using for this lab, or the closest available one.
 
@@ -732,7 +731,7 @@ There are a few components within the starter project that must be completed, ma
 
 > **Note:** Do **NOT** update the version of any NuGet package. This solution is built to function with the NuGet package versions currently defined within. Updating these packages to newer versions could cause unexpected results.
 
-1. Navigate to the **TollBooth** project (`C:\ServerlessMCW\MCW-Serverless-architecture-master\hands-on-lab\starter\TollBooth\TollBooth.sln`) using the Solution Explorer of Visual Studio.
+1. Navigate to the **TollBooth** project (`C:\ServerlessMCW\AzureTrailblazerAcademy-master\month3\lab_serverless\code\TollBooth\TollBooth.sln`) using the Solution Explorer of Visual Studio.
 
 2. From the Visual Studio **View** menu, select **Task List**.
 
