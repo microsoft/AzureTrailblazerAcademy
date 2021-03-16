@@ -111,7 +111,8 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 ## Requirements
 
 - Microsoft Azure subscription (non-Microsoft subscription).
-- Follow instructions provided in <a href="https://github.com/microsoft/AzureTrailblazerAcademy/blob/dev/month4/labs/lab_serverless/SetupGuide%20-%20Serverless%20architecture.md">SetupGuide - Serverless architecture.md</a> document to setup the lab environment (**complete the day before the lab!**):
+- GitHub account. You can create a free account at https://github.com.
+- Office 365 account.
 
 ## Before the hands-on lab
 
@@ -153,9 +154,9 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 
    > **Note**: It is highly recommended to use a D4s or DS2_v2 instance size for this VM.
 
-   - For username, type **demouser**
+   - Type username (Suggested: **ata-user**)
 
-   - For password, type **Password.1!!**
+   - Type password (Suggested: **at@February2021**)
 
    - Select **Allow selected ports**.
 
@@ -207,7 +208,7 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 
 1. From your LabVM, download the starter files by downloading a .zip copy of the Cosmos DB real-time advanced analytics GitHub repo.
 
-2. In a web browser, navigate to the [MCW Serverless architecture repo](https://github.com/Microsoft/MCW-Serverless-architecture).
+2. In a web browser, navigate to the [ATA Repo](https://github.com/microsoft/AzureTrailblazerAcademy).
 
 3. On the repo page, select **Clone or download**, then select **Download ZIP**.
 
@@ -217,16 +218,14 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 
    ![On the Extract Compressed (Zipped) Folders dialog window, the extraction path is highlighted in the Files will be extracted to this folder field.](images/Setup/zip-extract.png 'Extract Compressed Folders')
 
-5. Navigate to `C:\ServerlessMCW\MCW-Serverless-architecture-master\Hands-on lab\starter`
+5. Navigate to `C:\ServerlessMCW\AzureTrailblazerAcademy-master\month3\lab_serverless\code\TollBooth`
 
 6. From the **TollBooth** folder, open the Visual Studio Solution file: **TollBooth.sln**. Notice the solution contains the following projects:
 
    - TollBooth
    - UploadImages
    
-   > **Note**: The UploadImages project is used for uploading a handful of car photos for testing scalability of the serverless architecture.
-
-7. Switch to windows explorer, navigate back to the **starter** subfolder and open the **license plates** subfolder. It contains sample license plate photos used for testing out the solution. One of the photos is guaranteed to fail OCR processing, which is meant to show how the workload is designed to handle such failures. The **copyfrom** folder is used by the UploadImages project as a basis for the 1,000 photo upload option for testing scalability.
+   > **Note**: The UploadImages project is used for uploading a handful of car photos for testing scalability of the serverless architecture.s
 
 
 ## Exercise 1: Azure data, storage, and serverless environment setup
@@ -317,7 +316,7 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
     d. **Publish**: Select **Code**.
 
-    e. **Runtime stack**: Select **.NET Core**.
+    e. **Runtime stack**: Select **.NET**.
 
     f. **Version**: Select **3.1**.
 
@@ -359,7 +358,7 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
     e. **Runtime stack**: Select **Node.js**.
 
-    f. **Version**: Select **12**.
+    f. **Version**: Select **12 LTS**.
 
     g. **Region**: Select the region you are using for this lab, or the closest available one.
 
@@ -732,7 +731,7 @@ There are a few components within the starter project that must be completed, ma
 
 > **Note:** Do **NOT** update the version of any NuGet package. This solution is built to function with the NuGet package versions currently defined within. Updating these packages to newer versions could cause unexpected results.
 
-1. Navigate to the **TollBooth** project (`C:\ServerlessMCW\MCW-Serverless-architecture-master\hands-on-lab\starter\TollBooth\TollBooth.sln`) using the Solution Explorer of Visual Studio.
+1. Navigate to the **TollBooth** project (`C:\ServerlessMCW\AzureTrailblazerAcademy-master\month3\lab_serverless\code\TollBooth\TollBooth.sln`) using the Solution Explorer of Visual Studio.
 
 2. From the Visual Studio **View** menu, select **Task List**.
 
@@ -1381,25 +1380,17 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 1. Open the **TollBooth** project in Visual Studio.
 
-2. Right-click the **TollBooth** solution in Solution Explorer, then select **Add Solution to Source Control**.
+2. Right-click the **TollBooth** solution in Solution Explorer, then select **Create a Git Repository**.
 
-    ![In Solution Explorer, TollBooth solution is selected. From its right-click context menu, the Add Solution to Source Control item is selected.](images/vs-add-to-source-control.png 'Solution Explorer')
+3. Sign-in to your Github Account
 
-3. Select **View** in Visual Studio's top menu, then select **Team Explorer**.
+    ![The View menu is expanded with the Team Explorer menu item selected.](images/github-login.png 'Visual Studio')
 
-    ![The View menu is expanded with the Team Explorer menu item selected.](images/vs-view-team-explorer.png 'Visual Studio')
+4. Enter a **Repository Name** and make sure **Private Repository** is unchecked.
 
-4. Select **Sync** in the Team Explorer.
+5. Choose the **Publish to GitHub** button.
 
-    ![The Sync link is highlighted.](images/vs-sync.png "Changes")
-
-5. Choose the **Publish to GitHub** button, then sign in to your GitHub account when prompted.
-
-    ![The Publish to GitHub button is highlighted in the Publish to GitHub section.](images/vs-publish-to-github.png "Push")
-
-6. Type in a name for the new GitHub repository, then select **Publish**. This will create the new GitHub repository, add it as a remote to your local git repo, then publish your new commit.
-
-    ![In the Push form, the repository name is highlighted along with the Publish button.](images/vs-publish-to-new-github.png "Push")
+6. Enter a Commit Message on the top right and Push the repo to Github.
 
 7. Refresh your GitHub repository page in your browser. You should see that the project files have been added. Navigate to the **TollBooth** folder of your repo. Notice that the local.settings.json file has not been uploaded. That's because the .gitignore file of the TollBooth project explicitly excludes that file from the repository, making sure you don't accidentally share your application secrets.
 
@@ -1413,25 +1404,19 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
     ![The Platform features tab is displayed, under Code Deployment, Container settings is selected.](images/functionapp-menu-deployment-center-link.png 'TollBoothFunctionApp blade')
 
-3. Select **GitHub** in the **Deployment Center** blade. Enter your GitHub credentials if prompted. Select **Continue**.
+3. Go to the **Settings** tab and select **GitHub** in the **Source** dropdown. Enter your GitHub credentials if prompted.
 
-    ![The GitHub tile is selected from a list of repository options.](images/functionapp-dc-github.png 'Deployment Center blade')
+4. Click on **Change Provider** and select **App Service build service**.
 
-4. Select **App Service build service**, then select **Continue**.
+5. Choose your **Organization**, **Repository** and **Branch**.
 
-    ![Under the Build Provider step, App Service build service tile is selected.](images/functionapp-dc-build-provider.png 'Deployment Center blade')
+![AppService Github Configuration](images/appservice-githubconfig.png 'Function App Deployment Center')
 
-5. **Choose your organization**.
+6. Select **Save** on the top left.
 
-6. Choose your new repository under **Choose project**. Make sure the **master branch** is selected.
+7. After continuous deployment is configured, all file changes in your deployment source are copied to the function app and a full site deployment is triggered. The site is redeployed when files in the source are updated.
 
-    ![Fields in the Deployment option blade set to the following settings: Choose your organization, obscured; Choose repository, serverless-architecture-lab; Choose branch, master.](images/functionapp-dc-configure.png 'Deployment Center blade')
-
-7. Select **Continue**.
-
-8. On the Summary page, select **Finish**.
-
-9. After continuous deployment is configured, all file changes in your deployment source are copied to the function app and a full site deployment is triggered. The site is redeployed when files in the source are updated.
+8. Go back to the **Logs** tab and hit the **Refresh** button to see the active deployment.
 
     ![The Deployment Center tab is shown with a pending build.](images/functionapp-dc.png 'Function App Deployment Center')
 
@@ -1471,25 +1456,17 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 9. Save your changes.
 
-10. Right-click the **TollBooth** project in Solution Explorer, then select **Commit...** under the **Source Control** menu item.
-
-    ![In Solution Explorer, the TollBooth project is selected. From its right-click context menu, Source Control and Commit... are selected.](images/image101.png 'Solution Explorer')
+10. Right-click the **TollBooth** project in Solution Explorer, then select **Git** -> **Commit or Stash**.
 
 11. Enter a commit message, then select **Commit All**.
 
-    ![In the Team Explorer - Changes window, "Finished the ExportLicensePlates function" displays in the message box, and the Commit All button is selected.](images/image110.png 'Team Explorer - Changes window')
+12. After committing, click on the **Push** button on the top right of that window.
 
-12. After committing, select the **Sync** link. This will allow us to add the remote GitHub repository.
-
-    ![Under Team Explorer - Changes, in the informational message Commit 02886e85 created locally. Sync to share your changes with the server. The Sync link is selected.](images/image103.png 'Team Explorer - Changes window')
-
-13. Select the **Sync** button on the **Synchronization** step.
-
-    ![Under Synchronization in the Team Explorer - Synchronization window, the Sync link is selected.](images/image111.png 'Team Explorer - Synchronization window')
+    ![Git Push Updates](images/image111.png 'Team Explorer - Synchronization window')
 
     Afterward, you should see a message stating that the incoming and outgoing commits were successfully synchronized.
 
-14. Go back to Deployment Center for your Function App in the portal. You should see an entry for the deployment kicked off by this last commit. Check the timestamp on the message to verify that you are looking at the latest one. **Make sure the deployment completes before continuing**.
+14. Go back to Deployment Center for your Function App in the portal. You should see an entry for the deployment kicked off by this last commit. Check the timestamp on the message to verify that you are looking at the latest one. **Make sure the deployment completes and succeeds before continuing**.
 
     ![The latest deployment is displayed in the Deployment Center.](images/functionapp-dc-latest.png 'Deployment Center')
 
@@ -1541,4 +1518,6 @@ With the latest code changes in place, run your Logic App and verify that the fi
 
 6. The ExportLicensePlates function updates all of the records it exported by setting the exported value to true. This makes sure that only new records since the last export are included in the next one. Verify this by re-executing the script in Azure Cosmos DB that counts the number of documents in the Processed collection where exported is false. It should return 0 unless you've subsequently uploaded new photos.
 
-
+    ```sql
+    SELECT VALUE COUNT(1) FROM c WHERE c.exported = false
+    ```
