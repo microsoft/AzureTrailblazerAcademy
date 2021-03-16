@@ -1380,25 +1380,17 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 1. Open the **TollBooth** project in Visual Studio.
 
-2. Right-click the **TollBooth** solution in Solution Explorer, then select **Add Solution to Source Control**.
+2. Right-click the **TollBooth** solution in Solution Explorer, then select **Create a Git Repository**.
 
-    ![In Solution Explorer, TollBooth solution is selected. From its right-click context menu, the Add Solution to Source Control item is selected.](images/vs-add-to-source-control.png 'Solution Explorer')
+3. Sign-in to your Github Account
 
-3. Select **View** in Visual Studio's top menu, then select **Team Explorer**.
+    ![The View menu is expanded with the Team Explorer menu item selected.](images/github-login.png 'Visual Studio')
 
-    ![The View menu is expanded with the Team Explorer menu item selected.](images/vs-view-team-explorer.png 'Visual Studio')
+4. Enter a **Repository Name** and make sure **Private Repository** is unchecked.
 
-4. Select **Sync** in the Team Explorer.
+5. Choose the **Publish to GitHub** button.
 
-    ![The Sync link is highlighted.](images/vs-sync.png "Changes")
-
-5. Choose the **Publish to GitHub** button, then sign in to your GitHub account when prompted.
-
-    ![The Publish to GitHub button is highlighted in the Publish to GitHub section.](images/vs-publish-to-github.png "Push")
-
-6. Type in a name for the new GitHub repository, then select **Publish**. This will create the new GitHub repository, add it as a remote to your local git repo, then publish your new commit.
-
-    ![In the Push form, the repository name is highlighted along with the Publish button.](images/vs-publish-to-new-github.png "Push")
+6. Enter a Commit Message on the top right and Push the repo to Github.
 
 7. Refresh your GitHub repository page in your browser. You should see that the project files have been added. Navigate to the **TollBooth** folder of your repo. Notice that the local.settings.json file has not been uploaded. That's because the .gitignore file of the TollBooth project explicitly excludes that file from the repository, making sure you don't accidentally share your application secrets.
 
@@ -1412,25 +1404,19 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
     ![The Platform features tab is displayed, under Code Deployment, Container settings is selected.](images/functionapp-menu-deployment-center-link.png 'TollBoothFunctionApp blade')
 
-3. Select **GitHub** in the **Deployment Center** blade. Enter your GitHub credentials if prompted. Select **Continue**.
+3. Go to the **Settings** tab and select **GitHub** in the **Source** dropdown. Enter your GitHub credentials if prompted.
 
-    ![The GitHub tile is selected from a list of repository options.](images/functionapp-dc-github.png 'Deployment Center blade')
+4. Click on **Change Provider** and select **App Service build service**.
 
-4. Select **App Service build service**, then select **Continue**.
+5. Choose your **Organization**, **Repository** and **Branch**.
 
-    ![Under the Build Provider step, App Service build service tile is selected.](images/functionapp-dc-build-provider.png 'Deployment Center blade')
+![AppService Github Configuration](images/appservice-githubconfig.png 'Function App Deployment Center')
 
-5. **Choose your organization**.
+6. Select **Save** on the top left.
 
-6. Choose your new repository under **Choose project**. Make sure the **master branch** is selected.
+7. After continuous deployment is configured, all file changes in your deployment source are copied to the function app and a full site deployment is triggered. The site is redeployed when files in the source are updated.
 
-    ![Fields in the Deployment option blade set to the following settings: Choose your organization, obscured; Choose repository, serverless-architecture-lab; Choose branch, master.](images/functionapp-dc-configure.png 'Deployment Center blade')
-
-7. Select **Continue**.
-
-8. On the Summary page, select **Finish**.
-
-9. After continuous deployment is configured, all file changes in your deployment source are copied to the function app and a full site deployment is triggered. The site is redeployed when files in the source are updated.
+8. Go back to the **Logs** tab and hit the **Refresh** button to see the active deployment.
 
     ![The Deployment Center tab is shown with a pending build.](images/functionapp-dc.png 'Function App Deployment Center')
 
@@ -1470,25 +1456,17 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 9. Save your changes.
 
-10. Right-click the **TollBooth** project in Solution Explorer, then select **Commit...** under the **Source Control** menu item.
-
-    ![In Solution Explorer, the TollBooth project is selected. From its right-click context menu, Source Control and Commit... are selected.](images/image101.png 'Solution Explorer')
+10. Right-click the **TollBooth** project in Solution Explorer, then select **Git** -> **Commit or Stash**.
 
 11. Enter a commit message, then select **Commit All**.
 
-    ![In the Team Explorer - Changes window, "Finished the ExportLicensePlates function" displays in the message box, and the Commit All button is selected.](images/image110.png 'Team Explorer - Changes window')
+12. After committing, click on the **Push** button on the top right of that window.
 
-12. After committing, select the **Sync** link. This will allow us to add the remote GitHub repository.
-
-    ![Under Team Explorer - Changes, in the informational message Commit 02886e85 created locally. Sync to share your changes with the server. The Sync link is selected.](images/image103.png 'Team Explorer - Changes window')
-
-13. Select the **Sync** button on the **Synchronization** step.
-
-    ![Under Synchronization in the Team Explorer - Synchronization window, the Sync link is selected.](images/image111.png 'Team Explorer - Synchronization window')
+    ![Git Push Updates](images/image111.png 'Team Explorer - Synchronization window')
 
     Afterward, you should see a message stating that the incoming and outgoing commits were successfully synchronized.
 
-14. Go back to Deployment Center for your Function App in the portal. You should see an entry for the deployment kicked off by this last commit. Check the timestamp on the message to verify that you are looking at the latest one. **Make sure the deployment completes before continuing**.
+14. Go back to Deployment Center for your Function App in the portal. You should see an entry for the deployment kicked off by this last commit. Check the timestamp on the message to verify that you are looking at the latest one. **Make sure the deployment completes and succeeds before continuing**.
 
     ![The latest deployment is displayed in the Deployment Center.](images/functionapp-dc-latest.png 'Deployment Center')
 
@@ -1540,4 +1518,6 @@ With the latest code changes in place, run your Logic App and verify that the fi
 
 6. The ExportLicensePlates function updates all of the records it exported by setting the exported value to true. This makes sure that only new records since the last export are included in the next one. Verify this by re-executing the script in Azure Cosmos DB that counts the number of documents in the Processed collection where exported is false. It should return 0 unless you've subsequently uploaded new photos.
 
-
+    ```sql
+    SELECT VALUE COUNT(1) FROM c WHERE c.exported = false
+    ```
