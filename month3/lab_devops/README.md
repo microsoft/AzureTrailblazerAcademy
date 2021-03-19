@@ -101,7 +101,7 @@ In this lab, you will configure a developer environment and download the require
 
 1.  In a web browser, navigate to https://shell.azure.com. Alternatively, from the Azure web portal, launch the **Azure Cloud Shell**. It has common Azure tools preinstalled and configured to use with your account.
 
-    ![This is a screenshot of an icon used to launch the Azure Cloud Shell from the Azure Portal.](images/Setup/image3.png "Azure Cloud Shell launch icon")
+    ![This is a screenshot of an icon used to launch the Azure Cloud Shell from the Azure Portal.](images/prehandson-image3.png "Azure Cloud Shell launch icon")
 
 2.  From inside the Azure Cloud Shell type these commands to configure Git:
 
