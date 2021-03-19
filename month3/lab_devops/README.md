@@ -99,7 +99,7 @@ In this lab, you will configure a developer environment and download the require
 
 >**Note**: This workshop can be completed using only the Azure Cloud Shell.
 
-1.  In a web browser, navigate to https://shell.azure.com. Alternatively, from the Azure web portal, launch the **Azure Cloud Shell**. It has common Azure tools preinstalled and configured to use with your account.
+1.  In a web browser, navigate to https://shell.azure.com. Alternatively, from the Azure web portal, launch the **Azure Cloud Shell**. It has common Azure tools preinstalled and configured to use with your account. Make sure you are in **bash** mode.
 
     ![This is a screenshot of an icon used to launch the Azure Cloud Shell from the Azure Portal.](images/prehandson-image3.png "Azure Cloud Shell launch icon")
 
@@ -501,7 +501,7 @@ Now that the template file has been uploaded, we'll deploy it several times to c
     az group create --name $resourceGroupName --location "$location"
     ```  
 
-3. Validate that you are in the correct directory. Run an `ls` command and you should see the output `azuredeploy.json`.  If you don't see that file, use `cd <directory>` to move to the correct folder.  
+3. Validate that you are in the correct directory. Run an `ls` command and you should see the output `azuredeploy.json`.  If you don't see that file, use `cd <directory>` to move to the `armtemplate` directory.  
 
     ```bash  
     ls
@@ -524,15 +524,11 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
 5.  Supply an administrator login (username) for the PostgreSQL server and database. This will be the username credential you would need to enter to connect to your newly created database. 
     
-    For the **administratorLogin**, enter a username value (e.g. *azureuser*) and then press **Enter**.
+    For the **administratorLogin**, enter a username value (e.g. **azureuser**) and then press **Enter**.
 
     ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/image47.png "Azure Cloud Shell-entering administrator credentials")
 
-6.  Supply an administrator password for the PostgreSQL server and database. This will be the password credential you would need to enter to connect to your newly created database.
-
-    >**Note**: The password must meet complexity requirements of 8 or more characters, must contain upper and lower case characters, must contain at least one number and at least one special character, e.g. "Database2020!"
-
-    For the **administratorLoginPassword**, enter a value that meets the complexity requirements and then, press **Enter**.
+6.  Supply an administrator password for the PostgreSQL server and database. This will be the password credential you would need to enter to connect to your newly created database. Enter the following password: **at@February2021** then press **Enter**.
 
 7. This will kick off the provisioning process which takes a few minutes to create all the resources for the environment. This is indicated by the "Running" text displayed at the bottom of the Azure Cloud Shell while the command is executing.
 
@@ -558,7 +554,7 @@ Repeat the above steps and select to create the **3. production** environment. Y
 
 ### Task 7: Review the resource groups
 
-1. In the Azure Portal, navigate to the resource group where all of the resources have been deployed. It should look similar to the screenshot below.
+1. You can now close CloudShell and go back to the Azure Portal. Navigate to the resource group where all of the resources have been deployed. It should look similar to the screenshot below.
 
     >**Note**: The specific names of the resources will be slightly different than what you see in the screenshot based on the unique identities assigned.
 
