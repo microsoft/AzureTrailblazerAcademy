@@ -1234,7 +1234,7 @@ Then, you will merge the pull request into the master branch, triggering an auto
 
     For this task, you will be creating a new work item that simulates having a task for the developer to complete that will be eventually be associated to a pull request.  
 
-    On the left navigation, select **Boards**, then use the green plus symbol in the `New` column to add a new work item.  Make sure to create the new work item as a `Product Backlog Item`.  
+    On the left navigation, select **Boards** and then click on **Boards**. Use the green plus symbol in the `New` column to add a new work item.  Make sure to create the new work item as a `Product Backlog Item`.  
 
     >**Note**: Instead of `Product Backlog Item`, you may see `User Story` or `TODO`, depending on what methodology you chose when you setup your organization (such as Agile, Scrum, or CMMI).    
 
@@ -1268,7 +1268,7 @@ Then, you will merge the pull request into the master branch, triggering an auto
 
     The second check. *Check for comment resolution* ensures comments applied to this pull request during the peer review phase require resolution.
 
-4.  Now select **+** (3) to add the build policy.  This will enable the build to run when a pull request is created.  In the *Add build policy* panel, choose the correct **Build pipeline** and add a **Display name** and select **Save**.   
+4.  Now select **+** (3) next to **Build Validation** to add the build policy.  This will enable the build to run when a pull request is created.  In the *Add build policy* panel, choose the correct **Build pipeline** and add a **Display name** and select **Save**.   
 
     ![Screen showing the Add Build Policy panel with the Build pipeline and Display Name values added, and Display Name and Save button highlighted.](images/image1038.png "Add Build Policy")
 
@@ -1298,16 +1298,16 @@ Then, you will merge the pull request into the master branch, triggering an auto
 
     ![Screen showing Azure DevOps Branch source explorer with file detail view.](images/image1042.png "Branch Source Explorer - File Details")
     
-    Under the *tailspintoysweb* folder, select the **ClientApp** folder, and expand and select the **src** folder.  
+    Expand the **ClientApp** folder and then expand and select the **src** folder.  
 
 3. Next expand the **app** folder then expand the **home** folder.  In this folder, select the **home.component.html** file.  The editor to the right displays the contents of this file.   Now, select **Edit** button on the top right of the screen to begin editing the page.
 
     ![Screen showing Azure DevOps Branch source explorer with target file highlighted and code editor view enabled.](images/image1043.png "Source File Detail")
     
-4. Replace the text ```<h1>Welcome to Tailspin Toys v1!</h1>``` on *line 1* with the following:
+4. Replace the text ```<h1>Welcome to Tailspin Toys .Net 5!</h1>``` on *line 1* with the following:
 
     ```
-    <h1>Welcome to Tailspin Toys v2!</h1>
+    <h1>Welcome to Tailspin Toys .Net5 v2!</h1>
     ```
     
 5.  Now that you've completed the code change, select the **Commit** button on the top right side of the screen.
