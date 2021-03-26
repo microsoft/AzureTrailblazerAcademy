@@ -22,14 +22,18 @@ Learn the basics of Azure, the difference between Infrastructure as a Service (I
 
 Learn how to use CosmosDB to store data for modern applications. Understand the basics of Azure Synapse (formerly known as Azure Data Warehouse) and how to transform and integrate data from other data stores using Synapse Pipelines.
 
+
+### [**Month 3**: Azure Serverless Computing and Azure DevOps](./month3)
+
+Learn about the different Serverless services available in Azure such as Funtions, LogicApps and EventGrid. This month you will build an end-to-end solution using only serverless components and learn how to automate your deployments using Azure DevOps.
+
+
 <!---
-### [**Month 3**: Azure Monitoring, Computer Vision and PowerBI](./month3)
-
-Monitor your Azure Infrastructure and learn how to configure/query logs in Log Analytics Workspace, intall Microsoft Monitoring Agent Extension and setup alerting to be notified under different conditions.
-
 ### [**Month 4**: Azure Serverless Services](./month4)
 
 Learn about the different Serverless services available in Azure such as Funtions, LogicApps and EventGrid. This month you will build an end-to-end solution using only serverless components.
+
+Monitor your Azure Infrastructure and learn how to configure/query logs in Log Analytics Workspace, intall Microsoft Monitoring Agent Extension and setup alerting to be notified under different conditions.
 
 --->
 ## Contributing

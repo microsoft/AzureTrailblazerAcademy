@@ -10,6 +10,6 @@ Learn about the different Serverless services available in Azure such as Funtion
 | Labs          | Links                            |
 |-------------------|----------------------------------|
 | Azure Serverless Lab     | - [Azure Serverless Lab](lab_serverless/) |
-| Azure AKS Lab     | - [Azure AKS Lab](lab_aks/) |
+| Azure DevOps Lab     | - [Azure DevOps Lab](lab_devops/) |
 
 

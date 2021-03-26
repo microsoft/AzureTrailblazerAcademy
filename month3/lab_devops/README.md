@@ -137,12 +137,6 @@ In this lab, you will configure a developer environment and download the require
    
 4.  Inside the **studentfiles** folder, there are two folders named **armtemplate** and **tailspintoysweb**. The workshop will refer to these folders throughout the exercises.
 
->**Note**: Using the Azure Cloud Shell, you
- can load the integrated code editor (Cloud Shell Editor) at any time with the following command:
-```bash
-code .
-```
-
 ## Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, PostgreSQL database, and deployment slots in a single automated process
 
 Duration: 45 Minutes
@@ -574,13 +568,11 @@ After all of your environments are deployed, navigate to the azure portal and up
 
     ![Screen showing the first link in the list of resources is right-clicked and the option open in a new tab is selected.](images/image1061.png "Open in a new tab")  
 
-    * **In the new tab, browse to configuration, then select `General Settings`.  On the General Settings tab, select the `.Net 5 (Early Access)` item from the dropdown for the .NET Framework Version.**  
+    * **In the new tab, browse to configuration, then select `General Settings`.  On the General Settings tab, select the `.Net 5` item from the dropdown for the .NET Framework Version.**  
 
     ![Screen showing selection of the option for the .Net 5 framework](images/image1062.png "Choosing the .Net 5 framework")  
 
     **After making the change, don't forget to `Save` the changes at the top**.
-
-    >**Note**: The `(Early Access)` will likely go away at some point. When it does, just select the `.NET 5` option.
 
     Lastly, **do not forget to do this for all six entries, especially the staging slots where your pipeline will deploy the solutions**.
 
@@ -649,6 +641,8 @@ In this Task, you will configure the Azure DevOps with a Service Connection that
 
     ![In New Service Connection Panel, Subscription(automatic) radio button and Service Connection Text Value are highlighted.](images/image994.png "New Azure Service Connection")
 
+   >**Note**: If you logged in to Azure DevOps using a different account than what you used to login to your Azure Subscription, then follow these [instructions](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) to manually create a Service Principal in Azure and then select the **Service Principal (manual)** option in this menu . 
+
     
 6. On this panel ensure the following settings:
 
@@ -682,15 +676,7 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
     
     The best way to authenticate is to use a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate), (or PAT), configured with scope *Code, Full permissions*. After this configuration, you can then use the PAT as a password (leaving the username empty) when prompted by Git. 
 
-2. Open *Cloud Shell Editor* to this folder by typing: 
-   
-   ```bash
-   code .
-   ``` 
-
-   Be sure to include the period '.' after the code command as this instructs the Cloud Shell Editor window to open *in the current directory location*.   Then, press **Enter**. 
-   
-3. In Azure Cloud Shell, initialize a local Git repository by running the following commands:
+2. In Azure Cloud Shell, initialize a local Git repository by running the following commands:
 
     > If a ".git" folder and local repository already exists in the folder, then you will need to delete the ".git" folder first before running the commands below to initialize the Git repository.
 
@@ -700,46 +686,46 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
     git commit -m "initial checkin"
     ```
 
-4. Paste the first command you copied from Azure DevOps. It will resemble the command below:
+3. Paste the first command you copied from Azure DevOps. It will resemble the command below:
     
     ```bash
     git remote add origin https://<your-org>@dev.azure.com/<your-org>/TailspinToys/_git/TailspinToys
     git push -u origin --all
     ```  
 
-5. In case the *Password for 'https://\<your-org>@dev.azure.com':* prompt appears, follow the next steps to generate a PAT (Personal Access Token) for your Azure DevOps organization. Otherwise, skip to step 13.
+4. In case the *Password for 'https://\<your-org>@dev.azure.com':* prompt appears, follow the next steps to generate a PAT (Personal Access Token) for your Azure DevOps organization. Otherwise, skip to step 13.
     
     > **Note**: **Do Not Close Azure Cloud Shell**. Use a different browser tab for the steps for creating a new PAT token.  Also, these PAT configuration steps are also useful when using a multi-factored protected user account with Azure DevOps.
 
-6. In Azure DevOps, choose on the second to last icon on the top menu in the left-hand side of the screen, representing a user and a small gear icon.
+5. In Azure DevOps, choose on the second to last icon on the top menu in the left-hand side of the screen, representing a user and a small gear icon.
 
-7. From the context menu, choose **Personal access tokens**.
+6. From the context menu, choose **Personal access tokens**.
 
     ![Selecting the player settings icon in the top menu bar](images/image132.png "Personal access tokens menu option")
 
-8. If the *Create a new personal access token* panel has appeared, skip to the next step. Otherwise, select the **+ New Token** button.
+7. If the *Create a new personal access token* panel has appeared, skip to the next step. Otherwise, select the **+ New Token** button.
 
     ![Forcing the 'Create a new personal access token' to appear](images/image133.png "New Personal Access Token")
 
-9. In the *Create a new personal access token* panel, type in a descriptive name for the new token, and from the *Code* section, choose **Full** and **Status**.
+8. In the *Create a new personal access token* panel, type in a descriptive name for the new token, and from the *Code* section, choose **Full** and **Status**.
 
     ![Creating a new PAT (Personal Access Token) in Azure Devops](images/image134.png "Create a Personal Access Token")
 
-10. In the *Create a new personal access token* panel, select the **Create** button.
+9. In the *Create a new personal access token* panel, select the **Create** button.
 
-11. From the success confirmation panel, select the **Copy to clipboard** button to copy the newly created PAT token to clipboard.
+10. From the success confirmation panel, select the **Copy to clipboard** button to copy the newly created PAT token to clipboard.
 
     ![Copying the newly created PAT token to the clipboard](images/image135.png "PAT Success confirmation page")
 
-12. In Azure Cloud Shell, paste the PAT token and press **Enter**.   Git will push the contents of your local repository in Azure Cloud Shell to your new Azure DevOps project repository.  
+11. In Azure Cloud Shell, paste the PAT token and press **Enter**.   Git will push the contents of your local repository in Azure Cloud Shell to your new Azure DevOps project repository.  
 
     ![The cloud terminal is shown in this screen to highlight that the PAT is not shown when you paste it in the cloud shell.  Even so, using the PAT as your password allows you to push the code to your Azure DevOps Repo](images/image1064.png "PAT is not shown after pasting, but the cloud shell does use it")  
 
-13. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
+12. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
 
     ![The newly created files show up in Repos > Files section.](images/image136.png "Azure DevOps Repo File View")
 
-14. In the files for your repo, navigate to the folder `Client App -> src`.  If there is a file named **package-lock.json**, hover on the file, and from the context menu, choose **Delete**.
+13. In the files for your repo, navigate to the folder `Client App -> src`.  If there is a file named **package-lock.json**, hover on the file, and from the context menu, choose **Delete**.
 
     ![The context menu shows up on the package-lock.json file, from the ClientApp directory.](images/image137.png "Deleting package-lock.json")  
 
@@ -835,27 +821,27 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
 
     Tasks are the building blocks of a pipeline. They describe the actions that are performed in sequence during an execution of the pipeline.
 
-10. Add additional tasks to your azure-pipelines.yml file by selecting and copying the following code. This should be pasted right after the NuGetToolInstaller@0 task which you pasted previously:
+10. Add additional tasks to your azure-pipelines.yml file by selecting and copying the following code. This should be pasted right after the NuGetToolInstaller@1 task which you pasted previously:
     
     >**Note**: The YAML below creates individual tasks for performing all the necessary steps to build and test our application along with publishing the artifacts inside Azure DevOps so they can be retrieved during the upcoming release pipeline process.
 
     ```yml
-    # Nuget Restore Task
-    - task: NuGetCommand@2
-      displayName: 'NuGet restore'
-      inputs:
-        restoreSolution: '**/tailspintoysweb.csproj'
-
     # Node.js Tool Installer Task
     # Finds or downloads and caches the specified version spec of Node.js and adds it to the PATH
     - task: NodeTool@0
-      inputs:
+    inputs:
         versionSpec: '12.x' 
+
+    # Nuget Restore Task
+    - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+        restoreSolution: '**/tailspintoysweb.csproj'
 
     # Build Task  
     - task: DotNetCoreCLI@2
-      displayName: 'Build solution'
-      inputs:
+    displayName: 'Build solution'
+    inputs:
         command: publish
         publishWebProjects: True
         arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'  
@@ -863,11 +849,11 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
 
     # Publish Task
     - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact'
-      inputs:
+    displayName: 'Publish Artifact'
+    inputs:
         PathtoPublish: '$(build.artifactstagingdirectory)'
         ArtifactName: 'drop'
-      condition: succeededOrFailed()
+    condition: succeededOrFailed()
     ```
 
 11. The final result should look like the following:
@@ -1151,7 +1137,9 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     ![Screen showing Azure Portal provisioned assets in lab resource group , the dev Web App Service and sorted type column header are highlighted.](images/image1023.png "Azure Portal Resources")  
 
-    On the App Service Overview, select **Browse**.
+15. On the App Service Overview, go to **Deployment slots** and select the Staging slot.
+
+16. Click on the **Browse** button.
 
     ![Screen showing Azure Portal detail view of provisioned development web app service with Browse highlighted.](images/image1024.png "Azure Portal - App Service Detail")  
 
@@ -1246,7 +1234,7 @@ Then, you will merge the pull request into the master branch, triggering an auto
 
     For this task, you will be creating a new work item that simulates having a task for the developer to complete that will be eventually be associated to a pull request.  
 
-    On the left navigation, select **Boards**, then use the green plus symbol in the `New` column to add a new work item.  Make sure to create the new work item as a `Product Backlog Item`.  
+    On the left navigation, select **Boards** and then click on **Boards**. Use the green plus symbol in the `New` column to add a new work item.  Make sure to create the new work item as a `Product Backlog Item`.  
 
     >**Note**: Instead of `Product Backlog Item`, you may see `User Story` or `TODO`, depending on what methodology you chose when you setup your organization (such as Agile, Scrum, or CMMI).    
 
@@ -1280,7 +1268,7 @@ Then, you will merge the pull request into the master branch, triggering an auto
 
     The second check. *Check for comment resolution* ensures comments applied to this pull request during the peer review phase require resolution.
 
-4.  Now select **+** (3) to add the build policy.  This will enable the build to run when a pull request is created.  In the *Add build policy* panel, choose the correct **Build pipeline** and add a **Display name** and select **Save**.   
+4.  Now select **+** (3) next to **Build Validation** to add the build policy.  This will enable the build to run when a pull request is created.  In the *Add build policy* panel, choose the correct **Build pipeline** and add a **Display name** and select **Save**.   
 
     ![Screen showing the Add Build Policy panel with the Build pipeline and Display Name values added, and Display Name and Save button highlighted.](images/image1038.png "Add Build Policy")
 
@@ -1310,16 +1298,16 @@ Then, you will merge the pull request into the master branch, triggering an auto
 
     ![Screen showing Azure DevOps Branch source explorer with file detail view.](images/image1042.png "Branch Source Explorer - File Details")
     
-    Under the *tailspintoysweb* folder, select the **ClientApp** folder, and expand and select the **src** folder.  
+    Expand the **ClientApp** folder and then expand and select the **src** folder.  
 
 3. Next expand the **app** folder then expand the **home** folder.  In this folder, select the **home.component.html** file.  The editor to the right displays the contents of this file.   Now, select **Edit** button on the top right of the screen to begin editing the page.
 
     ![Screen showing Azure DevOps Branch source explorer with target file highlighted and code editor view enabled.](images/image1043.png "Source File Detail")
     
-4. Replace the text ```<h1>Welcome to Tailspin Toys v1!</h1>``` on *line 1* with the following:
+4. Replace the text ```<h1>Welcome to Tailspin Toys .Net 5!</h1>``` on *line 1* with the following:
 
     ```
-    <h1>Welcome to Tailspin Toys v2!</h1>
+    <h1>Welcome to Tailspin Toys .Net5 v2!</h1>
     ```
     
 5.  Now that you've completed the code change, select the **Commit** button on the top right side of the screen.
