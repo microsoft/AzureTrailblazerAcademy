@@ -223,36 +223,32 @@ To submit images to the Prediction API, you will first need to publish your iter
     }
     ```
 --->
-    ```
-    from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
-    from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
-    from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateBatch, ImageFileCreateEntry, Region
-    from msrest.authentication import ApiKeyCredentials
-    import time
+```
+from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
+from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
+from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateBatch, ImageFileCreateEntry, Region
+from msrest.authentication import ApiKeyCredentials
+import time
 
-    # Replace with valid values
-    ENDPOINT = "<Your API endpoint>"
-    prediction_key = "<Your Prediction Key>"
-    project_id = "<Your Project ID>"
-    publish_iteration_name = "<Your Iteration Name>"
-
-
-    # Now there is a trained endpoint that can be used to make a prediction
-    prediction_credentials = ApiKeyCredentials(in_headers={"Prediction-key": prediction_key})
-    predictor = CustomVisionPredictionClient(ENDPOINT, prediction_credentials)
-
-    with open("test_image.jpg", "rb") as image_contents:
-        results = predictor.detect_image(
-            project_id, publish_iteration_name, image_contents.read())
-
-        # Display the results.
-        for prediction in results.predictions:
-            print("\t" + prediction.tag_name +
-                ": {0:.2f}%".format(prediction.probability * 100))
+# Replace with valid values
+ENDPOINT = "<Your API endpoint>"
+prediction_key = "<Your Prediction Key>"
+project_id = "<Your Project ID>"
+publish_iteration_name = "<Your Iteration Name>"
 
 
-    ```
+prediction_credentials = ApiKeyCredentials(in_headers={"Prediction-key": prediction_key})
+predictor = CustomVisionPredictionClient(ENDPOINT, prediction_credentials)
 
+with open("test_image.jpg", "rb") as image_contents:
+    results = predictor.detect_image(
+        project_id, publish_iteration_name, image_contents.read())
+
+    # Display the results.
+    for prediction in results.predictions:
+        print("\t" + prediction.tag_name +
+            ": {0:.2f}%".format(prediction.probability * 100))
+```
 
 3. Replace the placeholders in the Python script with the values you captured earlier:
 - ENDPOINT
