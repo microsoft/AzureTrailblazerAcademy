@@ -88,9 +88,11 @@ Additionally, make sure all of your training images meet the following criteria:
 * no greater than 6MB in size (4MB for prediction images)
 * no less than 256 pixels on the shortest edge; any images shorter than this will be automatically scaled up by the Custom Vision Service
 
-1. Download the ZIP file with all the images.
+1. Download and extract folder with all the images from here:
 
-1. To add images, click the __Add images__ button and then select __Browse local files__. Select __Open__ to upload the images.
+https://github.com/microsoft/AzureTrailblazerAcademy/blob/master/month3/lab_customvision/lab_images/lab_images.zip
+
+1. To add images, click the __Add images__ button and then select __Browse local files__. Select __Open__ to upload all the images except the last image called "test_image.jpg"
 
 <img src="./images/customvision-add-images.jpg" alt="Add images"  Width="600">
 
@@ -98,14 +100,14 @@ Additionally, make sure all of your training images meet the following criteria:
 
 <img src="./images/images-untagged.jpg" alt="Images uploaded, in Untagged section"  Width="600">
 
-3. Click and drag a rectangle around the object in your image. Then, enter a new tag name with the **+** button, or select an existing tag from the drop-down list. If you use the sample coke can images for this lab, you can click and drag an rectangle around a closed diet coke can, enter "opened_coke" as the new tag name. It's very important to tag every instance of the object(s) you want to detect, because the detector uses the untagged background area as a negative example in training. When you're done tagging, click the arrow on the right to save your tags and move on to the next image.
+3. Click and drag a rectangle around the object in your image. Then, enter a new tag name with the **+** button, or select an existing tag from the drop-down list. If you use the sample coke can images for this lab, you can click and drag an rectangle around an open can, enter "opened_can" as the new tag name. It's very important to tag every instance of the object(s) you want to detect, because the detector uses the untagged background area as a negative example in training. When you're done tagging, click the arrow on the right to save your tags and move on to the next image.
 <img src="./images/image-tagging.jpg" alt="Tagging an object with a rectangular selection"  Width="600">
 
-To upload another set of images, return to the top of this section and repeat the steps.
+4. You need to tag at least **15 images** before you can continue to the next step to train the model.
 
 ## Train the detector
 
-To train the detector model, select the **Train** button. The detector uses all of the current images and their tags to create a model that identifies each tagged object.
+To train the detector model, select the **Train** button and then select the **Quick Training** option. The detector uses all of the current images and their tags to create a model that identifies each tagged object.
 
 <img src="./images/train01.jpg" alt="The train button in the top right of the web page's header toolbar"  Width="600">
 
@@ -126,7 +128,7 @@ After training has completed, the model's performance is calculated and displaye
 
 Note the Probability Threshold slider on the left pane of the Performance tab. This is the level of confidence that a prediction needs to have in order to be considered correct (for the purposes of calculating precision and recall).
 
-When you interpret prediction calls with a high probability threshold, they tend to return results with high precision at the expense of recall�the detected classifications are correct, but many remain undetected. A low probability threshold does the opposite�most of the actual classifications are detected, but there are more false positives within that set. With this in mind, you should set the probability threshold according to the specific needs of your project. Later, when you're receiving prediction results on the client side, you should use the same probability threshold value as you used here.
+When you interpret prediction calls with a high probability threshold, they tend to return results with high precision at the expense of recall - the detected classifications are correct, but many remain undetected. A low probability threshold does the opposite - most of the actual classifications are detected, but there are more false positives within that set. With this in mind, you should set the probability threshold according to the specific needs of your project. Later, when you're receiving prediction results on the client side, you should use the same probability threshold value as you used here.
 
 ## Manage training iterations
 
@@ -137,32 +139,35 @@ Each time you train your detector, you create a new _iteration_ with its own upd
 After you've train your model, you can test images programmatically by submitting them to the Prediction API endpoint.
 
 > [!NOTE]
-> This document demonstrates using C# to submit an image to the Prediction API. For more information and examples, see the [Prediction API reference](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
+> This document demonstrates using Python to submit an image to the Prediction API. For more information and examples, see the [Prediction API reference](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
 
 ## Publish your trained iteration
 
-From the [Custom Vision web page](https://customvision.ai), select your project and then select the __Performance__ tab.
+1. From the [Custom Vision web page](https://customvision.ai), select your project and then select the __Performance__ tab.
 
 To submit images to the Prediction API, you will first need to publish your iteration for prediction, which can be done by selecting __Publish__ and specifying a name for the published iteration. This will make your model accessible to the Prediction API of your Custom Vision Azure resource.
 
 <img src="./images/unpublished-iteration.jpg" alt="Publish iteration"  Width="600">
 
-Once your model has been successfully published, you'll see a "Published" label appear next to your iteration in the left-hand sidebar, and its name will appear in the description of the iteration.
+2. Once your model has been successfully published, you'll see a "Published" label appear next to your iteration in the left-hand sidebar, and its name will appear in the description of the iteration. Capture that name as it will be used later.
 
 <img src="./images/published-iteration.jpg" alt="Published iteration."  Width="600">
 
-You can retrieve the required information by selecting __Prediction URL__. This will open up a dialog with information for using the Prediction API, including the __Prediction URL__ and __Prediction-Key__.
+3. Click on __Prediction URL__ and take note of the __Prediction-Key__. 
 
-<img src="./images/prediction-api-info.jpg" alt="Prediction API"  Width="600">
+<img src="./images/prediction-api-info.jpg" alt="Prediction API"  Width="600"> --->
 
-In this lab, you will use a local image, so copy the URL under **If you have an image file** to a temporary location. Copy the corresponding __Prediction-Key__ value as well.
+<!--- In this lab, you will use a local image, so copy the URL under **If you have an image file** to a temporary location. Copy the corresponding __Prediction-Key__ value as well. --->
+
+4. Click on the **Setttings** icon on the top right of this page and capture the values for **Endpoint** and **Project Id**.
 
 ## Create the application
 
-1. In Visual Studio, create a new C# console application.
+1. In your local computer, create a new Python script called "custom_vision.py" using the IDE of your choice.
 
-1. Use the following code as the body of the __Program.cs__ file.
+2. Copy and paste the following code in your Python script:
 
+<!--- 
     ```csharp
     using System;
     using System.IO;
@@ -217,12 +222,55 @@ In this lab, you will use a local image, so copy the URL under **If you have an 
         }
     }
     ```
+--->
+```
+from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
+from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
+from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateBatch, ImageFileCreateEntry, Region
+from msrest.authentication import ApiKeyCredentials
+import time
 
-1. Change the following information:
-   * Set the `namespace` field to the name of your project.
-   * Replace the placeholder `<Your prediction key>` with the key value you retrieved earlier.
-   * Replace the placeholder `<Your prediction URL>` with the URL you retrieved earlier.
+# Replace with valid values
+ENDPOINT = "<Your API endpoint>"
+prediction_key = "<Your Prediction Key>"
+project_id = "<Your Project ID>"
+publish_iteration_name = "<Your Iteration Name>"
 
+
+prediction_credentials = ApiKeyCredentials(in_headers={"Prediction-key": prediction_key})
+predictor = CustomVisionPredictionClient(ENDPOINT, prediction_credentials)
+
+with open("test_image.jpg", "rb") as image_contents:
+    results = predictor.detect_image(
+        project_id, publish_iteration_name, image_contents.read())
+
+    # Display the results.
+    for prediction in results.predictions:
+        print("\t" + prediction.tag_name +
+            ": {0:.2f}%".format(prediction.probability * 100))
+```
+
+3. Replace the placeholders in the Python script with the values you captured earlier:
+- ENDPOINT
+- prediction_key
+- project_id
+- publish_iteration_name
+
+4. Copy the "test_image.jpg" file that was extracted earlier to the same directory where the Python script is located.
+
+5. Install the required Python modules by executing this command in your terminal
+
+    ```bash
+    pip install azure-cognitiveservices-vision-customvision
+    ```  
+
+6. Run the python script as follows:
+
+    ```bash
+    python custom_vision.py
+    ```  
+
+<!--- 
 ## Run the application
 
 When you run the application, you are prompted to enter a path to an image file in the console. The image is then submitted to the Prediction API, and the prediction results are returned as a JSON-formatted string. The following is an example response.
@@ -240,11 +288,12 @@ When you run the application, you are prompted to enter a path to an image file 
 }
 ```
 
+
 # Test and retrain your model
 
 After you train your model, you can quickly test it using a locally stored image or an online image. The test uses the most recently trained iteration.
-
-## Test your model
+---> 
+## Test your model using the Custom Vision Portal
 
 1. From the [Custom Vision web page](https://customvision.ai), select your project. Select **Quick Test** on the right of the top menu bar. This action opens a window labeled **Quick Test**.
 
@@ -267,6 +316,8 @@ To use the image submitted previously for training, use the following steps:
 3. Hover over an image to see the tags that were predicted by the model. Images are ranked, so that the images that can bring the most gains to the detector are at the top. 
 4. To select a different sorting, use the __Sort__ section.
 
+
 <img src="./images/predictions-tab.jpg" alt="Predictions tab"  Width="600">
 
-5. Use the __Train__ button to retrain the model.
+5. Click on each of the images and confirm the selected tag.
+6. Use the __Train__ button to retrain the model with the new images.
