@@ -223,6 +223,7 @@ To submit images to the Prediction API, you will first need to publish your iter
     }
     ```
 --->
+u
 ```
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
 from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
