@@ -128,7 +128,7 @@ After training has completed, the model's performance is calculated and displaye
 
 Note the Probability Threshold slider on the left pane of the Performance tab. This is the level of confidence that a prediction needs to have in order to be considered correct (for the purposes of calculating precision and recall).
 
-When you interpret prediction calls with a high probability threshold, they tend to return results with high precision at the expense of recall�the detected classifications are correct, but many remain undetected. A low probability threshold does the opposite�most of the actual classifications are detected, but there are more false positives within that set. With this in mind, you should set the probability threshold according to the specific needs of your project. Later, when you're receiving prediction results on the client side, you should use the same probability threshold value as you used here.
+When you interpret prediction calls with a high probability threshold, they tend to return results with high precision at the expense of recall - the detected classifications are correct, but many remain undetected. A low probability threshold does the opposite - most of the actual classifications are detected, but there are more false positives within that set. With this in mind, you should set the probability threshold according to the specific needs of your project. Later, when you're receiving prediction results on the client side, you should use the same probability threshold value as you used here.
 
 ## Manage training iterations
 
@@ -223,7 +223,7 @@ To submit images to the Prediction API, you will first need to publish your iter
     }
     ```
 --->
-    ```python
+    ```
     from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
     from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
     from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateBatch, ImageFileCreateEntry, Region
