@@ -219,7 +219,7 @@ To submit images to the Prediction API, you will first need to publish your iter
                 BinaryReader binaryReader = new BinaryReader(fileStream);
                 return binaryReader.ReadBytes((int)fileStream.Length);
             }
-        }
+        }s
     }
     ```
 --->
