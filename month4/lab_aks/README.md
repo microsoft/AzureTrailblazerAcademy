@@ -1413,9 +1413,9 @@ In this task, you will create a **Migration project** within Azure Database Migr
 
 In this exercise, you will connect to the Azure Kubernetes Service cluster you created before the hands-on lab and deploy the Docker application to the cluster using Kubernetes.
 
-### Task 1: Tunnel into the Azure Kubernetes Service cluster
+### Task 1: Connect to the Azure Kubernetes Service cluster
 
-In this task, you will gather the information you need about your Azure Kubernetes Service cluster to connect to the cluster and execute commands to connect to the Kubernetes management dashboard from cloud shell.
+In this task, you will gather the information you need about your Azure Kubernetes Service cluster to connect to the cluster and execute commands usign kubectl directly the from cloud shell.
 
 > **Note**: The following tasks should be executed in cloud shell and not the build machine, so disconnect from build machine if still connected.
 
@@ -1767,7 +1767,7 @@ In this task, deploy the web service using `kubectl`.
 
     ![In this screenshot of the console, kubectl apply -f kubernetes-web.yaml has been typed and run at the command prompt. Messages about web deployment and web service creation appear below.](images/image93.png "kubectl create application")
 
-11. Return to the AKS blade in the Azure Portal. From the navigation menu, under **Kubernetes resources**, select the **Services and ingresses** view. You should be able to access the website via an external endpoint.
+11. Return to the AKS blade in the Azure Portal. From the navigation menu, under **Kubernetes resources**, select the **Services and ingresses** view. You should be able to access the website via an external endpoint (It might take a couple of minutes for the service for the site work as it is being deployed).
 
     ![AKS services and ingresses shown with External IP highlighted](images/aks-resources-services-ingresses-view.png "AKS services and ingresses shown with External IP highlighted")
 
@@ -1801,20 +1801,15 @@ You will configure a Helm Chart that will be used to deploy and configure the **
     git clone https://github.com/USER_NAME/fabmedical.git
     ```
 
-7. We will use the `helm create` command to scaffold out a chart implementation that we can build on. Use the following commands to create a new chart named `web` in a new directory (replace 'fabmedical' with the directory created by your clone):
+7. Execute the following command to go inside the `web` directory (replace 'fabmedical' with the directory created by your clone):
 
     ```bash
-    cd fabmedical
-    cd content-web
-    mkdir charts
-    cd charts
-    helm create web
+    cd ~/fabmedical/content-web/charts/web
     ```
 
 8. We now need to update the generated scaffold to match our requirements. We will first update the file named `values.yaml`.
 
     ```bash
-    cd web
     code values.yaml
     ```
 
