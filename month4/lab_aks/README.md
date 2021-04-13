@@ -1170,32 +1170,18 @@ image and pushes it to your ACR instance automatically.
 
     ![Secrets screen with both the ACR_USERNAME and ACR_PASSWORD secrets created.](images/2020-08-24-21-51-24.png "Secrets screen")
 
-6. In your Azure Cloud Shell session connected to the build agent VM, navigate to the `~/Fabmedical` directory:
+6. In your Azure Cloud Shell session connected to the build agent VM, navigate to the `~/Fabmedical/.github/workflows` directory:
 
    ```bash
-   cd ~/Fabmedical
+   cd ~/Fabmedical/.github/workflows
    ```
-
-7. Before the GitHub Actions workflows can be setup, the `.github/workflows` directory needs to be created, if it doesn't already exist. Do this by running the following commands:
-
-    ```bash
-    mkdir ~/Fabmedical/.github
-    mkdir ~/Fabmedical/.github/workflows
-    ```
-
-8. Navigate to the `.github/workflows` directory:
-
-    ```bash
-    cd ~/Fabmedical/.github/workflows
-    ```
-
-9. Next create the workflow YAML file.
+7. Next create the workflow YAML file.
 
     ```dotnetcli
     vi content-web.yml
     ```
 
-   Add the following as the content. Be sure to replace the following placeholders:
+   Type 'i' to enter in 'Insert mode' and add the following as the content. Be sure to replace the following placeholders:
 
    - replace `[SHORT_SUFFIX]` with your short suffix such as `SOL`.
 
@@ -1253,9 +1239,9 @@ image and pushes it to your ACR instance automatically.
               ${{ env.containerRegistry }}/${{ env.imageRepository }}:latest
     ```
 
-10. Save the file and exit VI by pressing `<Esc>` then `:wq`.
+8. Save the file and exit VI by pressing `<Esc>` then `:wq`.
 
-11. Save the pipeline YAML, then commit and push it to the Git repository:
+9. Save the pipeline YAML, then commit and push it to the Git repository:
 
     ```bash
     git add .
@@ -1263,37 +1249,39 @@ image and pushes it to your ACR instance automatically.
     git push
     ```
 
-12. In GitHub, return to the **Fabmedical** repository screen, and select the **Actions** tab.
+10. In GitHub, return to the **Fabmedical** repository screen, and select the **Actions** tab.
 
-13. On the **Actions** page, select the **content-web** workflow.
+11. On the **Actions** page, select the **content-web** workflow.
 
-14. On the **content-web** workflow, select **Run workflow** and manually trigger the workflow to execute.
+12. On the **content-web** workflow, select **Run workflow** and manually trigger the workflow to execute.
 
     ![The content-web Action is shown with the Actions, content-web, and Run workflow links highlighted.](images/2020-08-25-15-38-06.png "content-web workflow")
 
-15. After a second, the newly triggered workflow execution will display in the list. Select the new **content-web** execution to view its status.
+13. After a second, the newly triggered workflow execution will display in the list. Select the new **content-web** execution to view its status.
 
-16. Selecting the **Build and Push Docker Image** job of the workflow will display its execution status.
+14. Selecting the **Build and Push Docker Image** job of the workflow will display its execution status.
 
     ![Build and Push Docker Image job.](images/2020-08-25-15-42-11.png "Build and Push Docker Image job")
 
-17. Next, setup the `content-api` workflow. This repository already includes `content-api.yml` located within the `.github/workflows` directory. Open the `.github/workflows/content-api.yml` file for editing.
+15. Next, setup the `content-api` workflow. There is already a `content-api.yml` file located within the `.github/workflows` directory. Open the `.github/workflows/content-api.yml` file for editing.
 
-18. Edit the `resourceGroupName` and `containerRegistry` environment values to replace `[SHORT_SUFFIX]` with your own three-letter suffix so that it matches your container registry's name and resource group.
+16. Edit the `resourceGroupName` and `containerRegistry` environment values to replace `[SHORT_SUFFIX]` with your own three-letter suffix so that it matches your container registry's name and resource group.
 
     ![The screenshot shows the content-api.yml with the environment variables highlighted.](images/2020-08-25-15-59-56.png "content-api.yml environment variables highlighted")
 
-19. Save the file, then navigate to the repositories in GitHub, select Actions, and then manually run the **content-api** workflow.
+17. Save the file
 
-20. Next, setup the **content-init** workflow. Follow the same steps as the previous `content-api` workflow for the `content-init.yml` file, remembering to update the `[SHORT_SUFFIX]` value with your own three-letter suffix.
+18. Next, setup the **content-init** workflow. Follow the same steps as the previous `content-api` workflow for the `content-init.yml` file, remembering to update the `[SHORT_SUFFIX]` value with your own three-letter suffix.
 
-21. Commit and push the changes to the Git repository:
+19. Commit and push these changes to the Git repository:
 
     ```bash
     git add .
     git commit -m "Updated workflow YAML"
     git push
     ```
+
+20. Then, navigate to the repositories in GitHub, select Actions, and then manually run the **content-api** and **content-init** workflows.
 
 ## Exercise 2: Migrate MongoDB to Cosmos DB using Azure Database Migration Service
 
@@ -1393,33 +1381,29 @@ In this task, you will create a **Migration project** within Azure Database Migr
 
     Notice, the **Connection String** will automatically populate with the Key for your Azure Cosmos DB instance.
 
-8. Modify the **Connection string** by replacing `@undefined:` with `@fabmedical-[SUFFIX].documents.azure.com:` so the DNS name matches the Azure Cosmos DB instance. Be sure to replace the `[SUFFIX]`.
+8. Select **Next: Database setting >>**.
 
-    ![The screenshot shows the Connection string with the @undefined: value replaced with the correct DNS name.](images/dms-select-target-connection-string.png "Setting the Connection string")
-
-9. Select **Next: Database setting >>**.
-
-10. On the **Database setting** tab, select the `contentdb` **Source Database** so this database from MongoDB will be migrated to Azure Cosmos DB.
+9. On the **Database setting** tab, select the `contentdb` **Source Database** so this database from MongoDB will be migrated to Azure Cosmos DB.
 
     ![The screenshot shows the Database setting tab with the contentdb source database selected.](images/dms-database-setting.png "Database setting tab")
 
-11. Select **Next: Collection setting >>**.
+10. Select **Next: Collection setting >>**.
 
-12. On the **Collection setting** tab, expand the **contentdb** database, and ensure both the **sessions** and **speakers** collections are selected for migration. Also, update the **Throughput (RU/s)** to `400` for both collections.
+11. On the **Collection setting** tab, expand the **contentdb** database, and ensure both the **sessions** and **speakers** collections are selected for migration. Also, update the **Throughput (RU/s)** to `400` for both collections.
 
     ![The screenshot shows the Collection setting tab with both sessions and speakers collections selected with Throughput RU/s set to 400 for both collections.](images/dms-collection-setting.png "Throughput RU")
 
-13. Select **Next: Migration summary >>**.
+12. Select **Next: Migration summary >>**.
 
-14. On the **Migration summary** tab, enter `MigrateData` in the **Activity name** field, then select **Start migration** to initiate the migration of the MongoDB data to Azure Cosmos DB.
+13. On the **Migration summary** tab, enter `MigrateData` in the **Activity name** field, then select **Start migration** to initiate the migration of the MongoDB data to Azure Cosmos DB.
 
     ![The screenshot shows the Migration summary is shown with MigrateData entered in the Activity name field.](images/dms-migration-summary.png "Migration summary")
 
-15. The status for the migration activity will be shown. The migration will only take a few seconds to complete. Select **Refresh** to reload the status to ensure it shows a **Status** of **Complete**.
+14. The status for the migration activity will be shown. The migration will only take a few seconds to complete. Select **Refresh** to reload the status to ensure it shows a **Status** of **Complete**.
 
      ![The screenshot shows the MigrateData activity showing the status has completed.](images/dms-migrate-complete.png "MigrateData activity completed")
 
-16. To verify the data was migrated, navigate to the **Cosmos DB Account** for the lab within the Azure Portal, then select the **Data Explorer**. You will see the `speakers` and `sessions` collections listed within the `contentdb` database, and you will be able to explore the documents within.
+15. To verify the data was migrated, navigate to the **Cosmos DB Account** for the lab within the Azure Portal, then select the **Data Explorer**. You will see the `speakers` and `sessions` collections listed within the `contentdb` database, and you will be able to explore the documents within.
 
     ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](images/dms-confirm-data-in-cosmosdb.png "Cosmos DB is open")
 
