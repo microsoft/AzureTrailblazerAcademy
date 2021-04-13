@@ -89,9 +89,9 @@ The solution will use Azure Kubernetes Service (AKS), which means that the conta
 
 Each tenant will have the following containers:
 
-- **Conference Web site**: The SPA application that will use configuration settings to handle custom styles for the tenant.
+- **Conference Web site**: The Single-Page Application (SPA) application that will use configuration settings to handle custom styles for the tenant.
 
-- **Admin Web site**: The SPA application that conference owners use to manage conference configuration details, manage attendee registrations, manage campaigns, and communicate with attendees.
+- **Admin Web site**: The Single-Page Application (SPA) application that conference owners use to manage conference configuration details, manage attendee registrations, manage campaigns, and communicate with attendees.
 
 - **Registration service**: The API that handles all registration activities creating new conference registrations with the appropriate package selections and associated cost.
 
@@ -173,7 +173,7 @@ In this task, you use `git` to copy the lab content to your cloud shell so that 
 1. Type the following command and press `<ENTER>`:
 
    ```bash
-   git clone https://github.com/microsoft/MCW-Cloud-native-applications.git
+   git clone https://github.com/microsoft/AzureTrailblazerAcademy.git
    ```
 
    > **Note**: If you do not have enough free space, you may need to remove extra files from your cloud shell environment.  Try running `azcopy jobs clean` to remove any `azcopy` jobs and data you do not need.
@@ -185,7 +185,7 @@ In this task, you use `git` to copy the lab content to your cloud shell so that 
 3. We do not need the `.git` folder, and later steps will be less complex if we remove it. Run this command:
 
    ```bash
-   rm -rf MCW-Cloud-native-applications/.git
+   rm -rf AzureTrailblazerAcademy/.git
    ```
 
 ### Task 3: Resource Group
@@ -234,7 +234,7 @@ You create VMs during the upcoming exercises. In this section, you create an SSH
 
 3. When asked to save the generated key to a file, enter `.ssh/fabmedical` for the name.
 
-4. Enter a passphrase when prompted, and **don't forget it**!
+4. Enter a passphrase when prompted, and **don't forget it!** (Suggested passphrase: **at@February2021**)
 
 5. Because you entered `.ssh/fabmedical` the ssh-keygen generates the file in the `.ssh` folder in your user folder, where the cloud shell opens by default.
 
@@ -259,7 +259,7 @@ In this section, you configure and execute an ARM template that creates all the 
    > **Note**: If you don't have a cloud shell available, refer back to [Task 1: Setup Azure Cloud Shell](#task-1-setup-azure-cloud-shell).
 
    ```bash
-   cd MCW-Cloud-native-applications/Hands-on\ lab/arm/
+   cd AzureTrailblazerAcademy/month4/lab_aks/scripts
    ```
 
 2. Open the azuredeploy.parameters.json file for editing using Azure Cloud Shell editor.
@@ -270,9 +270,9 @@ In this section, you configure and execute an ARM template that creates all the 
 
    ![This screenshot shows the online editor for azure could shell. Display the azuredeploy.parameters.json](images/b4-image581.png "Edit azuredeploy.parameters.json")
 
-3. Update the values for the various keys so that they match your environment:
+3. Update the values for each of the fields below (including the public key you copied earlier):
 
-   - **Suffix**: Enter a shortened version of your SUFFIX with a max of 3 chars.
+   - **Suffix**: Enter a shortened version of your SUFFIX with a **max of 3 chars**.
    - **VirtualMachineAdminUsernameLinux**: The Linux Build Agent VM admin username (example: `"adminfabmedical"`).
    - **VirtualMachineAdminPublicKeyLinux**: The Linux Build Agent VM admin ssh public key. You find this value in the `.ssh/fabmedical.pub` file created previously (example: `"ssh-rsa AAAAB3N(...)vPiybQV admin@fabmedical"`).
    - **CosmosLocation**: The primary location of the Azure Cosmos DB. Use the same location as the resource group previously created (example: `"eastus"`).
@@ -314,7 +314,7 @@ FabMedical has provided starter files for you. They have taken a copy of the web
 
     ![The GitHub Find a repository search criteria is shown with the New button selected.](images/2020-08-23-18-08-02.png "New repository button")
 
-4. On the **Create a new repository** screen, name the repository **Fabmedical** and select the **Create repository** button.
+4. On the **Create a new repository** screen, name the repository **Fabmedical**, configure it as **Public** and select the **Create repository** button.
 
     ![Create a new repository page with Repository name field and Create repository button highlighted.](images/2020-08-23-18-11-38.png "Create a new repository")
 
@@ -327,18 +327,9 @@ FabMedical has provided starter files for you. They have taken a copy of the web
 7. Navigate to the FabMedical source code folder and list the contents.
 
    ```bash
-   cd ~/MCW-Cloud-native-applications/Hands-on\ lab/lab-files/developer/
+   cd ~/AzureTrailblazerAcademy/month4/lab_aks/lab-files/infrastructure/
    ls
    ```
-
-   > **Important note**: If you will be taking the Infrastructure edition of the lab, instead of using the above instructions, type the following ones:
-   >
-   > ```bash
-   > cd ~/MCW-Cloud-native-applications/Hands-on\ lab/lab-files/infrastructure/
-   > ls
-   > ```
-   >
-   > This will take you to the version of the starter files that will be used by that edition of the lab.
 
 8. You'll see the listing includes three folders, one for the web site, another for the content API and one to initialize API data:
 
@@ -384,6 +375,8 @@ FabMedical has provided starter files for you. They have taken a copy of the web
 
     > **Note**: If you have multi-factor authentication, you will need to create a personal access token when using the cloud shell. Reference the following link for help with setting up a GitHub personal access token to use for authenticating `git` with your GitHub account: <https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token>.
 
+    > When creating the Personal Access Token, make sure you select the checkboxes for the categories **Repo** and **Workflow**.
+
     > **Note**: Once you have your personal access token, retry the above command, use your token as the password.
 
 14. Refresh your GitHub repository, you should now see the code published.
@@ -393,7 +386,7 @@ FabMedical has provided starter files for you. They have taken a copy of the web
 In this section, you validate that you can connect to the new build agent
 VM.
 
-1. Open a **new** Azure Cloud Shell console and run the following command to find the IP address for the build agent VM provisioned when you ran the ARM deployment:
+1. Open a **new** Azure Cloud Shell console (or go to your root ~ folder in your existing Cloud Shell session) and run the following command to find the IP address for the build agent VM provisioned when you ran the ARM deployment:
 
    > **Note**: If you don't have a cloud shell available, refer back to [Task 1: Setup Azure Cloud Shell](#task-1-setup-azure-cloud-shell).
 
@@ -584,10 +577,7 @@ In this task, you clone your repositories from GitHub so you can work with them 
    > sudo chown -R $USER:$(id -gn $USER) /home/adminfabmedical/.config
    > ```
 
-You should follow all steps provided _before_ performing the Hands-on lab.
-
-[logo]: https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png
-
+You should follow all steps provided _before_ continuing to the next section of the lab.
 
 
 ## Exercise 1: Create and run a Docker application
@@ -725,7 +715,11 @@ The purpose of this task is to make sure you can run the application successfull
      sudo chown -R $USER:$(id -gn $USER) /home/adminfabmedical/.config
      ```
 
-14. From Azure cloud shell, run the following command to find the IP address for the build agent VM provisioned when you ran the ARM deployment.
+14. In the Azure Portal, go to the VM that was recently created and copy its **Public IP Address**.
+
+   ![In the Virtual Machine blade, Overview is selected on the left and Public IP address 52.174.141.11 is highlighted on the right.](images/image26.png "VM Public IP Address")
+
+Another way of getting the Public IP of the VM is by running the following command from Azure Cloud Shell (while you are not connected to the VM):
 
     ```bash
     az vm show -d -g fabmedical-[SUFFIX] -n fabmedical-[SHORT_SUFFIX] --query publicIps -o tsv
@@ -771,17 +765,7 @@ The purpose of this task is to make sure you can run the application successfull
 
 In this task, you will browse to the web application for testing.
 
-1. From the Azure portal select the resource group you created named `fabmedical-SUFFIX`.
-
-2. Select the build agent VM named `fabmedical-SUFFIX` from your list of available resources.
-
-   ![In this screenshot of your list of available resources, the first item is selected, which has the following values for Name, Type, and Location: fabmedical-soll (a red arrows points to this name), Virtual machine, and East US 2.](images/image54.png "List of resources")
-
-3. From the **Virtual Machine** blade overview, find the **IP address** of the VM.
-
-   ![In the Virtual Machine blade, Overview is selected on the left and Public IP address 52.174.141.11 is highlighted on the right.](images/image26.png "VM Public IP Address")
-
-4. Test the web application from a browser. Navigate to the web application using your build agent IP address at port `3000`.
+1. Test the web application from a browser. Navigate to the web application using the VM's IP address at port `3000`.
 
    ```text
    http://[BUILDAGENTIP]:3000
@@ -810,7 +794,7 @@ In this task, you will create Docker images for the application --- one for the 
    docker image ls
    ```
 
-2. From the `content-api` folder containing the API application files and the new `Dockerfile` you created, type the following command to create a Docker image for the API application. This command does the following:
+2. From the `content-api` folder containing the API application files, you will find a `Dockerfile` that was created for you. Type the following command to create a Docker image for the API application. This command does the following:
 
    - Executes the Docker build command to produce the image
 
@@ -1129,9 +1113,7 @@ In this task, you will push images to your ACR account, version images with tagg
 
    ![In this screenshot of the console window, an example of images being pushed to an ACR account results from typing and running the following at the command prompt: docker push [LOGINSERVER]/content-web.](images/image67.png "Push image to ACR")
 
-8. In the Azure Portal, navigate to your ACR account, and select **Repositories (1)** under **Services** on the left-hand menu. You will now see two containers **(2)**, one for each image.
-
-   ![In this screenshot, content-api and content-web each appear on their own lines below Repositories.](images/acr-two-containers.png "Search for repositories")
+8. In the Azure Portal, navigate to your ACR account, and select **Repositories (1)** under **Services** on the left-hand menu. You will now see three containers, one for each image.
 
 9. Select `content-api` **(1)**. You will see the latest tag **(2)** is assigned.
 
@@ -1142,6 +1124,7 @@ In this task, you will push images to your ACR account, version images with tagg
     ```bash
     docker image tag [LOGINSERVER]/content-web:latest [LOGINSERVER]/content-web:v1
     docker image tag [LOGINSERVER]/content-api:latest [LOGINSERVER]/content-api:v1
+    docker image tag [LOGINSERVER]/content-init:latest [LOGINSERVER]/content-init:v1
     docker image ls
     ```
 
@@ -1187,32 +1170,18 @@ image and pushes it to your ACR instance automatically.
 
     ![Secrets screen with both the ACR_USERNAME and ACR_PASSWORD secrets created.](images/2020-08-24-21-51-24.png "Secrets screen")
 
-6. In your Azure Cloud Shell session connected to the build agent VM, navigate to the `~/Fabmedical` directory:
+6. In your Azure Cloud Shell session connected to the build agent VM, navigate to the `~/Fabmedical/.github/workflows` directory:
 
    ```bash
-   cd ~/Fabmedical
+   cd ~/Fabmedical/.github/workflows
    ```
-
-7. Before the GitHub Actions workflows can be setup, the `.github/workflows` directory needs to be created, if it doesn't already exist. Do this by running the following commands:
-
-    ```bash
-    mkdir ~/Fabmedical/.github
-    mkdir ~/Fabmedical/.github/workflows
-    ```
-
-8. Navigate to the `.github/workflows` directory:
-
-    ```bash
-    cd ~/Fabmedical/.github/workflows
-    ```
-
-9. Next create the workflow YAML file.
+7. Next create the workflow YAML file.
 
     ```dotnetcli
     vi content-web.yml
     ```
 
-   Add the following as the content. Be sure to replace the following placeholders:
+   Type 'i' to enter in 'Insert mode' and add the following as the content. Be sure to replace the following placeholders:
 
    - replace `[SHORT_SUFFIX]` with your short suffix such as `SOL`.
 
@@ -1270,9 +1239,9 @@ image and pushes it to your ACR instance automatically.
               ${{ env.containerRegistry }}/${{ env.imageRepository }}:latest
     ```
 
-10. Save the file and exit VI by pressing `<Esc>` then `:wq`.
+8. Save the file and exit VI by pressing `<Esc>` then `:wq`.
 
-11. Save the pipeline YAML, then commit and push it to the Git repository:
+9. Save the pipeline YAML, then commit and push it to the Git repository:
 
     ```bash
     git add .
@@ -1280,37 +1249,39 @@ image and pushes it to your ACR instance automatically.
     git push
     ```
 
-12. In GitHub, return to the **Fabmedical** repository screen, and select the **Actions** tab.
+10. In GitHub, return to the **Fabmedical** repository screen, and select the **Actions** tab.
 
-13. On the **Actions** page, select the **content-web** workflow.
+11. On the **Actions** page, select the **content-web** workflow.
 
-14. On the **content-web** workflow, select **Run workflow** and manually trigger the workflow to execute.
+12. On the **content-web** workflow, select **Run workflow** and manually trigger the workflow to execute.
 
     ![The content-web Action is shown with the Actions, content-web, and Run workflow links highlighted.](images/2020-08-25-15-38-06.png "content-web workflow")
 
-15. After a second, the newly triggered workflow execution will display in the list. Select the new **content-web** execution to view its status.
+13. After a second, the newly triggered workflow execution will display in the list. Select the new **content-web** execution to view its status.
 
-16. Selecting the **Build and Push Docker Image** job of the workflow will display its execution status.
+14. Selecting the **Build and Push Docker Image** job of the workflow will display its execution status.
 
     ![Build and Push Docker Image job.](images/2020-08-25-15-42-11.png "Build and Push Docker Image job")
 
-17. Next, setup the `content-api` workflow. This repository already includes `content-api.yml` located within the `.github/workflows` directory. Open the `.github/workflows/content-api.yml` file for editing.
+15. Next, setup the `content-api` workflow. There is already a `content-api.yml` file located within the `.github/workflows` directory. Open the `.github/workflows/content-api.yml` file for editing.
 
-18. Edit the `resourceGroupName` and `containerRegistry` environment values to replace `[SHORT_SUFFIX]` with your own three-letter suffix so that it matches your container registry's name and resource group.
+16. Edit the `resourceGroupName` and `containerRegistry` environment values to replace `[SHORT_SUFFIX]` with your own three-letter suffix so that it matches your container registry's name and resource group.
 
     ![The screenshot shows the content-api.yml with the environment variables highlighted.](images/2020-08-25-15-59-56.png "content-api.yml environment variables highlighted")
 
-19. Save the file, then navigate to the repositories in GitHub, select Actions, and then manually run the **content-api** workflow.
+17. Save the file
 
-20. Next, setup the **content-init** workflow. Follow the same steps as the previous `content-api` workflow for the `content-init.yml` file, remembering to update the `[SHORT_SUFFIX]` value with your own three-letter suffix.
+18. Next, setup the **content-init** workflow. Follow the same steps as the previous `content-api` workflow for the `content-init.yml` file, remembering to update the `[SHORT_SUFFIX]` value with your own three-letter suffix.
 
-21. Commit and push the changes to the Git repository:
+19. Commit and push these changes to the Git repository:
 
     ```bash
     git add .
     git commit -m "Updated workflow YAML"
     git push
     ```
+
+20. Then, navigate to the repositories in GitHub, select Actions, and then manually run the **content-api** and **content-init** workflows.
 
 ## Exercise 2: Migrate MongoDB to Cosmos DB using Azure Database Migration Service
 
@@ -1410,33 +1381,29 @@ In this task, you will create a **Migration project** within Azure Database Migr
 
     Notice, the **Connection String** will automatically populate with the Key for your Azure Cosmos DB instance.
 
-8. Modify the **Connection string** by replacing `@undefined:` with `@fabmedical-[SUFFIX].documents.azure.com:` so the DNS name matches the Azure Cosmos DB instance. Be sure to replace the `[SUFFIX]`.
+8. Select **Next: Database setting >>**.
 
-    ![The screenshot shows the Connection string with the @undefined: value replaced with the correct DNS name.](images/dms-select-target-connection-string.png "Setting the Connection string")
-
-9. Select **Next: Database setting >>**.
-
-10. On the **Database setting** tab, select the `contentdb` **Source Database** so this database from MongoDB will be migrated to Azure Cosmos DB.
+9. On the **Database setting** tab, select the `contentdb` **Source Database** so this database from MongoDB will be migrated to Azure Cosmos DB.
 
     ![The screenshot shows the Database setting tab with the contentdb source database selected.](images/dms-database-setting.png "Database setting tab")
 
-11. Select **Next: Collection setting >>**.
+10. Select **Next: Collection setting >>**.
 
-12. On the **Collection setting** tab, expand the **contentdb** database, and ensure both the **sessions** and **speakers** collections are selected for migration. Also, update the **Throughput (RU/s)** to `400` for both collections.
+11. On the **Collection setting** tab, expand the **contentdb** database, and ensure both the **sessions** and **speakers** collections are selected for migration. Also, update the **Throughput (RU/s)** to `400` for both collections.
 
     ![The screenshot shows the Collection setting tab with both sessions and speakers collections selected with Throughput RU/s set to 400 for both collections.](images/dms-collection-setting.png "Throughput RU")
 
-13. Select **Next: Migration summary >>**.
+12. Select **Next: Migration summary >>**.
 
-14. On the **Migration summary** tab, enter `MigrateData` in the **Activity name** field, then select **Start migration** to initiate the migration of the MongoDB data to Azure Cosmos DB.
+13. On the **Migration summary** tab, enter `MigrateData` in the **Activity name** field, then select **Start migration** to initiate the migration of the MongoDB data to Azure Cosmos DB.
 
     ![The screenshot shows the Migration summary is shown with MigrateData entered in the Activity name field.](images/dms-migration-summary.png "Migration summary")
 
-15. The status for the migration activity will be shown. The migration will only take a few seconds to complete. Select **Refresh** to reload the status to ensure it shows a **Status** of **Complete**.
+14. The status for the migration activity will be shown. The migration will only take a few seconds to complete. Select **Refresh** to reload the status to ensure it shows a **Status** of **Complete**.
 
      ![The screenshot shows the MigrateData activity showing the status has completed.](images/dms-migrate-complete.png "MigrateData activity completed")
 
-16. To verify the data was migrated, navigate to the **Cosmos DB Account** for the lab within the Azure Portal, then select the **Data Explorer**. You will see the `speakers` and `sessions` collections listed within the `contentdb` database, and you will be able to explore the documents within.
+15. To verify the data was migrated, navigate to the **Cosmos DB Account** for the lab within the Azure Portal, then select the **Data Explorer**. You will see the `speakers` and `sessions` collections listed within the `contentdb` database, and you will be able to explore the documents within.
 
     ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](images/dms-confirm-data-in-cosmosdb.png "Cosmos DB is open")
 
@@ -1446,9 +1413,9 @@ In this task, you will create a **Migration project** within Azure Database Migr
 
 In this exercise, you will connect to the Azure Kubernetes Service cluster you created before the hands-on lab and deploy the Docker application to the cluster using Kubernetes.
 
-### Task 1: Tunnel into the Azure Kubernetes Service cluster
+### Task 1: Connect to the Azure Kubernetes Service cluster
 
-In this task, you will gather the information you need about your Azure Kubernetes Service cluster to connect to the cluster and execute commands to connect to the Kubernetes management dashboard from cloud shell.
+In this task, you will gather the information you need about your Azure Kubernetes Service cluster to connect to the cluster and execute commands usign kubectl directly the from cloud shell.
 
 > **Note**: The following tasks should be executed in cloud shell and not the build machine, so disconnect from build machine if still connected.
 
@@ -1800,7 +1767,7 @@ In this task, deploy the web service using `kubectl`.
 
     ![In this screenshot of the console, kubectl apply -f kubernetes-web.yaml has been typed and run at the command prompt. Messages about web deployment and web service creation appear below.](images/image93.png "kubectl create application")
 
-11. Return to the AKS blade in the Azure Portal. From the navigation menu, under **Kubernetes resources**, select the **Services and ingresses** view. You should be able to access the website via an external endpoint.
+11. Return to the AKS blade in the Azure Portal. From the navigation menu, under **Kubernetes resources**, select the **Services and ingresses** view. You should be able to access the website via an external endpoint (It might take a couple of minutes for the service for the site work as it is being deployed).
 
     ![AKS services and ingresses shown with External IP highlighted](images/aks-resources-services-ingresses-view.png "AKS services and ingresses shown with External IP highlighted")
 
@@ -1834,20 +1801,15 @@ You will configure a Helm Chart that will be used to deploy and configure the **
     git clone https://github.com/USER_NAME/fabmedical.git
     ```
 
-7. We will use the `helm create` command to scaffold out a chart implementation that we can build on. Use the following commands to create a new chart named `web` in a new directory (replace 'fabmedical' with the directory created by your clone):
+7. Execute the following command to go inside the `web` directory (replace 'fabmedical' with the directory created by your clone):
 
     ```bash
-    cd fabmedical
-    cd content-web
-    mkdir charts
-    cd charts
-    helm create web
+    cd ~/fabmedical/content-web/charts/web
     ```
 
 8. We now need to update the generated scaffold to match our requirements. We will first update the file named `values.yaml`.
 
     ```bash
-    cd web
     code values.yaml
     ```
 
