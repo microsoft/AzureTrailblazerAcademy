@@ -2742,7 +2742,7 @@ In this task, you will setup Azure Traffic Manager as a multi-region load balanc
             servicePort: 3001
   ```
 
-12. Execute the following commands to update those changes in our Kubernetes cluster.
+12. Execute the following commands to update those changes in the Kubernetes cluster.
 
 ```bash
 kubectl delete ingress content-ingress
