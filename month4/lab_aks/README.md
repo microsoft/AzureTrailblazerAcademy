@@ -1860,7 +1860,7 @@ You will configure a Helm Chart that will be used to deploy and configure the **
     code Chart.yaml
     ```
 
-15. Search for the `appVersion` entry and update the value so that it matches the following:
+15. Search for the `appVersion` entry and update the value so that it matches the following. Then save and close the editor.
 
     ```yaml
     appVersion: latest
@@ -1964,7 +1964,7 @@ In this task, you will use GitHub Actions workflows to automate the process for 
 
     ```bash
     cd ~/fabmedical/.github/workflows
-    vi content-web.yml
+    code content-web.yml
     ```
 
 2. You will add a second job to the bottom of the `content-web.yml` workflow. Paste the following at the end of the file:
@@ -2477,7 +2477,7 @@ In this task you will setup a Kubernetes Ingress using an [nginx proxy server](h
 
 6. Open the [Azure Portal Resource Groups blade](https://portal.azure.com/?feature.customPortal=false#blade/HubsExtension/BrowseResourceGroups) and locate the Resource Group that was automatically created to host the Node Pools for AKS. It will have the naming format of `MC_fabmedical-[SUFFIX]_fabmedical-[SUFFIX]_[REGION]`.
 
-7. Within the Azure Cloud Shell, create a script to update the public DNS name for the ingress external IP.
+7. Within the Azure Cloud Shell, go back to your home directory and create a script to update the public DNS name for the ingress external IP.
 
    ```bash
    code update-ip.sh
@@ -2726,10 +2726,10 @@ In this task, you will setup Azure Traffic Manager as a multi-region load balanc
 
     ![The Traffic Manager profile overview pane with the DNS name highlighted](images/tm-overview.png "fabmedical Traffic Manager profile DNS name")
 
-11. Navigate back to Azure Cloud Shell. Open the `content.ingress.yml` file you created previously. Append the following YAML code to the file. Please maintain proper indentation. These YAML statements will ensure that you route requests originating from the traffic manager profile to the correct service.
+11. Navigate back to Azure Cloud Shell. Open the `content.ingress.yml` file you created previously. Append the following YAML code to the file. Please maintain proper indentation. These YAML statements will ensure that you route requests originating from the traffic manager profile to the correct service. Make sure you replace the [SUFFIX] value with the suffix you have been using for this lab.
 
   ```yaml
-    - host: fabmedical-cnr.trafficmanager.net
+    - host: fabmedical-[SUFFIX].trafficmanager.net
       http:
         paths:
         - path: /(.*)
@@ -2742,11 +2742,18 @@ In this task, you will setup Azure Traffic Manager as a multi-region load balanc
             servicePort: 3001
   ```
 
-12. Open a new web browser tab and navigate to the Traffic Manager profile **DNS name** that as just copied.
+12. Execute the following commands to update those changes in our Kubernetes cluster.
+
+```bash
+kubectl delete ingress content-ingress
+kubectl create --save-config=true -f content.ingress.yml
+```
+
+13. Open a new web browser tab and navigate to the Traffic Manager profile **DNS name** that as just copied.
 
     ![The screenshot shows the Contoso Neuro website using the Traffic Manager profile DNS name](images/tm-endpoint-website.png "Traffic Manager show Contoso home page")
 
-13. When setting up a multi-region hosted application in AKS, you will setup a secondary AKS in another Azure Region, then add its endpoint to its Traffic Manager profile to be load balanced.
+14. When setting up a multi-region hosted application in AKS, you will setup a secondary AKS in another Azure Region, then add its endpoint to its Traffic Manager profile to be load balanced.
 
     > **Note:** You can setup the secondary AKS and instance of the Contoso Neuro website on your own if you wish. The steps to set that up are the same as most of the steps you went through in this lab to setup the primary AKS and app instance.
 
