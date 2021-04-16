@@ -2382,7 +2382,7 @@ In this task, you will edit the web application source code to add Application I
 2. On your lab VM update your fabmedical repository files by pulling the latest changes from the git repository:
 
    ```bash
-   cd ~/fabmedical/content-web
+   cd ~/Fabmedical/content-web
    git pull
    ```
 
