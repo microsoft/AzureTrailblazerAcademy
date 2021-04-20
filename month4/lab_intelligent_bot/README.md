@@ -1824,17 +1824,15 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![In the Web App Bot screen, Test in Web Chat is selected from the left menu. In the Test blade, messages and responses are displayed. The Type your message textbox is highlighted at the bottom of the Test blade.](images/function-bot-test.png "Function Bot Test")
 
-6. Select **Settings** from the left-hand menu. Change the display name to something like `Concierge+ Bot`, then select **Save**.
+6. Select **Bot Profile** from the left-hand menu. Change the display name to something like `Concierge+ Bot`, then click on **Apply**.
 
     ![In the Web App Bot screen, Settings is selected from the left menu. In the Bot profile form the display name shows Concierge+ Bot. The Save button is highlighted in the top toolbar.](images/function-bot-settings.png "Function Bot Settings")
 
-7. Select **Channels** from the left-hand menu, then select **Get bot embed codes** underneath the **Web Chat channel**.
+7. Select **Channels** from the left-hand menu, then click on **Edit** link next to the **Web Chat** channel.
 
     ![Select Get bot embed codes](images/function-bot-channels.png "Function Bot Channels")
 
-8. A dialog will appear for the embed codes. Select the **Select here to open the Web Chat configuration page** option.
-
-9. Select **Copy** next to the **Embed code** textbox. Paste that value to notepad or other text application. Select **Show** beside the first Secret key. Copy the value and replace **YOUR_SECRET_HERE** within the embed code with that secret value. Example: `<iframe src='https://webchat.botframework.com/embed/concierge-plus-bot?s=XEYx9upcGtc.cwA.Ku8.hAL6pCxFWfxIjOE9WM48qxkPNtsy4BkT_LST5y0FxEQ'></iframe>`.
+8. Select **Copy** next to the **Embed code** textbox. Paste that value to notepad or other text application. Select **Show** beside the first Secret key. Copy the value and replace **YOUR_SECRET_HERE** within the embed code with that secret value. Example: `<iframe src='https://webchat.botframework.com/embed/concierge-plus-bot?s=XEYx9upcGtc.cwA.Ku8.hAL6pCxFWfxIjOE9WM48qxkPNtsy4BkT_LST5y0FxEQ'></iframe>`.
 
     ![The Configure Web Chat screen is displayed. The Embed code is located in a textbox with the Copy button next to it selected. In the Secret keys section, the Show button next to the first textbox is highlighted.](images/function-bot-embed.png "Function Bot Embed")
 
