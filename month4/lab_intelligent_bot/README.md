@@ -89,7 +89,7 @@ The following section walks you through the manual steps to provision the servic
 
 ### Task 1: Setup a lab virtual machine
 
-1. In the [Azure Portal](https://portal.azure.com/), select **+Create a resource** from the left menu, then type `Visual Studio Latest` into the search bar. Select **Visual Studio Community 2019(latest release) on Windows Server 2016 (x64)** from the results.
+1. In the [Azure Portal](https://portal.azure.com/), select **+Create a resource** from the left menu, then type `Visual Studio Latest` into the search bar. Select **Visual Studio Community 2019(latest release) on Windows Server 2019 (x64)** from the results.
 
     ![In the Azure Portal, Visual Studio 2019 Latest is entered into the search textbox. Visual Studio 2019 Latest is displayed in the Search suggestions.](images/2019-06-19-15-05-08.png "Visual Studio 2019 Latest option is displayed")
 
@@ -115,7 +115,7 @@ The following section walks you through the manual steps to provision the servic
 
     - **Username**: `demouser`
 
-    - **Password**: (your password)
+    - **Password**: `at@February2021`
 
     - **Public inbound ports**: **Allow selected ports**
 
@@ -169,13 +169,13 @@ The following section walks you through the manual steps to provision the servic
 
     - **Username**: `demouser`
 
-    - **Password**: (your password)
+    - **Password**: `at@February2021`
 
 7. Select Yes to connect, if prompted that the identity of the remote computer cannot be verified.
 
     ![The Remote Desktop Connection window states that the identity of the remote computer can't be identified, and asks if you want to connect anyway. The Yes button is selected.](images/image15.png "Remote Desktop Connection window")
 
-8. Open **Internet Explorer**, then download and install Edge.
+8. Open **Internet Explorer**, then download and install Edge or Chrome.
 
 ### Task 3: Download and open the ConciergePlus starter solution
 
@@ -263,7 +263,7 @@ In this section, you will provision a Function App that will be used as the Even
 
     - **Publish**: **Code**
   
-    - **Runtime Stack**:  Select **.NET Core**.
+    - **Runtime Stack**:  Select **.NET**.
   
     - **Version**: Select **3.1**.
 
@@ -500,8 +500,6 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
     - **Database id**: Enter existing database id `awhotels`.
 
-    - **Throughput**: Set to `400`.
-
     - **Container Id**: Enter `trendingsentiment`.
 
     - **Partition Key**: Enter a partition key such as `/Snapshot`.    
@@ -580,6 +578,8 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Event hub name**: Choose `awchathub2`, the second Event Hub instance you created. awchathub2 is the archiving event hub.  Messages are pushed there from the ChatMessageSentimentProcessFunction Azure function.
 
+    - **Authentication Mode**: Select **Connection string**.
+    
     - **Event hub policy name**: Select **Use existing**, and choose **ChatConsole**.
 
     - **Event hub consumer group**: Select **Use existing**, and select **$Default**.
@@ -715,27 +715,23 @@ In this section, you will create the Stream Analytics Job that will be used to r
     GROUP BY TumblingWindow(minute, 2)
     ```
 -->
-14. Select **Save** again.
+14. Select **Save Query** again.
 
     ![The query editor toolbar is displayed with the Save button selected.](images/image60.png "Save option")
 
 ### Task 11: Start the Stream Analytics job
 
-1. Navigate to your Stream Analytics job in the portal by selecting Resource Groups in the left menu, and selecting **intelligent-analytics**, then selecting your **Stream Analytics Job**.
-
-    ![In the list of resources, the MessageLogger Stream Analytics Job is selected.](images/image50.png "Azure Portal, Resource Groups pane")
-
-2. From the **Overview** blade, select **Start**.
+1. Go back to the **Overview** blade, select **Start**.
 
     ![The toolbar from the Stream Analytics Overview screen is displayed with the Start button highlighted.](images/image62.png "Now button")
 
-3. In the **Start job** blade, select **Now** (the job will start processing messages from the current point in time onward).
+2. In the **Start job** blade, select **Now** (the job will start processing messages from the current point in time onward).
 
     ![In the Start job blade the Job output start time field is set to Now.](images/image63.png "Start job blade, Now button")
 
-4. Select **Start**.
+3. Select **Start**.
 
-5. Allow your Stream Analytics Job a few minutes to start. Once the Job starts it will move to a state of Running.
+4. Allow your Stream Analytics Job a few minutes to start. Once the Job starts it will move to a state of Running.
 
     ![A message is displayed indicating the Stream Analytics Job is running.](images/2019-06-20-15-46-47.png "Stream analytics job running")
 
@@ -809,7 +805,7 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
     ![The screenshot shows the Text Analytics configuration settings highlighted.](images/2020-08-16-07-13-30.png "Text Analytics Configuration Settings")
 
-7. Select **+Create a resource**, select **Language Understanding**, and **Create**.
+7. Select **+Create a resource**, search for **Language Understanding** and click **Create**.
 
      ![The Language Understanding icon is displayed.](images/image72.png "Language Understanding")
 
@@ -1083,15 +1079,19 @@ With the Function App and the Web App resources properly configured, you are now
 
 3. Select **Azure Function App (Windows) and click **Next**.
 
-4. Choose the **Subscription** that contains your Function App you provisioned earlier. Expand your **Resource Group** (e.g., **intelligent-analytics**), then select the node for your **Function App** in the tree view to select it and click **Finish**.
+4. Choose the **Subscription** that contains your Function App you provisioned earlier. Expand your **Resource Group** (e.g., **intelligent-analytics**), then select the node for your **Function App** in the tree view to select it.
+
+5. Make sure the checkbox **Run from Package File** is **unchecked**.
+
+6. click **Finish**.
 
     ![In the App Service dialog box, the resource group is expanded and the function app chatprocessor is selected.](images/2019-09-03-15-40-04.png "App Service dialog box")
 
-5. Select **Publish**.
+6. Select **Publish**.
 
     ![The Azure Function publish dialog box is displayed.](images/vs-publish-function-publish.png "Publish dialog box")
 
-6. When the publish completes, the Output window should indicate success similar to the following:
+7. When the publish completes, the Output window should indicate success similar to the following:
 
     ![The Output window is set to show output from Build. Output indicates it is updating files, and that Publish Succeeded.](images/vs-publish-function-output.png "Output window")
 
