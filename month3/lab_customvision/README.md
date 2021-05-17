@@ -100,8 +100,10 @@ https://github.com/microsoft/AzureTrailblazerAcademy/blob/master/month3/lab_cust
 
 <img src="./images/images-untagged.jpg" alt="Images uploaded, in Untagged section"  Width="600">
 
-3. Click and drag a rectangle around the object in your image. Then, enter a new tag name with the **+** button, or select an existing tag from the drop-down list. If you use the sample coke can images for this lab, you can click and drag an rectangle around an open can, enter "opened_can" as the new tag name. It's very important to tag every instance of the object(s) you want to detect, because the detector uses the untagged background area as a negative example in training. When you're done tagging, click the arrow on the right to save your tags and move on to the next image.
+3. Click and drag a rectangle around the object in your image. Then, enter a new tag name with the **+** button, or select an existing tag from the drop-down list. If you use the sample coke can images for this lab, you can click and drag an rectangle around a closed Diet Coke can and enter "closed_diet_coke" as the new tag name. It's very important to tag every instance of the object(s) you want to detect, because the detector uses the untagged background area as a negative example in training. When you're done tagging, click the arrow on the right to save your tags and move on to the next image.
 <img src="./images/image-tagging.jpg" alt="Tagging an object with a rectangular selection"  Width="600">
+
+4. Repeat the same steps to tag an opened Vanilla coke and a closed Coke - you can tag them "open_vanilla_coke" and "closed_coke" respectively.
 
 4. You need to tag at least **15 images** before you can continue to the next step to train the model.
 
@@ -223,7 +225,7 @@ To submit images to the Prediction API, you will first need to publish your iter
     }
     ```
 --->
-u
+
 ```
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
 from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
